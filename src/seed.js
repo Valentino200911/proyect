@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import { connectDB } from "./db.js";
 import NaturalElement from "./models/naturalElementModel.js";
+import User from "./models/userModel.js";
+
 
 await connectDB()
 
@@ -9,7 +11,7 @@ console.log("The collection has been emptied"); // Vacía las colecciones para e
 
 await NaturalElement.syncIndexes() // Aplicación de los índices
 
-const createdElements = await NaturalElement.create([
+const createdNaturalElements = await NaturalElement.create([
 
     {
         name: "Tusca", 
@@ -20,7 +22,24 @@ const createdElements = await NaturalElement.create([
     },
 ])
 
+const createdUsers = await User.create([
+
+    {
+        name: "Juan", 
+        surname: "Perez",
+        birthDate: "1999-12-31",
+        phoneNumber: "+5491234567890",
+        email: "juan.perez@gmail.com",
+        password: "Password123",
+        role: "user"
+    },
+])
+
+
+
 console.log(`There are ${await NaturalElement.countDocuments()} documents from "naturalelement" registered`);
+
+console.log(`There are ${await User.countDocuments()} documents from "user" registered`);
 
 await mongoose.connection.close()
 

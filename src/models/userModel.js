@@ -77,7 +77,7 @@ userSchema.pre("save", async function () {
     
     if (!this.isModified("password")) return 
     
-    this.password = await bcrypt.hash(this.password, ITERATION)
+    this.password = await bcrypt.hash(this.password, ITERATIONS)
     
 
 })
