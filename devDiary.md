@@ -84,6 +84,10 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Creación de `README.md`
 - Creación de `gaps.md` para las brechas en el código
 - Creación del archivo `userService.js`
-- Reporte de fallos al inicializar con `nodemon npm run dev`, se registra como problema a resolver, mientras tanto, se empleará `npm run dev`
+- Reporte de fallos al inicializar con `nodemon npm run dev`, se registra como problema a     resolver, mientras tanto, se empleará `npm run dev`
 - Finalización de userService, las correcciones se harán con el controlador, las rutas y postman
 - Quinto commit del proyecto en Github
+- Creación del archivo `userController.js`
+- Finalización de userController
+- Sexto commit del proyecto en Github
+- Creación del archivo `userRoute.js`
