@@ -46,7 +46,14 @@ import User from "../models/userModel.js";
 
     export const updateUserService = async (userId, data) => {
     
-        return await User.findByIdAndUpdate({_id: userId}, data)
+        return await User.findByIdAndUpdate({_id: userId}, data, {
+
+        returnDocument: "after",
+
+        runValidators: true,
+
+        }
+    )
 
     }
 

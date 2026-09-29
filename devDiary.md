@@ -107,3 +107,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Traducción de los mensajes de handleError.js a inglés
 - Octavo commit del proyecto en Github
 - Continuación con el desarrollo de NaturalElement (service)
+- Finalización de naturalElementService, las correcciones se realizarán finalizado el controller y el router
+- Noveno commit del proyecto en GitHub
+- Creación del archivo `naturalElementController.js`
