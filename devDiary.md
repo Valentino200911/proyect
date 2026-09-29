@@ -91,3 +91,11 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Finalización de userController
 - Sexto commit del proyecto en Github
 - Creación del archivo `userRoute.js`
+
+### 28 de septiembre de 2026
+
+- Correción de errores en las rutas, el index y el userService
+- Se dropeó la base "cabañas_aguaribay" para verificación de errores
+- Verificación de las rutas. Fallos en PATCH, se registran como gaps
+- Vistas las consignas de la UTN, se optó por agregar un método PUT
+- Séptimo commit del proyecto en Github

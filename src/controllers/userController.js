@@ -5,9 +5,19 @@ import * as userService from "../services/userService.js"
 
 export const getAllUsersController = async (req, res) => {
     
-    const users = await userService.getAllUsersService()
+    try {
 
-    res.status(200).json(users)
+        const users = await userService.getAllUsersService()
+
+        res.status(200).json(users)
+
+    } catch (error) {
+        
+        res.status(500).json({ error: error.message });
+
+        console.log("It was not possible to GET all users");
+        
+    }
 
 }
 

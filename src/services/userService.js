@@ -1,13 +1,16 @@
+
+import mongoose from "mongoose";
+import { ErrorApp } from "../../utils/ErrorApp.js";
 import User from "../models/userModel.js";
-import { ErrorApp } from "../models/ErrorApp.js";
+import { connectDB } from "../db.js";
 
 // Validación del Usuario
 
     export const verifyUserService = async (userId) => {
         
-        const exists = await User.exists({_id: userId})
+        const exist = await User.exists({_id: userId})
 
-        if (!exists) {
+        if (!exist) {
             
             throw new ErrorApp(`The user "${userId}" does not exist`, 404);
             
@@ -21,7 +24,7 @@ import { ErrorApp } from "../models/ErrorApp.js";
 
     export const getAllUsersService = async () => {
 
-        await User.sort({name: 1})
+        return await User.find().sort({name: 1})
 
     }
 
@@ -29,7 +32,7 @@ import { ErrorApp } from "../models/ErrorApp.js";
 
     export const getUserByIdService = async (userId) => {
         
-        await User.findById(userId)
+        return await User.findById({_id: userId})
 
     }
 
@@ -37,21 +40,22 @@ import { ErrorApp } from "../models/ErrorApp.js";
 
     export const createUserService = async (data) => {
         
-        await User.create(data)
+        return await User.create(data)
     }
 
     // updateUserService  
 
     export const updateUserService = async (userId) => {
-        
-        await User.findByIdAndUpdate(userId)
+    
+        return await User.findByIdAndUpdate({_id: userId})
+
     }
 
     // deleteUserService
 
     export const deleteUserService = async (userId) => {
         
-        await User.findByIdAndDelete(userId)
+        return await User.findByIdAndDelete({_id: userId})
     }
 
 
