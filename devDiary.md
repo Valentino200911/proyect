@@ -110,3 +110,5 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Finalización de naturalElementService, las correcciones se realizarán finalizado el controller y el router
 - Noveno commit del proyecto en GitHub
 - Creación del archivo `naturalElementController.js`
+- Finalización de naturalElementController
+- Decimo commit del proyecto en Github
