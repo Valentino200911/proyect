@@ -48,28 +48,28 @@ export const handleError = (error, req, res, next) => {
 
     // el body no es un JSON válido (una coma de más en Postman)
     if (error.type === "entity.parse.failed") {
-        return res.status(400).json({ error: "El body no es un JSON válido" })
+        return res.status(400).json({ error: "BODY is not a valid JSON" })
     }
 
     // el id no tiene forma de ObjectId → /api/libros/abc
     if (error.name === "CastError") {
-        return res.status(400).json({ error: "Ese id no tiene un formato válido", recibido: error.value })
+        return res.status(400).json({ error: "id is not valid to MongoDB", recibido: error.value })
     }
 
     // se rompió una regla del modelo
     if (error.name === "ValidationError") {
         return res.status(400).json({
-            error: "Los datos no son válidos",
+            error: "The data of the object is not valid",
             detalles: Object.values(error.errors).map(e => e.message)
         })
     }
 
     // un unique repetido que nadie tradujo antes
     if (error.code === 11000) {
-        return res.status(400).json({ error: "Ya existe un registro con ese dato", campo: Object.keys(error.keyPattern)[0] })
+        return res.status(400).json({ error: "Duplicated unique, the object is already registered", campo: Object.keys(error.keyPattern)[0] })
     }
 
     // lo demás es culpa nuestra: el detalle al log, al cliente solo el mensaje
     console.error(error)
-    res.status(500).json({ error: "Error interno del servidor" })
+    res.status(500).json({ error: "Internal Server Error" })
 }

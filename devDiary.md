@@ -99,3 +99,11 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Verificación de las rutas. Fallos en PATCH, se registran como gaps
 - Vistas las consignas de la UTN, se optó por agregar un método PUT
 - Séptimo commit del proyecto en Github
+
+### 29 de septiembre de 2026
+
+- Corrección de los fallos de PATCH y PUT
+- Se completa el CRUD de Usuarios
+- Traducción de los mensajes de handleError.js a inglés
+- Octavo commit del proyecto en Github
+- Continuación con el desarrollo de NaturalElement (service)

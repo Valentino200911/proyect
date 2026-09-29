@@ -2,7 +2,6 @@
 import mongoose from "mongoose";
 import { ErrorApp } from "../../utils/ErrorApp.js";
 import User from "../models/userModel.js";
-import { connectDB } from "../db.js";
 
 // Validación del Usuario
 
@@ -45,9 +44,9 @@ import { connectDB } from "../db.js";
 
     // updateUserService  
 
-    export const updateUserService = async (userId) => {
+    export const updateUserService = async (userId, data) => {
     
-        return await User.findByIdAndUpdate({_id: userId})
+        return await User.findByIdAndUpdate({_id: userId}, data)
 
     }
 

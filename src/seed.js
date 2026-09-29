@@ -3,10 +3,10 @@ import { connectDB } from "./db.js";
 import NaturalElement from "./models/naturalElementModel.js";
 import User from "./models/userModel.js";
 
-
 await connectDB()
 
 await NaturalElement.deleteMany({})
+
 console.log("The collection has been emptied"); // Vacía las colecciones para evitar fusión o duplicado de info.
 
 await NaturalElement.syncIndexes() // Aplicación de los índices
@@ -33,6 +33,7 @@ const createdUsers = await User.create([
         password: "Password123",
         role: "user"
     },
+    
 ])
 
 

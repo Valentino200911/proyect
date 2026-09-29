@@ -20,8 +20,10 @@ await connectDB()
     // O configurar específicamente
 
     app.use(cors({
-    origin: "http://localhost:3000",  // Solo permitir este origen
+    origin: "http://localhost:5173",  // Solo permitir este origen (React)
+
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+
     credentials: true  // Permitir cookies
     }));
 
@@ -38,7 +40,9 @@ await connectDB()
         // Ruta de pruebas
 
         app.get("/", (req, res) => {
+
         res.send("The server is working correctly");
+
         });
     
         // Ruta de usuarios
@@ -47,11 +51,12 @@ await connectDB()
 
 // Autenticación
 
-
 // Error 404
 
     app.use( (req, res) => {
+
         res.status(404).json( {error: "This route does not exist"} )
+
     })
 
 // PORT y Visualización
