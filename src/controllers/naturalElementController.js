@@ -4,7 +4,7 @@ import * as naturalElementService from "../services/naturalElementService.js"
 
     export const getAllNaturalElementsController = async (req, res) => {
         
-        const naturalElements = await naturalElementService.getAllNaturalElements()
+        const naturalElements = await naturalElementService.getAllNaturalElementsService(req.query)
 
         res.status(200).json(naturalElements)
 
@@ -14,7 +14,7 @@ import * as naturalElementService from "../services/naturalElementService.js"
 
     export const getNaturalElementByIdController = async (req, res) => {
         
-        const naturalElement = await naturalElementService.getNaturalElementsById(req.params.id)
+        const naturalElement = await naturalElementService.getNaturalElementsByIdService(req.params.id)
 
         if (!naturalElement) {
         
@@ -31,7 +31,7 @@ import * as naturalElementService from "../services/naturalElementService.js"
 
     export const createNaturalElementController = async (req, res) => {
         
-        const naturalElement = await naturalElementService.createNaturalElements(req.body)
+        const naturalElement = await naturalElementService.createNaturalElementService(req.body)
 
         res.status(201).json(naturalElement)
     }
@@ -40,7 +40,7 @@ import * as naturalElementService from "../services/naturalElementService.js"
 
     export const updateNaturalElementController = async (req, res) => {
         
-        const naturalElement = await naturalElementService.updateNaturalElements(req.body)
+        const naturalElement = await naturalElementService.updateNaturalElementService(req.params.id, req.body)
 
         if (!naturalElement) {
             
@@ -57,7 +57,7 @@ import * as naturalElementService from "../services/naturalElementService.js"
 
     export const deleteNaturalElementController = async (req, res) => {
         
-        const naturalElement = await deleteNaturalElementController(req.params.id)
+        const naturalElement = await naturalElementService.deleteNaturalElementService(req.params.id)
 
         if (!naturalElement) {
             

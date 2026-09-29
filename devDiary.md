@@ -90,7 +90,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Creación del archivo `userController.js`
 - Finalización de userController
 - Sexto commit del proyecto en Github
-- Creación del archivo `userRoute.js`
+- Creación del archivo `userRoutes.js`
 
 ### 28 de septiembre de 2026
 
@@ -112,3 +112,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Creación del archivo `naturalElementController.js`
 - Finalización de naturalElementController
 - Decimo commit del proyecto en Github
+- Creación del archivo `naturalElementRoutes.js`
+- Finalización del ruteo
+- Verificaciones del CRUD
+- Undécimo commit del proyecto en GitHub

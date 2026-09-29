@@ -18,9 +18,9 @@ import NaturalElement from "../models/naturalElementModel.js";
 
     }
 
-// getAllNaturalElements
+// getAllNaturalElementsService
 
-    export const getAllNaturalElements = async ( {binomialName} = {} ) => {
+    export const getAllNaturalElementsService = async ( {binomialName} = {} ) => {
         
         const filter = {}
 
@@ -33,25 +33,25 @@ import NaturalElement from "../models/naturalElementModel.js";
     }
 
 
-// getNaturalElementsById
+// getNaturalElementsByIdService
 
-    export const getNaturalElementsById = async (naturalElementId) => {
+    export const getNaturalElementsByIdService = async (naturalElementId) => {
         
         return await NaturalElement.findById({_id: naturalElementId})
 
     }
 
-// createNaturalElements
+// createNaturalElementService
     
-    export const createNaturalElements = async (data) => {
+    export const createNaturalElementService = async (data) => {
         
         return await NaturalElement.create(data)
 
     }
 
-// updateNaturalElements
+// updateNaturalElementService
 
-    export const updateNaturalElements = async (naturalElementId, data) => {
+    export const updateNaturalElementService = async (naturalElementId, data) => {
         
         return await NaturalElement.findByIdAndUpdate({_id: naturalElementId}, data, {
 
@@ -64,9 +64,9 @@ import NaturalElement from "../models/naturalElementModel.js";
 
     }
 
-// deleteNaturalElements
+// deleteNaturalElementService
 
-        export const deleteNaturalElements = async (naturalElementId) => {
+        export const deleteNaturalElementService = async (naturalElementId) => {
         
         return await NaturalElement.findByIdAndDelete({_id: naturalElementId})
 
