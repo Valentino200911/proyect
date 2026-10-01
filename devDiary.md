@@ -54,7 +54,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
 ### 24 de septiembre de 2026
 
-- Desarrollo de userModel.js
+- Desarrollo de userModel.jsgeneralConstants.js
 - Creación de la carpeta `utils/constants` para almacenar constantes
 - El archivo `utils/constants/systemConstants.js` refiere a las constantes de bcrypt
 - El archivo `utils/constants/generalConstants.js` refiere a regexs y constantes en general
@@ -116,3 +116,9 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Finalización del ruteo
 - Verificaciones del CRUD
 - Undécimo commit del proyecto en GitHub
+
+### 1 de octubre de 2026
+
+- Cambio de rumbo respecto al PUT, debido a que la funcionalidad de dicho verbo es, en Express 5 es extremadamente similar al PATCH (si no tiene validaciones), se optó por eliminar el método PUT de las rutas
+- Por cuestiones de orden, se transfirió el archivo .pdf de la consigna del tp a otra carpeta
+- Duodécimo commit del proyecto en Github

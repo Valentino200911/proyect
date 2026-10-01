@@ -1,4 +1,4 @@
-
+import { handleError } from "../../middlewares/handleError.js";
 import mongoose from "mongoose";
 import { ErrorApp } from "../../utils/ErrorApp.js";
 import User from "../models/userModel.js";
@@ -23,7 +23,7 @@ import User from "../models/userModel.js";
 
     export const getAllUsersService = async () => {
 
-        return await User.find().sort({name: 1})
+        return await User.find({}, {}).sort({name: 1}) // El segundo {} es un project, el primero es un filter
 
     }
 
@@ -31,7 +31,7 @@ import User from "../models/userModel.js";
 
     export const getUserByIdService = async (userId) => {
         
-        return await User.findById({_id: userId})
+        return await User.findById({_id: userId}, {}) // El segundo {} es un project
 
     }
 

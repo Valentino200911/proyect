@@ -3,6 +3,7 @@ import { PORT, MONGO_URI } from "../utils/config.js";
 import { ErrorApp } from "../utils/ErrorApp.js";
 
 export const connectDB = async () => {
+    
     try {
         await mongoose.connect(MONGO_URI)
         

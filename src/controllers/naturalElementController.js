@@ -1,4 +1,5 @@
 import * as naturalElementService from "../services/naturalElementService.js"
+import { handleError } from "../../middlewares/handleError.js";
 
 // getAllNaturalElementsController
 

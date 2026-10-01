@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { handleError } from "../../middlewares/handleError.js";
 import { ErrorApp } from "../../utils/ErrorApp.js";
 import NaturalElement from "../models/naturalElementModel.js";
 
@@ -29,7 +30,7 @@ import NaturalElement from "../models/naturalElementModel.js";
             filter.binomialName = binomialName
 
         }
-        return await NaturalElement.find(filter).sort( {name: 1} )
+        return await NaturalElement.find(filter, {}).sort( {name: 1} ) // {} es un project a voluntad
     }
 
 
@@ -37,7 +38,7 @@ import NaturalElement from "../models/naturalElementModel.js";
 
     export const getNaturalElementsByIdService = async (naturalElementId) => {
         
-        return await NaturalElement.findById({_id: naturalElementId})
+        return await NaturalElement.findById({_id: naturalElementId}, {}) // {} es un project a voluntad
 
     }
 

@@ -14,8 +14,6 @@ router.post("/post", userController.createUserController)
 
 router.patch("/patch/:id", userController.updateUserController)
 
-router.put("/put/:id", userController.updateUserController)
-
 router.delete("/delete/:id", userController.deleteUserController)
 
 export default router

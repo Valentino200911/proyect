@@ -1,3 +1,4 @@
+import { handleError } from "../../middlewares/handleError.js";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt"
 import { emailRegex, phoneNumberRegex, ROLES } from "../../utils/constants/generalConstants.js";
