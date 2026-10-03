@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { connectDB } from "./db.js";
 import NaturalElement from "./models/naturalElementModel.js";
 import User from "./models/userModel.js";
-import Cabaña from "./models/cabañaModel.js";
+import Cottage from "./models/cottageModel.js";
 
 await connectDB()
 
@@ -10,7 +10,7 @@ await NaturalElement.deleteMany({})
 
 await User.deleteMany({})
 
-await Cabaña.deleteMany({})
+await Cottage.deleteMany({})
 
 console.log("The collection has been emptied"); // Vacía las colecciones para evitar fusión o duplicado de info.
 
@@ -18,7 +18,7 @@ await NaturalElement.syncIndexes() // Aplicación de los índices
 
 await User.syncIndexes()
 
-await Cabaña.syncIndexes()
+await Cottage.syncIndexes()
 
 const createdNaturalElements = await NaturalElement.create([
 
@@ -45,7 +45,7 @@ const createdUsers = await User.create([
     
 ])
 
-const createdCabañas = await Cabaña.create([
+const createdCottages = await Cottage.create([
 
     {
         name: "cabaña 1", 
@@ -62,7 +62,7 @@ console.log(`There are ${await NaturalElement.countDocuments()} documents from "
 
 console.log(`There are ${await User.countDocuments()} documents from "user" registered`);
 
-console.log(`There are ${await Cabaña.countDocuments()} documents from "cabaña" registered`);
+console.log(`There are ${await Cottage.countDocuments()} documents from "cottage" registered`);
 
 await mongoose.connection.close()
 

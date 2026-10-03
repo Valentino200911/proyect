@@ -2,7 +2,7 @@
 
 // models
 
-    // cabaña
+    // cottage
 
         export const LOCATION = ["tafi viejo, tucuman"] // Se emplea un enum en caso de que se añadan nuevas ubicaciones
 

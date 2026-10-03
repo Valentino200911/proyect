@@ -138,3 +138,9 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Creación del archivo `cabañaController.js`
 - Finalización del controller para Cabañas, gaps anotados
 - Decimoquinto commit del proyecto en Github
+- Creación del archivo `cabañaRoutes.js`
+- Finalización del router para Cabañas, gaps anotados
+- Errores en POSTMAN sobre el uso de la "ñ" de cabañas. Por eso, se cambiarán todas las claves y nombres (salvo las anotaciones de la base de datos) que digan "cabaña"
+- Finalización de las modificaciones
+- Verificación y funcionamiento del CRUD
+- Decimosexto commit del proyecto en Github

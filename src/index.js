@@ -3,8 +3,9 @@ import cors from "cors"
 import { handleError } from "../middlewares/handleError.js"
 import { PORT } from "../utils/config.js"
 import { connectDB } from "./db.js";
-import userRoutes from "./routes/userRoutes.js";
 import naturalElementRoutes from "./routes/naturalElementRoutes.js"
+import userRoutes from "./routes/userRoutes.js";
+import cottageRoutes from "./routes/cottageRoutes.js";
 
 // Conexión a la DB
 
@@ -46,13 +47,17 @@ await connectDB()
 
         });
     
-        // Ruta de usuarios
-
-        app.use("/api/user", userRoutes)
-
         // Ruta de NaturalElement
 
         app.use("/api/naturalelement", naturalElementRoutes)
+
+        // Ruta de Usuarios
+
+        app.use("/api/user", userRoutes)
+
+        // Ruta de Cottages
+
+        app.use("/api/cottage", cottageRoutes)
 
 // Autenticación
 
@@ -69,6 +74,7 @@ await connectDB()
     app.listen(PORT, () => {
 
             console.log(`Server working on http://localhost:${PORT}`);
-            console.log(`Route of Users on http://localhost:${PORT}/api/user`)
             console.log(`Route of Natural Elements on http://localhost:${PORT}/api/naturalelement`)
+            console.log(`Route of Users on http://localhost:${PORT}/api/user`)
+            console.log(`Route of Users on http://localhost:${PORT}/api/cottage`)
     })

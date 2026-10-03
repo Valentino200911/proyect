@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { LOCATION } from "../../utils/constants/generalConstants.js";
 
-const cabañaSchema = new mongoose.Schema({
+const cottageSchema = new mongoose.Schema({
 
 name:{
     type: String,
@@ -16,14 +16,14 @@ name:{
 capacity:{
     type: Number,
     required: [true, "The capacity is required for the register"],
-    min: 2,
-    max: 7
+    min: [2, "The capacity must be over 2"],
+    max: [7, "The capacity must not be over 7"]
 },
 pricePerNightAndPerson: {
     type: Number,
     required: [true, "The price is required for the register"],
     min: [20000, "The price for one person during one night must be over 20000"],
-    max: [100000, "The price for one person during one night must be over 100000"],
+    max: [100000, "The price for one person during one night must not be over 100000"],
 },
 location:{
     type: String,
@@ -44,4 +44,4 @@ description:{
 
 )
 
-export default mongoose.model("Cabaña", cabañaSchema )
+export default mongoose.model("Cottage", cottageSchema )
