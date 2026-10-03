@@ -140,7 +140,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Decimoquinto commit del proyecto en Github
 - Creación del archivo `cabañaRoutes.js`
 - Finalización del router para Cabañas, gaps anotados
-- Errores en POSTMAN sobre el uso de la "ñ" de cabañas. Por eso, se cambiarán todas las claves y nombres (salvo las anotaciones de la base de datos) que digan "cabaña"
+- Errores en POSTMAN sobre el uso de la "ñ" de cabañas. Por eso, se cambiarán todas las claves y nombres de archivos a "cottage" (salvo las anotaciones de la base de datos) que digan "cabaña". Ej. `cottageRoutes.js`
 - Finalización de las modificaciones
 - Verificación y funcionamiento del CRUD
 - Decimosexto commit del proyecto en Github
@@ -149,3 +149,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Modificaciones generales a los comentarios de validación de los modelos
 - Modificaciones al service de user y cottage para evitar dejar registros huérfanos en contact
 - Decimoséptimo commit del proyecto en Github
+- Creación del archivo `contactService.js`
+- Finalización del servicio para Contact
+- Decimoctavo commit del proyecto en Github
