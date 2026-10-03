@@ -5,7 +5,7 @@ import * as userService from "../services/userService.js"
 
 export const getAllUsersController = async (req, res) => {
     
-        const users = await userService.getAllUsersService()
+        const users = await userService.getAllUsersService(req.query)
 
         res.status(200).json(users)
 

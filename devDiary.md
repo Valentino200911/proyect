@@ -133,5 +133,8 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Decimotercer commit del proyecto en Github
 - Creación del archivo `cabañaService.js`
 - Registro de la adición de "{}" para realizar projects en los servicios existentes, todavía está sin definir la información a mostrar
-- Finalización del servicio para Cabñas, gaps anotados
+- Finalización del servicio para Cabañas, gaps anotados
 - Decimocuarto commit del proyecto en Github
+- Creación del archivo `cabañaController.js`
+- Finalización del controller para Cabañas, gaps anotados
+- Decimoquinto commit del proyecto en Github
