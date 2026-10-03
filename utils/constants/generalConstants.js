@@ -37,4 +37,4 @@ export const phoneNumberRegex =/^\+?(\d{1,4})[- ]?\(?(\d{1,4})\)?[- ]?(\d{3})[- 
 
 // contact
 
-    export const REASON_OF_CONTACT = ["buisness", "prom", "problem", "suggestion"]
+    export const REASON_OF_CONTACT = ["business", "prom", "problem", "suggestion"]

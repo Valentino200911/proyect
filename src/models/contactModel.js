@@ -13,7 +13,7 @@ user: {
 reasonOfContact: {
     type: String,
     required: [true, "The reason of contact is required"],
-    enum: {values: REASON_OF_CONTACT, message: "The reason of contact has to be: 'buisness', 'prom', 'problem' or 'suggestion' "}
+    enum: {values: REASON_OF_CONTACT, message: "The reason of contact has to be: 'business', 'prom', 'problem' or 'suggestion' "}
 },
 
 contactComment: {

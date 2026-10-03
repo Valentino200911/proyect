@@ -63,13 +63,6 @@ import Contact from "../models/contactModel.js";
 
     export const deleteUserService = async (userId) => {
         
-        const user = await User.verifyUserService(userId)
-
-        if (!user) {
-
-            return null
-        } 
-
         const contacts = await Contact.countDocuments({ user: { _id: userId }})
 
         const reservations = await Reservation.countDocuments({ user: { _id: userId }})

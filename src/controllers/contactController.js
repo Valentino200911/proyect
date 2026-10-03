@@ -29,7 +29,7 @@ import * as contactService from "../services/contactService.js";
 
     export const createContactController = async (req, res) => {
         
-        const contact = await contactService.createContactService(req.params.id)
+        const contact = await contactService.createContactService(req.body)
     
         res.status(201).json(contact)
     }

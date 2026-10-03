@@ -1,4 +1,4 @@
-import { ErrorApp } from "../../utils/ErrorApp";
+import { ErrorApp } from "../../utils/ErrorApp.js";
 import Contact from "../models/contactModel.js";
 
 // CRUD general

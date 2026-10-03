@@ -6,9 +6,9 @@ const router = Router()
 
 // router.use( verifyToken, allowRoles(ROLES.ADMIN))
 
-router.get("/get", cottageController.getAllCottagesController)
-
 router.get("/get/:id", cottageController.getCottageByIdController)
+
+router.get("/get", cottageController.getAllCottagesController)
 
 router.post("/post", cottageController.createCottageController)
 

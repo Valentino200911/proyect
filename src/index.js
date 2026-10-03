@@ -6,6 +6,8 @@ import { connectDB } from "./db.js";
 import naturalElementRoutes from "./routes/naturalElementRoutes.js"
 import userRoutes from "./routes/userRoutes.js";
 import cottageRoutes from "./routes/cottageRoutes.js";
+import contactRoutes from "./routes/contactRoutes.js";
+
 
 // Conexión a la DB
 
@@ -59,6 +61,11 @@ await connectDB()
 
         app.use("/api/cottage", cottageRoutes)
 
+        // Ruta de Contacts
+
+        app.use("/api/contact", contactRoutes)
+
+
 // Autenticación
 
 // Error 404
@@ -76,5 +83,6 @@ await connectDB()
             console.log(`Server working on http://localhost:${PORT}`);
             console.log(`Route of Natural Elements on http://localhost:${PORT}/api/naturalelement`)
             console.log(`Route of Users on http://localhost:${PORT}/api/user`)
-            console.log(`Route of Users on http://localhost:${PORT}/api/cottage`)
+            console.log(`Route of Cottages on http://localhost:${PORT}/api/cottage`)
+            console.log(`Route of Cottages on http://localhost:${PORT}/api/contact`)
     })
