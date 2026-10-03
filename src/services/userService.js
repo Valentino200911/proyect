@@ -57,7 +57,8 @@ import User from "../models/userModel.js";
 
     }
 
-    // deleteUserService
+    // deleteUserService -- Uno no podría eliminar el usuario si ha hecho una registración o un contacto para mantener la integridad de la DB (gap)
+
 
     export const deleteUserService = async (userId) => {
         

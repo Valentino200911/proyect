@@ -32,9 +32,9 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
   ```js
   src/models;
-  src/services;
+  src/services;Creación del archivo `naturalElementController.js`
   src/controllers;
-  src/routes;
+  src/routes;Creación del archivo `naturalElementController.js`
   ```
 
 - Creación de los modelos (en src/models/):
@@ -131,3 +131,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Adición de los valores `index: true` en `name` de `cabañaModel.js`, `binomialName` de `naturalElementModel.js`
 - Finalización del modelo de cabañaModel.js e implementación a seed.js (implementación exitosa)
 - Decimotercer commit del proyecto en Github
+- Creación del archivo `cabañaService.js`
+- Registro de la adición de "{}" para realizar projects en los servicios existentes, todavía está sin definir la información a mostrar
+- Finalización del servicio para Cabñas, gaps anotados
+- Decimocuarto commit del proyecto en Github

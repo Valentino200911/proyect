@@ -7,7 +7,7 @@ import NaturalElement from "../models/naturalElementModel.js";
 
 // Validación del elemento
 
-    export const verifyNaturalElement = async (naturalElementId) => {
+    export const verifyNaturalElementService = async (naturalElementId) => {
         
         const exist = await NaturalElement.exists({_id: naturalElementId})
 
