@@ -1,6 +1,5 @@
 # Gaps
 
-- Uno no debería eliminar el usuario ni la cabaña (service y controllertgf) si ha hecho una registración o un contacto para mantener la integridad de la DB
 - Habilitar los tokens de usuario
 - Validación de roles y acceso a las operaciones CRUD de los usuarios por parte del ADMIN
 - Validación de roles y acceso a las operaciones CRUD de los natural elements por parte del ADMIN

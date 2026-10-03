@@ -3,6 +3,7 @@ import { connectDB } from "./db.js";
 import NaturalElement from "./models/naturalElementModel.js";
 import User from "./models/userModel.js";
 import Cottage from "./models/cottageModel.js";
+import Contact from "./models/contactModel.js";
 
 await connectDB()
 
@@ -12,6 +13,8 @@ await User.deleteMany({})
 
 await Cottage.deleteMany({})
 
+await Contact.deleteMany({})
+
 console.log("The collection has been emptied"); // Vacía las colecciones para evitar fusión o duplicado de info.
 
 await NaturalElement.syncIndexes() // Aplicación de los índices
@@ -19,6 +22,8 @@ await NaturalElement.syncIndexes() // Aplicación de los índices
 await User.syncIndexes()
 
 await Cottage.syncIndexes()
+
+await Contact.syncIndexes()
 
 const createdNaturalElements = await NaturalElement.create([
 
@@ -31,7 +36,7 @@ const createdNaturalElements = await NaturalElement.create([
     },
 ])
 
-const createdUsers = await User.create([
+const [Juan] = await User.create([
 
     {
         name: "Juan", 
@@ -58,11 +63,25 @@ const createdCottages = await Cottage.create([
     
 ])
 
+const createdContact = await Contact.create([
+
+    {
+
+        user: Juan._id,
+        reasonOfContact: "prom",
+        contactComment: "Hi, 123"
+    
+    },
+    
+])
+
 console.log(`There are ${await NaturalElement.countDocuments()} documents from "naturalelement" registered`);
 
 console.log(`There are ${await User.countDocuments()} documents from "user" registered`);
 
 console.log(`There are ${await Cottage.countDocuments()} documents from "cottage" registered`);
+
+console.log(`There are ${await Contact.countDocuments()} documents from "cottage" registered`);
 
 await mongoose.connection.close()
 

@@ -16,19 +16,19 @@ name:{
 capacity:{
     type: Number,
     required: [true, "The capacity is required for the register"],
-    min: [2, "The capacity must be over 2"],
+    min: [2, "The capacity has to be over 2"],
     max: [7, "The capacity must not be over 7"]
 },
 pricePerNightAndPerson: {
     type: Number,
     required: [true, "The price is required for the register"],
-    min: [20000, "The price for one person during one night must be over 20000"],
+    min: [20000, "The price for one person during one night has to be over 20000"],
     max: [100000, "The price for one person during one night must not be over 100000"],
 },
 location:{
     type: String,
     required: [true, "The location is required for the register"],
-    enum: LOCATION,
+    enum: {values: LOCATION, message: "The only location available is 'tafi viejo, tucuman'"},
     default: "tafi viejo, tucuman",
 },
 description:{

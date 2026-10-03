@@ -144,3 +144,8 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Finalización de las modificaciones
 - Verificación y funcionamiento del CRUD
 - Decimosexto commit del proyecto en Github
+- Inicio del modelo de `contactModel.js`
+- Finalización del modelo
+- Modificaciones generales a los comentarios de validación de los modelos
+- Modificaciones al service de user y cottage para evitar dejar registros huérfanos en contact
+- Decimoséptimo commit del proyecto en Github

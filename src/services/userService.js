@@ -2,6 +2,7 @@ import { handleError } from "../../middlewares/handleError.js";
 import mongoose from "mongoose";
 import { ErrorApp } from "../../utils/ErrorApp.js";
 import User from "../models/userModel.js";
+import Contact from "../models/contactModel.js";
 
 // Validación del Usuario
 
@@ -62,6 +63,23 @@ import User from "../models/userModel.js";
 
     export const deleteUserService = async (userId) => {
         
+        const user = await User.verifyUserService(userId)
+
+        if (!user) {
+
+            return null
+        } 
+
+        const contacts = await Contact.countDocuments({ user: { _id: userId }})
+
+        const reservations = await Reservation.countDocuments({ user: { _id: userId }})
+
+        if (contacts && reservations > 0) {
+            
+            throw new ErrorApp(`The user cannot be deleted becuase it has registered ${contacts} contacts and ${reservations} reservations`, 409)
+
+        }
+
         return await User.findByIdAndDelete({_id: userId})
     }
 

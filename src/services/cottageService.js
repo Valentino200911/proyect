@@ -62,6 +62,21 @@ import Cottage from "../models/cottageModel.js";
 
     export const deleteCottageService = async (cottageId) => {
         
+                const cottage = await Cottage.verifyCottageService(cottageId)
+        
+                if (!cottage) {
+        
+                    return null
+                } 
+        
+                const reservations = await Reservation.countDocuments({ cottage: { _id: cottageId }})
+        
+                if (reservations > 0) {
+                    
+                    throw new ErrorApp(`The cottage cannot be deleted becuase it has registered and ${reservations} reservations `, 409)
+        
+                }
+        
         return await Cottage.findByIdAndDelete({_id: cottageId})
         
     }
