@@ -2,14 +2,23 @@ import mongoose from "mongoose";
 import { connectDB } from "./db.js";
 import NaturalElement from "./models/naturalElementModel.js";
 import User from "./models/userModel.js";
+import Cabaña from "./models/cabañaModel.js";
 
 await connectDB()
 
 await NaturalElement.deleteMany({})
 
+await User.deleteMany({})
+
+await Cabaña.deleteMany({})
+
 console.log("The collection has been emptied"); // Vacía las colecciones para evitar fusión o duplicado de info.
 
 await NaturalElement.syncIndexes() // Aplicación de los índices
+
+await User.syncIndexes()
+
+await Cabaña.syncIndexes()
 
 const createdNaturalElements = await NaturalElement.create([
 
@@ -36,11 +45,24 @@ const createdUsers = await User.create([
     
 ])
 
+const createdCabañas = await Cabaña.create([
 
+    {
+        name: "cabaña 1", 
+        capacity: 7,
+        pricePerNightAndPerson: 40000,
+        location: "tafi viejo, tucuman",
+        description: "Un lugar para descansar en contacto con la naturaleza"
+    
+    },
+    
+])
 
 console.log(`There are ${await NaturalElement.countDocuments()} documents from "naturalelement" registered`);
 
 console.log(`There are ${await User.countDocuments()} documents from "user" registered`);
+
+console.log(`There are ${await Cabaña.countDocuments()} documents from "cabaña" registered`);
 
 await mongoose.connection.close()
 

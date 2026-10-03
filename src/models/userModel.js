@@ -33,6 +33,7 @@ phoneNumber: {
     type: String,
     required: [true, "Your phone number is required for your account"],
     unique: true,
+    index: true,
     trim: true,
     match: [phoneNumberRegex, "Your phone number is not valid. Try again and write it correctly"],
 },

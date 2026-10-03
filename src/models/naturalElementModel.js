@@ -17,6 +17,7 @@ binomialName:{
     required: [true, "The binomial name of the natural element is required"],
     // no se añade el lowercase: true debido a que, por convención científica, los nombres binomiales empiezan con mayúscula
     unique: true, // Cada especie tiene una nomenclatura única
+    index: true, 
     minLength: [3, "At least 3 characters are required to name this element"],
     maxLength: [256, "At most 256 characters are required to name this element"],
     match: [binomialNameRegex, "The binomial name is not in the correct format. As an example: 'Canis lupus'" ],

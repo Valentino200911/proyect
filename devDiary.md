@@ -31,10 +31,10 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Creación de las carpetas:
 
   ```js
-  src / models;
-  src / services;
-  src / controllers;
-  src / routes;
+  src/models;
+  src/services;
+  src/controllers;
+  src/routes;
   ```
 
 - Creación de los modelos (en src/models/):
@@ -48,7 +48,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   ```
 
 - Inicio de la Elaboración de los modelos y Schemas
-- Desarrollo de naturalElementModel.js
+- Desarrollo de naturalElementModel.js. Esto supone una modificación de la estructura de base de datos, sin embargo, es una colección aislada que no toma datos de otros elementos de la db
 - Uso de prueba de seed.js.
 - Conexión exitosa con MongoDB y registro de un modelo
 
@@ -122,3 +122,12 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambio de rumbo respecto al PUT, debido a que la funcionalidad de dicho verbo es, en Express 5 es extremadamente similar al PATCH (si no tiene validaciones), se optó por eliminar el método PUT de las rutas
 - Por cuestiones de orden, se transfirió el archivo .pdf de la consigna del tp a otra carpeta
 - Duodécimo commit del proyecto en Github
+- Registros de gaps
+- Inicio del modelo de `cabañaModel.js`
+
+### 3 de octubre de 2026
+
+- Continuación del modelo de cabañaModel.js
+- Adición de los valores `index: true` en `name` de `cabañaModel.js`, `binomialName` de `naturalElementModel.js`
+- Finalización del modelo de cabañaModel.js e implementación a seed.js (implementación exitosa)
+- Decimotercer commit del proyecto en Github
