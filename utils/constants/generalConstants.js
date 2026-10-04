@@ -38,3 +38,9 @@ export const phoneNumberRegex =/^\+?(\d{1,4})[- ]?\(?(\d{1,4})\)?[- ]?(\d{3})[- 
 // contact
 
     export const REASON_OF_CONTACT = ["business", "prom", "problem", "suggestion"]
+
+// reservation
+
+    export const RESERVATION_STATE = ["in progress", "done", "fallen"]
+
+    export const METHOD_OF_PAYMENT = ["bankTransfer", "cash"]

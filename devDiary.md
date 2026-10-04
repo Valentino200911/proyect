@@ -159,3 +159,10 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Finalización del Router para Contact
 - Verificaciones a través de POSTMAN
 - Vigésimo commit del proyecto en Github
+- Inicio del modelo de `reservationModel.js`
+
+### 4 de octubre de 2026
+
+- Continuación del modelo de `reservationModel.js`
+- Finalización del modelo de `reservationModel.js`
+- Vigesimoprimer commit del proyecto en Github

@@ -1,6 +1,7 @@
 # Gaps
 
-- Verificacion del usuario al eliminarlo en el service
+- Validación del número en los modelos (es entero)
+- Mensajes de la validación de los modelos
 - Habilitar los tokens de usuario
 - Validación de roles y acceso a las operaciones CRUD de los usuarios por parte del ADMIN
 - Validación de roles y acceso a las operaciones CRUD de los natural elements por parte del ADMIN
