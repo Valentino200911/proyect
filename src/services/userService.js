@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { ErrorApp } from "../../utils/ErrorApp.js";
 import User from "../models/userModel.js";
 import Contact from "../models/contactModel.js";
+// import Reservation from "../models/reservationModel";
 
 // Validación del Usuario
 
@@ -65,11 +66,12 @@ import Contact from "../models/contactModel.js";
         
         const contacts = await Contact.countDocuments({ user: { _id: userId }})
 
-        const reservations = await Reservation.countDocuments({ user: { _id: userId }})
+        // const reservations = await Reservation.countDocuments({ userId: { _id: userId }})
 
-        if (contacts && reservations > 0) {
+        if (contacts > 0) // es (contacts && reservations > 0) 
+        {
             
-            throw new ErrorApp(`The user cannot be deleted becuase it has registered ${contacts} contacts and ${reservations} reservations`, 409)
+            throw new ErrorApp(`The user cannot be deleted becuase it has registered ${contacts} contacts`, 409) // and ${reservations} reservations`, 409)
 
         }
 

@@ -166,3 +166,9 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Continuación del modelo de `reservationModel.js`
 - Finalización del modelo de `reservationModel.js`
 - Vigesimoprimer commit del proyecto en Github
+- Creación del archivo `reservationService.js`
+
+### 8 de octubre de 2026
+
+- Vigesimosegundo commit del proyecto en Github
+- Debido a la necesidad de buscar información para realizar adecuadamente la funcionalidad de la reservación, se optó por resolver gaps del código y de ahí volver al service de reservación

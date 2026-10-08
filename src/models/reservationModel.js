@@ -70,7 +70,8 @@ const reservationSchema = new mongoose.Schema({
     reservationState: {
 
         type: String,
-        enum: RESERVATION_STATE
+        enum: RESERVATION_STATE,
+        default: "in progress"
 
     },
     methodOfPayment: {
@@ -86,8 +87,13 @@ const reservationSchema = new mongoose.Schema({
     maxLength: [1024, "At most 1024 characters are required to send a message"],
     trim: true,
     // No se incluye el lowercase: true para que por motivos legales el mensaje quede tal cual haya sido enviado
-}
+},
+    isPaid: {
+
+        type: Boolean,
+        required: true
+    }
 
 }, {timestamps: true})
 
-export default mongoose.model("Contact", reservationSchema)
+export default mongoose.model("Reservation", reservationSchema)
