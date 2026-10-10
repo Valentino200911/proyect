@@ -1,20 +1,17 @@
 import * as contactController from "../controllers/contactController.js";
 import { Router } from "express"
-// import { ROLES } from "../../utils/constants/generalConstants.js"
+import { allowed, userOnly, adminOnly } from "../../utils/constants/rolesConstants.js"
 
 const router = Router()
 
-// router.use( verifyToken, allowRoles(ROLES.ADMIN))
+router.get("/get", adminOnly, contactController.getAllContactsController)
 
+router.get("/get/:id", allowed, contactController.getContactByIdController)
 
-router.get("/get", contactController.getAllContactsController)
+router.post("/post", userOnly, contactController.createContactController)
 
-router.get("/get/:id", contactController.getContactByIdController)
+router.patch("/patch/:id", adminOnly,  contactController.updateContactController)
 
-router.post("/post", contactController.createContactController)
-
-router.patch("/patch/:id", contactController.updateContactController)
-
-router.delete("/delete/:id", contactController.deleteContactController)
+router.delete("/delete/:id", adminOnly, contactController.deleteContactController)
 
 export default router

@@ -165,12 +165,12 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
 - Continuación del modelo de `reservationModel.js`
 - Finalización del modelo de `reservationModel.js`
-- Vigesimoprimer commit del proyecto en Github
+- Vigésimo primer commit del proyecto en Github
 - Creación del archivo `reservationService.js`
 
 ### 8 de octubre de 2026
 
-- Vigesimosegundo commit del proyecto en Github
+- Vigésimo segundo commit del proyecto en Github
 - Debido a la necesidad de buscar información para realizar adecuadamente la funcionalidad de la reservación, se optó por resolver gaps del código y de ahí volver al service de reservación
 
 ### 9 de octubre de 2026
@@ -179,24 +179,24 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Adición de los project en los servicios
 - Corrección del error 500
 - Corrección al orden de los middlewares en index.js
-- Vigesimotercer commit del proyecto en Github
+- Vigésimo tercer commit del proyecto en Github
 - Inicio de los preparativos para hacer la conexión al FRONTEND (duplicado del commit y primeras verificaciones)
 - Inicio del proceso de autenticación del back con JWT
 
 ### 10 de octubre de 2026
 
 - Corrección previa de errores y desinstalación de NODEMON debido a sobreposición con funcionalides nativas de EXPRESS
-- Vigesimocuarto commit del proyecto en Github
+- Vigésimo cuarto commit del proyecto en Github
 - Reinicio del proceso de autenticación del back con JWT
 - Creación del archivo `authService.js`
 - Finalización de authService
-- Vigesimoquinto commit del proyecto en Github
+- Vigésimo quinto commit del proyecto en Github
 - Creación del archivo `authController.js`
 - Finalización de authController
-- Vigesimosexto commit del proyecto en Github
+- Vigésimo sexto commit del proyecto en Github
 - Creación del archivo `authRoutes.js`
 - Finalización de authRoutes y adición en index.js
-- Vigesimoséptimo commit del proyecto en GitHub
+- Vigésimo séptimo commit del proyecto en GitHub
 - Creación del archivo `middlewares/verifyToken.js`
 - Finalización de verifyToken
 - Verificación con POSTMAN
@@ -205,8 +205,10 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Corrección de errores en el authService para el register
 - Corrección de errores en el authService para el profile
 - Correcciones generales
-- Vigesimoctavo commit del proyecto en GitHub
+- Vigésimo octavo commit del proyecto en GitHub
 - Creación del archivo `middlewares/allowRoles.js` - Funcionalidad para la protección de rutas
 - Creación de `roleTable.png` con las funcionalidades existentes y habilitadas por rol (front y back)
 - Creación del archivo `constants/rolesContants.js` - Definición de los permisos existentes para las rutas
-- Vigesimonoveno commit del proyecto en GitHub
+- Vigésimo noveno commit del proyecto en GitHub
+- Definición de los permisos para las rutas
+- Trigésimo commit del proyecto en GitHub

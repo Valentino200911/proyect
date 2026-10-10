@@ -1,10 +1,9 @@
 # Gaps
 
 - Finalizar el service de la Reservación
-- Validación de roles y acceso a las operaciones CRUD de los usuarios por parte del ADMIN
-- Validación de roles y acceso a las operaciones CRUD de los natural elements por parte del ADMIN
 - Definir los project de la reservación
-- Habilitar multer y supabase para naturalElement.js
+- Revisar los permisos para get/:id en user
+- Habilitar multer y supabase para naturalElement.js y cottage.js
 - Habilitar Firebase
 - Manejo del error 429 - Rate limit
 - Manejo de proxy en el front (ver codigo modelo de front)

@@ -1,19 +1,17 @@
 import * as userController from "../controllers/userController.js"
 import { Router } from "express"
-// import { ROLES } from "../../utils/constants/generalConstants.js"
+import { allowed, userOnly, adminOnly } from "../../utils/constants/rolesConstants.js"
 
 const router = Router()
 
-// router.use( verifyToken, allowRoles(ROLES.ADMIN))
+router.get("/get/:id", allowed, userController.getUserByIdController) 
 
-router.get("/get/:id", userController.getUserByIdController)
+router.get("/get", adminOnly, userController.getAllUsersController)
 
-router.get("/get", userController.getAllUsersController)
+router.post("/post", adminOnly, userController.createUserController)
 
-router.post("/post", userController.createUserController)
+router.patch("/patch/:id", adminOnly, userController.updateUserController)
 
-router.patch("/patch/:id", userController.updateUserController)
-
-router.delete("/delete/:id", userController.deleteUserController)
+router.delete("/delete/:id", adminOnly, userController.deleteUserController)
 
 export default router

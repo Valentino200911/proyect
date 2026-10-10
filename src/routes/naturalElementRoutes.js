@@ -3,22 +3,18 @@ import * as naturalElementController from "../controllers/naturalElementControll
 import { Router } from "express"
 import NaturalElement from "../models/naturalElementModel.js"
 import { verifyToken } from "../../middlewares/verifyToken.js"
-// import { ROLES } from "../../utils/constants/generalConstants.js"
-
-
+import { allowed, userOnly, adminOnly } from "../../utils/constants/rolesConstants.js"
 
 const router = Router()
 
-// router.use( verifyToken, allowRoles(ROLES.ADMIN))
+router.get("/get/:id", allowed, naturalElementController.getNaturalElementByIdController)
 
-router.get("/get/:id", naturalElementController.getNaturalElementByIdController)
+router.get("/get", allowed, naturalElementController.getAllNaturalElementsController)
 
-router.get("/get", naturalElementController.getAllNaturalElementsController)
+router.post("/post", adminOnly, naturalElementController.createNaturalElementController)
 
-router.post("/post", naturalElementController.createNaturalElementController)
+router.patch("/patch/:id", adminOnly, naturalElementController.updateNaturalElementController)
 
-router.patch("/patch/:id", naturalElementController.updateNaturalElementController)
-
-router.delete("/delete/:id", naturalElementController.deleteNaturalElementController)
+router.delete("/delete/:id", adminOnly, naturalElementController.deleteNaturalElementController)
 
 export default router

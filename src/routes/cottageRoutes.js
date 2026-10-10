@@ -1,19 +1,17 @@
 import * as cottageController from "../controllers/cottageController.js";
 import { Router } from "express"
-// import { ROLES } from "../../utils/constants/generalConstants.js"
+import { allowed, userOnly, adminOnly } from "../../utils/constants/rolesConstants.js"
 
 const router = Router()
 
-// router.use( verifyToken, allowRoles(ROLES.ADMIN))
+router.get("/get/:id", allowed, cottageController.getCottageByIdController)
 
-router.get("/get/:id", cottageController.getCottageByIdController)
+router.get("/get", allowed, cottageController.getAllCottagesController)
 
-router.get("/get", cottageController.getAllCottagesController)
+router.post("/post", adminOnly, cottageController.createCottageController)
 
-router.post("/post", cottageController.createCottageController)
+router.patch("/patch/:id", adminOnly, cottageController.updateCottageController)
 
-router.patch("/patch/:id", cottageController.updateCottageController)
-
-router.delete("/delete/:id", cottageController.deleteCottageController)
+router.delete("/delete/:id", adminOnly, cottageController.deleteCottageController)
 
 export default router
