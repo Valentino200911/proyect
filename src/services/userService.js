@@ -1,4 +1,4 @@
-import { handleError } from "../../middlewares/handleError.js";
+
 import mongoose from "mongoose";
 import { ErrorApp } from "../../utils/ErrorApp.js";
 import User from "../models/userModel.js";
@@ -85,18 +85,22 @@ import Contact from "../models/contactModel.js";
 
     export const searchUserByEmailService = async (email = "") => {
 
-        await User.findOne( { email: email.toLowerCase().trim() }).select("+password")
+        return await User.findOne({ email: email.toLowerCase().trim()}).select("+password")
     }
 
     // publicDataOfUser (Sin contraseña)
 
-    export const publicDataOfUser = async (user) => ({
+    export const publicDataOfUser = async (user) => (
+        {
         
         _id: user._id,
         name: user.name,
         surname: user.surname,
-        birthYear: user.birthYear,
+        birthDate: user.birthDate,
         phoneNumber: user.phoneNumber,
         email: user.email,
         role: user.role
-    })
+    }
+
+
+)

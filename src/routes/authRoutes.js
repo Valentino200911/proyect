@@ -1,3 +1,4 @@
+import { verifyToken } from "../../middlewares/verifyToken.js"
 import * as authController from "../controllers/authController.js"
 import { Router } from "express"
 // import { ROLES } from "../../utils/constants/generalConstants.js"

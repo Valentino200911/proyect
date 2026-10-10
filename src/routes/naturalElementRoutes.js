@@ -1,9 +1,8 @@
-import { handleError } from "../../middlewares/handleError.js";
+
 import * as naturalElementController from "../controllers/naturalElementController.js"
 import { Router } from "express"
 import NaturalElement from "../models/naturalElementModel.js"
 // import { ROLES } from "../../utils/constants/generalConstants.js"
-
 
 
 const router = Router()

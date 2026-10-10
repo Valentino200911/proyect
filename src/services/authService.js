@@ -1,8 +1,9 @@
-// Responsabilidad del componente
 import jwt from "jsonwebtoken"
 import { JWT_EXPIRES_IN, JWT_SECRET } from "../../utils/config.js"
 import { createUserService, publicDataOfUser, searchUserByEmailService } from "./userService.js"
 import { ErrorApp } from "../../utils/ErrorApp.js"
+
+// Responsabilidad del componente
 
 // 1- Firma del token
 
@@ -25,13 +26,18 @@ import { ErrorApp } from "../../utils/ErrorApp.js"
 
 // POST api/auth/register
 
-export const registerService = async ({name, surname, email, phoneNumber, password, role}, {}) => {
+export const registerService = async ({name, surname, birthDate, phoneNumber, email,  password, role}, {} = {}) => {
 
-    const user = await createUserService({name, surname, email, phoneNumber, password, role})
+    const user = await createUserService({name, surname, birthDate, phoneNumber, email,  password, role})
 
+    if (!user) {
+        
+        throw new ErrorApp("Error with the register", 400);
+
+    }
     // Práctica usual: Lo comun es recibir un email para confirmar tu cuenta
 
-    return {user: publicDataOfUser(user), token: signToken(user) }
+    return {user: user, token: signToken(user) }
 
 }
 
@@ -46,13 +52,13 @@ export const loginService = async ({email, password} = {}) => {
     const user = await searchUserByEmailService(email)
 
     // Validación
-    
+
     if (!user || !(await user.comparePassword(password))) {
         
         throw new ErrorApp("The email or the password are incorrect", 401);
         
     }
 
-    return {user: publicDataOfUser(user), token: signToken(user) }
+    return {user: user, token: signToken(user)} // De por sí el usuario viene sin la contraseña en authService
 
 }

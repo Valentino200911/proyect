@@ -1,4 +1,4 @@
-import { handleError } from "../../middlewares/handleError.js";
+
 import mongoose from "mongoose";
 import bcrypt from "bcrypt"
 import { emailRegex, phoneNumberRegex, ROLES } from "../../utils/constants/generalConstants.js";
@@ -88,6 +88,7 @@ userSchema.pre("save", async function () {
 userSchema.methods.comparePassword = function (password) {
     
     return bcrypt.compare(password, this.password)
+    
 }
 
 export default mongoose.model("User", userSchema)

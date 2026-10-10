@@ -12,3 +12,5 @@
 - Manejo de proxy en el front (ver codigo modelo de front)
 - Analizar OWASP
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js
+- De por sí el usuario viene sin la contraseña en authService (verificar Public Data of User)
+- Relación entre create y register user (userService y authService respectivamente)

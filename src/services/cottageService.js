@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import { ErrorApp } from "../../utils/ErrorApp.js";
 import Cottage from "../models/cottageModel.js";
-import { handleError } from "../../middlewares/handleError.js";
 // import Reservation from "../models/reservationModel";
 
 // CRUD General

@@ -179,21 +179,30 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Adición de los project en los servicios
 - Corrección del error 500
 - Corrección al orden de los middlewares en index.js
-- Vigesimo tercer commit del proyecto en Github
+- Vigesimotercer commit del proyecto en Github
 - Inicio de los preparativos para hacer la conexión al FRONTEND (duplicado del commit y primeras verificaciones)
 - Inicio del proceso de autenticación del back con JWT
 
 ### 10 de octubre de 2026
 
 - Corrección previa de errores y desinstalación de NODEMON debido a sobreposición con funcionalides nativas de EXPRESS
-- Vigesimo cuarto commit del proyecto en Github
+- Vigesimocuarto commit del proyecto en Github
 - Reinicio del proceso de autenticación del back con JWT
 - Creación del archivo `authService.js`
 - Finalización de authService
-- Vigesimo quinto commit del proyecto en Github
+- Vigesimoquinto commit del proyecto en Github
 - Creación del archivo `authController.js`
 - Finalización de authController
-- Vigesimo sexto commit del proyecto en Github
+- Vigesimosexto commit del proyecto en Github
 - Creación del archivo `authRoutes.js`
 - Finalización de authRoutes y adición en index.js
-- Vigesimo séptimo commit del proyecto en GitHub
+- Vigesimoséptimo commit del proyecto en GitHub
+- Creación del archivo `middlewares/verifyToken.js`
+- Finalización de verifyToken
+- Verificación con POSTMAN
+- Corrección de errores en el authService para el login
+- Eliminación de importaciones innecesarias en los archivos del service
+- Corrección de errores en el authService para el register
+- Corrección de errores en el authService para el profile
+- Correcciones generales
+- Vigesimoctavo commit del proyecto en GitHub
