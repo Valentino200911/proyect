@@ -191,3 +191,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Creación del archivo `authService.js`
 - Finalización de authService
 - Vigesimo quinto commit del proyecto en Github
+- Creación del archivo `authController.js`
+- Finalización de authController
+- Vigesimo sexto commit del proyecto en Github
