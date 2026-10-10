@@ -206,3 +206,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Corrección de errores en el authService para el profile
 - Correcciones generales
 - Vigesimoctavo commit del proyecto en GitHub
+- Creación del archivo `middlewares/allowRoles.js` - Funcionalidad para la protección de rutas
+- Creación de `roleTable.png` con las funcionalidades existentes y habilitadas por rol (front y back)
+- Creación del archivo `constants/rolesContants.js` - Definición de los permisos existentes para las rutas
+- Vigesimonoveno commit del proyecto en GitHub

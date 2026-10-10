@@ -2,7 +2,9 @@
 import * as naturalElementController from "../controllers/naturalElementController.js"
 import { Router } from "express"
 import NaturalElement from "../models/naturalElementModel.js"
+import { verifyToken } from "../../middlewares/verifyToken.js"
 // import { ROLES } from "../../utils/constants/generalConstants.js"
+
 
 
 const router = Router()
