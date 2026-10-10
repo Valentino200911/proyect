@@ -8,71 +8,73 @@ import userRoutes from "./routes/userRoutes.js";
 import cottageRoutes from "./routes/cottageRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 
+const app = express()
 
 // Conexión a la DB
 
-const app = express()
-
-await connectDB()
+    await connectDB()
 
 // Uso y lectura de CORS
 
-    // Permitir todas las conexiones
+// Permitir todas las conexiones
 
     app.use(cors());
 
-    // O configurar específicamente
+// O configurar específicamente
 
-    app.use(cors({
+app.use(cors({
+
     origin: "http://localhost:5173",  // Solo permitir este origen (React)
 
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
 
     credentials: true  // Permitir cookies
-    }));
 
-// Middlewares a nivel global
+}));
+
+// Operaciones a nivel global
 
     app.use(express.json())
 
     app.use(express.urlencoded({ extended: true }))
 
-    app.use(handleError)
+// Ruta de pruebas
 
- // Rutas de Negocio
-
-        // Ruta de pruebas
-
-        app.get("/", (req, res) => {
+    app.get("/", (req, res) => {
 
         res.send("The server is working correctly");
 
-        });
-    
-        // Ruta de NaturalElement
+    });
 
-        app.use("/api/naturalelement", naturalElementRoutes)
+// Rutas de Negocio
 
-        // Ruta de Usuarios
+// Ruta de NaturalElement
 
-        app.use("/api/user", userRoutes)
+    app.use("/api/naturalelement", naturalElementRoutes)
 
-        // Ruta de Cottages
+    // Ruta de Usuarios
 
-        app.use("/api/cottage", cottageRoutes)
+    app.use("/api/user", userRoutes)
 
-        // Ruta de Contacts
+    // Ruta de Cottages
 
-        app.use("/api/contact", contactRoutes)
+    app.use("/api/cottage", cottageRoutes)
 
+    // Ruta de Contacts
+
+    app.use("/api/contact", contactRoutes)
+
+// Middlewares a nivel global
+
+    app.use(handleError)
 
 // Autenticación
 
 // Error 404
 
-    app.use( (req, res) => {
+    app.use((req, res) => {
 
-        res.status(404).json( {error: "This route does not exist"} )
+        res.status(404).json({ error: "This route does not exist" })
 
     })
 
@@ -80,9 +82,10 @@ await connectDB()
 
     app.listen(PORT, () => {
 
-            console.log(`Server working on http://localhost:${PORT}`);
-            console.log(`Route of Natural Elements on http://localhost:${PORT}/api/naturalelement`)
-            console.log(`Route of Users on http://localhost:${PORT}/api/user`)
-            console.log(`Route of Cottages on http://localhost:${PORT}/api/cottage`)
-            console.log(`Route of Contacts on http://localhost:${PORT}/api/contact`)
+        console.log(`Server working on http://localhost:${PORT}`);
+        console.log(`Route of Natural Elements on http://localhost:${PORT}/api/naturalelement`)
+        console.log(`Route of Users on http://localhost:${PORT}/api/user`)
+        console.log(`Route of Cottages on http://localhost:${PORT}/api/cottage`)
+        console.log(`Route of Contacts on http://localhost:${PORT}/api/contact`)
+
     })

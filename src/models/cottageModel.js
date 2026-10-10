@@ -17,13 +17,21 @@ capacity:{
     type: Number,
     required: [true, "The capacity is required for the register"],
     min: [2, "The capacity has to be over 2"],
-    max: [7, "The capacity must not be over 7"]
+    max: [7, "The capacity must not be over 7"],
+    validate: {
+        validator: Number.isInteger,
+        message: "The capacity has to be an integer number"
+        }
 },
 pricePerNightAndPerson: {
     type: Number,
     required: [true, "The price is required for the register"],
     min: [20000, "The price for one person during one night has to be over 20000"],
     max: [100000, "The price for one person during one night must not be over 100000"],
+    validate: {
+        validator: Number.isInteger,
+        message: "The price has to be an integer number"
+        }
 },
 location:{
     type: String,

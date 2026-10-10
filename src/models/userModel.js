@@ -25,7 +25,7 @@ surname: {
 birthDate: {
     type: Date,
     required: [true, "Your birth date is required for your account"],
-    min: ["1900-01-01", "It is imposible to be over 125 years, select your correct date"],
+    min: ["1900-01-01", "It is imposible to be over 125 years, select your actual date of birth"],
     trim: true,
     //No se incluye max. porque tendría que estar constantemente actualizándose
 },
@@ -53,7 +53,7 @@ password: {
 },
 role: {
     type: String,
-    enum: ROLES,
+    enum: {values: ROLES, message: "The only role available at login is 'user'"},
     default: "user"
 },
 

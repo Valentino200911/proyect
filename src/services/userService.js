@@ -25,15 +25,15 @@ import Contact from "../models/contactModel.js";
 
     export const getAllUsersService = async () => {
 
-        return await User.find({}, {}).sort({name: 1}) // El segundo {} es un project, el primero es un filter
-
+        return await User.find({}, {__v: 0}).sort({name: 1}) // El segundo {} es un project, el primero es un filter
+        // No se escribe createdAt: 0 ni upadatedAt: 0 debido a que uno al  hacer la consulta debería poder ver cuando fue creado un usuario
     }
 
     // getUserByIdService
 
     export const getUserByIdService = async (userId) => {
         
-        return await User.findById({_id: userId}, {}) // El segundo {} es un project
+        return await User.findById({_id: userId}, {__v: 0}) // El segundo {} es un project
 
     }
 

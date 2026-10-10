@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { ErrorApp } from "../../utils/ErrorApp.js";
 import Cottage from "../models/cottageModel.js";
+import { handleError } from "../../middlewares/handleError.js";
 // import Reservation from "../models/reservationModel";
 
 // CRUD General
@@ -25,7 +26,7 @@ import Cottage from "../models/cottageModel.js";
 
     export const getAllCottagesService = async () => {
         
-        return await Cottage.find({}, {}).sort({ name: 1 }) // No hay filter, se define el project
+        return await Cottage.find({}, {createdAt: 0, updatedAt: 0, __v: 0}).sort({ name: 1 }) // No hay filter, se define el project
 
     }
 
@@ -33,7 +34,7 @@ import Cottage from "../models/cottageModel.js";
 
     export const getCottageByIdService = async (cottageId) => {
         
-        return await Cottage.findById({_id: cottageId}, {}) // El segundo {} es un project
+        return await Cottage.findById({_id: cottageId}, {createdAt: 0, updatedAt: 0, __v: 0}) // El segundo {} es un project
 
     }
 

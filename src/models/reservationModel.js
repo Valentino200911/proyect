@@ -18,7 +18,12 @@ const detailSchema = new mongoose.Schema({
         type: Number,
         required: [true, "The number of companions (excluding you) is required for the register"],
         min: [0, "You cannot have negative companions"],
-        max: [6, "You cannot have more than 6 companions"]        
+        max: [6, "You cannot have more than 6 companions"],
+        validate: {
+        validator: Number.isInteger,
+        message: "The number of companions has to be an integer number"
+        }
+                
     },
 
     pricePerNightAndPerson: {
@@ -26,6 +31,10 @@ const detailSchema = new mongoose.Schema({
     required: [true, "The price is required for the register"],
     min: [20000, "The price for one person during one night has to be over 20000"],
     max: [100000, "The price for one person during one night must not be over 100000"],
+    validate: {
+        validator: Number.isInteger,
+        message: "The price has to be an integer number"
+        },
 
     entryDate: {
         type: Date,
@@ -42,7 +51,11 @@ const detailSchema = new mongoose.Schema({
 
         type: Number,
         required: true,
-        min: 0
+        min: 0,
+        validate: {
+            validator: Number.isInteger,
+            message: "The subtotal has to be an integer number"
+        }
     }
     },    
 
@@ -65,19 +78,24 @@ const reservationSchema = new mongoose.Schema({
         type: Number,
         required: [true, "The price is required for the register"],
         min: [20000, "The price for one person during one night has to be over 20000"],
+        validate: {
+            validator: Number.isInteger,
+            message: "The total price has to be an integer number"
+        }
+        
         // El max no es requerido, el min refiere al minimo teórico
     },
     reservationState: {
 
         type: String,
-        enum: RESERVATION_STATE,
+        enum: {values: RESERVATION_STATE, message: "The state of the reservation when it is creates is: 'in progress'"},
         default: "in progress"
 
     },
     methodOfPayment: {
 
         type: String,
-        enum: METHOD_OF_PAYMENT
+        enum: {values: METHOD_OF_PAYMENT, message: "The methods of payment are: 'bankTransfer' or 'cash'"}
     },
 
     reservationComment: 
@@ -91,7 +109,7 @@ const reservationSchema = new mongoose.Schema({
     isPaid: {
 
         type: Boolean,
-        required: true
+        required: [true, "It has to be written whether the reservation has been paid or not"]
     }
 
 }, {timestamps: true})

@@ -53,7 +53,7 @@ export const handleError = (error, req, res, next) => {
 
     // el id no tiene forma de ObjectId → /api/libros/abc
     if (error.name === "CastError") {
-        return res.status(400).json({ error: "id is not valid to MongoDB", recibido: error.value })
+        return res.status(400).json({ error: "Id is not valid to MongoDB", obtained: error.value })
     }
 
     // se rompió una regla del modelo

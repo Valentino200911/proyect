@@ -172,3 +172,11 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
 - Vigesimosegundo commit del proyecto en Github
 - Debido a la necesidad de buscar información para realizar adecuadamente la funcionalidad de la reservación, se optó por resolver gaps del código y de ahí volver al service de reservación
+
+### 9 de octubre de 2026
+
+- Adición de mensajes en los modelos
+- Adición de los project en los servicios
+- Corrección del error 500
+- Corrección al orden de los middlewares en index.js
+- Vigesimo tercer commit del proyecto en Github

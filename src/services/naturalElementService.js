@@ -30,7 +30,7 @@ import NaturalElement from "../models/naturalElementModel.js";
             filter.binomialName = binomialName
 
         }
-        return await NaturalElement.find(filter, {}).sort( {name: 1} ) // {} es un project a voluntad
+        return await NaturalElement.find(filter, {createdAt: 0, updatedAt: 0, __v: 0}).sort( {name: 1} ) // {} es un project a voluntad
     }
 
 
@@ -38,7 +38,7 @@ import NaturalElement from "../models/naturalElementModel.js";
 
     export const getNaturalElementsByIdService = async (naturalElementId) => {
         
-        return await NaturalElement.findById({_id: naturalElementId}, {}) // {} es un project a voluntad
+        return await NaturalElement.findById({_id: naturalElementId}, {createdAt: 0, updatedAt: 0, __v: 0}) // {} es un project a voluntad
 
     }
 

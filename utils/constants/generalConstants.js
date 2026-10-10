@@ -24,12 +24,10 @@ export const ROLES = ["user", "admin"]
 
 export const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-export const phoneNumberRegex =/^\+?(\d{1,4})[- ]?\(?(\d{1,4})\)?[- ]?(\d{3})[- ]?(\d{3})[- ]?(\d{4})$/; 
+// Validación del número teléfono bajo el formato número de caracteres que posee
 
-// Validación del número teléfono bajo el formato de:
-// Código internacional
-// Código de Área
-// Número propiamente dicho 
+export const phoneNumberRegex = /^\+\d{1,15}$/;
+
 
 // cottage
 

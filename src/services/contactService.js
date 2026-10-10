@@ -21,7 +21,7 @@ import Contact from "../models/contactModel.js";
 
     export const getAllContactsService = async () => {
         
-        return await Contact.find({}, {}).sort( {name: 1} ) // {} es un project a voluntad
+        return await Contact.find({}, {createdAt: 0, updatedAt: 0, __v: 0}).sort( {name: 1} ) // {} es un project a voluntad
 
     }
 
@@ -30,7 +30,7 @@ import Contact from "../models/contactModel.js";
 
     export const getContactByIdService = async (contactId) => {
         
-        return await Contact.findById({_id: contactId}, {}) // {} es un project a voluntad
+        return await Contact.findById({_id: contactId}, {createdAt: 0, updatedAt: 0, __v: 0}) // {} es un project a voluntad
 
     }
 
