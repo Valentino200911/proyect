@@ -2,8 +2,14 @@ import dotenv  from "dotenv"
 
 const config = dotenv.config()
 
-const PORT = process.env.PORT || 3000
+// Eliminación del OR (||) por motivos de seguridad
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/cabañas_aguaribay"
+const PORT = process.env.PORT 
 
-export {PORT, MONGO_URI }
+const MONGO_URI = process.env.MONGO_URI 
+
+const JWT_SECRET = process.env.JWT_SECRET
+
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN
+
+export {PORT, MONGO_URI, JWT_SECRET, JWT_EXPIRES_IN  }

@@ -96,6 +96,7 @@ import Contact from "../models/contactModel.js";
         name: user.name,
         surname: user.surname,
         birthYear: user.birthYear,
+        phoneNumber: user.phoneNumber,
         email: user.email,
         role: user.role
     })

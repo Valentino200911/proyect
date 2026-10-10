@@ -188,3 +188,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Corrección previa de errores y desinstalación de NODEMON debido a sobreposición con funcionalides nativas de EXPRESS
 - Vigesimo cuarto commit del proyecto en Github
 - Reinicio del proceso de autenticación del back con JWT
+- Creación del archivo `authService.js`
+- Finalización de authService
+- Vigesimo quinto commit del proyecto en Github

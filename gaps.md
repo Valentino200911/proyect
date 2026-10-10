@@ -10,3 +10,4 @@
 - Manejo del error 429 - Rate limit
 - Manejo de proxy
 - Analizar OWASP
+- Práctica usual: Lo comun es recibir un email para confirmar tu cuen
