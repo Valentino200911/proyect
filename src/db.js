@@ -11,7 +11,7 @@ export const connectDB = async () => {
 
     } catch (error) {
 
-        throw new ErrorApp(`Unsuccessful connection. It was not possible to connect to MongoDB due to ${error.message}`)
+        console.error(`Unsuccessful connection. It was not possible to connect to MongoDB due to ${error.message}`)
 
         process.exit(1)
     }

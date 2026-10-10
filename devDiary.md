@@ -180,3 +180,11 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Corrección del error 500
 - Corrección al orden de los middlewares en index.js
 - Vigesimo tercer commit del proyecto en Github
+- Inicio de los preparativos para hacer la conexión al FRONTEND (duplicado del commit y primeras verificaciones)
+- Inicio del proceso de autenticación del back con JWT
+
+### 10 de octubre de 2026
+
+- Corrección previa de errores y desinstalación de NODEMON debido a sobreposición con funcionalides nativas de EXPRESS
+- Vigesimo cuarto commit del proyecto en Github
+- Reinicio del proceso de autenticación del back con JWT
