@@ -7,6 +7,7 @@ import naturalElementRoutes from "./routes/naturalElementRoutes.js"
 import userRoutes from "./routes/userRoutes.js";
 import cottageRoutes from "./routes/cottageRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express()
 
@@ -34,21 +35,25 @@ app.use(cors({
 
 // Operaciones a nivel global
 
-    app.use(express.json())
+app.use(express.json())
 
-    app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 
 // Ruta de pruebas
 
-    app.get("/", (req, res) => {
+app.get("/", (req, res) => {
+    
+    res.send("The server is working correctly");
+    
+});
 
-        res.send("The server is working correctly");
+// Rutas de Autenticación
 
-    });
+app.use("/api/auth", authRoutes)
 
 // Rutas de Negocio
 
-// Ruta de NaturalElement
+    // Ruta de NaturalElement
 
     app.use("/api/naturalelement", naturalElementRoutes)
 
@@ -68,7 +73,6 @@ app.use(cors({
 
     app.use(handleError)
 
-// Autenticación
 
 // Error 404
 
@@ -87,5 +91,6 @@ app.use(cors({
         console.log(`Route of Users on http://localhost:${PORT}/api/user`)
         console.log(`Route of Cottages on http://localhost:${PORT}/api/cottage`)
         console.log(`Route of Contacts on http://localhost:${PORT}/api/contact`)
+        console.log(`Route of Auth on http://localhost:${PORT}/api/auth`)
 
     })
