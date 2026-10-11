@@ -6,12 +6,12 @@ import { ROLES } from "./generalConstants.js";
 
     // Restringido a user
 
-    export const userOnly = [verifyToken, allowRoles("user")]
+    export const userOnly = [verifyToken, allowRoles(ROLES.USER)]
 
     // Restringido a admin
 
-    export const adminOnly = [verifyToken, allowRoles("admin")]
+    export const adminOnly = [verifyToken, allowRoles(ROLES.ADMIN)]
 
     // Permitido a todos los roles
 
-    export const allowed = [verifyToken, allowRoles("user", "admin")]
+    export const allowed = [verifyToken, allowRoles(ROLES.USER, ROLES.ADMIN)]

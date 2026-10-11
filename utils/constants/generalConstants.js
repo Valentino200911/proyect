@@ -5,7 +5,7 @@
 
 // naturalElement
 
-export const binomialNameRegex = /^[A-Z][a-z]+ [a-z]+$/ 
+export const binomialNameRegex = /^[A-Z][a-z]+ [a-z]+$/
 // Se asegura de que el string tenga dos palabras, la primera en mayúscula y la segunda en minúscula y una tercera (opcional) como los nombres de nomenclatura binomial, excluyendo la Ñ y las tildes. Otra solución sería crear un enum con todas las especies existentes con nomenclatura binomial
 
 export const validDomainRegex = /^https:\/\/[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+([/?#]\S*)?$/
@@ -20,7 +20,10 @@ export const validDomainRegex = /^https:\/\/[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+([/?#
 
 // user
 
-export const ROLES = ["user", "admin"]
+export const ROLES = Object.freeze({
+    ADMIN: "admin",
+    USER: "user",
+});
 
 export const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
@@ -31,14 +34,35 @@ export const phoneNumberRegex = /^\+\d{1,15}$/;
 
 // cottage
 
-    export const LOCATION = ["tafi viejo, tucuman"] // Se emplea un enum en caso de que se añadan nuevas ubicaciones
+export const LOCATION = Object.freeze({
+
+    TAFI_VIEJO_TUCUMAN: "tafi viejo, tucuman" // Se emplea un enum en caso de que se añadan nuevas ubicaciones
+
+})
 
 // contact
 
-    export const REASON_OF_CONTACT = ["business", "prom", "problem", "suggestion"]
+export const REASON_OF_CONTACT = Object.freeze({
+    ADMIN: "business",
+    USER: "prom",
+    PROM: "prom",
+    PROBLEM: "problem",
+    SUGGESTION: "suggestion"
+});
 
 // reservation
 
-    export const RESERVATION_STATE = ["in progress", "done", "fallen"]
+export const RESERVATION_STATE = Object.freeze({
 
-    export const METHOD_OF_PAYMENT = ["bankTransfer", "cash"]
+    IN_PROGRESS: "in progress",
+    DONE: "done",
+    FALLEN: "fallen"
+
+})
+
+export const METHOD_OF_PAYMENT = Object.freeze({
+
+    BANK_TRANSFER: "bankTransfer",
+    CASH: "cash"
+
+})

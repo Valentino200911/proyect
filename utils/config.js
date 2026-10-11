@@ -4,12 +4,12 @@ const config = dotenv.config()
 
 // Eliminación del OR (||) por motivos de seguridad
 
-const PORT = process.env.PORT 
+export const PORT = process.env.PORT 
 
-const MONGO_URI = process.env.MONGO_URI 
+export const MONGO_URI = process.env.MONGO_URI 
 
-const JWT_SECRET = process.env.JWT_SECRET
+export const ITERATIONS = process.env.ITERATIONS
 
-const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN
+export const JWT_SECRET = process.env.JWT_SECRET
 
-export {PORT, MONGO_URI, JWT_SECRET, JWT_EXPIRES_IN  }
+export const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN

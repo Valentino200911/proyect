@@ -36,8 +36,8 @@ pricePerNightAndPerson: {
 location:{
     type: String,
     required: [true, "The location is required for the register"],
-    enum: {values: LOCATION, message: "The only location available is 'tafi viejo, tucuman'"},
-    default: "tafi viejo, tucuman",
+    enum: {values: Object.values(LOCATION), message: "The only location available is 'tafi viejo, tucuman'"},
+    default: Object.values(LOCATION.TAFI_VIEJO_TUCUMAN),
 },
 description:{
     type: String,

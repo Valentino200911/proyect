@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt"
 import { emailRegex, phoneNumberRegex, ROLES } from "../../utils/constants/generalConstants.js";
-import { ITERATIONS } from "../../utils/constants/systemConstants.js";
+import { ITERATIONS } from "../../utils/config.js";
 
 const userSchema = new mongoose.Schema({
 
@@ -53,8 +53,9 @@ password: {
 },
 role: {
     type: String,
-    enum: {values: ROLES, message: "The only role available at login is 'user'"},
-    default: "user"
+    required: true,
+    enum: {values: Object.values(ROLES), message: "The only role available at login is 'user'"},
+    default: Object.values(ROLES.USER)
 },
 
 }, {timestamps: true, //Protocolo de seguridad

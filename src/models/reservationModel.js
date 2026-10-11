@@ -88,14 +88,17 @@ const reservationSchema = new mongoose.Schema({
     reservationState: {
 
         type: String,
-        enum: {values: RESERVATION_STATE, message: "The state of the reservation when it is creates is: 'in progress'"},
-        default: "in progress"
+        required: true,
+        enum: {values: Object.values(RESERVATION_STATE), message: "The state of the reservation when it is creates is: 'in progress'"},
+        default: Object.values(RESERVATION_STATE.IN_PROGRESS)
 
     },
     methodOfPayment: {
 
         type: String,
-        enum: {values: METHOD_OF_PAYMENT, message: "The methods of payment are: 'bankTransfer' or 'cash'"}
+        enum: {values: Object.values(METHOD_OF_PAYMENT), message: "The methods of payment are: 'bankTransfer' or 'cash'"},
+        required: [true, "You have to indicate the method of payment"]
+        // No tiene default porque es a elección
     },
 
     reservationComment: 
