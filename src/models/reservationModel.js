@@ -90,7 +90,7 @@ const reservationSchema = new mongoose.Schema({
         type: String,
         required: true,
         enum: {values: Object.values(RESERVATION_STATE), message: "The state of the reservation when it is creates is: 'in progress'"},
-        default: Object.values(RESERVATION_STATE.IN_PROGRESS)
+        default: RESERVATION_STATE.IN_PROGRESS
 
     },
     methodOfPayment: {

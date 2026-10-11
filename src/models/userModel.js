@@ -55,7 +55,7 @@ role: {
     type: String,
     required: true,
     enum: {values: Object.values(ROLES), message: "The only role available at login is 'user'"},
-    default: Object.values(ROLES.USER)
+    default: ROLES.USER
 },
 
 }, {timestamps: true, //Protocolo de seguridad

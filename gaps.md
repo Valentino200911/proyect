@@ -2,9 +2,6 @@
 
 - Finalizar el service de la Reservación
 - Definir los project de la reservación
-- Revisar los permisos para get/:id en user
-- Cambiar los enums por Object.freeze y los models con Object.value
-- De por sí el usuario viene sin la contraseña en authService (verificar Public Data of User)
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js
 - Habilitar una plantilla de POSTMAN para consultas HTTP y anotar en el README como inicializar el proyecto
 - Habilitar multer y supabase para naturalElement.js y cottage.js
@@ -14,3 +11,9 @@
 - Manejo del error 429 - Rate limit
 - Habilitar Firebase
 - Analizar OWASP
+
+// Dudas
+
+- Se deshabilita a través de un comentario la ruta POST de userRoutes.js ya que registerService ya cumple con esa función
+- Revisar los permisos para get/:id en user
+- De por sí el usuario viene sin la contraseña en authService (verificar Public Data of User)
