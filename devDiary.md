@@ -212,3 +212,5 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Vigésimo noveno commit del proyecto en GitHub
 - Definición de los permisos para las rutas
 - Trigésimo commit del proyecto en GitHub
+- Modificación del seed para añadir un admin de pruebas
+- Verificación de los permisos con POSTMAN (verificación exitosa)gh

@@ -36,7 +36,7 @@ const createdNaturalElements = await NaturalElement.create([
     },
 ])
 
-const [Juan] = await User.create([
+const [Juan, Pedro] = await User.create([
 
     {
         name: "Juan", 
@@ -46,6 +46,15 @@ const [Juan] = await User.create([
         email: "juan.perez@gmail.com",
         password: "Password123",
         role: "user"
+    },
+    {
+        name: "Pedro", 
+        surname: "Gomez",
+        birthDate: "1950-02-14",
+        phoneNumber: "+5491234567896",
+        email: "pedro.gomez@gmail.com",
+        password: "Admin123",
+        role: "admin"
     },
     
 ])
