@@ -6,6 +6,7 @@
 - Cambiar los enums por Object.freeze y los models con Object.value
 - De por sí el usuario viene sin la contraseña en authService (verificar Public Data of User)
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js
+- Habilitar una plantilla de POSTMAN para consultas HTTP y anotar en el README como inicializar el proyecto
 - Habilitar multer y supabase para naturalElement.js y cottage.js
 - Manejo de proxy en el front (ver codigo modelo de front)
 - Que el usuario vea sus propios mensajes (en el front)

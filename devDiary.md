@@ -218,3 +218,5 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Corrección y centralización de permisos en userRoutes.js
 - Eliminación de importaciones innecesarias
 - Trigésimo segundo commit del proyecto en GitHub
+- Anotaciones varias
+- Trigésimo tercer commit del proyecto en GitHub

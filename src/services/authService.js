@@ -26,9 +26,11 @@ import { ErrorApp } from "../../utils/ErrorApp.js"
 
 // POST api/auth/register
 
-export const registerService = async ({name, surname, birthDate, phoneNumber, email,  password, role}, {} = {}) => {
+export const registerService = async ({name, surname, birthDate, phoneNumber, email,  password}, {} = {}) => {
 
-    const user = await createUserService({name, surname, birthDate, phoneNumber, email,  password, role})
+    // No se requiere el rol por motivos de seguridad
+
+    const user = await createUserService({name, surname, birthDate, phoneNumber, email,  password})
 
     if (!user) {
         

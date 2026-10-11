@@ -66,7 +66,7 @@ export const handleError = (error, req, res, next) => {
 
     // un unique repetido que nadie tradujo antes
     if (error.code === 11000) {
-        return res.status(400).json({ error: "Duplicated unique, the object is already registered", campo: Object.keys(error.keyPattern)[0] })
+        return res.status(409).json({ error: "Duplicated unique, the object is already registered", campo: Object.keys(error.keyPattern)[0] })
     }
 
     // lo demás es culpa nuestra: el detalle al log, al cliente solo el mensaje
