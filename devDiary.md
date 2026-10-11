@@ -213,4 +213,8 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Definición de los permisos para las rutas
 - Trigésimo commit del proyecto en GitHub
 - Modificación del seed para añadir un admin de pruebas
-- Verificación de los permisos con POSTMAN (verificación exitosa)gh
+- Verificación de los permisos con POSTMAN (verificación exitosa)
+- Trigésimo primer commit del proyecto en GitHub
+- Corrección y centralización de permisos en userRoutes.js
+- Eliminación de importaciones innecesarias
+- Trigésimo segundo commit del proyecto en GitHub

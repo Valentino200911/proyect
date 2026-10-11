@@ -1,8 +1,6 @@
 
 import * as naturalElementController from "../controllers/naturalElementController.js"
 import { Router } from "express"
-import NaturalElement from "../models/naturalElementModel.js"
-import { verifyToken } from "../../middlewares/verifyToken.js"
 import { allowed, userOnly, adminOnly } from "../../utils/constants/rolesConstants.js"
 
 const router = Router()
