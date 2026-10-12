@@ -59,19 +59,19 @@ import Contact from "../models/contactModel.js";
 
     }
 
-    // deleteUserService -- Uno no podría eliminar el usuario si ha hecho una registración o un contacto para mantener la integridad de la DB (gap)
+    // deleteUserService -- Uno no podría eliminar el usuario si ha hecho una registración o un contacto para mantener la integridad de la DB 
 
 
     export const deleteUserService = async (userId) => {
         
         const contacts = await Contact.countDocuments({ user: { _id: userId }})
 
-        // const reservations = await Reservation.countDocuments({ userId: { _id: userId }})
+        const reservations = await Reservation.countDocuments({ userId: { _id: userId }})
 
-        if (contacts > 0) // es (contacts && reservations > 0) 
+        if (contacts && reservations > 0) 
         {
             
-            throw new ErrorApp(`The user cannot be deleted becuase it has registered ${contacts} contacts`, 409) // and ${reservations} reservations`, 409)
+            throw new ErrorApp(`The user cannot be deleted becuase it has registered ${contacts} contacts and ${reservations} reservations`, 409)
 
         }
 

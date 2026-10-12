@@ -226,11 +226,13 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   ### 11 de octubre de 2026
 
   - Trigésimo quinto commit del proyecto en GitHub
-  - Desarrollo del service de Reservation
+    - Desarrollo del service de Reservation
   
   ### 12 de octubre de 2026
 
   - Continuación del desarrollo del service de Reservation
   - Finalización del service de Reservation
   - Trigésimo sexto commit del proyecto en GitHub
-   
+    - Se modificaron los criterios de eliminación de userService y cottageService, ahora si están registrados en un contacto o reservación no pueden ser eliminados
+    - Se modificó a seed.js para incluir un modelo de reservación
+  - Trigésimo séptimo commit del proyecto en Github

@@ -108,4 +108,4 @@ import { verifyUserService } from "./userService.js";
 
     }
 
-    // El delete no existe por motivos legales
+    // Definir si se agrega el delete

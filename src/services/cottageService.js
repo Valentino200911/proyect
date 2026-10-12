@@ -70,13 +70,13 @@ import Cottage from "../models/cottageModel.js";
                     return null
                 } 
         
-                // const reservations = await Reservation.countDocuments({ cottageId: { _id: cottageId }})
+                const reservations = await Reservation.countDocuments({ cottageId: { _id: cottageId }})
         
-                //if (reservations > 0) {
+                if (reservations > 0) {
                     
-                    // throw new ErrorApp(`The cottage cannot be deleted becuase it has registered and ${reservations} reservations `, 409)
+                    throw new ErrorApp(`The cottage cannot be deleted becuase it has registered and ${reservations} reservations `, 409)
         
-                // }
+                }
         
         return await Cottage.findByIdAndDelete({_id: cottageId})
         
