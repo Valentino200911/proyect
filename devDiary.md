@@ -226,3 +226,11 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   ### 11 de octubre de 2026
 
   - Trigésimo quinto commit del proyecto en GitHub
+  - Desarrollo del service de Reservation
+  
+  ### 12 de octubre de 2026
+
+  - Continuación del desarrollo del service de Reservation
+  - Finalización del service de Reservation
+  - Trigésimo sexto commit del proyecto en GitHub
+   

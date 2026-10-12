@@ -1,7 +1,5 @@
 # Gaps
 
-- Finalizar el service de la Reservación
-- Definir los project de la reservación
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js
 - Habilitar una plantilla de POSTMAN para consultas HTTP y anotar en el README como inicializar el proyecto
 - Habilitar multer y supabase para naturalElement.js y cottage.js
@@ -14,6 +12,7 @@
 
 // Dudas
 
+- Verifiacar cómo está armado el service de Reservation, así como el Model
 - Se deshabilita a través de un comentario la ruta POST de userRoutes.js ya que registerService ya cumple con esa función
 - Revisar los permisos para get/:id en user
 - De por sí el usuario viene sin la contraseña en authService (verificar Public Data of User)
