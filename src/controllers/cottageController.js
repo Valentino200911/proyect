@@ -51,7 +51,7 @@ export const updateCottageController = async (req, res) => {
 
 export const deleteCottageController = async (req, res) => {
 
-    const cottage = await cottageService.deleteCottageService(req.params.id, req.body) 
+    const cottage = await cottageService.deleteCottageService(req.params.id) 
 
     if (!cottage) {
         

@@ -10,7 +10,7 @@ router.get("/get/:id", adminOnly, reservationController.getReservationByIdContro
 
 router.get("/get/user/allReservations", userOnly, reservationController.getAllMyReservationsController)
 
-router.get("/get/:userId/:id", userOnly, reservationController.getMyReservationByIdController)
+router.get("/get/user/:id", userOnly, reservationController.getMyReservationByIdController)
 
 router.post("/post", userOnly, reservationController.createReservationController)
 

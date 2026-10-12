@@ -248,3 +248,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - Creación de una plantilla de POSTMAN para consultas HTTP
   - Reestructuración de `gaps.md`
 - **Trigésimo noveno commit del proyecto en Github**  (Hay múltiples gaps para resolver)
+  - Inicio de la redacción del README
+  - Correcciones mínimas y boceto de README
+- **Cuadrigésimo commit del proyecto en Github**  (Hay múltiples gaps para resolver)
