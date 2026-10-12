@@ -61,15 +61,15 @@ import { verifyUserService } from "./userService.js";
         return verifiedReservation
     }
     
-    // getAllReservationsService
+    // getAllReservationsService (Todos)
     
     export const getAllReservationsService = async () => {
         
-        return await Reservation.find({}, {}).sort({ createdAt: -1 })
+        return await Reservation.find({}, {__v: 0}).sort({ createdAt: -1 })
 
     }
 
-    // getAllMyReservations
+    // getAllMyReservations (Todos los que sean míos)
 
     export const getAllMyReservations = async (userId) => {
         
@@ -77,11 +77,19 @@ import { verifyUserService } from "./userService.js";
 
     }
 
-    // getReservationByIdService
+    // getReservationByIdService (Uno en específico)
 
     export const getReservationByIdService = async (reservationId) => {
         
-        return await Reservation.find({_id: reservationId}, {__v: 0})
+        return await Reservation.findById({_id: reservationId}, {__v: 0})
+
+    }
+
+    // getMyReservationByIdService (Uno en específico que sea mío)
+
+    export const getMyReservationByIdService = async (userId, reservationId) => {
+        
+        return await Reservation.findOne({userId: userId, _id: reservationId}, {__v: 0})
 
     }
 

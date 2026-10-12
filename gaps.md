@@ -1,6 +1,7 @@
 # Gaps
 
-- Cambio de estado de isPaid
+- Cambio de estado de isPaid según reservationState
+- Revisar y definir los índices de los modelos para reservation
 - Revisión correcta de totalPrice en Reservation
 - Delete de reservationService
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
@@ -15,7 +16,8 @@
 
 // Dudas
 
-- Verifiacar cómo está armado el service de Reservation, así como el Model
+- En reservationService, getMyReservationByIdService y getReservationByIdService no son lo mismo?
+- Verificar cómo está armado el service de Reservation, así como el Model
 - Se deshabilita a través de un comentario la ruta POST de userRoutes.js ya que registerService ya cumple con esa función?
 - Revisar los permisos para get/:id en user, ¿Cualquiera podría ver el usuario de otra persona si conoce el id?
 - De por sí el usuario viene sin la contraseña en authService (verificar Public Data of User) Es necesario aplicar publicDataOfUser(user) en register y login?
