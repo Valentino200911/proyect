@@ -41,7 +41,7 @@ const createdNaturalElements = await NaturalElement.create([
     },
 ])
 
-const [Juan, Pedro] = await User.create([
+const [Juan, Pedro, Jose] = await User.create([
 
     {
         name: "Juan", 
@@ -61,10 +61,19 @@ const [Juan, Pedro] = await User.create([
         password: "Admin123",
         role: "admin"
     },
+    {
+        name: "Jose", 
+        surname: "Juarez",
+        birthDate: "1950-02-14",
+        phoneNumber: "+5496234567896",
+        email: "jose.juarez@gmail.com",
+        password: "Jose1234",
+        role: "user"
+    },
     
 ])
 
-const [Cabaña_1] = await Cottage.create([
+const [Cabaña_1, Cabaña_2] = await Cottage.create([
 
     {
         name: "cabaña 1", 
@@ -112,6 +121,22 @@ const createdReservation = await Reservation.create([
             capacity: Cabaña_1.capacity,
             pricePerNightAndPerson: Cabaña_1.pricePerNightAndPerson,
             cottageId: Cabaña_1._id
+        }
+
+    },
+    {
+        userId: Jose._id,
+        entryDate: "2026-10-15",
+        exitDate: "2026-10-17",
+        passangerNumber: 2,
+        totalPrice: 2 * 2 * Cabaña_2.pricePerNightAndPerson,
+        reservationState: "in progress",
+        methodOfPayment: "bankTransfer",
+        isPaid: false,
+        detail: {
+            capacity: Cabaña_2.capacity,
+            pricePerNightAndPerson: Cabaña_2.pricePerNightAndPerson,
+            cottageId: Cabaña_2._id
         }
 
     }

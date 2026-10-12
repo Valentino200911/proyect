@@ -27,7 +27,7 @@ export const getReservationByIdController = async (req, res) => {
     
     const reservation = await reservationService.getReservationByIdService(req.params.id)
 
-    res.status(200).json(reservations)
+    res.status(200).json(reservation)
 
 }
 
@@ -37,7 +37,7 @@ export const getMyReservationByIdController = async (req, res) => {
     
     const reservation = await reservationService.getMyReservationByIdService(req.params.id, req.user.id)
 
-    res.status(200).json(reservations)
+    res.status(200).json(reservation)
 
 }
 
@@ -47,7 +47,7 @@ export const createReservationController = async (req, res) => {
     
     const reservation = await reservationService.createReservationService(req.body) // Revisar si requiere req.params.id
 
-    res.status(201).json(reservations)
+    res.status(201).json(reservation)
 
 }
 
@@ -56,6 +56,8 @@ export const createReservationController = async (req, res) => {
 export const updateReservationController = async (req, res) => {
     
     const reservation = await reservationService.updateReservationService(req.body, req.params.id)
+
+    res.status(200).json(reservation)
 
 }
 

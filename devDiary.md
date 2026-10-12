@@ -226,7 +226,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   ### 11 de octubre de 2026
 
 - **Trigésimo quinto commit del proyecto en GitHub**
-  - Desarrollo del service de Reservation
+  - Desarrollo del service de Reservation (A través del uso de Gemini a manera de consultas de progreso)
   
   ### 12 de octubre de 2026
 
@@ -240,3 +240,11 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - Inicio del desarrollo del controlador para reservation
   - Finalización del controller. Visto cómo está estructurado, tiene múltiples gaps a corregir
 - **Trigésimo octavo commit del proyecto en Github**
+  - Creación del archivo `reservationRoutes.js`
+  - Finalización del ruteo
+  - Validaciones con POSTMAN
+  - Ediciones en el seed para las validaciones
+  - Hay múltiples gaps para resolver en el circuito de reservation (model, service, controller, routes)
+  - Creación de una plantilla de POSTMAN para consultas HTTP
+  - Reestructuración de `gaps.md`
+- **Trigésimo noveno commit del proyecto en Github**  (Hay múltiples gaps para resolver)

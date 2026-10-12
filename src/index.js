@@ -7,6 +7,7 @@ import naturalElementRoutes from "./routes/naturalElementRoutes.js"
 import userRoutes from "./routes/userRoutes.js";
 import cottageRoutes from "./routes/cottageRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
+import reservationRoutes from "./routes/reservationRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 
 const app = express()
@@ -68,6 +69,10 @@ app.use("/api/auth", authRoutes)
     // Ruta de Contacts
 
     app.use("/api/contact", contactRoutes)
+
+    // Ruta de Reservations
+
+    app.use("/api/reservation", reservationRoutes)
 
 // Middlewares a nivel global
 

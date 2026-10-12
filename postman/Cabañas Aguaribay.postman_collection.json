@@ -1,0 +1,668 @@
+{
+  "info": {
+    "_postman_id": "4051fab0-ae23-4f23-8a29-4995f4fdb2cd",
+    "name": "Cabañas Aguaribay",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57954099",
+    "_collection_link": "https://go.postman.co/collection/57954099-4051fab0-ae23-4f23-8a29-4995f4fdb2cd?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "1 - Auth",
+      "item": [
+        {
+          "name": "Login - User (Juan)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"juan.perez@gmail.com\",\r\n    \"password\": \"Password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Admin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"pedro.gomez@gmail.com\",\r\n    \"password\": \"Admin123\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/profile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2 - User",
+      "item": [
+        {
+          "name": "Get (Requiere Token)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/user/get",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "get"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create (Requiere token)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"juan\",\r\n  \"surname\": \"gomez\",\r\n  \"birthDate\": \"1980-08-06\",\r\n  \"phoneNumber\": \"+5491234575336\",\r\n  \"email\": \"juan.gomez@gmail.com\",\r\n  \"password\": \"ABCDEFGHI\",\r\n  \"role\": \"user\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/post",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "post"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get by Id (Requiere Token)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/user/get/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "get",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete (Requiere Token)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/user/delete/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "delete",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Patch (Requiere Token)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/user/patch/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "patch",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3 - Cottage",
+      "item": [
+        {
+          "name": "Get by Id (Requiere Token)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cottage/get/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cottage",
+                "get",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create (Requiere Token)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cottage/post",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cottage",
+                "post"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get (Requiere Token)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cottage/get",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cottage",
+                "get"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete (Requiere Token)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cottage/delete/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cottage",
+                "delete",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Patch (Requiere Token)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cottage/patch/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cottage",
+                "patch",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4 - Reservation (PARCIALMENTE HABILITADA)",
+      "item": [
+        {
+          "name": "Get by Id (Requiere Token)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reservation/get/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservation",
+                "get",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get by Id (Una reservation mía) (Requiere Token)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reservation/get/user/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservation",
+                "get",
+                "user",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create (Requiere Token)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reservation/post",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservation",
+                "post"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get (Requiere Token)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reservation/get/allReservations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservation",
+                "get",
+                "allReservations"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get (Mis reservations) (Requiere Token)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reservation/get/user/allReservations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservation",
+                "get",
+                "user",
+                "allReservations"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "NO HABILITADA - Delete (Requiere Token)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reservation/delete/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservation",
+                "delete",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Patch (Requiere Token)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reservation/patch/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservation",
+                "patch",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "5 - Contact",
+      "item": [
+        {
+          "name": "Get by Id (Requiere Token)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/contact/get/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contact",
+                "get",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create (Requiere Token)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/contact/get/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contact",
+                "get",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get (Requiere Token)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/contact/get",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contact",
+                "get"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete (Requiere Token)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/contact/delete/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contact",
+                "delete",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Patch (Requiere Token)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/contact/patch/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contact",
+                "patch",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "6 - NaturalElements",
+      "item": [
+        {
+          "name": "Create (Requiere Token)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/naturalelement/get/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "naturalelement",
+                "get",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get by Id (Requiere Token)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/naturalelement/get/_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "naturalelement",
+                "get",
+                "_id"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get (Requiere Token)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/naturalelement/get",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "naturalelement",
+                "get"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete (Requiere Token)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/naturalelement/delete",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "naturalelement",
+                "delete"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Patch (Requiere Token)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/naturalelement/patch",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "naturalelement",
+                "patch"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    },
+    {
+      "secret": true
+    }
+  ]
+}
