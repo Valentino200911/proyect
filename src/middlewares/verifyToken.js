@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
-import { ErrorApp } from "../utils/ErrorApp.js"
-import { JWT_SECRET } from "../utils/config.js";
+import { ErrorApp } from "../../utils/ErrorApp.js";
+import { JWT_SECRET } from "../../utils/config.js";
 
 export const verifyToken = (req, res, next) => {
     

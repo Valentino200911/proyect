@@ -251,3 +251,13 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - Inicio de la redacción del README
   - Correcciones mínimas y boceto de README
 - **Cuadrigésimo commit del proyecto en Github**  (Hay múltiples gaps para resolver)
+
+### 14 de octubre de 2026
+
+- Por requisitos de consigna, se hostea la .env (Modificación del .gitignore)
+- Por requisitos de consigna, middlewares/ pasa ser src/middlewares/
+- Modificación de importaciones
+
+### 15 de octubre de 2026
+
+- **Cuadrigésimo primer commit del proyecto en Github**  (Hay múltiples gaps para resolver)

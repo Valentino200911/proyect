@@ -1,4 +1,4 @@
-import { ErrorApp } from "../utils/ErrorApp.js";
+import { ErrorApp } from "../../utils/ErrorApp.js"
 
 export const allowRoles =  (...roles) => {
     

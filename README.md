@@ -99,39 +99,39 @@ proyect/   # CARPETA RAÍZ
 
 ## 3. ▶️ Inicialización del Proyecto
 
-**Clonar el Repositiorio**
+### **Clonar el Repositiorio**
 
-```
+```bash
 git clone https://github.com/Valentino200911/proyect.git
 ```
 
-**Ir a la raíz del proyecto**
+### **Ir a la raíz del proyecto**
 
-```console
+```bash
 cd proyect
 ```
 
-**Instalar las Dependencias**
+### **Instalar las Dependencias**
 
-```console
+```bash
 npm install
 ```
 
-**Obtener el archivo .env a través del siguiente link de Google Drive**
+### **Obtener el archivo .env a través del siguiente link de Google Drive**
 
 <https://drive.google.com/drive/folders/1nA7iEe_w-JCtKacNc61noEHBjGGRrdC7?usp=sharing>
 
-**Abrir y establecer alguna conexión en MongoDB Compass**
+### **Abrir y establecer alguna conexión en MongoDB Compass**
 
-**Seleccionar "Abrir terminal integrado" en la carpeta src y correr la seed en VSC**
+### **Seleccionar "Abrir terminal integrado" en la carpeta src y correr la seed en VSC**
 
-```console
+```bash
 npm run seed
 ```
 
-**Tras esto, correr el proyecto**
+### **Tras esto, correr el proyecto**
 
-```console
+```bash
 npm run dev
 ```
 

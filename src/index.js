@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors"
-import { handleError } from "../middlewares/handleError.js"
 import { PORT } from "../utils/config.js"
 import { connectDB } from "./db.js";
 import naturalElementRoutes from "./routes/naturalElementRoutes.js"
@@ -9,6 +8,7 @@ import cottageRoutes from "./routes/cottageRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import reservationRoutes from "./routes/reservationRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import { handleError } from "./middlewares/handleError.js";
 
 const app = express()
 
@@ -18,11 +18,7 @@ const app = express()
 
 // Uso y lectura de CORS
 
-// Permitir todas las conexiones
-
-    app.use(cors());
-
-// O configurar específicamente
+    // configurar específicamente
 
 app.use(cors({
 
