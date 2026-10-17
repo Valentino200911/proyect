@@ -3,49 +3,19 @@ import User from "./userModel.js";
 import Cottage from "./cottageModel.js";
 import { METHOD_OF_PAYMENT, RESERVATION_STATE } from "../../utils/constants/generalConstants.js";
 
-const detailSchema = new mongoose.Schema({
+const reservationSchema = new mongoose.Schema({
 
-    cottageId: {
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: [true, "The user is required"],
+    },
+    cottage: {
 
         type: mongoose.Schema.Types.ObjectId,
         ref: "Cottage",
         required: [true, "The Cottage is required"],
 
-    },
-
-    pricePerNightAndPerson: {
-        type: mongoose.Schema.Types.Number,
-        ref: "Cottage",
-        required: [true, "The price is required for the register"],
-        validate: {
-            validator: Number.isInteger,
-            message: "The price has to be an integer number"
-        },
-    },
-
-    capacity: {
-        type: mongoose.Schema.Types.Number,
-        ref: "Cottage",
-        required: [true, "The capacity is required for the register"],
-        validate: {
-            validator: Number.isInteger,
-            message: "The capacity has to be an integer number"
-        }
-    }, 
-
-}, { _id: false })
-
-
-const reservationSchema = new mongoose.Schema({
-
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: [true, "The user is required"],
-    },
-    detail: {
-
-        type: detailSchema
     },
     entryDate: {
         type: Date,
@@ -73,7 +43,6 @@ const reservationSchema = new mongoose.Schema({
     totalPrice: {
 
         type: Number,
-        required: [true, "The price is required for the register"],
         min: [20000, "The price for one person during one night has to be over 20000"],
         validate: {
             validator: Number.isInteger,
@@ -85,7 +54,6 @@ const reservationSchema = new mongoose.Schema({
     reservationState: {
 
         type: String,
-        required: true,
         enum: { values: Object.values(RESERVATION_STATE), message: "The state of the reservation when it is creates is: 'in progress'" },
         default: RESERVATION_STATE.IN_PROGRESS
 
@@ -109,7 +77,6 @@ const reservationSchema = new mongoose.Schema({
     isPaid: {
 
         type: Boolean,
-        required: [true, "It has to be written whether the reservation has been paid or not"]
         
     }
 

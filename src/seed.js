@@ -109,38 +109,23 @@ const createdContact = await Contact.create([
 const createdReservation = await Reservation.create([
 
     {
-        userId: Juan._id,
+        user: Juan._id,
+        cottage: Cabaña_1._id,
         entryDate: "2026-10-12",
         exitDate: "2026-10-14",
         passangerNumber: 3,
-        totalPrice: 3 * 2 * Cabaña_1.pricePerNightAndPerson,
-        reservationState: "in progress",
         methodOfPayment: "bankTransfer",
-        isPaid: false,
-        detail: {
-            capacity: Cabaña_1.capacity,
-            pricePerNightAndPerson: Cabaña_1.pricePerNightAndPerson,
-            cottageId: Cabaña_1._id
-        }
 
     },
     {
-        userId: Jose._id,
-        entryDate: "2026-10-15",
-        exitDate: "2026-10-17",
-        passangerNumber: 2,
-        totalPrice: 2 * 2 * Cabaña_2.pricePerNightAndPerson,
-        reservationState: "in progress",
+        user: Jose._id,
+        cottage: Cabaña_2._id,
+        entryDate: "2026-10-12",
+        exitDate: "2026-10-14",
+        passangerNumber: 3,
         methodOfPayment: "bankTransfer",
-        isPaid: false,
-        detail: {
-            capacity: Cabaña_2.capacity,
-            pricePerNightAndPerson: Cabaña_2.pricePerNightAndPerson,
-            cottageId: Cabaña_2._id
-        }
 
-    }
-
+    },
 
 ])
 
@@ -155,5 +140,6 @@ console.log(`There are ${await Contact.countDocuments()} documents from "contact
 console.log(`There are ${await Reservation.countDocuments()} documents from "reservation" registered`);
 
 await mongoose.connection.close()
+
 
 

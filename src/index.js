@@ -70,18 +70,18 @@ app.use("/api/auth", authRoutes)
 
     app.use("/api/reservation", reservationRoutes)
 
-// Middlewares a nivel global
-
-    app.use(handleError)
-
-
-// Error 404
-
+    
+    // Error 404
+    
     app.use((req, res) => {
-
+        
         res.status(404).json({ error: "This route does not exist" })
-
+        
     })
+    
+// Middlewares a nivel global
+    
+    app.use(handleError)
 
 // PORT y Visualización
 

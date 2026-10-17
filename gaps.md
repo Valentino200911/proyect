@@ -6,6 +6,8 @@
 - Delete de reservationService
 - Verificar nuevamente todas las rutas de reservation
 - Verificar que no se elimine el cottage si hay alguna reservación que la emplea
+- Verificar si los controller con más de un argumento no están invertidos
+- validateDateSuperposition en reservationService
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
 - Anotar en el README como inicializar el proyecto
 - Habilitar multer y supabase para naturalElement.js y cottage.js

@@ -1,13 +1,53 @@
 import { ErrorApp } from "../../utils/ErrorApp.js";
 import Cottage from "../models/cottageModel.js";
+import User from "../models/userModel.js";
 import Reservation from "../models/reservationModel.js";
 import { verifyUserService } from "./userService.js";
+import { POPULATE_RESERVATION } from "../../utils/constants/generalConstants.js";
+import { verifyCottageService } from "./cottageService.js";
 
 // Validar la reservación y aplicar lógica de negocio
 
+    // Validaciones necesarias
+
+    const validateCapacity = async (reservation) => {
+
+        const capacity = await reservation.cottage.capacity
+
+        const passangerNumber = await reservation.passangerNumber
+
+        if (passangerNumber > capacity) {
+
+            throw new ErrorApp(`The number of passager (${passangerNumber}) cannot be over the cottage's capacity (${capacity})`, 409);
+            
+        }
+    }
+
+    const validateDate = async (reservation) => {
+    
+        const entryDate = await reservation.entryDate
+
+        const exitDate = await reservation.exitDate
+
+        if (entryDate >= exitDate) {
+
+            throw new ErrorApp(`The date of entry (${entryDate}) cannot be over or be same as the date of exit (${exitDate})`, 409);
+            
+        }
+    }
+
+    const validateDateSuperposition = async (reservation) => {
+
+        const entryDate = await reservation.entryDate
+
+        const exitDate = await reservation.exitDate
+
+        // const existentReservations = await reservation
+
+    }
+
     // Traer la reservación 
 
-    
     const verifyIfReservationExistsService = async (reservationId) => {
         
         const reservation = await Reservation.findOne({_id: reservationId})
@@ -22,21 +62,11 @@ import { verifyUserService } from "./userService.js";
         
     }
     
-    const verifyReservationCapacity = (reservation) => {
+    const reservationData = async (reservation) => (
         
-        if (reservation.passangerNumber > reservation.detail.capacity) {
-            
-            throw new ErrorApp(`The number of passangers (${reservation.passangerNumber}), cannot be over the capacity of the cottage (${reservation.detail.capacity})`, 409);
-
-        }
-
-    }
-    
-    const reservationData =  (reservation) => (
-        
-        {       
-            cottage: reservation.detail.cottageId,
-            user: verifyUserService(reservation.userId),
+        await {       
+            cottage: verifyCottageService(reservation.cottage._id),
+            user: verifyUserService(reservation.user._id),
             entryDate: reservation.entryDate,
             exitDate: reservation.exitDate,
             passangerNumber: reservation.passangerNumber,
@@ -65,7 +95,7 @@ import { verifyUserService } from "./userService.js";
     
     export const getAllReservationsService = async () => {
         
-        return await Reservation.find({}, {__v: 0}).sort({ createdAt: -1 })
+        return await Reservation.find({}, {__v: 0}).populate(POPULATE_RESERVATION).sort({ createdAt: -1 })
 
     }
 
@@ -73,7 +103,7 @@ import { verifyUserService } from "./userService.js";
 
     export const getAllMyReservations = async (userId) => {
         
-        return await Reservation.find({userId: userId}, {__v: 0}).sort({ createdAt: -1 })
+        return await Reservation.find({userId: userId}, {__v: 0}).populate(POPULATE_RESERVATION).sort({ createdAt: -1 })
 
     }
 
@@ -81,7 +111,7 @@ import { verifyUserService } from "./userService.js";
 
     export const getReservationByIdService = async (reservationId) => {
         
-        return await Reservation.findById({_id: reservationId}, {__v: 0})
+        return await Reservation.findById({_id: reservationId}, {__v: 0}).populate(POPULATE_RESERVATION)
 
     }
 
@@ -89,30 +119,41 @@ import { verifyUserService } from "./userService.js";
 
     export const getMyReservationByIdService = async (userId, reservationId) => {
         
-        return await Reservation.findOne({userId: userId, _id: reservationId}, {__v: 0})
+        return await Reservation.findOne({userId: userId, _id: reservationId}, {__v: 0}).populate(POPULATE_RESERVATION)
 
     }
 
     // createReservationService
 
-    export const createReservationService = async (data) => {
+    export const createReservationService = async (userId, cottageId, data) => {
         
-        return await Reservation.create(data)
+        const user = await verifyCottageService(userId)
+
+        const cottage = await verifyCottageService(cottageId)
+
+        if (!cottage || !user) {
+
+            throw new ErrorApp("There is a cottage or an user that does not exist", 404);
+            
+        }
+
+
+        return await Reservation.create(data).populate(POPULATE_RESERVATION)
 
     }
 
     // updateReservationService
 
-    export const updateReservationService = async (userId, data) => {
+    export const updateReservationService = async (userId, {reservationState, isPaid, reservationComment} = {}) => {
     
-        return await Reservation.findByIdAndUpdate({_id: userId}, data, {
+        return await Reservation.findByIdAndUpdate({_id: userId},  {reservationState, isPaid, reservationComment}, {
 
         returnDocument: "after",
 
         runValidators: true,
 
         }
-    )
+    ).populate(POPULATE_RESERVATION)
 
     }
 

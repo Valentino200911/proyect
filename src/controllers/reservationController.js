@@ -35,7 +35,7 @@ export const getReservationByIdController = async (req, res) => {
 
 export const getMyReservationByIdController = async (req, res) => {
     
-    const reservation = await reservationService.getMyReservationByIdService(req.params.id, req.user.id)
+    const reservation = await reservationService.getMyReservationByIdService(req.user.id, req.params.id)
 
     res.status(200).json(reservation)
 
@@ -55,7 +55,7 @@ export const createReservationController = async (req, res) => {
 
 export const updateReservationController = async (req, res) => {
     
-    const reservation = await reservationService.updateReservationService(req.body, req.params.id)
+    const reservation = await reservationService.updateReservationService(req.params.id, req.body)
 
     res.status(200).json(reservation)
 

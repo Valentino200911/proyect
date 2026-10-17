@@ -261,3 +261,10 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 ### 15 de octubre de 2026
 
 - **Cuadrigésimo primer commit del proyecto en Github**  (Hay múltiples gaps para resolver)
+
+### 17 de octubre de 2026
+
+- Correcciones varias al router, al index y al service de reservation
+- Correcciones al modelo de reservation (eliminación del schema detail)
+- Correcciones esenciales en el service (Creación de validaciones)
+- **Cuadrigésimo segundo commit del proyecto en Github**  (Hay múltiples gaps para resolver)
