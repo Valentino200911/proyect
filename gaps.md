@@ -1,6 +1,7 @@
 # Gaps
 
 - Cambio de estado de isPaid según reservationState
+- Definir comentarios sobre el funcionamiento de getAllContactsService y getContactServiceById
 - Revisar y definir los índices de los modelos para reservation
 - Revisión correcta de totalPrice en Reservation
 - Delete de reservationService

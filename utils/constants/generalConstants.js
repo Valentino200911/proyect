@@ -80,9 +80,16 @@
                 select: "name capacity pricePerNightAndPerson"
             }
         ]
-            
+    
+    // contactService
 
+        export const POPULATE_CONTACT = [
 
+            {
+                path: "user",
+                select: "name surname phoneNumber email"
+            },
+        ]
 
         
         

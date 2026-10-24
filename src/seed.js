@@ -103,6 +103,27 @@ const createdContact = await Contact.create([
         contactComment: "Hi, 123"
     
     },
+    {
+
+        user: Juan._id,
+        reasonOfContact: "problem",
+        contactComment: "Hi, 124"
+    
+    },
+    {
+
+        user: Juan._id,
+        reasonOfContact: "business",
+        contactComment: "Hi, 125"
+    
+    },
+    {
+
+        user: Jose._id,
+        reasonOfContact: "business",
+        contactComment: "Hi, 126"
+    
+    },
     
 ])
 

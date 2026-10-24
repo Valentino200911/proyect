@@ -290,3 +290,14 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - **Cuadrigésimo tercer commit del proyecto en Github**  (Hay múltiples gaps para resolver)
 
     - Correcciones a las condiciones de eliminación de registros de user y cottage (si existe contact o reservation que involucre a una cottage o user, los mencionados no pueden eliminarse)
+
+  - **Cuadrigésimo cuarto commit del proyecto en Github**  (Hay múltiples gaps para resolver)
+
+    - Creación de la const POPULATE_CONTACT en utils/constants para definir el populate de contact
+    - Eliminación del "required: true" en contactModel (campo "user"), ya que este recibe el user a través del token
+    - En contactService, se modificaron las funcionalidades del CRUD, el get, por ejemplo, ahora bien puede recibir un userId del usuario (lo que hará que sólo se muestren los contactos del propio usuario - funcionalidad restringida al usuario por token, userOnly) o puede no recibirlo, (lo que hará que se muestren todos los contactos sin importar el usuario - funcionalidad restringida al admin por token, adminOnly)
+    - En contactController, se hicieron modificaciones concordantes con los cambios del service
+    - Validaciones con POSTMAN
+    - Modificaciones al seed para dichas validaciones
+    - Validaciones completadas
+    

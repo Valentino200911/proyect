@@ -4,7 +4,7 @@ import { allowed, userOnly, adminOnly } from "../../utils/constants/rolesConstan
 
 const router = Router()
 
-router.get("/get", adminOnly, contactController.getAllContactsController)
+router.get("/get", allowed, contactController.getAllContactsController)
 
 router.get("/get/:id", allowed, contactController.getContactByIdController)
 
