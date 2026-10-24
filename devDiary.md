@@ -268,3 +268,25 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Correcciones al modelo de reservation (eliminación del schema detail)
 - Correcciones esenciales en el service (Creación de validaciones)
 - **Cuadrigésimo segundo commit del proyecto en Github**  (Hay múltiples gaps para resolver)
+- Modificaciones a las condiciones de delete de cottage y user (service)
+- Correcciones al service de contact
+- Revisión y correcciones esenciales en el service de reservation
+  
+### 19 de octubre de 2026
+
+- Continuación de las correcciones al service de reservation
+- Centralización de operaciones en el service y el controller de reservation
+- Corrección de errores de diseño y estructura
+- Adición de validaciones para la existencia del user y la reservation
+- Adición de la operación DELETE en reservation
+- Correcciones de endpoints y permisos de tokens
+- Validaciones con POSTMAN
+
+### 24 de octubre de 2026
+
+- Para evitar que un único commit incluya múltiples cambios en las funcionalidades, se emplearán STASH para realizar separación de funcionalidades.
+- El orden de funcionalidades a commitear es el siguiente:
+
+  - **Cuadrigésimo tercer commit del proyecto en Github**  (Hay múltiples gaps para resolver)
+
+    - Correcciones a las condiciones de eliminación de registros de user y cottage (si existe contact o reservation que involucre a una cottage o user, los mencionados no pueden eliminarse)

@@ -7,8 +7,6 @@ import Reservation from "../models/reservationModel.js";
 
 // Validación del elemento
 
-// Validación del elemento
-
     export const verifyCottageService = async (cottageId) => {
         
         const exist = await Cottage.exists({_id: cottageId})
@@ -63,21 +61,23 @@ import Reservation from "../models/reservationModel.js";
 
     export const deleteCottageService = async (cottageId) => {
         
-                const cottage = await Cottage.verifyCottageService(cottageId)
-        
-                if (!cottage) {
+                const validationCottage = await verifyCottageService
+
+                if (!validationCottage) {
         
                     return null
                 } 
         
-                const reservations = await Reservation.countDocuments({ cottageId: { _id: cottageId }})
+                const reservations = await Reservation.countDocuments({cottage: {_id: cottageId}})
         
                 if (reservations > 0) {
                     
-                    throw new ErrorApp(`The cottage cannot be deleted becuase it has registered and ${reservations} reservations `, 409)
+                    throw new ErrorApp(`The cottage cannot be deleted becuase it has registered ${reservations} reservations `, 409)
         
                 }
+
+        const cottage = await Cottage.findByIdAndDelete({_id: cottageId})
         
-        return await Cottage.findByIdAndDelete({_id: cottageId})
+        return cottage
         
     }

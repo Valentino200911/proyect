@@ -66,9 +66,9 @@ import Reservation from "../models/reservationModel.js";
         
         const contacts = await Contact.countDocuments({ user: { _id: userId }})
 
-        const reservations = await Reservation.countDocuments({ userId: { _id: userId }})
+        const reservations = await Reservation.countDocuments({ user: { _id: userId }})
 
-        if (contacts && reservations > 0) 
+        if (contacts > 0 || reservations > 0) 
         {
             
             throw new ErrorApp(`The user cannot be deleted becuase it has registered ${contacts} contacts and ${reservations} reservations`, 409)
