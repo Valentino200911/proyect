@@ -2,10 +2,11 @@
 
 - Cambio de estado de isPaid según reservationState
 - Definir que un admin no pueda eliminar a otro admin
+- Documentar el proceso de modificación de reservation
 - Revisar y definir los índices de los modelos para reservation
 - Verificación general de la existencia de elementos necesarios en los services
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
-- Anotar en el README como inicializar el proyecto
+- Anotar en el README como inicializar el proyecto y cambiar la estructura de carpetas
 - Habilitar multer y supabase para naturalElement.js y cottage.js
 - Manejo de proxy en el front (ver codigo modelo de front)
 - Que el usuario vea sus propios contacts y reservation (en el front)

@@ -337,3 +337,5 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - Eliminación de gaps varios y correcciones de código
   - Cambios en el seed
 - **Quincuagésimo commit del proyecto en Github**
+  - Creación de la carpeta `documents` para almacenar los archivos devDiary.md, gaps.md y roleTable.png
+- **Quincuagésimo primer commit del proyecto en Github**  
