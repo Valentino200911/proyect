@@ -309,3 +309,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
     - Se validó a través de POSTMAN, validaciones existosas aunque con gaps de código
     - Modificaciones al seed para dichas validaciones
     - Estas operaciones se realizaron a través de consultas a Gemini
+
+  - **Cuadrigésimo sexto commit del proyecto en Github**  (Hay múltiples gaps para resolver)
+
+    - Adición de gaps de código, modificaciones de comentarios en handleError.js y cambios en seed.js

@@ -139,6 +139,15 @@ const createdReservation = await Reservation.create([
         isPaid: false
     },
     {
+        user: Juan._id,
+        cottage: Cabaña_2._id,
+        entryDate: "2027-10-12",
+        exitDate: "2027-10-14",
+        passangerNumber: 3,
+        methodOfPayment: "bankTransfer",
+
+    },
+    {
         user: Jose._id,
         cottage: Cabaña_2._id,
         entryDate: "2026-10-12",

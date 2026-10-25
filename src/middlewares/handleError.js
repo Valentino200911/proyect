@@ -27,8 +27,8 @@
 //
 //  ⚠️ ENTONCES, ¿CUÁNDO SÍ VA UN try/catch?
 //     Solo si vas a HACER algo con el error:
-//       · traducirlo a un mensaje mejor  -> ver el ISBN en libroService.js
-//       · deshacer algo a medio hacer    -> lo vamos a ver en pedidos (devolver stock)
+//       · traducirlo a un mensaje mejor 
+//       · deshacer algo a medio hacer   
 //     Y siempre termina en throw.
 //
 //  ⚠️ UN catch QUE SOLO HACE console.error NO ATRAPA EL ERROR: LO ESCONDE.
@@ -51,7 +51,7 @@ export const handleError = (error, req, res, next) => {
         return res.status(400).json({ error: "BODY is not a valid JSON" })
     }
 
-    // el id no tiene forma de ObjectId → /api/libros/abc
+    // el id no tiene forma de ObjectId → /api/user/abc
     if (error.name === "CastError") {
         return res.status(400).json({ error: "Id is not valid to MongoDB", obtained: error.value })
     }
@@ -60,7 +60,7 @@ export const handleError = (error, req, res, next) => {
     if (error.name === "ValidationError") {
         return res.status(400).json({
             error: "The data of the object is not valid",
-            detalles: Object.values(error.errors).map(e => e.message)
+            detail: Object.values(error.errors).map(e => e.message)
         })
     }
 
