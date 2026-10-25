@@ -1,5 +1,4 @@
 
-import mongoose from "mongoose";
 import { ErrorApp } from "../../utils/ErrorApp.js";
 import User from "../models/userModel.js";
 import Contact from "../models/contactModel.js";

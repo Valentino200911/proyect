@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { PORT, MONGO_URI } from "../utils/config.js";
-import { ErrorApp } from "../utils/ErrorApp.js";
 
 export const connectDB = async () => {
     

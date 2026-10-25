@@ -1,6 +1,5 @@
 import * as naturalElementService from "../services/naturalElementService.js"
 
-
 // getAllNaturalElementsController
 
     export const getAllNaturalElementsController = async (req, res) => {

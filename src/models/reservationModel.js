@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-import User from "./userModel.js";
-import Cottage from "./cottageModel.js";
 import { METHOD_OF_PAYMENT, RESERVATION_STATE } from "../../utils/constants/generalConstants.js";
 
 const reservationSchema = new mongoose.Schema({

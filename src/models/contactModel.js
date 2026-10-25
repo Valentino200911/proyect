@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import User from "./userModel.js";
 import { REASON_OF_CONTACT } from "../../utils/constants/generalConstants.js";
 
 export const contactSchema = new mongoose.Schema({

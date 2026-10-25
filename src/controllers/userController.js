@@ -1,4 +1,4 @@
-import { ErrorApp } from "../../utils/ErrorApp.js"
+
 import * as userService from "../services/userService.js"
 
 // getAllUsersController

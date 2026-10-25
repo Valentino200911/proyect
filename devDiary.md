@@ -328,4 +328,9 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
     - Revisar los permisos para get/:id en user, ¿Cualquiera podría ver el usuario de otra persona si conoce el id?
 - **Cuadrigésimo séptimo commit del proyecto en Github**
   - Contuación con los gaps de código. Separación del await de los retornos en los services
-- **Cuadrigésimo octavo commit del proyecto en Github**  
+- **Cuadrigésimo octavo commit del proyecto en Github**
+
+### 25 de octubre de 2026
+
+- Eliminación de importaciones innecesarias del código
+- **Cuadrigésimo noveno commit del proyecto en Github**
