@@ -334,3 +334,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
 - Eliminación de importaciones innecesarias del código
 - **Cuadrigésimo noveno commit del proyecto en Github**
+  - Eliminación de gaps varios y correcciones de código
+  - Cambios en el seed
+- **Quincuagésimo commit del proyecto en Github**

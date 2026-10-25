@@ -55,7 +55,7 @@ const [Juan, Pedro, Jose] = await User.create([
     {
         name: "Pedro", 
         surname: "Gomez",
-        birthDate: "1950-02-14",
+        birthDate: "1980-02-14",
         phoneNumber: "+5491234567896",
         email: "pedro.gomez@gmail.com",
         password: "Admin123",
@@ -64,7 +64,7 @@ const [Juan, Pedro, Jose] = await User.create([
     {
         name: "Jose", 
         surname: "Juarez",
-        birthDate: "1950-02-14",
+        birthDate: "1985-02-14",
         phoneNumber: "+5496234567896",
         email: "jose.juarez@gmail.com",
         password: "Jose1234",
@@ -112,7 +112,7 @@ const createdContact = await Contact.create([
     },
     {
 
-        user: Juan._id,
+        user: Jose._id,
         reasonOfContact: "business",
         contactComment: "Hi, 125"
     
@@ -145,6 +145,7 @@ const createdReservation = await Reservation.create([
         exitDate: "2027-10-14",
         passangerNumber: 3,
         methodOfPayment: "bankTransfer",
+        isPaid: false,
 
     },
     {
@@ -152,9 +153,10 @@ const createdReservation = await Reservation.create([
         cottage: Cabaña_2._id,
         entryDate: "2026-10-12",
         exitDate: "2026-10-14",
-        passangerNumber: 3,
+        passangerNumber: 1,
         methodOfPayment: "bankTransfer",
-        isPaid: false
+        isPaid: false,
+        totalPrice: 40000
 
     },
 

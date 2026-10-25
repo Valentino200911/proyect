@@ -94,8 +94,8 @@ import Reservation from "../models/reservationModel.js";
 
     export const searchUserByEmailService = async (email = "") => {
 
-        const user = await User.findOne({ email: email.toLowerCase().trim()}).select("+password")
-
+        const user = await User.findOne({email: email.toLowerCase().trim()}).select("+password")
+        
         return user
     }
 

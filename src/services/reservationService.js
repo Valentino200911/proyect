@@ -12,11 +12,11 @@ const validateCapacity = async (reservation) => {
 
     const capacity = reservation.cottage.capacity
 
-    const passangerNumber = reservation.passangerNumber
+    const passangerNumber = reservation.passangerNumber + 1 //El +1 proviene de la propia persona que reserva
 
     if (passangerNumber > capacity) {
 
-        throw new ErrorApp(`The number of passagers (${passangerNumber}) cannot be over the cottage's capacity (${capacity})`, 409);
+        throw new ErrorApp(`The number of people (${passangerNumber}) cannot be over the cottage's capacity (${capacity})`, 409);
 
     }
 }
@@ -112,7 +112,7 @@ const reservationData = async (reservation) => {
         entryDate: reservation.entryDate,
         exitDate: reservation.exitDate,
         passangerNumber: reservation.passangerNumber,
-        totalPrice: (cottage.pricePerNightAndPerson * reservation.passangerNumber * Math.round((exitDate - entryDate) / 86400000)),
+        totalPrice: (cottage.pricePerNightAndPerson * (reservation.passangerNumber + 1) * Math.round((exitDate - entryDate) / 86400000)), // Se suma +1 debido a que se incluye a la propia persona que reserva
         reservationState: reservation.reservationState,
         methodOfPayment: reservation.methodOfPayment,
         isPaid: reservation.isPaid,

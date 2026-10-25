@@ -1,13 +1,9 @@
 # Gaps
 
 - Cambio de estado de isPaid según reservationState
+- Definir que un admin no pueda eliminar a otro admin
 - Revisar y definir los índices de los modelos para reservation
-- Verificar que no se elimine el cottage si hay alguna reservación que la emplea
-- Verificar estructura de DELETE en los services
-- Verificar contact
-- Eliminar imports innecesarios en el código
 - Verificación general de la existencia de elementos necesarios en los services
-- Verificar si los controller con más de un argumento no están invertidos
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
 - Anotar en el README como inicializar el proyecto
 - Habilitar multer y supabase para naturalElement.js y cottage.js

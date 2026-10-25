@@ -52,7 +52,7 @@ export const loginService = async ({email, password} = {}) => {
     }
 
     const user = await searchUserByEmailService(email)
-
+    
     // Validación
 
     if (!user || !(await user.comparePassword(password))) {
