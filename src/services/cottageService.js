@@ -23,30 +23,35 @@ import Reservation from "../models/reservationModel.js";
 
     export const getAllCottagesService = async () => {
         
-        return await Cottage.find({}, {createdAt: 0, updatedAt: 0, __v: 0}).sort({ name: 1 }) // No hay filter, se define el project
+        const cottages = await Cottage.find({}, {createdAt: 0, updatedAt: 0, __v: 0}).sort({ name: 1 }) // No hay filter, se define el project
 
+        return cottages
     }
 
 // getCottageByIdService
 
     export const getCottageByIdService = async (cottageId) => {
         
-        return await Cottage.findById({_id: cottageId}, {createdAt: 0, updatedAt: 0, __v: 0}) // El segundo {} es un project
+        const cottage = await Cottage.findById({_id: cottageId}, {createdAt: 0, updatedAt: 0, __v: 0}) // El segundo {} es un project
 
+        return cottage
     }
 
 // createCottageService
 
     export const createCottageService = async (data) => {
         
-        return await Cottage.create(data)
+        const cottage = await Cottage.create(data)
+
+        return cottage
+
     }
 
 // updateCottageService
 
     export const updateCottageService = async (cottageId, data) => {
     
-        return await Cottage.findByIdAndUpdate({_id: cottageId}, data, {
+        const cottage = await Cottage.findByIdAndUpdate({_id: cottageId}, data, {
 
         returnDocument: "after",
 
@@ -55,26 +60,29 @@ import Reservation from "../models/reservationModel.js";
         }
     )
 
+        return cottage
+
     }
 
 // deleteCottageService -- No es ideal tener un delete para este caso, pero por cuestiones de coherencia de CRUD, se lo deja || En todo caso, validar la eliminación
 
     export const deleteCottageService = async (cottageId) => {
         
-                const validationCottage = await verifyCottageService
+            const validationCottage = await verifyCottageService
 
-                if (!validationCottage) {
+            if (!validationCottage) {
         
-                    return null
-                } 
+                return null
+
+            } 
         
-                const reservations = await Reservation.countDocuments({cottage: {_id: cottageId}})
+            const reservations = await Reservation.countDocuments({cottage: {_id: cottageId}})
         
-                if (reservations > 0) {
-                    
-                    throw new ErrorApp(`The cottage cannot be deleted becuase it has registered ${reservations} reservations `, 409)
+            if (reservations > 0) {
+                
+                throw new ErrorApp(`The cottage cannot be deleted becuase it has registered ${reservations} reservations `, 409)
         
-                }
+            }
 
         const cottage = await Cottage.findByIdAndDelete({_id: cottageId})
         

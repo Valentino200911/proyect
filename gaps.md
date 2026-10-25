@@ -5,7 +5,7 @@
 - Verificar que no se elimine el cottage si hay alguna reservación que la emplea
 - Verificar estructura de DELETE en los services
 - Verificar contact
-- Descentralizar return en los services
+- Eliminar imports innecesarios en el código
 - Verificación general de la existencia de elementos necesarios en los services
 - Verificar si los controller con más de un argumento no están invertidos
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
@@ -24,3 +24,4 @@
 - ¿Es necesario deshabilitar a través de un comentario la ruta POST de userRoutes.js ya que registerService ya cumple con esa función?
 - De por sí el usuario viene sin la contraseña en authService.js (verificar Public Data of User) ¿Es necesario aplicar publicDataOfUser(user) en register y login o puedo eliminarlo?
 - Puedo definir como index a valores que no son únicos en reservationModel
+- ¿Es necesario que todos los services tengan una función verifyIfExists?

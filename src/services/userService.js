@@ -25,15 +25,19 @@ import Reservation from "../models/reservationModel.js";
 
     export const getAllUsersService = async () => {
 
-        return await User.find({}, {__v: 0}).sort({name: 1}) // El segundo {} es un project, el primero es un filter
+        const users = User.find({}, {__v: 0}).sort({name: 1}) // El segundo {} es un project, el primero es un filter
         // No se escribe createdAt: 0 ni upadatedAt: 0 debido a que uno al  hacer la consulta debería poder ver cuando fue creado un usuario
+
+        return users
     }
 
     // getUserByIdService
 
     export const getUserByIdService = async (userId) => {
         
-        return await User.findById({_id: userId}, {__v: 0}) // El segundo {} es un project
+        const user = User.findById({_id: userId}, {__v: 0}) // El segundo {} es un project
+
+        return user
 
     }
 
@@ -41,14 +45,16 @@ import Reservation from "../models/reservationModel.js";
 
     export const createUserService = async (data) => {
         
-        return await User.create(data)
+        const user = await User.create(data)
+
+        return user
     }
 
     // updateUserService  
 
     export const updateUserService = async (userId, data) => {
     
-        return await User.findByIdAndUpdate({_id: userId}, data, {
+        const user = await User.findByIdAndUpdate({_id: userId}, data, {
 
         returnDocument: "after",
 
@@ -56,6 +62,8 @@ import Reservation from "../models/reservationModel.js";
 
         }
     )
+
+        return user
 
     }
 
@@ -75,7 +83,9 @@ import Reservation from "../models/reservationModel.js";
 
         }
 
-        return await User.findByIdAndDelete({_id: userId})
+        const user = await User.findByIdAndDelete({_id: userId})
+
+        return user
     }
 
 
@@ -85,7 +95,9 @@ import Reservation from "../models/reservationModel.js";
 
     export const searchUserByEmailService = async (email = "") => {
 
-        return await User.findOne({ email: email.toLowerCase().trim()}).select("+password")
+        const user = await User.findOne({ email: email.toLowerCase().trim()}).select("+password")
+
+        return user
     }
 
     // publicDataOfUser (Sin contraseña)

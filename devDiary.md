@@ -326,4 +326,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
     - Verificar el manejo del UTC de las fechas según JS
     - Descentralizar funciones de cálculo de fecha en reservationService (no era necesaria)
     - Revisar los permisos para get/:id en user, ¿Cualquiera podría ver el usuario de otra persona si conoce el id?
-- **Cuadrigésimo séptimo commit del proyecto en Github** 
+- **Cuadrigésimo séptimo commit del proyecto en Github**
+  - Contuación con los gaps de código. Separación del await de los retornos en los services
+- **Cuadrigésimo octavo commit del proyecto en Github**  

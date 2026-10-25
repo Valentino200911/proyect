@@ -29,7 +29,10 @@ import NaturalElement from "../models/naturalElementModel.js";
             filter.binomialName = binomialName
 
         }
-        return await NaturalElement.find(filter, {createdAt: 0, updatedAt: 0, __v: 0}).sort( {name: 1} ) // {} es un project a voluntad
+
+        const naturalElements = await NaturalElement.find(filter, {createdAt: 0, updatedAt: 0, __v: 0}).sort( {name: 1} ) // {} es un project a voluntad
+
+        return naturalElements
     }
 
 
@@ -37,15 +40,18 @@ import NaturalElement from "../models/naturalElementModel.js";
 
     export const getNaturalElementsByIdService = async (naturalElementId) => {
         
-        return await NaturalElement.findById({_id: naturalElementId}, {createdAt: 0, updatedAt: 0, __v: 0}) // {} es un project a voluntad
+        const naturalElement = await NaturalElement.findById({_id: naturalElementId}, {createdAt: 0, updatedAt: 0, __v: 0}) // {} es un project a voluntad
 
+        return naturalElement
     }
 
 // createNaturalElementService
     
     export const createNaturalElementService = async (data) => {
         
-        return await NaturalElement.create(data)
+        const naturalElement = await NaturalElement.create(data)
+
+        return naturalElement
 
     }
 
@@ -53,7 +59,7 @@ import NaturalElement from "../models/naturalElementModel.js";
 
     export const updateNaturalElementService = async (naturalElementId, data) => {
         
-        return await NaturalElement.findByIdAndUpdate({_id: naturalElementId}, data, {
+        const naturalElement = await NaturalElement.findByIdAndUpdate({_id: naturalElementId}, data, {
 
         returnDocument: "after",
 
@@ -62,12 +68,14 @@ import NaturalElement from "../models/naturalElementModel.js";
         }
     )
 
+        return naturalElement
     }
 
 // deleteNaturalElementService
 
         export const deleteNaturalElementService = async (naturalElementId) => {
         
-        return await NaturalElement.findByIdAndDelete({_id: naturalElementId})
+        const naturalElement = await NaturalElement.findByIdAndDelete({_id: naturalElementId})
 
+        return naturalElement
     }
