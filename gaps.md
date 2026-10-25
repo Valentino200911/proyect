@@ -5,10 +5,11 @@
 - Revisar y definir los índices de los modelos para reservation
 - Revisión correcta de totalPrice en Reservation
 - Delete de reservationService
+- validateDateSuperposition en reservationService
+- Verificar si los controller con más de un argumento no están invertidos
 - Verificar nuevamente todas las rutas de reservation
 - Verificar que no se elimine el cottage si hay alguna reservación que la emplea
-- Verificar si los controller con más de un argumento no están invertidos
-- validateDateSuperposition en reservationService
+- Verificar el manejo del UTC de las fechas según JS
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
 - Anotar en el README como inicializar el proyecto
 - Habilitar multer y supabase para naturalElement.js y cottage.js

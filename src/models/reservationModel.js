@@ -8,14 +8,12 @@ const reservationSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-        required: [true, "The user is required"],
     },
     cottage: {
 
         type: mongoose.Schema.Types.ObjectId,
         ref: "Cottage",
-        required: [true, "The Cottage is required"],
-
+        required: [true, "The cottage is required for the register"],
     },
     entryDate: {
         type: Date,
@@ -62,7 +60,8 @@ const reservationSchema = new mongoose.Schema({
 
         type: String,
         enum: { values: Object.values(METHOD_OF_PAYMENT), message: "The methods of payment are: 'bankTransfer' or 'cash'" },
-        required: [true, "You have to indicate the method of payment"]
+        required: [true, "You have to indicate the method of payment"],
+        index: true // Acelera la búsqueda si se busca específicamente por método de pago específico
         // No tiene default porque es a elección
     },
 
@@ -77,7 +76,8 @@ const reservationSchema = new mongoose.Schema({
     isPaid: {
 
         type: Boolean,
-        
+        index: true, // Acelera la búsqueda si se busca específicamente las reservaciones pagadas
+        default: false
     }
 
 }, { timestamps: true })

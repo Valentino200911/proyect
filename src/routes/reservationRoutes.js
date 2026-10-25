@@ -4,16 +4,16 @@ import { allowed, userOnly, adminOnly } from "../../utils/constants/rolesConstan
 
 const router = Router()
 
-router.get("/get/allReservations", adminOnly, reservationController.getAllReservationsController)
+// "/get/:id" y "/get/allReservations" tienen "allowed" porque la validación la hacen los tokens
 
-router.get("/get/user/allReservations", userOnly, reservationController.getAllMyReservationsController)
+router.get("/get/allReservations", allowed, reservationController.getAllReservationsController)
 
-router.get("/get/:id", adminOnly, reservationController.getReservationByIdController)
-
-router.get("/get/user/:id", userOnly, reservationController.getMyReservationByIdController)
+router.get("/get/:id", allowed, reservationController.getReservationByIdController)
 
 router.post("/post", userOnly, reservationController.createReservationController)
 
-router.patch("/patch/:id", adminOnly, reservationController.updateReservationController)
+router.patch("/patch/:id", allowed, reservationController.updateReservationController)
+
+router.delete("/delete/:id", adminOnly, reservationController.deleteReservationController)
 
 export default router

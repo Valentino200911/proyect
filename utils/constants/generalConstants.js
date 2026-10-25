@@ -91,5 +91,28 @@
             },
         ]
 
+    // reservationService
+
+        export const parseToLocalDate = function (date) {
+            
+            if (date instanceof Date) {
+                
+                return date
+
+            }
+
+            if (!date || typeof date !== "string") {
+                
+                return null
+
+            }
+
+            const parsedDate = date.replace(/-/g, '/')
+
+            const returnedDate = new Date(parsedDate)
+
+            return returnedDate
+            
+        }
         
         

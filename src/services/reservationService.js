@@ -2,159 +2,227 @@ import { ErrorApp } from "../../utils/ErrorApp.js";
 import Cottage from "../models/cottageModel.js";
 import User from "../models/userModel.js";
 import Reservation from "../models/reservationModel.js";
-import { verifyUserService } from "./userService.js";
-import { POPULATE_RESERVATION } from "../../utils/constants/generalConstants.js";
-import { verifyCottageService } from "./cottageService.js";
+import { parseToLocalDate, POPULATE_RESERVATION } from "../../utils/constants/generalConstants.js";
 
 // Validar la reservación y aplicar lógica de negocio
 
-    // Validaciones necesarias
+// Validaciones necesarias
 
-    const validateCapacity = async (reservation) => {
+const validateCapacity = async (reservation) => {
 
-        const capacity = await reservation.cottage.capacity
+    const capacity = reservation.cottage.capacity
 
-        const passangerNumber = await reservation.passangerNumber
+    const passangerNumber = reservation.passangerNumber
 
-        if (passangerNumber > capacity) {
+    if (passangerNumber > capacity) {
 
-            throw new ErrorApp(`The number of passager (${passangerNumber}) cannot be over the cottage's capacity (${capacity})`, 409);
-            
-        }
+        throw new ErrorApp(`The number of passagers (${passangerNumber}) cannot be over the cottage's capacity (${capacity})`, 409);
+
+    }
+}
+
+const validateDate =  (reservation) => { 
+
+    const entryDate = reservation.entryDate
+
+    const exitDate = reservation.exitDate
+
+    // Validar que las reservacuiones no superen los 7 días
+
+    const addedDays = 7 // Días que se suman
+
+    function addDays() {
+
+        const duplicatedEntryDate = new Date(entryDate)
+
+        const result = duplicatedEntryDate.setDate(duplicatedEntryDate.getDate() + addedDays)
+
+        return result
+
     }
 
-    const validateDate = async (reservation) => {
+    const restrictedExitDate = addDays()
+
+    if (entryDate >= exitDate) {
+
+        throw new ErrorApp(`The date of entry (${entryDate}) cannot be over or be same as the date of exit (${exitDate})`, 409);
+
+    } else {
+
+        if (exitDate > restrictedExitDate) {
     
-        const entryDate = await reservation.entryDate
+            throw new ErrorApp(`The date of exit (${exitDate}) cannot be over ${addedDays} days after the entry date. The maximum allowed for ${entryDate} is ${restrictedExitDate}`, 409)
 
-        const exitDate = await reservation.exitDate
-
-        if (entryDate >= exitDate) {
-
-            throw new ErrorApp(`The date of entry (${entryDate}) cannot be over or be same as the date of exit (${exitDate})`, 409);
-            
-        }
-    }
-
-    const validateDateSuperposition = async (reservation) => {
-
-        const entryDate = await reservation.entryDate
-
-        const exitDate = await reservation.exitDate
-
-        // const existentReservations = await reservation
-
-    }
-
-    // Traer la reservación 
-
-    const verifyIfReservationExistsService = async (reservationId) => {
-        
-        const reservation = await Reservation.findOne({_id: reservationId})
-
-        if (!reservation) {
-            
-            throw new ErrorApp(`The reservation "${reservationId}" does not exist`, 404);
-            
-        }
-        
-        return reservation
-        
-    }
-    
-    const reservationData = async (reservation) => (
-        
-        await {       
-            cottage: verifyCottageService(reservation.cottage._id),
-            user: verifyUserService(reservation.user._id),
-            entryDate: reservation.entryDate,
-            exitDate: reservation.exitDate,
-            passangerNumber: reservation.passangerNumber,
-            totalPrice: (reservation.detail.pricePerNightAndPerson * reservation.passangerNumber * Math.round((reservation.exitDate - reservation.entryDate)/86400000)),
-            reservationState: reservation.reservationState,
-            methodOfPayment: reservation.methodOfPayment,
-            isPaid: reservation.isPaid,
-            reservationComment: reservation.reservationComment
-            
         }
 
-    )
-    
-    export const verifyReservationService = async (reservationId) => {
-        
-        const reservation = await verifyIfReservationExistsService(reservationId)
-    
-        verifyReservationCapacity(reservation)
-
-        const verifiedReservation = reservationData(reservation)
-    
-        return verifiedReservation
-    }
-    
-    // getAllReservationsService (Todos)
-    
-    export const getAllReservationsService = async () => {
-        
-        return await Reservation.find({}, {__v: 0}).populate(POPULATE_RESERVATION).sort({ createdAt: -1 })
-
     }
 
-    // getAllMyReservations (Todos los que sean míos)
+}
 
-    export const getAllMyReservations = async (userId) => {
-        
-        return await Reservation.find({userId: userId}, {__v: 0}).populate(POPULATE_RESERVATION).sort({ createdAt: -1 })
+const validateDateSuperposition = async (reservation) => {
+
+    const entryDate = parseToLocalDate(reservation.entryDate)
+
+    const exitDate = parseToLocalDate(reservation.exitDate)
+
+    const existentReservations = await Reservation.findOne({ cottage:  reservation.cottage._id, $and: [{ entryDate: { $lt: exitDate } }, { exitDate: { $gt: entryDate } }] })
+
+    if (existentReservations) {
+
+        throw new ErrorApp(`There is a conflict with a reservation on the dates: ${entryDate} to ${exitDate}`, 409);
 
     }
+}
 
-    // getReservationByIdService (Uno en específico)
+// Traer la reservación 
 
-    export const getReservationByIdService = async (reservationId) => {
-        
-        return await Reservation.findById({_id: reservationId}, {__v: 0}).populate(POPULATE_RESERVATION)
+const verifyIfReservationExistsService = async (reservationId) => {
+
+    const reservation = await Reservation.findOne({ _id: reservationId })
+
+    if (!reservation) {
+
+        throw new ErrorApp(`The reservation "${reservationId}" does not exist`, 404);
 
     }
 
-    // getMyReservationByIdService (Uno en específico que sea mío)
+    return reservation
 
-    export const getMyReservationByIdService = async (userId, reservationId) => {
-        
-        return await Reservation.findOne({userId: userId, _id: reservationId}, {__v: 0}).populate(POPULATE_RESERVATION)
+}
 
-    }
+const reservationData = async (reservation) => {
 
-    // createReservationService
+    const user = await User.findById(reservation.user)
 
-    export const createReservationService = async (userId, cottageId, data) => {
-        
-        const user = await verifyCottageService(userId)
+    const cottage = await Cottage.findById(reservation.cottage)
 
-        const cottage = await verifyCottageService(cottageId)
+    const entryDate = new Date(reservation.entryDate)
 
-        if (!cottage || !user) {
+    const exitDate = new Date(reservation.exitDate)
 
-            throw new ErrorApp("There is a cottage or an user that does not exist", 404);
-            
-        }
+    if (!cottage || !user) {
 
-
-        return await Reservation.create(data).populate(POPULATE_RESERVATION)
+        throw new ErrorApp("There is a cottage or an user that does not exist", 404);
 
     }
 
-    // updateReservationService
+    return {
+        user: user,
+        cottage: cottage,
+        entryDate: reservation.entryDate,
+        exitDate: reservation.exitDate,
+        passangerNumber: reservation.passangerNumber,
+        totalPrice: (cottage.pricePerNightAndPerson * reservation.passangerNumber * Math.round((exitDate - entryDate) / 86400000)),
+        reservationState: reservation.reservationState,
+        methodOfPayment: reservation.methodOfPayment,
+        isPaid: reservation.isPaid,
+        reservationComment: reservation.reservationComment
 
-    export const updateReservationService = async (userId, {reservationState, isPaid, reservationComment} = {}) => {
+    }
+
+}
+
+// getAllReservationsService (Todos)
+
+export const getAllReservationsService = async (userId = null) => {
+
+    const filter = {}
+
+    if (userId !== null) {
+        
+        filter.user = userId
+    }
+
+    return await Reservation.find(filter, { __v: 0 }).populate(POPULATE_RESERVATION).sort({ createdAt: -1 })
+
+}
+
+// getReservationByIdService - Uno en específico que bien puede ser mío (userOnly) o no (adminOnly)
+
+export const getReservationByIdService = async (reservationId, userId = null) => { // El null viene por default en caso de que no se lo envíe
+
+    const filter = {_id: reservationId }
+
+    if (userId !== null) {
+        
+      filter.user = userId
+
+    }
+
+    const reservation = await Reservation.findOne(filter, { __v: 0 }).populate(POPULATE_RESERVATION)
+
+    if (!reservation) {
+        
+        throw new ErrorApp("The reservation does not exist or you do not have access to it", 400);
+
+    }
+
+    return reservation
+}
+
+// createReservationService
+
+export const createReservationService = async (userId, cottageId, data) => {
+
+    data.user = userId
+
+    data.cottage = cottageId
+
+    const reservation = await reservationData(data)
+
+    const dateValidation = await validateDate(reservation)
+
+    const dateSuperpostionValidation = await validateDateSuperposition(reservation)
+
+    const capacityValidation = await validateCapacity(reservation)
+
+    const newReservation = await Reservation.create(reservation)
+
+    return await newReservation.populate(POPULATE_RESERVATION)
+
+}
+
     
-        return await Reservation.findByIdAndUpdate({_id: userId},  {reservationState, isPaid, reservationComment}, {
+
+// updateReservationService
+
+export const updateReservationService = async (reservationId, { reservationState, isPaid, reservationComment } = {}) => {
+
+    const updatedReservation = await Reservation.findByIdAndUpdate({ _id: reservationId }, { reservationState, isPaid, reservationComment }, {
 
         returnDocument: "after",
 
         runValidators: true,
 
-        }
+    }
     ).populate(POPULATE_RESERVATION)
+
+    if (!updatedReservation) {
+        
+        throw new ErrorApp("There was a problem during the UPDATE of the reservation", 400);
+        
+    
+    }
+    return updatedReservation
+}
+
+// deleteReservationService (adminOnly) - Analizar la lógica de negocio:
+
+/*
+
+¿Conviene que el usuario pueda eliminar la reservación?
+
+*/
+
+export const deleteReservationService = async (reservationId) => {
+    
+    const reservation = await Reservation.findByIdAndDelete({_id: reservationId})
+
+    if (!reservation) {
+        
+        throw new ErrorApp(`The reservation with the id ${reservationId} does not exist`, 404);        
 
     }
 
-    // Definir si se agrega el delete
+    return reservation.populate(POPULATE_RESERVATION)
+}

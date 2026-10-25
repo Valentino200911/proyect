@@ -293,11 +293,19 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
   - **Cuadrigésimo cuarto commit del proyecto en Github**  (Hay múltiples gaps para resolver)
 
-    - Creación de la const POPULATE_CONTACT en utils/constants para definir el populate de contact
+    - Creación de la const POPULATE_CONTACT en utils/constants/generalConstants.js, para definir el populate de contact
     - Eliminación del "required: true" en contactModel (campo "user"), ya que este recibe el user a través del token
     - En contactService, se modificaron las funcionalidades del CRUD, el get, por ejemplo, ahora bien puede recibir un userId del usuario (lo que hará que sólo se muestren los contactos del propio usuario - funcionalidad restringida al usuario por token, userOnly) o puede no recibirlo, (lo que hará que se muestren todos los contactos sin importar el usuario - funcionalidad restringida al admin por token, adminOnly)
     - En contactController, se hicieron modificaciones concordantes con los cambios del service
     - Validaciones con POSTMAN
     - Modificaciones al seed para dichas validaciones
     - Validaciones completadas
-    
+
+  - **Cuadrigésimo quinto commit del proyecto en Github**  (Hay múltiples gaps para resolver)
+
+    - Eliminación del "required: true" en reservationModel (campo "user"), ya que este recibe el user a través del token
+    - En el service, se modificó la lógica del CREATE, lo cual hizo que este funcione adecuadamente. Además se creó una función en generalConstants.js que realiza un parse del formato de las fechas de UTC 0 a UTC -3 (hora local)
+    - Se realizaron las modificaciones respectivas al controller, agregándole la validación para obtener los registros según el rol
+    - Se validó a través de POSTMAN, validaciones existosas aunque con gaps de código
+    - Modificaciones al seed para dichas validaciones
+    - Estas operaciones se realizaron a través de consultas a Gemini

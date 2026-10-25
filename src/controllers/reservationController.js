@@ -4,20 +4,24 @@ import * as reservationService from "../services/reservationService.js"
 // getAllReservationsController
 
 export const getAllReservationsController = async (req, res) => {
-    
-    const reservations = await reservationService.getAllReservationsService(req.query)
 
-    res.status(200).json(reservations)
+    // Nota, lo que sigue después del req NO ES UN NOMBRE, es la propiedad propiamente dicha con los elementos internos a los que se puede acceder mediante dot notation
 
-}
+    const role = req.user.role // Aquí va la obtención del admin
 
-// getAllMyReservationsController
+    if (role === "admin") {
 
-export const getAllMyReservationsController = async (req, res) => {
-    
-    const reservations = await reservationService.getAllMyReservations(req.user.id)
+        const allReservations = await reservationService.getAllReservationsService()
 
-    res.status(200).json(reservations)
+        res.status(200).json(allReservations)
+
+    } else {
+
+        const allUserReservations = await reservationService.getAllReservationsService(req.user.id)
+
+        res.status(200).json(allUserReservations)
+
+    }
 
 }
 
@@ -25,29 +29,39 @@ export const getAllMyReservationsController = async (req, res) => {
 
 export const getReservationByIdController = async (req, res) => {
     
-    const reservation = await reservationService.getReservationByIdService(req.params.id)
+        const role = req.user.role // Aquí va la obtención del admin
 
-    res.status(200).json(reservation)
+    if (role === "admin") {
 
-}
+        const specificReservation = await reservationService.getReservationByIdService(req.params.id)
 
-// getMyReservationByIdController
+        res.status(200).json(specificReservation)
 
-export const getMyReservationByIdController = async (req, res) => {
-    
-    const reservation = await reservationService.getMyReservationByIdService(req.user.id, req.params.id)
+    } else {
 
-    res.status(200).json(reservation)
+        const mySpecificReservation = await reservationService.getReservationByIdService(req.params.id, req.user.id)
+
+        res.status(200).json(mySpecificReservation)
+
+    }
 
 }
 
 // createReservationController
 
-export const createReservationController = async (req, res) => {
+export const createReservationController = async (req, res, next) => {
     
-    const reservation = await reservationService.createReservationService(req.body) // Revisar si requiere req.params.id
+    try {
 
-    res.status(201).json(reservation)
+        const reservation = await reservationService.createReservationService(req.user.id, req.body.cottage, req.body)
+        
+        return res.status(201).json(reservation)
+
+    } catch (error) {
+    
+        next(error)
+
+    }
 
 }
 
@@ -57,8 +71,28 @@ export const updateReservationController = async (req, res) => {
     
     const reservation = await reservationService.updateReservationService(req.params.id, req.body)
 
+    if (!reservation) {
+    
+        return res.status(404).json({error: "The reservation required by the controller with UPDATE does not exist"})
+
+    }
+
     res.status(200).json(reservation)
 
 }
 
-// deleteReservationController (gap)
+// deleteReservationController 
+
+export const deleteReservationController = async (req, res) => {
+    
+    const reservation = await reservationService.deleteReservationService(req.params.id)
+
+    if (!reservation) {
+    
+        return res.status(404).json({error: "The reservation required by the controller with DELETE does not exist"})
+
+    }
+
+    res.status(200).json(reservation)
+
+}
