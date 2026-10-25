@@ -313,3 +313,17 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - **Cuadrigésimo sexto commit del proyecto en Github**  (Hay múltiples gaps para resolver)
 
     - Adición de gaps de código, modificaciones de comentarios en handleError.js y cambios en seed.js
+
+- Regreso a la registración normal de la bitácora
+- Ordenamiento y depuración de gaps
+  - Depuración de gaps ya completados y dudas ya resueltas, siendo los siguientes:
+    - Definir comentarios sobre el funcionamiento de getAllContactsService y getContactServiceById
+    - Revisión correcta de totalPrice en Reservation
+    - Delete de reservationService
+    - validateDateSuperposition en reservationService
+    - Verificar si los controller con más de un argumento no están invertidos
+    - Verificar nuevamente todas las rutas de reservation
+    - Verificar el manejo del UTC de las fechas según JS
+    - Descentralizar funciones de cálculo de fecha en reservationService (no era necesaria)
+    - Revisar los permisos para get/:id en user, ¿Cualquiera podría ver el usuario de otra persona si conoce el id?
+- **Cuadrigésimo séptimo commit del proyecto en Github** 

@@ -126,6 +126,36 @@ const reservationData = async (reservation) => {
 
 export const getAllReservationsService = async (userId = null) => {
 
+/*
+
+Esto funciona de la siguiente manera:
+
+En getAllReservationsService y getReservationByIdService (lo mismo aplica para las operaciones análogas en contact), el campo userId es opcional (por eso es = null), eso quiere decir que la función puede o no recibirlo.
+
+Dado a que existen tokens de user y admin, técnicamente siempre están siendo recibidos
+
+Ahora, para que eso aplique, se crea una const filter = {}, y se definbe que si hay userId (o es userId !== null), entonces que al objeto filter se le agregue la propiedad user: userId
+
+Este filter se usa luego en las consultas de find y findOne (la razón por la cual se usa findOne en getReservationByIdService en vez de findById es porque esta sólo admite un _id y ningún otro campo. En cambio findOne admite múltiples condiciones, lo cual es el caso si userId !== null)
+
+Definido esto, se pasa al controller donde, si hay userId, se determina su rol a través de const role = req.user.role
+
+Si role === "admin", entonces se devolverán todos los registros (o uno en específico) sin importar quién sea el usuario
+
+Si role !== "admin", solo se devolverán los registros del usuario a quien le pertenezca el token, y si intenta obtener por id una reservación que no es suya, aplicará en el service:
+
+    const reservation = await Reservation.findOne(filter, { __v: 0 }).populate(POPULATE_RESERVATION)
+
+    if (!reservation) {
+        
+        throw new ErrorApp("The reservation does not exist or you do not have access to it", 403);
+
+    }
+
+    Por convención se empleó al 403 - forbidden como salida, pero la validación también puede admitir un 404, es decir, que  no haya reservation en específico
+
+*/
+
     const filter = {}
 
     if (userId !== null) {
@@ -153,7 +183,7 @@ export const getReservationByIdService = async (reservationId, userId = null) =>
 
     if (!reservation) {
         
-        throw new ErrorApp("The reservation does not exist or you do not have access to it", 400);
+        throw new ErrorApp("The reservation does not exist or you do not have access to it", 403);
 
     }
 
