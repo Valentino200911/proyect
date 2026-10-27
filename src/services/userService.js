@@ -71,6 +71,14 @@ import Reservation from "../models/reservationModel.js";
 
     export const deleteUserService = async (userId) => {
         
+        const foundUser = await User.findById({_id: userId})
+
+        if (foundUser.role === "admin") {
+            
+            throw new ErrorApp("An admin cannot delete itself or other admins", 409);
+        
+        }
+
         const contacts = await Contact.countDocuments({ user: { _id: userId }})
 
         const reservations = await Reservation.countDocuments({ user: { _id: userId }})

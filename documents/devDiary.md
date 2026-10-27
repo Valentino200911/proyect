@@ -338,4 +338,14 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - Cambios en el seed
 - **Quincuagésimo commit del proyecto en Github**
   - Creación de la carpeta `documents` para almacenar los archivos devDiary.md, gaps.md y roleTable.png
-- **Quincuagésimo primer commit del proyecto en Github**  
+- **Quincuagésimo primer commit del proyecto en Github**
+  - Resolución de los siguientes gaps de código:
+    - Cambio de estado de reservationState según isPaid
+      - Definido en reservationService
+    - Definir que un admin no pueda eliminar a otro admin (userService y userController)
+    - Revisar y definir los índices de los modelos para reservation
+
+### 26 de octubre de 2026
+
+- Se resolvieron los gaps y se rehabilitó la ruta de create user
+- **Quincuagésimo segundo commit del proyecto en Github**

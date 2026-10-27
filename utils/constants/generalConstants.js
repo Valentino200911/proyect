@@ -93,7 +93,7 @@
 
     // reservationService
 
-        export const parseToLocalDate = function (date) {
+        export const parseToLocalDate = function (date) { // Parsea el string en un formato distinto, para que al volverse dato tipo DATE, se mantenga en UTC -3
             
             if (date instanceof Date) {
                 

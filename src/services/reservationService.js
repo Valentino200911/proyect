@@ -78,7 +78,7 @@ const validateDateSuperposition = async (reservation) => {
 
 const verifyIfReservationExistsService = async (reservationId) => {
 
-    const reservation = await Reservation.findOne({ _id: reservationId })
+    const reservation = await Reservation.findById({ _id: reservationId })
 
     if (!reservation) {
 
@@ -227,12 +227,37 @@ export const updateReservationService = async (reservationId, { reservationState
     }
     ).populate(POPULATE_RESERVATION)
 
-    if (!updatedReservation) {
+/*
+
+- Si isPaid pasa de false a true, y reservationState es "in progress", entonces reservationState se vuelve "done"
+
+- Si isPaid es true y se vuelve false, y además reservationState  es "done", se vuelve "fallen"
+
+- TODO: Encontrar una manera de que si una reservación es "in progress" por mucho tiempo se vuelva fallen
+
+- Una reservación cuyo reservationState: "in progress" puede modificarse manualmente p/ que sea  "fallen" (pero no al revés), mas no "done"
+
+*/
+
+    if (!updatedReservation) { // No la encuentra, early return
         
-        throw new ErrorApp("There was a problem during the UPDATE of the reservation", 400);
-        
+        throw new ErrorApp(`The reservation with the id ${reservationId} does not exist`, 404);        
     
     }
+
+    if (updatedReservation.isPaid === true) { // Tiene false como default, pasa a true, entonces la reservación está pagada
+        
+        updatedReservation.reservationState = "done"
+
+    } 
+
+    if (updatedReservation.isPaid === false) { // Si por x motivo el pago no era cierto, pasa a ser fallen
+        
+        updatedReservation.reservationState = "fallen" 
+
+    } 
+
+
     return updatedReservation
 }
 

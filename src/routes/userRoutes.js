@@ -10,7 +10,7 @@ router.get("/get/:id", userController.getUserByIdController)
 
 router.get("/get", userController.getAllUsersController)
 
-// router.post("/post", userController.createUserController) registerService ya cumple esa función
+router.post("/post", userController.createUserController)
 
 router.patch("/patch/:id", userController.updateUserController)
 
