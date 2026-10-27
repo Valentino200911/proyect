@@ -3,4 +3,4 @@ privateKeys/
 uploads
 *.log
 Thumbs.db
-.env new
+.env

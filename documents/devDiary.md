@@ -372,3 +372,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
     - Resolver las cuestiones de la .env (se creó una variable de entorno con nombre distinto que está ignorada según .gitignore, a la que después se le cambiará el nombre después del commit)
     - Correcciones personales en reservationService
 - **Quincuagésimo sexto commit del proyecto en Github**
+  - Eliminación del .env original
+- **Quincuagésimo séptimo commit del proyecto en Github**
+  - Cambio de nombre de la .env nueva, la cual está ignorada según .gitignore
+  - Resolución de los problemas con la .env (cambios en las claves)
