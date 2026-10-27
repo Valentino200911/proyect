@@ -17,7 +17,7 @@
 
 - ¿Está bien planteado el modo de modificar en reservation?
   - ¿Es necesario que genere mensajes de error si un usuario intenta modificar algún campo y este no lo hace por la condición?
-
+  
 - ¿Están bien definidas las restricciones para eliminar un user en userService, así como un cottage en cottageService?
 
 - ¿Es necesario deshabilitar a través de un comentario la ruta POST de userRoutes.js ya que registerService ya cumple con esa función?
@@ -26,3 +26,8 @@
 - Puedo definir como index a valores que no son únicos en reservationModel
 
 - ¿Es necesario que todos los services tengan una función verifyIfExists?, ¿Cómo puedo centralizarlas?
+  - Si no es necesario centralizarlas, es preciso que cada operación que involucre un id tenga una alerta de Error 404
+
+- En userService, updateUserService, El admin debería ser capaz de modificar el usuario completo, pero si un usuario tiene un perfil, ¿no debería ser capaz de modificarse a sí mismo en ciertos aspectos?
+
+- throw new ErrorApp("The reservation does not exist or you do not have access to it", 403); - reservationService, L.186 es un 404 o un 403

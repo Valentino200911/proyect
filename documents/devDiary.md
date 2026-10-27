@@ -349,3 +349,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
 - Se resolvieron los gaps y se rehabilitó la ruta de create user
 - **Quincuagésimo segundo commit del proyecto en Github**
+  - Anotación de dudas y comentarios
+- **Quincuagésimo tercer commit del proyecto en Github**
+  

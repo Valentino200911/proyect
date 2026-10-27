@@ -49,7 +49,7 @@ import Reservation from "../models/reservationModel.js";
         return user
     }
 
-    // updateUserService  
+    // updateUserService  - El admin debería ser capaz de modificar el usuario completo, pero si un usuario tiene un perfil, ¿no debería ser capaz de modificarse a sí mismo en ciertos aspectos?
 
     export const updateUserService = async (userId, data) => {
     
