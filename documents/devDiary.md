@@ -351,4 +351,9 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - **Quincuagésimo segundo commit del proyecto en Github**
   - Anotación de dudas y comentarios
 - **Quincuagésimo tercer commit del proyecto en Github**
-  
+  - Inicio del desarrollo aplicando SUPABASE - (Parte de configuración)
+    - Instalación de las dependencias de Multer y Supabase
+    - Creación en SUPABASE del almacenamiento en la nube y de los buckets correspondientes (naturalElement)
+    - Modificación de la .env y de .env.example (adición de variables de entorno)
+    - Modificación acorde de config.js
+- **Quincuagésimo cuarto commit del proyecto en Github**
