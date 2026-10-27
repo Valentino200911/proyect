@@ -5,6 +5,7 @@
 - Documentar el proceso de modificación de reservation
 - Verificación general de la existencia de elementos necesarios en los services
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
+- Separación de responsabilidades de app.js e index.js
 - Anotar en el README como inicializar el proyecto y cambiar la estructura de carpetas
 - Habilitar multer y supabase para naturalElement.js y cottage.js
 - Manejo de proxy en el front (ver codigo modelo de front)
@@ -12,6 +13,7 @@
 - Manejo del error 429 - Rate limit
 - Habilitar Firebase
 - Analizar OWASP
+- Modificar .env y las claves
 
 // Dudas
 
@@ -29,5 +31,3 @@
   - Si no es necesario centralizarlas, es preciso que cada operación que involucre un id tenga una alerta de Error 404
 
 - En userService, updateUserService, El admin debería ser capaz de modificar el usuario completo, pero si un usuario tiene un perfil, ¿no debería ser capaz de modificarse a sí mismo en ciertos aspectos?
-
-- throw new ErrorApp("The reservation does not exist or you do not have access to it", 403); - reservationService, L.186 es un 404 o un 403

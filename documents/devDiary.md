@@ -367,3 +367,8 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - Modificación al model de naturalElement y cottage p/ que tengan image
   - Modificación a los routes para permitir la subida de img.
 - **Quincuagésimo quinto commit del proyecto en Github**
+  - Creación de `src/config/supabase.js`
+  - Clase de Consulta
+    - Resolver las cuestiones de la .env (se creó una variable de entorno con nombre distinto que está ignorada según .gitignore, a la que después se le cambiará el nombre después del commit)
+    - Correcciones personales en reservationService
+- **Quincuagésimo sexto commit del proyecto en Github**

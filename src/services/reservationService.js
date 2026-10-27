@@ -148,12 +148,11 @@ Si role !== "admin", solo se devolverán los registros del usuario a quien le pe
 
     if (!reservation) {
         
-        throw new ErrorApp("The reservation does not exist or you do not have access to it", 403);
+        throw new ErrorApp("The reservation does not exist or you do not have access to it", 400);
 
     }
 
-    Por convención se empleó al 403 - forbidden como salida, pero la validación también puede admitir un 404, es decir, que  no haya reservation en específico
-
+    Por convención se empleó al 400 - bad request como salida, pero la validación también puede admitir un 404, es decir, que  no haya reservation en específico o, en todo caso, un 403, forbidden
 */
 
     const filter = {}
@@ -183,7 +182,7 @@ export const getReservationByIdService = async (reservationId, userId = null) =>
 
     if (!reservation) {
         
-        throw new ErrorApp("The reservation does not exist or you do not have access to it", 403);
+        throw new ErrorApp("The reservation does not exist or you do not have access to it", 400);
 
     }
 
@@ -211,8 +210,6 @@ export const createReservationService = async (userId, cottageId, data) => {
     return await newReservation.populate(POPULATE_RESERVATION)
 
 }
-
-    
 
 // updateReservationService
 
@@ -257,8 +254,8 @@ export const updateReservationService = async (reservationId, { reservationState
 
     } 
 
-
     return updatedReservation
+
 }
 
 // deleteReservationService (adminOnly) - Analizar la lógica de negocio:

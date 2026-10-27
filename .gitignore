@@ -1,3 +1,6 @@
 node_modules/
 privateKeys/
-.env
+uploads
+*.log
+Thumbs.db
+.env new
