@@ -357,3 +357,13 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
     - Modificación de la .env y de .env.example (adición de variables de entorno)
     - Modificación acorde de config.js
 - **Quincuagésimo cuarto commit del proyecto en Github**
+
+### 27 de octubre de 2026
+
+- Por errores en la subida de commits, se decidió crear una copia del proyecto para seguir
+- Hay errores de protección de Github por la .env, se proseguirá sin commitear una línea específica.
+- Creación del archivo `middlewares/uploadImage.js`
+  - Creación del middleware para la subida de imágenes
+  - Modificación al model de naturalElement y cottage p/ que tengan image
+  - Modificación a los routes para permitir la subida de img.
+- **Quincuagésimo quinto commit del proyecto en Github**

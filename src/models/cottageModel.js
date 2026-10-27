@@ -47,6 +47,10 @@ description:{
     trim: true,
     lowercase: true
 },
+image:{
+    type: String, 
+    default: null // Puede no tener imagen
+},
 
 }, {timestamps: true} //Protocolo de seguridad
 

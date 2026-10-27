@@ -32,10 +32,8 @@ description:{
     lowercase: true,
 },
 image:{
-    type: String, // link
-    required: [true, "The link of the image of the natural element is required"],
-    match: validDomainRegex,
-    trim: true
+    type: String, 
+    default: null // Puede no tener imagen
 },
 info:{
     type: String, // link
