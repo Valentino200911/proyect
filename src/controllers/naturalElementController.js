@@ -31,7 +31,7 @@ import * as naturalElementService from "../services/naturalElementService.js"
 
     export const createNaturalElementController = async (req, res) => {
         
-        const naturalElement = await naturalElementService.createNaturalElementService(req.body)
+        const naturalElement = await naturalElementService.createNaturalElementService(req.body, req.file)
 
         res.status(201).json(naturalElement)
     }
@@ -40,7 +40,7 @@ import * as naturalElementService from "../services/naturalElementService.js"
 
     export const updateNaturalElementController = async (req, res) => {
         
-        const naturalElement = await naturalElementService.updateNaturalElementService(req.params.id, req.body)
+        const naturalElement = await naturalElementService.updateNaturalElementService(req.params.id, req.body, req.file)
 
         if (!naturalElement) {
             

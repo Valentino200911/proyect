@@ -1,6 +1,6 @@
 import { STORAGE_LOCAL, STORAGE_SUPABASE } from "../../utils/config.js";
 import { ErrorApp } from "../../utils/ErrorApp.js";
-import { upload, erase } from "./storage/supabase.js";
+import { uploadSupabase, eraseSupabase } from "./storage/supabase.js";
 
 const PROVIDERS = [STORAGE_LOCAL, STORAGE_SUPABASE]
 
@@ -10,10 +10,10 @@ if (!PROVIDERS.includes(STORAGE_SUPABASE)) {
 
 }
 
-const adapter = await import(`./storage/${STORAGE_SUPABASE}.js`)
+const adapter = await import(`./storage/${STORAGE_SUPABASE || STORAGE_LOCAL}.js`)
 
 export const uploadImageService = async (file, FOLDER) => {
-    
+
     if (!file || !FOLDER) {
         
         return null
@@ -22,7 +22,7 @@ export const uploadImageService = async (file, FOLDER) => {
 
     try {
         
-        return await adapter.upload(file, FOLDER)
+        return await adapter.uploadSupabase(file, FOLDER)
 
     } catch (error) {
         
@@ -46,7 +46,7 @@ export const eraseImageService = async (url, FOLDER) => {
     
     try {
         
-        return await adapter.erase(url, FOLDER)
+        return await adapter.eraseSupabase(url, FOLDER)
 
     } catch (error) {
         

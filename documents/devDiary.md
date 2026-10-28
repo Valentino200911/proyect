@@ -396,3 +396,5 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
   - **Sexagésimo primer commit del proyecto en Github**  
     - Cambios en naturalElementService y naturalElementController
+    - Validaciones con POSTMAN
+    - Correcciones de código referente a SUPABASE

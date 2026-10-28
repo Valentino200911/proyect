@@ -7,7 +7,7 @@ import path from "path"
 //    2. El nombre lo elige el cliente: podría mandar "../../index.js".
 // Date.now() + un número al azar alcanza para que no se repitan.
 
-export const uniqueName = (originalname = "archivo") => {
+export const uniqueName = (originalname = "file") => {
 
     const extension = path.extname(originalname).toLowerCase() || ".jpg"
     

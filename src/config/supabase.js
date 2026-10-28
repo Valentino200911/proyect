@@ -10,3 +10,5 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
 // Conexión viva con el sistema externa
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+

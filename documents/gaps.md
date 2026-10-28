@@ -1,6 +1,6 @@
 # Gaps
 
-- Cambio de estado de isPaid según reservationState
+- Revisar qué pasa si FOLDER en supabase no incluye a las .env
 - Mediante alguna librería de JS, permitir que pasado cierto tiempo, si una reservación no es pagada, se vuelva automáticamente como "fallen"
 - Documentar el proceso de modificación de reservation
 - Verificación general de la existencia de elementos necesarios en los services

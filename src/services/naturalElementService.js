@@ -1,6 +1,8 @@
 
+import { IMAGES_FOLDER_NATURAL_ELEMENT } from "../../utils/config.js";
 import { ErrorApp } from "../../utils/ErrorApp.js";
 import NaturalElement from "../models/naturalElementModel.js";
+import { eraseImageService, uploadImageService } from "./storageService.js";
 
 // CRUD general
 
@@ -47,28 +49,70 @@ import NaturalElement from "../models/naturalElementModel.js";
 
 // createNaturalElementService
     
-    export const createNaturalElementService = async (data) => {
+    export const createNaturalElementService = async (data, file) => {
         
-        const naturalElement = await NaturalElement.create(data)
+        const image = await uploadImageService(file, IMAGES_FOLDER_NATURAL_ELEMENT)
 
-        return naturalElement
+        try {
+
+            const naturalElement = await NaturalElement.create({...data, file})
+
+            return naturalElement
+
+        } catch (error) {
+            
+            await eraseImageService(image, IMAGES_FOLDER_NATURAL_ELEMENT)
+
+        }
+
 
     }
 
 // updateNaturalElementService
 
-    export const updateNaturalElementService = async (naturalElementId, data) => {
+    export const updateNaturalElementService = async (naturalElementId, data, file) => {
         
-        const naturalElement = await NaturalElement.findByIdAndUpdate({_id: naturalElementId}, data, {
+        const previousNaturalElement = await NaturalElement.findById({ _id: naturalElementId })
 
-        returnDocument: "after",
+        const previousData = file ? previousNaturalElement : null
 
-        runValidators: true,
+        const changes = {...data}
+
+        if (file) {
+            
+            changes.image = await uploadImageService(file, IMAGES_FOLDER_NATURAL_ELEMENT)
 
         }
-    )
 
-        return naturalElement
+        try {
+            
+            const naturalElement = await NaturalElement.findByIdAndUpdate({_id: naturalElementId}, changes, {
+    
+            returnDocument: "after",
+    
+            runValidators: true,
+    
+            }
+        )
+
+            if (naturalElement && previousData) {
+                
+                await eraseImageService(previousData.image, IMAGES_FOLDER_NATURAL_ELEMENT)
+
+            }
+
+            return naturalElement
+
+        } catch (error) {
+            
+            console.error("There has been an error", error);
+            
+
+        }
+
+
+
+
     }
 
 // deleteNaturalElementService
