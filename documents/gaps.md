@@ -13,7 +13,6 @@
 - Manejo del error 429 - Rate limit
 - Habilitar Firebase
 - Analizar OWASP
-- Modificar .env y las claves
 
 // Dudas
 

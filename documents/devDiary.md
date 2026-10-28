@@ -376,3 +376,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - **Quincuagésimo séptimo commit del proyecto en Github**
   - Cambio de nombre de la .env nueva, la cual está ignorada según .gitignore
   - Resolución de los problemas con la .env (cambios en las claves)
+- **Quincuagésimo octavo commit del proyecto en Github**
+  - Creación de los archivos y desarrollo de funcionalidades `src/services/supabase.js` y `src/config/uniqueName.js`
+- **Quincuagésimo noveno commit del proyecto en Github**
