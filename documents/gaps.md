@@ -16,6 +16,8 @@
 
 // Dudas
 
+- ¿Está bien el incluir un param de carpeta en los archivos relacionados con SUPABASE?
+
 - ¿Está bien planteado el modo de modificar en reservation?
   - ¿Es necesario que genere mensajes de error si un usuario intenta modificar algún campo y este no lo hace por la condición?
   

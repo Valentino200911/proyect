@@ -379,3 +379,20 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - **Quincuagésimo octavo commit del proyecto en Github**
   - Creación de los archivos y desarrollo de funcionalidades `src/services/supabase.js` y `src/config/uniqueName.js`
 - **Quincuagésimo noveno commit del proyecto en Github**
+  - Modificaciones en naturalElementService.js
+
+### 28 de octubre de 2026
+
+- Creación del archivo `services/storageService.js`
+- Creación del archivo `storage/local.js`
+- Modificaciones en las variables de entorno para mantener una única fuente de la verdad
+- Para separar los cambios de los commits, se aplicará el siguiente orden:
+
+  - **Sexagésimo commit del proyecto en Github**  
+    - Creación del archivo `services/storageService.js`
+    - Creación del archivo `storage/local.js`
+    - Cambios en `storage/supabase.js`
+    - Cambios en la .env y en .env.example, así como en config.js
+
+  - **Sexagésimo primer commit del proyecto en Github**  
+    - Cambios en naturalElementService y naturalElementController
