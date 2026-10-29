@@ -33,7 +33,7 @@ description:{
 },
 image:{
     type: String, 
-    default: null // Puede no tener imagen
+    required: [true, "The image of the natural element is required"]
 },
 info:{
     type: String, // link

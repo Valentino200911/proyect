@@ -52,10 +52,10 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
     export const createNaturalElementService = async (data, file) => {
         
         const image = await uploadImageService(file, IMAGES_FOLDER_NATURAL_ELEMENT)
-
+        
         try {
 
-            const naturalElement = await NaturalElement.create({...data, file})
+            const naturalElement = await NaturalElement.create({...data, image})
 
             return naturalElement
 
@@ -63,9 +63,10 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
             
             await eraseImageService(image, IMAGES_FOLDER_NATURAL_ELEMENT)
 
-        }
-
-
+            throw error
+            
+        }          
+        
     }
 
 // updateNaturalElementService
@@ -107,11 +108,7 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
             
             console.error("There has been an error", error);
             
-
         }
-
-
-
 
     }
 

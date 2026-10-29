@@ -398,3 +398,13 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
     - Cambios en naturalElementService y naturalElementController
     - Validaciones con POSTMAN
     - Correcciones de código referente a SUPABASE
+
+### 29 de octubre de 2026
+
+- Correcciones en el model de naturalElement, así como el service
+- Cambios en el seed.js
+- Centralización de los providers de Supabase en `utils/constants/supabaseConstants.js`
+- Adición de .env y cambios en config.js
+- Cambios en storage/local.js y en storage/supabase.js
+- Se movió uniqueName.js de storage/ a utils/
+- **Sexagésimo segundo commit del proyecto en Github**  

@@ -1,0 +1,3 @@
+import { STORAGE_LOCAL, STORAGE_SUPABASE } from "../config.js";
+
+export const PROVIDERS = [STORAGE_LOCAL, STORAGE_SUPABASE]

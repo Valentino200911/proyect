@@ -9,15 +9,15 @@
 //      de responder la API.
 import fs from "fs/promises"
 import path from "path"
-import { uniqueName } from "./uniqueName.js"
-import { IMAGES_FOLDER_COTTAGE, IMAGES_FOLDER_COTTAGE } from "../../../utils/config.js"
+import { IMAGES_FOLDER_NATURAL_ELEMENT, IMAGES_FOLDER_COTTAGE } from "../../../utils/config.js"
+import { uniqueName } from "../../../utils/uniqueName.js"
 
-export const upload = async (file, FOLDER) => {
+export const uploadLocal = async (file, FOLDER) => {
     const name = uniqueName(file.originalname)
     const folder = path.resolve(FOLDER)
 
     // recursive: true → si la carpeta ya existe, no se queja
-    await fs.mkdir(carpeta, { recursive: true })
+    await fs.mkdir(folder, { recursive: true })
     await fs.writeFile(path.join(folder, name), file.buffer)
 
     // esta URL funciona gracias al express.static() de index.js
@@ -25,7 +25,7 @@ export const upload = async (file, FOLDER) => {
     return `${API_URL}/${FOLDER}/${name}`
 }
 
-export const erase = async (url, FOLDER) => {
+export const eraseLocal = async (url, FOLDER) => {
 
     const name = path.basename(new URL(url).pathname)
 
