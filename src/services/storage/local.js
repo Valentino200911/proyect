@@ -9,8 +9,9 @@
 //      de responder la API.
 import fs from "fs/promises"
 import path from "path"
-import { IMAGES_FOLDER_NATURAL_ELEMENT, IMAGES_FOLDER_COTTAGE, API_URL, STORAGE_LOCAL } from "../../../utils/config.js"
-import { uniqueName } from "../../../utils/uniqueName.js"
+import { API_URL, STORAGE_LOCAL } from "../../utils/config.js"
+import { uniqueName } from "../../utils/constants/uniqueName.js"
+
 
 export const uploadLocal = async (file, FOLDER) => {
 

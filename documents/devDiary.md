@@ -417,3 +417,5 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambios en las .env, config.js y en .gitignore para ignorar el almacenamiento local
 - Se movió uniqueName.js de utils/ a utils/constants/
 - **Sexagésimo tercer commit del proyecto en Github**  
+- Se movió la carpeta utils al interior de src y se modificaron todos los archivos que involucran a utils
+- **Sexagésimo cuarto commit del proyecto en Github**  

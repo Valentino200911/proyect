@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-import { binomialNameRegex, validDomainRegex } from "../../utils/constants/generalConstants.js";
+import { binomialNameRegex, validDomainRegex } from "../utils/constants/generalConstants.js";
+
 
 const naturalElementSchema = new mongoose.Schema({
 

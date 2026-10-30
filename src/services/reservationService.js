@@ -1,8 +1,8 @@
-import { ErrorApp } from "../../utils/ErrorApp.js";
+import { ErrorApp } from "../utils/ErrorApp.js";
 import Cottage from "../models/cottageModel.js";
 import User from "../models/userModel.js";
 import Reservation from "../models/reservationModel.js";
-import { parseToLocalDate, POPULATE_RESERVATION } from "../../utils/constants/generalConstants.js";
+import { parseToLocalDate, POPULATE_RESERVATION } from "../utils/constants/generalConstants.js";
 
 // Validar la reservación y aplicar lógica de negocio
 

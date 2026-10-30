@@ -1,6 +1,7 @@
+
 import { supabase } from "../../config/supabase.js";
-import { IMAGES_FOLDER_NATURAL_ELEMENT, IMAGES_FOLDER_COTTAGE} from "../../../utils/config.js";
-import { uniqueName } from "../../../utils/uniqueName.js";
+import { uniqueName } from "../../utils/constants/uniqueName.js";
+
 
 const bucket =  (FOLDER) => { // Debido a que hay múltiples carpetas en SUPABASE, se requiere un param con validación
     

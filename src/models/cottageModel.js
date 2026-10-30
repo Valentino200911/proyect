@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { LOCATION } from "../../utils/constants/generalConstants.js";
+import { LOCATION } from "../utils/constants/generalConstants.js";
 
 const cottageSchema = new mongoose.Schema({
 

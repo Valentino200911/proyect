@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { METHOD_OF_PAYMENT, RESERVATION_STATE } from "../../utils/constants/generalConstants.js";
+import { METHOD_OF_PAYMENT, RESERVATION_STATE } from "../utils/constants/generalConstants.js";
 
 const reservationSchema = new mongoose.Schema({
 

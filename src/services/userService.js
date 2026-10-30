@@ -1,8 +1,9 @@
 
-import { ErrorApp } from "../../utils/ErrorApp.js";
+
 import User from "../models/userModel.js";
 import Contact from "../models/contactModel.js";
 import Reservation from "../models/reservationModel.js";
+import { ErrorApp } from "../utils/ErrorApp.js";
 
 // Validación del Usuario
 

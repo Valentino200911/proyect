@@ -1,6 +1,6 @@
 import * as cottageController from "../controllers/cottageController.js";
 import { Router } from "express"
-import { allowed, userOnly, adminOnly } from "../../utils/constants/rolesConstants.js"
+import { allowed, userOnly, adminOnly } from "../utils/constants/rolesConstants.js"
 import { uploadImages } from "../middlewares/uploadImages.js";
 
 const router = Router()

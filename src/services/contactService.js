@@ -1,5 +1,5 @@
-import { POPULATE_CONTACT } from "../../utils/constants/generalConstants.js";
-import { ErrorApp } from "../../utils/ErrorApp.js";
+import { POPULATE_CONTACT } from "../utils/constants/generalConstants.js";
+import { ErrorApp } from "../utils/ErrorApp.js";
 import Contact from "../models/contactModel.js";
 import { verifyUserService } from "./userService.js";
 

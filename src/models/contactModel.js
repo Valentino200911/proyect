@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { REASON_OF_CONTACT } from "../../utils/constants/generalConstants.js";
+import { REASON_OF_CONTACT } from "../utils/constants/generalConstants.js";
 
 export const contactSchema = new mongoose.Schema({
 

@@ -1,7 +1,6 @@
 
-import { IMAGES_FOLDER_NATURAL_ELEMENT, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT } from "../../utils/config.js";
-import { ErrorApp } from "../../utils/ErrorApp.js";
 import NaturalElement from "../models/naturalElementModel.js";
+import { IMAGES_FOLDER_NATURAL_ELEMENT, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT } from "../utils/config.js";
 import { eraseImageLocalService, uploadImageLocalService } from "./storageLocalService.js";
 import { eraseImageSupabaseService, uploadImageSupabaseService } from "./storageSupabaseService.js";
 

@@ -1,6 +1,7 @@
 
-import { allowRoles } from "../../src/middlewares/allowRoles.js";
-import { verifyToken } from "../../src/middlewares/verifyToken.js";
+
+import { allowRoles } from "../../middlewares/allowRoles.js";
+import { verifyToken } from "../../middlewares/verifyToken.js";
 import { ROLES } from "./generalConstants.js";
 
 // Permisos existentes centralizados

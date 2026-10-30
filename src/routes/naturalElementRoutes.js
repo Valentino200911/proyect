@@ -1,7 +1,7 @@
 
 import * as naturalElementController from "../controllers/naturalElementController.js"
 import { Router } from "express"
-import { allowed, userOnly, adminOnly } from "../../utils/constants/rolesConstants.js"
+import { allowed, userOnly, adminOnly } from "../utils/constants/rolesConstants.js"
 import { uploadImages } from "../middlewares/uploadImages.js"
 
 const router = Router()

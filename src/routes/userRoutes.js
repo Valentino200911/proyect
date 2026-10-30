@@ -1,6 +1,6 @@
 import * as userController from "../controllers/userController.js"
 import { Router } from "express"
-import { allowed, userOnly, adminOnly } from "../../utils/constants/rolesConstants.js"
+import { allowed, userOnly, adminOnly } from "../utils/constants/rolesConstants.js"
 
 const router = Router()
 
@@ -10,7 +10,7 @@ router.get("/get/:id", userController.getUserByIdController)
 
 router.get("/get", userController.getAllUsersController)
 
-router.post("/post", userController.createUserController)
+// No es necesaria una ruta aparte de creación de usuario
 
 router.patch("/patch/:id", userController.updateUserController)
 
