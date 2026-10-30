@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors"
-import { PORT } from "../utils/config.js"
+import { PORT, STORAGE_LOCAL } from "../utils/config.js"
 import { connectDB } from "./db.js";
 import naturalElementRoutes from "./routes/naturalElementRoutes.js"
 import userRoutes from "./routes/userRoutes.js";
@@ -15,6 +15,10 @@ const app = express()
 // Conexión a la DB
 
     await connectDB()
+
+// Local storage
+
+app.use(`/${STORAGE_LOCAL}`, express.static(STORAGE_LOCAL))
 
 // Uso y lectura de CORS
 

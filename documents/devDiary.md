@@ -408,3 +408,12 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambios en storage/local.js y en storage/supabase.js
 - Se movió uniqueName.js de storage/ a utils/
 - **Sexagésimo segundo commit del proyecto en Github**  
+- Adición del app.use necesario en index.js para la conexión local de los archivos
+- Cambios en cottageModel a través de hacer a la imagen required
+- Camvios en naturalElementService para permitir el almacenamiento local EN PARALELO al almacenamiento en SUPABASE
+- Creación del archivo `services/storageLocalService` para manejar la publicación y borrado local de las img.
+- Cambio de nomvre de storageService.js a storageSupabaseService.js, además de cambios de nombres en los métodos aplicados
+- Cambios en local.js para fijar el directorio del almacenamiento de las carpetas a nivel local
+- Cambios en las .env, config.js y en .gitignore para ignorar el almacenamiento local
+- Se movió uniqueName.js de utils/ a utils/constants/
+- **Sexagésimo tercer commit del proyecto en Github**  

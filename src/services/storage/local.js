@@ -9,20 +9,28 @@
 //      de responder la API.
 import fs from "fs/promises"
 import path from "path"
-import { IMAGES_FOLDER_NATURAL_ELEMENT, IMAGES_FOLDER_COTTAGE } from "../../../utils/config.js"
+import { IMAGES_FOLDER_NATURAL_ELEMENT, IMAGES_FOLDER_COTTAGE, API_URL, STORAGE_LOCAL } from "../../../utils/config.js"
 import { uniqueName } from "../../../utils/uniqueName.js"
 
 export const uploadLocal = async (file, FOLDER) => {
-    const name = uniqueName(file.originalname)
-    const folder = path.resolve(FOLDER)
 
-    // recursive: true → si la carpeta ya existe, no se queja
+    const name = uniqueName(file.originalname)
+
+    const folder = path.resolve(`${STORAGE_LOCAL}/${FOLDER}`) // La carpeta que se crea en este caso es local/FOLDER, dentro de la carpeta de este proyecto
+
+    // recursive: true → si la carpeta ya existe, no se crea
+
     await fs.mkdir(folder, { recursive: true })
+
     await fs.writeFile(path.join(folder, name), file.buffer)
 
     // esta URL funciona gracias al express.static() de index.js
 
-    return `${API_URL}/${FOLDER}/${name}`
+    const archive = `${API_URL}/${STORAGE_LOCAL}/${FOLDER}/${name}`
+
+    console.log(folder);
+    
+    return archive
 }
 
 export const eraseLocal = async (url, FOLDER) => {
@@ -30,5 +38,5 @@ export const eraseLocal = async (url, FOLDER) => {
     const name = path.basename(new URL(url).pathname)
 
     // force: true → si el archivo ya no está, no tira error
-    await fs.rm(path.join(path.resolve(FOLDER), name), { force: true })
+    await fs.rm(path.join(path.resolve(`${STORAGE_LOCAL}/${FOLDER}`), name), { force: true })
 }

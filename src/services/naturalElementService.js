@@ -1,8 +1,9 @@
 
-import { IMAGES_FOLDER_NATURAL_ELEMENT } from "../../utils/config.js";
+import { IMAGES_FOLDER_NATURAL_ELEMENT, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT } from "../../utils/config.js";
 import { ErrorApp } from "../../utils/ErrorApp.js";
 import NaturalElement from "../models/naturalElementModel.js";
-import { eraseImageService, uploadImageService } from "./storageService.js";
+import { eraseImageLocalService, uploadImageLocalService } from "./storageLocalService.js";
+import { eraseImageSupabaseService, uploadImageSupabaseService } from "./storageSupabaseService.js";
 
 // CRUD general
 
@@ -51,7 +52,11 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
     
     export const createNaturalElementService = async (data, file) => {
         
-        const image = await uploadImageService(file, IMAGES_FOLDER_NATURAL_ELEMENT)
+        const image = await uploadImageSupabaseService(file, IMAGES_FOLDER_NATURAL_ELEMENT) // A SUPABASE
+
+        const localImage = await uploadImageLocalService(file, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT) // A local --> Es para tener una copia actualizada de lo que se sube a SUPABASE, esto no se retorna, la copia que se usa es la de SUPABASE.
+
+        // Si desea excluir esta funcionalidad, comente la constante localImage para desactivarla
         
         try {
 
@@ -61,8 +66,12 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
 
         } catch (error) {
             
-            await eraseImageService(image, IMAGES_FOLDER_NATURAL_ELEMENT)
+            await eraseImageService(image, IMAGES_FOLDER_NATURAL_ELEMENT) // Supabase
 
+            await eraseImageLocalService(localImage, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT ) // Local
+
+            console.error(error);
+            
             throw error
             
         }          
@@ -81,7 +90,9 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
 
         if (file) {
             
-            changes.image = await uploadImageService(file, IMAGES_FOLDER_NATURAL_ELEMENT)
+            changes.image = await uploadImageSupabaseService(file, IMAGES_FOLDER_NATURAL_ELEMENT)
+
+            const localImage = await uploadImageLocalService(file, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT)
 
         }
 
@@ -94,13 +105,18 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
             runValidators: true,
     
             }
+
         )
 
             if (naturalElement && previousData) {
                 
-                await eraseImageService(previousData.image, IMAGES_FOLDER_NATURAL_ELEMENT)
+                await eraseImageSupabaseService(previousData.image, IMAGES_FOLDER_NATURAL_ELEMENT)
 
+                const localImage = await eraseImageLocalService(previousData.image, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT) // TODO: Revisión de la img. local para eliminarla
             }
+
+            console.log(naturalElement);
+            
 
             return naturalElement
 

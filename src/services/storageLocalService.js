@@ -1,17 +1,16 @@
 import { STORAGE_LOCAL, STORAGE_SUPABASE } from "../../utils/config.js";
 import { PROVIDERS } from "../../utils/constants/supabaseConstants.js";
 import { ErrorApp } from "../../utils/ErrorApp.js";
-import { uploadSupabase, eraseSupabase } from "./storage/supabase.js";
 
-if (!PROVIDERS.includes(STORAGE_SUPABASE)) {
+if (!PROVIDERS.includes(STORAGE_LOCAL)) {
     
-    throw new Error(`STORAGE = "${STORAGE_SUPABASE}" does not exists. It has to be: ${PROVIDERS.join(", ")}`)
+    throw new Error(`STORAGE = "${STORAGE_LOCAL}" does not exists. It has to be: ${PROVIDERS.join(", ")}`)
 
 }
 
-const adapter = await import(`./storage/${STORAGE_SUPABASE}.js`) && await import(`./storage/${STORAGE_LOCAL}.js`) 
+const adapter = await import(`./storage/${STORAGE_LOCAL}.js`) 
 
-export const uploadImageService = async (file, FOLDER) => {
+export const uploadImageLocalService = async (file, FOLDER) => {
 
     if (!file || !FOLDER) {
         
@@ -21,7 +20,7 @@ export const uploadImageService = async (file, FOLDER) => {
 
     try {
         
-        return await adapter.uploadSupabase(file, FOLDER)
+        return await adapter.uploadLocal(file, FOLDER)
 
     } catch (error) {
         
@@ -31,7 +30,7 @@ export const uploadImageService = async (file, FOLDER) => {
 
         console.error("Error while uploading the file:", error);
         
-        throw new ErrorApp("The image could not be saved. Please try again", 502);
+        throw new ErrorApp("The image could not be saved. Please try again", 500);
         
 
     }
@@ -39,13 +38,13 @@ export const uploadImageService = async (file, FOLDER) => {
     
 }
 
-export const eraseImageService = async (url, FOLDER) => {
+export const eraseImageLocalService = async (url, FOLDER) => {
     
     if (!url || !FOLDER)  return  
     
     try {
         
-        return await adapter.eraseSupabase(url, FOLDER)
+        return await adapter.eraseLocal(url, FOLDER)
 
     } catch (error) {
         

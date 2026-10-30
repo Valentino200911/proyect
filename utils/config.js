@@ -8,9 +8,9 @@ export const PORT = process.env.PORT
 
 export const MONGO_URI = process.env.MONGO_URI 
 
-export const API_URL = process.env.API_URL
+export const API_URL = `${process.env.API_URL}:${PORT}`
 
-export const ITERATIONS = Number(process.env.ITERATIONS) // ITERATIONS debe ser un número, no un texto plano
+export const ITERATIONS = Number(process.env.ITERATIONS) // ITERATIONS en BCRYPT debe ser un número, no un texto plano
 
 export const JWT_SECRET = process.env.JWT_SECRET
 
