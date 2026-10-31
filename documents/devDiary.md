@@ -434,3 +434,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambios en las configuraciones de los buckets
 - Validaciones existosas
 - **Sexagésimo quinto commit del proyecto en Github**  
+- Separación de responsabilidades entre app.js e index.js
+- Creación de `app.js`
+- **Sexagésimo sexto commit del proyecto en Github**  
