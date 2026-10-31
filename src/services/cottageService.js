@@ -46,8 +46,10 @@ export const createCottageService = async (data, file) => {
     
     const image = await uploadImageSupabaseService(file, IMAGES_SUPABASE_FOLDER_COTTAGE) // A SUPABASE
     
-    const localImage = await uploadImageLocalService(file, IMAGES_LOCAL_FOLDER_COTTAGE) 
+    // const localImage = await uploadImageLocalService(file, IMAGES_LOCAL_FOLDER_COTTAGE) 
     // A local --> Es para tener una copia actualizada de lo que se sube a SUPABASE, esto no se retorna, la copia que se usa es la de SUPABASE.
+
+    // Se lo comenta porque no es necesario, existe y para que funcione sólo debe descomentarse
 
     try {
 
@@ -59,7 +61,9 @@ export const createCottageService = async (data, file) => {
         
         await eraseImageSupabaseService(image, IMAGES_SUPABASE_FOLDER_COTTAGE) // Supabase
 
-        await eraseImageLocalService(localImage, IMAGES_LOCAL_FOLDER_COTTAGE ) // Local
+        // await eraseImageLocalService(localImage, IMAGES_LOCAL_FOLDER_COTTAGE ) // Local
+
+        // Se lo comenta porque no es necesario, existe y para que funcione sólo debe descomentarse
 
         console.error(error);
         
@@ -83,7 +87,9 @@ export const createCottageService = async (data, file) => {
             
             changes.image = await uploadImageSupabaseService(file, IMAGES_SUPABASE_FOLDER_COTTAGE)
 
-            const localImage = await uploadImageLocalService(file, IMAGES_LOCAL_FOLDER_COTTAGE)
+            // const localImage = await uploadImageLocalService(file, IMAGES_LOCAL_FOLDER_COTTAGE)
+
+            // Se lo comenta porque no es necesario, existe y para que funcione sólo debe descomentarse
 
         }
 
@@ -103,7 +109,9 @@ export const createCottageService = async (data, file) => {
                 
                 await eraseImageSupabaseService(previousData.image, IMAGES_SUPABASE_FOLDER_COTTAGE)
 
-                const localImage = await eraseImageLocalService(previousData.image, IMAGES_LOCAL_FOLDER_COTTAGE) // TODO: Revisión de la img. local para eliminarla
+               // const localImage = await eraseImageLocalService(previousData.image, IMAGES_LOCAL_FOLDER_COTTAGE) // TODO: Revisión de la img. local para eliminarla
+
+               // Se lo comenta porque no es necesario, existe y para que funcione sólo debe descomentarse
             }
 
             return cottage

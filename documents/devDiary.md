@@ -437,3 +437,5 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Separación de responsabilidades entre app.js e index.js
 - Creación de `app.js`
 - **Sexagésimo sexto commit del proyecto en Github**  
+- Se comenta la funcionalidad del almacenamiento local para que no genere problemas durante los testeos
+- **Sexagésimo séptimo commit del proyecto en Github**  
