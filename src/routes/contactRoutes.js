@@ -4,14 +4,14 @@ import { allowed, userOnly, adminOnly } from "../utils/constants/rolesConstants.
 
 const router = Router()
 
-router.get("/get", allowed, contactController.getAllContactsController)
+router.get("/", allowed, contactController.getAllContactsController)
 
-router.get("/get/:id", allowed, contactController.getContactByIdController)
+router.get("/:id", allowed, contactController.getContactByIdController)
 
-router.post("/post", userOnly, contactController.createContactController)
+router.post("/", userOnly, contactController.createContactController)
 
-router.patch("/patch/:id", adminOnly,  contactController.updateContactController)
+router.patch("/:id", adminOnly,  contactController.updateContactController)
 
-router.delete("/delete/:id", adminOnly, contactController.deleteContactController)
+router.delete("/:id", adminOnly, contactController.deleteContactController)
 
 export default router

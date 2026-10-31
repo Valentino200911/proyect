@@ -6,14 +6,14 @@ const router = Router()
 
 // "/get/:id" y "/get/allReservations" tienen "allowed" porque la validación la hacen los tokens
 
-router.get("/get/allReservations", allowed, reservationController.getAllReservationsController)
+router.get("/", allowed, reservationController.getAllReservationsController)
 
-router.get("/get/:id", allowed, reservationController.getReservationByIdController)
+router.get("/:id", allowed, reservationController.getReservationByIdController)
 
-router.post("/post", userOnly, reservationController.createReservationController)
+router.post("/", userOnly, reservationController.createReservationController)
 
-router.patch("/patch/:id", allowed, reservationController.updateReservationController)
+router.patch("/:id", allowed, reservationController.updateReservationController)
 
-router.delete("/delete/:id", adminOnly, reservationController.deleteReservationController)
+router.delete("/:id", adminOnly, reservationController.deleteReservationController)
 
 export default router

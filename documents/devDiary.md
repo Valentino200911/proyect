@@ -68,29 +68,29 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
 - Problemas con los commits debido a errores en consola
 - **Primer commit del proyecto en GitHub**
-  - Instalación de Firebase
-  - Instalación de Firebase tools
-  - Generación de la clave privada de Firebase para su utilización en un futuro próximo en la carpeta `privateKeys/` (excluida del repositorio)
-  - Desinstalación de dichas herramientas por complicaciones con el dominio
+- Instalación de Firebase
+- Instalación de Firebase tools
+- Generación de la clave privada de Firebase para su utilización en un futuro próximo en la carpeta `privateKeys/` (excluida del repositorio)
+- Desinstalación de dichas herramientas por complicaciones con el dominio
 
 ### 27 de septiembre de 2026
 
 - **Segundo commit del proyecto en Github**
-  - Se dio inicio al desarrollo de la funcionalidad de user aprovechando la Actividad N°13 de la UTN
+- Se dio inicio al desarrollo de la funcionalidad de user aprovechando la Actividad N°13 de la UTN
 - **Tercer commit del proyecto en Github**
-  - Inserción del diario del Desarrollador en el proyecto
-  - Prueba de validaciones y de inserción de usuarios en la DB (exitoso)
+- Inserción del diario del Desarrollador en el proyecto
+- Prueba de validaciones y de inserción de usuarios en la DB (exitoso)
 - **Cuarto commit del proyecto en Github**
-  - Creación de `README.md`
-  - Creación de `gaps.md` para las brechas en el código
-  - Creación del archivo `userService.js`
-  - Reporte de fallos al inicializar con `nodemon npm run dev`, se registra como problema a     resolver, mientras tanto, se empleará `npm run dev`
-  - Finalización de userService, las correcciones se harán con el controlador, las rutas y postman
+- Creación de `README.md`
+- Creación de `gaps.md` para las brechas en el código
+- Creación del archivo `userService.js`
+- Reporte de fallos al inicializar con `nodemon npm run dev`, se registra como problema a     resolver, mientras tanto, se empleará `npm run dev`
+- Finalización de userService, las correcciones se harán con el controlador, las rutas y postman
 - **Quinto commit del proyecto en Github**
-  - Creación del archivo `userController.js`
-  - Finalización de userController
+- Creación del archivo `userController.js`
+- Finalización de userController
 - **Sexto commit del proyecto en Github**
-  - Creación del archivo `userRoutes.js`
+- Creación del archivo `userRoutes.js`
 
 ### 28 de septiembre de 2026
 
@@ -106,15 +106,15 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Se completa el CRUD de Usuarios
 - Traducción de los mensajes de handleError.js a inglés
 - **Octavo commit del proyecto en Github**
-  - Continuación con el desarrollo de NaturalElement (service)
-  - Finalización de naturalElementService, las correcciones se realizarán finalizado el controller y el router
+- Continuación con el desarrollo de NaturalElement (service)
+- Finalización de naturalElementService, las correcciones se realizarán finalizado el controller y el router
 - **Noveno commit del proyecto en GitHub**
-  - Creación del archivo `naturalElementController.js`
-  - Finalización de naturalElementController
+- Creación del archivo `naturalElementController.js`
+- Finalización de naturalElementController
 - **Decimo commit del proyecto en Github**
-  - Creación del archivo `naturalElementRoutes.js`
-  - Finalización del ruteo
-  - Verificaciones del CRUD
+- Creación del archivo `naturalElementRoutes.js`
+- Finalización del ruteo
+- Verificaciones del CRUD
 - **Undécimo commit del proyecto en GitHub**
 
 ### 1 de octubre de 2026
@@ -122,8 +122,8 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambio de rumbo respecto al PUT, debido a que la funcionalidad de dicho verbo es, en Express 5 es extremadamente similar al PATCH (si no tiene validaciones), se optó por eliminar el método PUT de las rutas
 - Por cuestiones de orden, se transfirió el archivo .pdf de la consigna del tp a otra carpeta
 - **Duodécimo commit del proyecto en Github**
-  - Registros de gaps
-  - Inicio del modelo de `cabañaModel.js`
+- Registros de gaps
+- Inicio del modelo de `cabañaModel.js`
 
 ### 3 de octubre de 2026
 
@@ -131,47 +131,47 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Adición de los valores `index: true` en `name` de `cabañaModel.js`, `binomialName` de `naturalElementModel.js`
 - Finalización del modelo de cabañaModel.js e implementación a seed.js (implementación exitosa)
 - **Decimotercer commit del proyecto en Github**
-  - Creación del archivo `cabañaService.js`
-  - Registro de la adición de "{}" para realizar projects en los servicios existentes, todavía está sin definir la información a mostrar
-  - Finalización del servicio para Cabañas, gaps anotados
+- Creación del archivo `cabañaService.js`
+- Registro de la adición de "{}" para realizar projects en los servicios existentes, todavía está sin definir la información a mostrar
+- Finalización del servicio para Cabañas, gaps anotados
 - **Decimocuarto commit del proyecto en Github**
-  - Creación del archivo `cabañaController.js`
-  - Finalización del controller para Cabañas, gaps anotados
+- Creación del archivo `cabañaController.js`
+- Finalización del controller para Cabañas, gaps anotados
 - **Decimoquinto commit del proyecto en Github**
-  - Creación del archivo `cabañaRoutes.js`
-  - Finalización del router para Cabañas, gaps anotados
-  - Errores en POSTMAN sobre el uso de la "ñ" de cabañas. Por eso, se cambiarán todas las claves y nombres de archivos a "cottage" (salvo las anotaciones de la base de datos) que digan "cabaña". Ej. `cottageRoutes.js`
-  - Finalización de las modificaciones
-  - Verificación y funcionamiento del CRUD
+- Creación del archivo `cabañaRoutes.js`
+- Finalización del router para Cabañas, gaps anotados
+- Errores en POSTMAN sobre el uso de la "ñ" de cabañas. Por eso, se cambiarán todas las claves y nombres de archivos a "cottage" (salvo las anotaciones de la base de datos) que digan "cabaña". Ej. `cottageRoutes.js`
+- Finalización de las modificaciones
+- Verificación y funcionamiento del CRUD
 - **Decimosexto commit del proyecto en Github**
-  - Inicio del modelo de `contactModel.js`
-  - Finalización del modelo
-  - Modificaciones generales a los comentarios de validación de los modelos
-  - Modificaciones al service de user y cottage para evitar dejar registros huérfanos en contact
+- Inicio del modelo de `contactModel.js`
+- Finalización del modelo
+- Modificaciones generales a los comentarios de validación de los modelos
+- Modificaciones al service de user y cottage para evitar dejar registros huérfanos en contact
 - **Decimoséptimo commit del proyecto en Github**
-  - Creación del archivo `contactService.js`
-  - Finalización del servicio para Contact
+- Creación del archivo `contactService.js`
+- Finalización del servicio para Contact
 - **Decimoctavo commit del proyecto en Github**
-  - Creación del archivo `contactController.js`
-  - Finalización del controller para Contact
+- Creación del archivo `contactController.js`
+- Finalización del controller para Contact
 - **Decimonoveno commit del proyecto en Github**
-  - Creación del archivo `contactRouter.js`
-  - Finalización del Router para Contact
-  - Verificaciones a través de POSTMAN
+- Creación del archivo `contactRouter.js`
+- Finalización del Router para Contact
+- Verificaciones a través de POSTMAN
 - **Vigésimo commit del proyecto en Github**
-  - Inicio del modelo de `reservationModel.js`
+- Inicio del modelo de `reservationModel.js`
 
 ### 4 de octubre de 2026
 
 - Continuación del modelo de `reservationModel.js`
 - Finalización del modelo de `reservationModel.js`
 - **Vigésimo primer commit del proyecto en Github**
-  - Creación del archivo `reservationService.js`
+- Creación del archivo `reservationService.js`
 
 ### 8 de octubre de 2026
 
 - **Vigésimo segundo commit del proyecto en Github**
-  - Debido a la necesidad de buscar información para realizar adecuadamente la funcionalidad de la reservación, se optó por resolver gaps del código y de ahí volver al service de reservación
+- Debido a la necesidad de buscar información para realizar adecuadamente la funcionalidad de la reservación, se optó por resolver gaps del código y de ahí volver al service de reservación
 
 ### 9 de octubre de 2026
 
@@ -180,76 +180,76 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Corrección del error 500
 - Corrección al orden de los middlewares en index.js
 - **Vigésimo tercer commit del proyecto en Github**
-  - Inicio de los preparativos para hacer la conexión al FRONTEND (duplicado del commit y primeras verificaciones)
-  - Inicio del proceso de autenticación del back con JWT
+- Inicio de los preparativos para hacer la conexión al FRONTEND (duplicado del commit y primeras verificaciones)
+- Inicio del proceso de autenticación del back con JWT
 
 ### 10 de octubre de 2026
 
 - Corrección previa de errores y desinstalación de NODEMON debido a sobreposición con funcionalides nativas de EXPRESS
 - **Vigésimo cuarto commit del proyecto en Github**
-  - Reinicio del proceso de autenticación del back con JWT
-  - Creación del archivo `authService.js`
-  - Finalización de authService
+- Reinicio del proceso de autenticación del back con JWT
+- Creación del archivo `authService.js`
+- Finalización de authService
 - **Vigésimo quinto commit del proyecto en Github**
-  - Creación del archivo `authController.js`
-  - Finalización de authController
+- Creación del archivo `authController.js`
+- Finalización de authController
 - **Vigésimo sexto commit del proyecto en Github**
-  - Creación del archivo `authRoutes.js`
-  - Finalización de authRoutes y adición en index.js
+- Creación del archivo `authRoutes.js`
+- Finalización de authRoutes y adición en index.js
 - **Vigésimo séptimo commit del proyecto en GitHub**
-  - Creación del archivo `middlewares/verifyToken.js`
-  - Finalización de verifyToken
-  - Verificación con POSTMAN
-  - Corrección de errores en el authService para el login
-  - Eliminación de importaciones innecesarias en los archivos del service
-  - Corrección de errores en el authService para el register
-  - Corrección de errores en el authService para el profile
-  - Correcciones generales
+- Creación del archivo `middlewares/verifyToken.js`
+- Finalización de verifyToken
+- Verificación con POSTMAN
+- Corrección de errores en el authService para el login
+- Eliminación de importaciones innecesarias en los archivos del service
+- Corrección de errores en el authService para el register
+- Corrección de errores en el authService para el profile
+- Correcciones generales
 - **Vigésimo octavo commit del proyecto en GitHub**
-  - Creación del archivo `middlewares/allowRoles.js` - Funcionalidad para la protección de rutas
-  - Creación de `roleTable.png` con las funcionalidades existentes y habilitadas por rol (front y back)
-  - Creación del archivo `constants/rolesContants.js` - Definición de los permisos existentes para las rutas
+- Creación del archivo `middlewares/allowRoles.js` - Funcionalidad para la protección de rutas
+- Creación de `roleTable.png` con las funcionalidades existentes y habilitadas por rol (front y back)
+- Creación del archivo `constants/rolesContants.js` - Definición de los permisos existentes para las rutas
 - **Vigésimo noveno commit del proyecto en GitHub**
-  - Definición de los permisos para las rutas
+- Definición de los permisos para las rutas
 - **Trigésimo commit del proyecto en GitHub**
-  - Modificación del seed para añadir un admin de pruebas
-  - Verificación de los permisos con POSTMAN (verificación exitosa)
+- Modificación del seed para añadir un admin de pruebas
+- Verificación de los permisos con POSTMAN (verificación exitosa)
 - **Trigésimo primer commit del proyecto en GitHub**
-  - Corrección y centralización de permisos en userRoutes.js
-  - Eliminación de importaciones innecesarias
+- Corrección y centralización de permisos en userRoutes.js
+- Eliminación de importaciones innecesarias
 - **Trigésimo segundo commit del proyecto en GitHub**
-  - Anotaciones varias
+- Anotaciones varias
 - **Trigésimo tercer commit del proyecto en GitHub**
-  - Eliminación del archivo systemConstants.js transferencia de su información a .env
-  - Resolución de gaps varios de enums
+- Eliminación del archivo systemConstants.js transferencia de su información a .env
+- Resolución de gaps varios de enums
 
-  ### 11 de octubre de 2026
+### 11 de octubre de 2026
 
 - **Trigésimo quinto commit del proyecto en GitHub**
-  - Desarrollo del service de Reservation (A través del uso de Gemini a manera de consultas de progreso)
+- Desarrollo del service de Reservation (A través del uso de Gemini a manera de consultas de progreso)
   
-  ### 12 de octubre de 2026
+### 12 de octubre de 2026
 
-  - Continuación del desarrollo del service de Reservation
-  - Finalización del service de Reservation
+- Continuación del desarrollo del service de Reservation
+- Finalización del service de Reservation
 - **Trigésimo sexto commit del proyecto en GitHub**
-  - Se modificaron los criterios de eliminación de userService y cottageService, ahora si están registrados en un contacto o reservación no pueden ser eliminados
-  - Se modificó a seed.js para incluir un modelo de reservación
+- Se modificaron los criterios de eliminación de userService y cottageService, ahora si están registrados en un contacto o reservación no pueden ser eliminados
+- Se modificó a seed.js para incluir un modelo de reservación
 - **Trigésimo séptimo commit del proyecto en Github**
-  - Creación del archivo `reservationController.js`
-  - Inicio del desarrollo del controlador para reservation
-  - Finalización del controller. Visto cómo está estructurado, tiene múltiples gaps a corregir
+- Creación del archivo `reservationController.js`
+- Inicio del desarrollo del controlador para reservation
+- Finalización del controller. Visto cómo está estructurado, tiene múltiples gaps a corregir
 - **Trigésimo octavo commit del proyecto en Github**
-  - Creación del archivo `reservationRoutes.js`
-  - Finalización del ruteo
-  - Validaciones con POSTMAN
-  - Ediciones en el seed para las validaciones
-  - Hay múltiples gaps para resolver en el circuito de reservation (model, service, controller, routes)
-  - Creación de una plantilla de POSTMAN para consultas HTTP
-  - Reestructuración de `gaps.md`
+- Creación del archivo `reservationRoutes.js`
+- Finalización del ruteo
+- Validaciones con POSTMAN
+- Ediciones en el seed para las validaciones
+- Hay múltiples gaps para resolver en el circuito de reservation (model, service, controller, routes)
+- Creación de una plantilla de POSTMAN para consultas HTTP
+- Reestructuración de `gaps.md`
 - **Trigésimo noveno commit del proyecto en Github**  (Hay múltiples gaps para resolver)
-  - Inicio de la redacción del README
-  - Correcciones mínimas y boceto de README
+- Inicio de la redacción del README
+- Correcciones mínimas y boceto de README
 - **Cuadrigésimo commit del proyecto en Github**  (Hay múltiples gaps para resolver)
 
 ### 14 de octubre de 2026
@@ -271,7 +271,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Modificaciones a las condiciones de delete de cottage y user (service)
 - Correcciones al service de contact
 - Revisión y correcciones esenciales en el service de reservation
-  
+
 ### 19 de octubre de 2026
 
 - Continuación de las correcciones al service de reservation
@@ -327,17 +327,17 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
     - Descentralizar funciones de cálculo de fecha en reservationService (no era necesaria)
     - Revisar los permisos para get/:id en user, ¿Cualquiera podría ver el usuario de otra persona si conoce el id?
 - **Cuadrigésimo séptimo commit del proyecto en Github**
-  - Contuación con los gaps de código. Separación del await de los retornos en los services
+- Contuación con los gaps de código. Separación del await de los retornos en los services
 - **Cuadrigésimo octavo commit del proyecto en Github**
 
 ### 25 de octubre de 2026
 
 - Eliminación de importaciones innecesarias del código
 - **Cuadrigésimo noveno commit del proyecto en Github**
-  - Eliminación de gaps varios y correcciones de código
-  - Cambios en el seed
+- Eliminación de gaps varios y correcciones de código
+- Cambios en el seed
 - **Quincuagésimo commit del proyecto en Github**
-  - Creación de la carpeta `documents` para almacenar los archivos devDiary.md, gaps.md y roleTable.png
+- Creación de la carpeta `documents` para almacenar los archivos devDiary.md, gaps.md y roleTable.png
 - **Quincuagésimo primer commit del proyecto en Github**
   - Resolución de los siguientes gaps de código:
     - Cambio de estado de reservationState según isPaid
@@ -349,7 +349,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
 - Se resolvieron los gaps y se rehabilitó la ruta de create user
 - **Quincuagésimo segundo commit del proyecto en Github**
-  - Anotación de dudas y comentarios
+- Anotación de dudas y comentarios
 - **Quincuagésimo tercer commit del proyecto en Github**
   - Inicio del desarrollo aplicando SUPABASE - (Parte de configuración)
     - Instalación de las dependencias de Multer y Supabase
@@ -367,19 +367,19 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - Modificación al model de naturalElement y cottage p/ que tengan image
   - Modificación a los routes para permitir la subida de img.
 - **Quincuagésimo quinto commit del proyecto en Github**
-  - Creación de `src/config/supabase.js`
-  - Clase de Consulta
-    - Resolver las cuestiones de la .env (se creó una variable de entorno con nombre distinto que está ignorada según .gitignore, a la que después se le cambiará el nombre después del commit)
-    - Correcciones personales en reservationService
+- Creación de `src/config/supabase.js`
+- Clase de Consulta
+  - Resolver las cuestiones de la .env (se creó una variable de entorno con nombre distinto que está ignorada según .gitignore, a la que después se le cambiará el nombre después del commit)
+  - Correcciones personales en reservationService
 - **Quincuagésimo sexto commit del proyecto en Github**
-  - Eliminación del .env original
+- Eliminación del .env original
 - **Quincuagésimo séptimo commit del proyecto en Github**
-  - Cambio de nombre de la .env nueva, la cual está ignorada según .gitignore
-  - Resolución de los problemas con la .env (cambios en las claves)
+- Cambio de nombre de la .env nueva, la cual está ignorada según .gitignore
+- Resolución de los problemas con la .env (cambios en las claves)
 - **Quincuagésimo octavo commit del proyecto en Github**
-  - Creación de los archivos y desarrollo de funcionalidades `src/services/supabase.js` y `src/config/uniqueName.js`
+- Creación de los archivos y desarrollo de funcionalidades `src/services/supabase.js` y `src/config/uniqueName.js`
 - **Quincuagésimo noveno commit del proyecto en Github**
-  - Modificaciones en naturalElementService.js
+- Modificaciones en naturalElementService.js
 
 ### 28 de octubre de 2026
 
@@ -439,3 +439,16 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - **Sexagésimo sexto commit del proyecto en Github**  
 - Se comenta la funcionalidad del almacenamiento local para que no genere problemas durante los testeos
 - **Sexagésimo séptimo commit del proyecto en Github**  
+- Se procede con una depuración de gaps, siendo los siguientes:
+
+  **Sexagésimo octavo commit del proyecto en Github:**  
+
+  - Cambiar el nombre de los endpoints en routers y POSTMAN
+
+  **Sexagésimo noveno commit del proyecto en Github:**
+
+  - Documentar el proceso de modificación de reservation
+
+  **Septuagésimo commit del proyecto en Github:**
+
+  - Anotar en el README como inicializar el proyecto y cambiar la estructura de carpetas (Tener un README completo)

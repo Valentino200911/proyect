@@ -5,14 +5,14 @@ import { uploadImages } from "../middlewares/uploadImages.js";
 
 const router = Router()
 
-router.get("/get/:id", allowed, cottageController.getCottageByIdController)
+router.get("/:id", allowed, cottageController.getCottageByIdController)
 
-router.get("/get", allowed, cottageController.getAllCottagesController)
+router.get("/", allowed, cottageController.getAllCottagesController)
 
-router.post("/post", adminOnly, uploadImages, cottageController.createCottageController)
+router.post("/", adminOnly, uploadImages, cottageController.createCottageController)
 
-router.patch("/patch/:id", adminOnly, uploadImages, cottageController.updateCottageController)
+router.patch("/:id", adminOnly, uploadImages, cottageController.updateCottageController)
 
-router.delete("/delete/:id", adminOnly, cottageController.deleteCottageController)
+router.delete("/:id", adminOnly, cottageController.deleteCottageController)
 
 export default router

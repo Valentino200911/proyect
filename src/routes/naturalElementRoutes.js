@@ -6,14 +6,14 @@ import { uploadImages } from "../middlewares/uploadImages.js"
 
 const router = Router()
 
-router.get("/get/:id", allowed, naturalElementController.getNaturalElementByIdController)
+router.get("/:id", allowed, naturalElementController.getNaturalElementByIdController)
 
-router.get("/get", allowed, naturalElementController.getAllNaturalElementsController)
+router.get("/", allowed, naturalElementController.getAllNaturalElementsController)
 
-router.post("/post", adminOnly, uploadImages, naturalElementController.createNaturalElementController)
+router.post("/", adminOnly, uploadImages, naturalElementController.createNaturalElementController)
 
-router.patch("/patch/:id", adminOnly, uploadImages, naturalElementController.updateNaturalElementController)
+router.patch("/:id", adminOnly, uploadImages, naturalElementController.updateNaturalElementController)
 
-router.delete("/delete/:id", adminOnly, naturalElementController.deleteNaturalElementController)
+router.delete("/:id", adminOnly, naturalElementController.deleteNaturalElementController)
 
 export default router

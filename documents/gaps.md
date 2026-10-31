@@ -5,15 +5,11 @@
 - Cambiar el nombre de los endpoints en routers y POSTMAN
 - Documentar el proceso de modificación de reservation
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
-- Separación de responsabilidades de app.js e index.js
 - Anotar en el README como inicializar el proyecto y cambiar la estructura de carpetas
-- Habilitar multer y supabase para cottage.js
 - Revisar el local update de naturalElementService
 - Manejo de proxy en el front (ver codigo modelo de front)
 - Que el usuario vea sus propios contacts y reservation (en el front)
 - Manejo del error 429 - Rate limit
-- Habilitar Firebase
-- Analizar OWASP
 
 // Dudas
 

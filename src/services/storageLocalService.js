@@ -25,10 +25,8 @@ export const uploadImageLocalService = async (file, FOLDER) => {
         return uploading
 
     } catch (error) {
-        
-        // Este catch traduce el error de un servicio EXTERNO a uno nuestro y deja el detalle técnico en el log
 
-        // Error 500 - Internal Server Error - Problema del servidor
+        // Error 500 - Internal Server Error - Problema del servidor al tratarse de un ámbito local
 
         console.error("Error while uploading the file:", error);
         
