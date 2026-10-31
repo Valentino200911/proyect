@@ -6,9 +6,9 @@ import { uploadImages } from "../middlewares/uploadImages.js"
 
 const router = Router()
 
-router.get("/:id", allowed, naturalElementController.getNaturalElementByIdController)
-
 router.get("/", allowed, naturalElementController.getAllNaturalElementsController)
+
+router.get("/:id", allowed, naturalElementController.getNaturalElementByIdController)
 
 router.post("/", adminOnly, uploadImages, naturalElementController.createNaturalElementController)
 

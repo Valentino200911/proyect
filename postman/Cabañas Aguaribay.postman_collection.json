@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "4051fab0-ae23-4f23-8a29-4995f4fdb2cd",
+    "_postman_id": "f18e86ad-83b6-4480-9585-20afed532dec",
     "name": "Cabañas Aguaribay",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "57954099",
-    "_collection_link": "https://go.postman.co/collection/57954099-4051fab0-ae23-4f23-8a29-4995f4fdb2cd?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/57954099-f18e86ad-83b6-4480-9585-20afed532dec?source=collection_link"
   },
   "item": [
     {
@@ -67,6 +67,16 @@
         {
           "name": "Register",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [],
             "url": {
@@ -85,6 +95,16 @@
         {
           "name": "Profile",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
@@ -108,16 +128,26 @@
         {
           "name": "Get (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/user/get",
+              "raw": "{{baseUrl}}/user",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "user",
-                "get"
+                ""
               ]
             }
           },
@@ -131,7 +161,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "",
+                  "value": "{{adminToken}}",
                   "type": "string"
                 }
               ]
@@ -148,13 +178,12 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/user/post",
+              "raw": "{{baseUrl}}/user",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "user",
-                "post"
+                "user"
               ]
             }
           },
@@ -163,16 +192,25 @@
         {
           "name": "Get by Id (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/user/get/_id",
+              "raw": "{{baseUrl}}/user/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "user",
-                "get",
                 "_id"
               ]
             }
@@ -182,16 +220,25 @@
         {
           "name": "Delete (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/user/delete/_id",
+              "raw": "{{baseUrl}}/user/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "user",
-                "delete",
                 "_id"
               ]
             }
@@ -201,16 +248,25 @@
         {
           "name": "Patch (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PATCH",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/user/patch/_id",
+              "raw": "{{baseUrl}}/user/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "user",
-                "patch",
                 "_id"
               ]
             }
@@ -225,16 +281,25 @@
         {
           "name": "Get by Id (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/cottage/get/_id",
+              "raw": "{{baseUrl}}/cottage/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "cottage",
-                "get",
                 "_id"
               ]
             }
@@ -244,16 +309,55 @@
         {
           "name": "Create (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "capacity",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "pricePerNightAndPerson",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "value": ""
+                }
+              ]
+            },
             "url": {
-              "raw": "{{baseUrl}}/cottage/post",
+              "raw": "{{baseUrl}}/cottage",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "cottage",
-                "post"
+                "cottage"
               ]
             }
           },
@@ -262,15 +366,24 @@
         {
           "name": "Get (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/cottage/get",
+              "raw": "{{baseUrl}}/cottage",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "cottage",
                 "get"
               ]
             }
@@ -280,16 +393,25 @@
         {
           "name": "Delete (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/cottage/delete/_id",
+              "raw": "{{baseUrl}}/cottage/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "cottage",
-                "delete",
                 "_id"
               ]
             }
@@ -299,16 +421,55 @@
         {
           "name": "Patch (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PATCH",
             "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "capacity",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "pricePerNightAndPerson",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "value": ""
+                }
+              ]
+            },
             "url": {
-              "raw": "{{baseUrl}}/cottage/patch/_id",
+              "raw": "{{baseUrl}}/cottage/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "cottage",
-                "patch",
                 "_id"
               ]
             }
@@ -318,41 +479,30 @@
       ]
     },
     {
-      "name": "4 - Reservation (PARCIALMENTE HABILITADA)",
+      "name": "4 - Reservation",
       "item": [
         {
           "name": "Get by Id (Requiere Token)",
           "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/reservation/get/_id",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "reservation",
-                "get",
-                "_id"
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
               ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get by Id (Una reservation mía) (Requiere Token)",
-          "request": {
+            },
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/reservation/get/user/_id",
+              "raw": "{{baseUrl}}/reservation/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "reservation",
-                "get",
-                "user",
                 "_id"
               ]
             }
@@ -362,16 +512,34 @@
         {
           "name": "Create (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{userToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": "{{baseUrl}}/reservation/post",
+              "raw": "{{baseUrl}}/reservation",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "reservation",
-                "post"
+                "reservation"
               ]
             }
           },
@@ -380,55 +548,52 @@
         {
           "name": "Get (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/reservation/get/allReservations",
+              "raw": "{{baseUrl}}/reservation",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "reservation",
-                "get",
-                "allReservations"
+                "reservation"
               ]
             }
           },
           "response": []
         },
         {
-          "name": "Get (Mis reservations) (Requiere Token)",
+          "name": "Delete (Requiere Token)",
           "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/reservation/get/user/allReservations",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "reservation",
-                "get",
-                "user",
-                "allReservations"
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
               ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "NO HABILITADA - Delete (Requiere Token)",
-          "request": {
+            },
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/reservation/delete/_id",
+              "raw": "{{baseUrl}}/reservation/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "reservation",
-                "delete",
                 "_id"
               ]
             }
@@ -438,16 +603,25 @@
         {
           "name": "Patch (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PATCH",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/reservation/patch/_id",
+              "raw": "{{baseUrl}}/reservation/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "reservation",
-                "patch",
                 "_id"
               ]
             }
@@ -462,16 +636,25 @@
         {
           "name": "Get by Id (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/contact/get/_id",
+              "raw": "{{baseUrl}}/contact/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "contact",
-                "get",
                 "_id"
               ]
             }
@@ -481,17 +664,34 @@
         {
           "name": "Create (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{userToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": "{{baseUrl}}/contact/get/_id",
+              "raw": "{{baseUrl}}/contact",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "contact",
-                "get",
-                "_id"
+                "contact"
               ]
             }
           },
@@ -500,16 +700,25 @@
         {
           "name": "Get (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/contact/get",
+              "raw": "{{baseUrl}}/contact",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "contact",
-                "get"
+                "contact"
               ]
             }
           },
@@ -518,16 +727,25 @@
         {
           "name": "Delete (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/contact/delete/_id",
+              "raw": "{{baseUrl}}/contact/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "contact",
-                "delete",
                 "_id"
               ]
             }
@@ -537,16 +755,25 @@
         {
           "name": "Patch (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PATCH",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/contact/patch/_id",
+              "raw": "{{baseUrl}}/contact/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "contact",
-                "patch",
                 "_id"
               ]
             }
@@ -561,16 +788,55 @@
         {
           "name": "Create (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "capacity",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "pricePerNightAndPerson",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "value": ""
+                }
+              ]
+            },
             "url": {
-              "raw": "{{baseUrl}}/naturalelement/get/_id",
+              "raw": "{{baseUrl}}/naturalelement/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "naturalelement",
-                "get",
                 "_id"
               ]
             }
@@ -580,16 +846,25 @@
         {
           "name": "Get by Id (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/naturalelement/get/_id",
+              "raw": "{{baseUrl}}/naturalelement/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "naturalelement",
-                "get",
                 "_id"
               ]
             }
@@ -599,16 +874,25 @@
         {
           "name": "Get (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/naturalelement/get",
+              "raw": "{{baseUrl}}/naturalelement",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "naturalelement",
-                "get"
+                "naturalelement"
               ]
             }
           },
@@ -617,16 +901,25 @@
         {
           "name": "Delete (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/naturalelement/delete",
+              "raw": "{{baseUrl}}/naturalelement",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "naturalelement",
-                "delete"
+                "naturalelement"
               ]
             }
           },
@@ -635,16 +928,56 @@
         {
           "name": "Patch (Requiere Token)",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PATCH",
             "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "capacity",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "pricePerNightAndPerson",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "value": ""
+                }
+              ]
+            },
             "url": {
-              "raw": "{{baseUrl}}/naturalelement/patch",
+              "raw": "{{baseUrl}}/naturalelement/_id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "naturalelement",
-                "patch"
+                "_id"
               ]
             }
           },
@@ -653,16 +986,22 @@
       ]
     }
   ],
-  "auth": {
-    "type": "bearer"
-  },
   "variable": [
     {
       "key": "baseUrl",
+      "value": "http://localhost:3000/api"
+    },
+    {
+      "key": "userToken",
       "value": ""
     },
     {
-      "secret": true
+      "key": "adminToken",
+      "value": ""
+    },
+    {
+      "key": "anyToken",
+      "value": ""
     }
   ]
 }

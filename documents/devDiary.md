@@ -447,8 +447,13 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
   **Sexagésimo noveno commit del proyecto en Github:**
 
-  - Documentar el proceso de modificación de reservation
+  - Modificaciones al orden de las rutas de naturalElement, user y cottage
+  - Modificaciones a las colecciones de POSTMAN (routers, centralización de tokens, etc.)
 
   **Septuagésimo commit del proyecto en Github:**
+
+  - Documentar el proceso de modificación de reservation
+
+  **Septuagésimo primer commit del proyecto en Github:**
 
   - Anotar en el README como inicializar el proyecto y cambiar la estructura de carpetas (Tener un README completo)

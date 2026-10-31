@@ -5,9 +5,9 @@ import { uploadImages } from "../middlewares/uploadImages.js";
 
 const router = Router()
 
-router.get("/:id", allowed, cottageController.getCottageByIdController)
-
 router.get("/", allowed, cottageController.getAllCottagesController)
+
+router.get("/:id", allowed, cottageController.getCottageByIdController)
 
 router.post("/", adminOnly, uploadImages, cottageController.createCottageController)
 

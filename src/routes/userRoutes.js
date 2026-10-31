@@ -6,14 +6,14 @@ const router = Router()
 
 router.use(adminOnly)
 
-router.get("/get/:id", userController.getUserByIdController) 
+router.get("/", userController.getAllUsersController)
 
-router.get("/get", userController.getAllUsersController)
+router.get("/:id", userController.getUserByIdController) 
 
 // No es necesaria una ruta aparte de creación de usuario
 
-router.patch("/patch/:id", userController.updateUserController)
+router.patch("/:id", userController.updateUserController)
 
-router.delete("/delete/:id", userController.deleteUserController)
+router.delete("/:id", userController.deleteUserController)
 
 export default router
