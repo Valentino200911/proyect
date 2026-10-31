@@ -14,12 +14,13 @@ const bucket =  (FOLDER) => { // Debido a que hay múltiples carpetas en SUPABAS
     }
 
     return supabaseFolder
+
 }
 
 export const uploadSupabase = async (file, FOLDER) => { // FOLDER = Selección de la carpeta a exportar
 
     const name = uniqueName(file.originalname)
-    
+
     const { error } = await bucket(FOLDER).upload(name, file.buffer, {
 
         contentType: file.mimetype,
@@ -38,7 +39,7 @@ export const uploadSupabase = async (file, FOLDER) => { // FOLDER = Selección d
     const { data } = bucket(FOLDER).getPublicUrl(name)
 
     const URL = data.publicUrl
-
+    
     return URL
 
 }

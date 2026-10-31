@@ -49,7 +49,7 @@ description:{
 },
 image:{
     type: String, 
-    // required: [true, "The image of the cottage is required"]
+    required: [true, "The image of the cottage is required"]
 },
 
 }, {timestamps: true} //Protocolo de seguridad

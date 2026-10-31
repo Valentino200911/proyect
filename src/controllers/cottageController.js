@@ -27,7 +27,7 @@ export const getCottageByIdController = async (req, res) => {
 
 export const createCottageController = async (req, res) => {
 
-    const cottage = await cottageService.createCottageService(req.body)
+    const cottage = await cottageService.createCottageService(req.body, req.file)
 
     res.status(201).json(cottage)
 }
@@ -36,7 +36,7 @@ export const createCottageController = async (req, res) => {
 
 export const updateCottageController = async (req, res) => {
 
-    const cottage = await cottageService.updateCottageService(req.params.id, req.body)
+    const cottage = await cottageService.updateCottageService(req.params.id, req.body, req.file)
 
     if (!cottage) {
         

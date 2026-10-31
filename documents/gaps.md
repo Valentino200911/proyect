@@ -2,6 +2,7 @@
 
 - Mediante alguna librería de JS, permitir que pasado cierto tiempo, si una reservación no es pagada, se vuelva automáticamente como "fallen"
 - Ver // TODO
+- Cambiar el nombre de los endpoints en routers y POSTMAN
 - Documentar el proceso de modificación de reservation
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
 - Separación de responsabilidades de app.js e index.js

@@ -3,7 +3,7 @@
 
     // naturalElement
 
-        export const binomialNameRegex = /^[A-Z][a-z]+ [a-z]+$/
+        export const binomialNameRegex =  /^[A-Z][a-z]+ [a-z]+(?: [a-z]+)?$/
         // Se asegura de que el string tenga dos palabras, la primera en mayúscula y la segunda en minúscula y una tercera (opcional) como los nombres de nomenclatura binomial, excluyendo la Ñ y las tildes. Otra solución sería crear un enum con todas las especies existentes con nomenclatura binomial
 
         export const validDomainRegex = /^https:\/\/[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+([/?#]\S*)?$/

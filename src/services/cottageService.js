@@ -2,6 +2,9 @@
 import { ErrorApp } from "../utils/ErrorApp.js";
 import Cottage from "../models/cottageModel.js";
 import Reservation from "../models/reservationModel.js";
+import {IMAGES_SUPABASE_FOLDER_COTTAGE, IMAGES_LOCAL_FOLDER_COTTAGE } from "../utils/config.js";
+import { eraseImageSupabaseService, uploadImageSupabaseService } from "./storageSupabaseService.js";
+import { eraseImageLocalService, uploadImageLocalService } from "./storageLocalService.js";
 
 // CRUD General
 
@@ -39,29 +42,77 @@ import Reservation from "../models/reservationModel.js";
 
 // createCottageService
 
-    export const createCottageService = async (data) => {
-        
-        const cottage = await Cottage.create(data)
+export const createCottageService = async (data, file) => {
+    
+    const image = await uploadImageSupabaseService(file, IMAGES_SUPABASE_FOLDER_COTTAGE) // A SUPABASE
+    
+    const localImage = await uploadImageLocalService(file, IMAGES_LOCAL_FOLDER_COTTAGE) 
+    // A local --> Es para tener una copia actualizada de lo que se sube a SUPABASE, esto no se retorna, la copia que se usa es la de SUPABASE.
+
+    try {
+
+        const cottage = await Cottage.create({...data, image})
 
         return cottage
+
+    } catch (error) {
+        
+        await eraseImageSupabaseService(image, IMAGES_SUPABASE_FOLDER_COTTAGE) // Supabase
+
+        await eraseImageLocalService(localImage, IMAGES_LOCAL_FOLDER_COTTAGE ) // Local
+
+        console.error(error);
+        
+        throw error
+        
+        }          
 
     }
 
 // updateCottageService
 
-    export const updateCottageService = async (cottageId, data) => {
+    export const updateCottageService = async (cottageId, data, file) => {
     
-        const cottage = await Cottage.findByIdAndUpdate({_id: cottageId}, data, {
+        const previousCottage = await Cottage.findById({ _id: cottageId })
 
-        returnDocument: "after",
+        const previousData = file ? previousCottage : null
 
-        runValidators: true,
+        const changes = {...data}
+
+        if (file) {
+            
+            changes.image = await uploadImageSupabaseService(file, IMAGES_SUPABASE_FOLDER_COTTAGE)
+
+            const localImage = await uploadImageLocalService(file, IMAGES_LOCAL_FOLDER_COTTAGE)
 
         }
-    )
 
-        return cottage
+        try {
+            
+            const cottage = await Cottage.findByIdAndUpdate({_id: cottageId}, changes, {
+    
+            returnDocument: "after",
+    
+            runValidators: true,
+    
+            }
 
+        )
+
+            if (cottage && previousData) {
+                
+                await eraseImageSupabaseService(previousData.image, IMAGES_SUPABASE_FOLDER_COTTAGE)
+
+                const localImage = await eraseImageLocalService(previousData.image, IMAGES_LOCAL_FOLDER_COTTAGE) // TODO: Revisión de la img. local para eliminarla
+            }
+
+            return cottage
+
+        } catch (error) {
+            
+            console.error("There has been an error", error);
+            
+        }
     }
 
 // deleteCottageService -- No es ideal tener un delete para este caso, pero por cuestiones de coherencia de CRUD, se lo deja || En todo caso, validar la eliminación

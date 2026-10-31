@@ -54,7 +54,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
 ### 24 de septiembre de 2026
 
-- Desarrollo de userModel.jsgeneralConstants.js
+- Desarrollo de userModel.js
 - Creación de la carpeta `utils/constants` para almacenar constantes
 - El archivo `utils/constants/systemConstants.js` refiere a las constantes de bcrypt
 - El archivo `utils/constants/generalConstants.js` refiere a regexs y constantes en general
@@ -66,7 +66,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
 ### 26 de septiembre de 2026
 
-- Problemas con los commits debido
+- Problemas con los commits debido a errores en consola
 - **Primer commit del proyecto en GitHub**
   - Instalación de Firebase
   - Instalación de Firebase tools
@@ -408,6 +408,9 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambios en storage/local.js y en storage/supabase.js
 - Se movió uniqueName.js de storage/ a utils/
 - **Sexagésimo segundo commit del proyecto en Github**  
+
+### 30 de octubre de 2026
+
 - Adición del app.use necesario en index.js para la conexión local de los archivos
 - Cambios en cottageModel a través de hacer a la imagen required
 - Camvios en naturalElementService para permitir el almacenamiento local EN PARALELO al almacenamiento en SUPABASE
@@ -417,5 +420,17 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambios en las .env, config.js y en .gitignore para ignorar el almacenamiento local
 - Se movió uniqueName.js de utils/ a utils/constants/
 - **Sexagésimo tercer commit del proyecto en Github**  
-- Se movió la carpeta utils al interior de src y se modificaron todos los archivos que involucran a utils
+- Se movió la carpeta utils al interior de src y se modificaron todos los archivos que importan desde utils
 - **Sexagésimo cuarto commit del proyecto en Github**  
+
+### 31 de octubre de 2026
+
+- Adición de las funcionalidades en cottageService.js para permitir la conexión al almacenamiento en SUPABASE y al Local en los métodos POST y PATCH
+- Cambios acordes en el controller
+- Cambios de nomenclatura en ambos storageService, así como en naturalElementService
+- Cambios en las .env, en config.js y en .gitignore
+- Validaciones con POSTMAN de la creación y actualización de la subida de imágenes
+- Cambios al regex de binomialNameRegex en constants/generalConstants.js
+- Cambios en las configuraciones de los buckets
+- Validaciones existosas
+- **Sexagésimo quinto commit del proyecto en Github**  

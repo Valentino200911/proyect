@@ -162,8 +162,9 @@ Si role !== "admin", solo se devolverán los registros del usuario a quien le pe
         filter.user = userId
     }
 
-    return await Reservation.find(filter, { __v: 0 }).populate(POPULATE_RESERVATION).sort({ createdAt: -1 })
+    const reservation = await Reservation.find(filter, { __v: 0 }).populate(POPULATE_RESERVATION).sort({ createdAt: -1 })
 
+    return reservation
 }
 
 // getReservationByIdService - Uno en específico que bien puede ser mío (userOnly) o no (adminOnly)
@@ -207,7 +208,9 @@ export const createReservationService = async (userId, cottageId, data) => {
 
     const newReservation = await Reservation.create(reservation)
 
-    return await newReservation.populate(POPULATE_RESERVATION)
+    const populatedReservation = await newReservation.populate(POPULATE_RESERVATION)
+
+    return populatedReservation
 
 }
 

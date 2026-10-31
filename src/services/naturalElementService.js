@@ -1,6 +1,6 @@
 
 import NaturalElement from "../models/naturalElementModel.js";
-import { IMAGES_FOLDER_NATURAL_ELEMENT, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT } from "../utils/config.js";
+import { IMAGES_SUPABASE_FOLDER_NATURAL_ELEMENT, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT } from "../utils/config.js";
 import { eraseImageLocalService, uploadImageLocalService } from "./storageLocalService.js";
 import { eraseImageSupabaseService, uploadImageSupabaseService } from "./storageSupabaseService.js";
 
@@ -51,7 +51,7 @@ import { eraseImageSupabaseService, uploadImageSupabaseService } from "./storage
     
     export const createNaturalElementService = async (data, file) => {
         
-        const image = await uploadImageSupabaseService(file, IMAGES_FOLDER_NATURAL_ELEMENT) // A SUPABASE
+        const image = await uploadImageSupabaseService(file, IMAGES_SUPABASE_FOLDER_NATURAL_ELEMENT) // A SUPABASE
 
         const localImage = await uploadImageLocalService(file, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT) // A local --> Es para tener una copia actualizada de lo que se sube a SUPABASE, esto no se retorna, la copia que se usa es la de SUPABASE.
 
@@ -65,7 +65,7 @@ import { eraseImageSupabaseService, uploadImageSupabaseService } from "./storage
 
         } catch (error) {
             
-            await eraseImageService(image, IMAGES_FOLDER_NATURAL_ELEMENT) // Supabase
+            await eraseImageSupabaseService(image, IMAGES_SUPABASE_FOLDER_NATURAL_ELEMENT) // Supabase
 
             await eraseImageLocalService(localImage, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT ) // Local
 
@@ -89,7 +89,7 @@ import { eraseImageSupabaseService, uploadImageSupabaseService } from "./storage
 
         if (file) {
             
-            changes.image = await uploadImageSupabaseService(file, IMAGES_FOLDER_NATURAL_ELEMENT)
+            changes.image = await uploadImageSupabaseService(file, IMAGES_SUPABASE_FOLDER_NATURAL_ELEMENT)
 
             const localImage = await uploadImageLocalService(file, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT)
 
@@ -109,13 +109,10 @@ import { eraseImageSupabaseService, uploadImageSupabaseService } from "./storage
 
             if (naturalElement && previousData) {
                 
-                await eraseImageSupabaseService(previousData.image, IMAGES_FOLDER_NATURAL_ELEMENT)
+                await eraseImageSupabaseService(previousData.image, IMAGES_SUPABASE_FOLDER_NATURAL_ELEMENT)
 
-                const localImage = await eraseImageLocalService(previousData.image, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT) // TODO: Revisión de la img. local para eliminarla
+                // const localImage = await eraseImageLocalService(previousData.image, IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT) // TODO: Revisión de la img. local para eliminarla
             }
-
-            console.log(naturalElement);
-            
 
             return naturalElement
 

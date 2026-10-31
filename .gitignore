@@ -5,3 +5,5 @@ uploads
 Thumbs.db
 .env
 local/
+naturalElementsImagesFolder/
+cottageImagesFolder/

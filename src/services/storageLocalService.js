@@ -1,5 +1,6 @@
 import { STORAGE_LOCAL } from "../utils/config.js"
 import { PROVIDERS } from "../utils/constants/supabaseConstants.js"
+import { ErrorApp } from "../utils/ErrorApp.js"
 
 if (!PROVIDERS.includes(STORAGE_LOCAL)) {
     
@@ -19,19 +20,20 @@ export const uploadImageLocalService = async (file, FOLDER) => {
 
     try {
         
-        return await adapter.uploadLocal(file, FOLDER)
+        const uploading = await adapter.uploadLocal(file, FOLDER)
+
+        return uploading
 
     } catch (error) {
         
         // Este catch traduce el error de un servicio EXTERNO a uno nuestro y deja el detalle técnico en el log
 
-        // Error 502 - Bad Gateway - Falló un servicio del que el servidor depende, pero no fue culpa ni del user ni del server
+        // Error 500 - Internal Server Error - Problema del servidor
 
         console.error("Error while uploading the file:", error);
         
-        throw new ErrorApp("The image could not be saved. Please try again", 500);
+        throw new ErrorApp("The image could not be saved locally. Please try again", 500); // TODO: VERIFICAR SI EL MIDDLEWARE YA REVISA ESTO
         
-
     }
 
     
@@ -43,7 +45,9 @@ export const eraseImageLocalService = async (url, FOLDER) => {
     
     try {
         
-        return await adapter.eraseLocal(url, FOLDER)
+        const erasing = await adapter.eraseLocal(url, FOLDER)
+
+        return erasing
 
     } catch (error) {
         

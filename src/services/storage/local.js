@@ -28,8 +28,6 @@ export const uploadLocal = async (file, FOLDER) => {
     // esta URL funciona gracias al express.static() de index.js
 
     const archive = `${API_URL}/${STORAGE_LOCAL}/${FOLDER}/${name}`
-
-    console.log(folder);
     
     return archive
 }

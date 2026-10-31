@@ -1,7 +1,7 @@
 
 import { STORAGE_SUPABASE } from "../utils/config.js";
 import { PROVIDERS } from "../utils/constants/supabaseConstants.js";
-import { uploadSupabase, eraseSupabase } from "./storage/supabase.js";
+import { ErrorApp } from "../utils/ErrorApp.js";
 
 if (!PROVIDERS.includes(STORAGE_SUPABASE)) {
     
@@ -16,12 +16,14 @@ export const uploadImageSupabaseService = async (file, FOLDER) => {
     if (!file || !FOLDER) {
         
         return null
-
+        
     }
 
     try {
-        
-        return await adapter.uploadSupabase(file, FOLDER)
+
+        const uploading = await adapter.uploadSupabase(file, FOLDER)
+
+        return uploading
 
     } catch (error) {
         
@@ -30,13 +32,11 @@ export const uploadImageSupabaseService = async (file, FOLDER) => {
         // Error 502 - Bad Gateway - Falló un servicio del que el servidor depende, pero no fue culpa ni del user ni del server
 
         console.error("Error while uploading the file:", error);
-        
-        throw new ErrorApp("The image could not be saved. Please try again", 502);
-        
 
+        throw new ErrorApp("The image could not be saved. Please try again", 502);
+    
     }
 
-    
 }
 
 export const eraseImageSupabaseService = async (url, FOLDER) => {
@@ -45,7 +45,9 @@ export const eraseImageSupabaseService = async (url, FOLDER) => {
     
     try {
         
-        return await adapter.eraseSupabase(url, FOLDER)
+        const erasing = await adapter.eraseSupabase(url, FOLDER)
+
+        return erasing
 
     } catch (error) {
         
