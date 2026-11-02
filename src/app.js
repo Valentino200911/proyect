@@ -8,6 +8,8 @@ import reservationRoutes from "./routes/reservationRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import { handleError } from "./middlewares/handleError.js";
 import { PORT, STORAGE_LOCAL } from "./utils/config.js";
+import swaggerUi from "swagger-ui-express"
+import { specifications } from "./docs/swagger.js";
 
 export const app = express()
 
@@ -42,6 +44,32 @@ app.get("/", (req, res) => {
     res.send("The server is working correctly");
     
 });
+
+app.use(
+    
+    "/api-docs", 
+    
+    swaggerUi.serve, 
+    
+    swaggerUi.setup(specifications, 
+
+    { 
+
+      customSiteTitle: "API Cabañas Aguaribay - Documentación", 
+
+      swaggerOptions: {persistAuthorization: true} 
+
+    }
+
+)
+
+)
+
+app.use("/api-docs.json", (req, res) => {
+    
+    res.json(specifications)
+
+})
 
 // Rutas de Autenticación
 

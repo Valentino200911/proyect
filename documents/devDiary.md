@@ -481,3 +481,10 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Se creó la carpeta myDocuments/ para alojar devDiary.md, gaps.md y roleTable.png
 - Se creó la carpeta documents/docs para alojar las configuraciones de Swagger
 **Septuagésimo cuarto commit del proyecto en Github:**
+- Creación de `docs/swagger.js` para configurar Swagger
+- Desarrollo de las configuraciones de Swagger
+- Modificaciones en app.js para permitir la conexión
+- Se movió `docs/swagger.js` a `src/docs/swagger.js`
+- Se eliminó myDocuments/
+- Conexión inicial exitosa
+**Septuagésimo quinto commit del proyecto en Github:**
