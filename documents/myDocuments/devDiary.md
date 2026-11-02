@@ -478,3 +478,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Inicio del proceso de documentación con Swagger
 - Instalación de swagger-jsdoc y swagger-ui-express
 **Septuagésimo tercer commit del proyecto en Github:**
+- Se creó la carpeta myDocuments/ para alojar devDiary.md, gaps.md y roleTable.png
+- Se creó la carpeta documents/docs para alojar las configuraciones de Swagger
+**Septuagésimo cuarto commit del proyecto en Github:**
