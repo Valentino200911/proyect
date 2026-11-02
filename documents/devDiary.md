@@ -475,3 +475,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 **Septuagésimo primer commit del proyecto en Github:**
 - Eliminación de gaps que realmente corresponden al front
 **Septuagésimo segundo commit del proyecto en Github:**
+- Inicio del proceso de documentación con Swagger
+- Instalación de swagger-jsdoc y swagger-ui-express
+**Septuagésimo tercer commit del proyecto en Github:**
