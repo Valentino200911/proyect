@@ -471,3 +471,5 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambios en userService: Adición de filtro en todos los usuarios por email
 - Cambios en los controllers: en getAll--, se añadió un req.query en caso de necesitarse un filtro en el service
 **Septuagésimo commit del proyecto en Github:**
+- Adición de gaps generales
+**Septuagésimo primer commit del proyecto en Github:**

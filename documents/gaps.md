@@ -3,6 +3,8 @@
 - Mediante alguna librería de JS, permitir que pasado cierto tiempo, si una reservación no es pagada, se vuelva automáticamente como "fallen"
 - Mejorar los filtros en reservation, en vez de index: true
 - Ver // TODO
+- Documentar con Swagger
+- Agregar testeos (lo ideal sería testear el 70% del código)
 - Revisar el local update de naturalElementService
 - Documentar el proceso de modificación de reservation
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
