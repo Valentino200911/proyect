@@ -11,7 +11,7 @@ export const getAllReservationsController = async (req, res) => {
 
     if (role === "admin") {
 
-        const allReservations = await reservationService.getAllReservationsService()
+        const allReservations = await reservationService.getAllReservationsService(req.query)
 
         res.status(200).json(allReservations)
 

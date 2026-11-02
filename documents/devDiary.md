@@ -451,9 +451,23 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - Modificaciones a las colecciones de POSTMAN (routers, centralización de tokens, etc.)
 
   **Septuagésimo commit del proyecto en Github:**
+  - Documentar el proceso de modificación de reservation -- ANULADO
 
-  - Documentar el proceso de modificación de reservation
-
-  **Septuagésimo primer commit del proyecto en Github:**
+  **Septuagésimo primer commit del proyecto en Github:** -- ANULADO
 
   - Anotar en el README como inicializar el proyecto y cambiar la estructura de carpetas (Tener un README completo)
+
+### 2 de noviembre de 2026
+
+- Entre estos días se intentó modificar el frontend para que este pueda conectarse con el back, debido a cuestiones de tiempo. Se descartó la idea de documentar el proceso de modificación de reservation por el momento (queda registrado como gap). El flujo de trabajo pasará a ser el siguiente
+
+  - Documentación con Swagger
+  - Testeo del Back
+  - Desarrollo del README
+  - Corrección del Front
+  - Resolución de gaps no esenciales en la medida de los posible
+
+- Regreso a la registración normal de la bitácora
+- Cambios en userService: Adición de filtro en todos los usuarios por email
+- Cambios en los controllers: en getAll--, se añadió un req.query en caso de necesitarse un filtro en el service
+**Septuagésimo commit del proyecto en Github:**

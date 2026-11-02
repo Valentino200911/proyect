@@ -23,9 +23,17 @@ import { ErrorApp } from "../utils/ErrorApp.js";
 
     // getAllUsersService
 
-    export const getAllUsersService = async () => {
+    export const getAllUsersService = async ({email} = {}) => {
 
-        const users = User.find({}, {__v: 0}).sort({name: 1}) // El segundo {} es un project, el primero es un filter
+        const filter = {}
+
+        if (email) {
+
+            filter.email = email
+
+        }
+
+        const users = User.find({filter}, {__v: 0}).sort({name: 1}) // El segundo {} es un project, el primero es un filter
         // No se escribe createdAt: 0 ni upadatedAt: 0 debido a que uno al  hacer la consulta debería poder ver cuando fue creado un usuario
 
         return users

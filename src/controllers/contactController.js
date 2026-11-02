@@ -8,7 +8,7 @@ import * as contactService from "../services/contactService.js";
 
         if (role === "admin") {
             
-            const allContacts = await contactService.getAllContactsService()
+            const allContacts = await contactService.getAllContactsService(req.query)
 
             res.status(200).json(allContacts)
 
