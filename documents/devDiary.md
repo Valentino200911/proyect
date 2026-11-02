@@ -473,3 +473,5 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 **Septuagésimo commit del proyecto en Github:**
 - Adición de gaps generales
 **Septuagésimo primer commit del proyecto en Github:**
+- Eliminación de gaps que realmente corresponden al front
+**Septuagésimo segundo commit del proyecto en Github:**

@@ -9,8 +9,6 @@
 - Documentar el proceso de modificación de reservation
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
 - Anotar en el README como inicializar el proyecto y cambiar la estructura de carpetas
-- Manejo de proxy en el front (ver codigo modelo de front)
-- Que el usuario vea sus propios contacts y reservation (en el front)
 - Manejo del error 429 - Rate limit
 
 // Dudas
