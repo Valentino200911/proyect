@@ -2,7 +2,7 @@ import { ErrorApp } from "../utils/ErrorApp.js";
 import Cottage from "../models/cottageModel.js";
 import User from "../models/userModel.js";
 import Reservation from "../models/reservationModel.js";
-import { parseToLocalDate, POPULATE_RESERVATION } from "../utils/constants/generalConstants.js";
+import { addDays, formatDate, parseToLocalDate, parseToNumber, POPULATE_RESERVATION } from "../utils/constants/generalConstants.js";
 
 // Validar la reservación y aplicar lógica de negocio
 
@@ -10,50 +10,47 @@ import { parseToLocalDate, POPULATE_RESERVATION } from "../utils/constants/gener
 
 const validateCapacity = async (reservation) => {
 
-    const capacity = reservation.cottage.capacity
+    const capacity = parseToNumber(reservation.cottage.capacity)
 
-    const passangerNumber = reservation.passangerNumber + 1 //El +1 proviene de la propia persona que reserva
+    const passangerNumber = parseToNumber(reservation.passangerNumber) + 1 //El +1 proviene de la propia persona que reserva
 
     if (passangerNumber > capacity) {
 
-        throw new ErrorApp(`The number of people (${passangerNumber}) cannot be over the cottage's capacity (${capacity})`, 409);
+        throw new ErrorApp(`The number of people (${passangerNumber}, you are included) cannot be over the cottage's capacity (${capacity})`, 409);
 
     }
 }
 
 const validateDate =  (reservation) => { 
 
-    const entryDate = reservation.entryDate
+    const entryDate = parseToLocalDate(reservation.entryDate)
 
-    const exitDate = reservation.exitDate
+    const exitDate = parseToLocalDate(reservation.exitDate)
 
-    // Validar que las reservacuiones no superen los 7 días
-
-    const addedDays = 7 // Días que se suman
-
-    function addDays() {
-
-        const duplicatedEntryDate = new Date(entryDate)
-
-        const result = duplicatedEntryDate.setDate(duplicatedEntryDate.getDate() + addedDays)
-
-        return result
-
+    const today = new Date() // Fecha de hoy
+    
+    today.setHours(0,0,0,0) // Medianoche
+    
+    if (entryDate < today || exitDate < today) {
+        
+        throw new ErrorApp("The reservation cannot be made in the past. Check your dates again", 400);
+        
+        
     }
 
-    const restrictedExitDate = addDays()
-
     if (entryDate >= exitDate) {
+        
+        throw new ErrorApp(`The date of entry (${formatDate(entryDate)} cannot be over or be same as the date of exit (${formatDate(exitDate)})`, 409);
+        
+    } 
 
-        throw new ErrorApp(`The date of entry (${entryDate}) cannot be over or be same as the date of exit (${exitDate})`, 409);
+    const reservationMaxDays = 7 // Validar que las reservacuiones no superen los 7 días
 
-    } else {
+    const restrictedExitDate =  addDays(entryDate, reservationMaxDays)
 
-        if (exitDate > restrictedExitDate) {
+    if (exitDate > restrictedExitDate) {
     
-            throw new ErrorApp(`The date of exit (${exitDate}) cannot be over ${addedDays} days after the entry date. The maximum allowed for ${entryDate} is ${restrictedExitDate}`, 409)
-
-        }
+        throw new ErrorApp(`The date of exit (${formatDate(exitDate)}) cannot be over ${reservationMaxDays} days after the entry date. The maximum allowed for ${formatDate(entryDate)} is ${formatDate(restrictedExitDate)}`, 409)
 
     }
 
@@ -61,17 +58,38 @@ const validateDate =  (reservation) => {
 
 const validateDateSuperposition = async (reservation) => {
 
+    const cottageId = reservation.cottage._id || reservation.cottage
+    
     const entryDate = parseToLocalDate(reservation.entryDate)
 
     const exitDate = parseToLocalDate(reservation.exitDate)
 
-    const existentReservations = await Reservation.findOne({ cottage:  reservation.cottage._id, $and: [{ entryDate: { $lt: exitDate } }, { exitDate: { $gt: entryDate } }] })
+    // Límites, para que siempre haya un día entre medio de múltples reservaciones
+
+    const entryLimit = addDays(entryDate, -2) // Para que, por ej. Si hay una reservación iniciada el 13, exitDate no pueda ser el 12
+    
+    const exitLimit = addDays(exitDate, 2) // Para que, por ej. Si hay una reservación finalizada el 13, entryDate no pueda ser el 14
+
+    const existentReservations = await Reservation.findOne(
+
+        { cottage:  cottageId, 
+            
+            $and: [
+
+                { entryDate: { $lt: exitLimit } }, 
+                { exitDate: { $gt: entryLimit } }
+
+            ] 
+
+        }
+    )
 
     if (existentReservations) {
 
-        throw new ErrorApp(`There is a conflict with a reservation on the dates: ${entryDate} to ${exitDate}`, 409);
+        throw new ErrorApp(`There is a reservation near those dates or, there is a day reserved for mantaining the cottages`, 409);
 
     }
+    
 }
 
 // Traer la reservación 
@@ -112,7 +130,7 @@ const reservationData = async (reservation) => {
         entryDate: reservation.entryDate,
         exitDate: reservation.exitDate,
         passangerNumber: reservation.passangerNumber,
-        totalPrice: (cottage.pricePerNightAndPerson * (reservation.passangerNumber + 1) * Math.round((exitDate - entryDate) / 86400000)), // Se suma +1 debido a que se incluye a la propia persona que reserva
+        totalPrice: (cottage.pricePerNightAndPerson * (parseToNumber(reservation.passangerNumber + 1)) * Math.round((exitDate - entryDate) / 86400000)), // Se suma +1 debido a que se incluye a la propia persona que reserva
         reservationState: reservation.reservationState,
         methodOfPayment: reservation.methodOfPayment,
         isPaid: reservation.isPaid,

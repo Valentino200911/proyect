@@ -36,7 +36,7 @@ const createdNaturalElements = await NaturalElement.create([
         name: "Tusca", 
         binomialName: "Vachellia aroma", 
         description: "arbol perteneciente a la familia de las acacias que se ubica en el territorio argentino.", 
-        image: "https://evojuego.wordpress.com/wp-content/uploads/2020/10/tusca.jpg", 
+        image: "https://supabase.com/dashboard/project/wbiruthlzrzibmgrzboh/storage/files/buckets/naturalElementsImagesBucket?preview=1793165770889-vqf2g6.jpg", 
         info: "https://es.wikipedia.org/wiki/Vachellia_aroma"
     },
 ])
@@ -80,7 +80,8 @@ const [Cabaña_1, Cabaña_2] = await Cottage.create([
         capacity: 7,
         pricePerNightAndPerson: 40000,
         location: "tafi viejo, tucuman",
-        description: "Un lugar para descansar en contacto con la naturaleza"
+        description: "Un lugar para descansar en contacto con la naturaleza",
+        image: "https://supabase.com/dashboard/project/wbiruthlzrzibmgrzboh/storage/files/buckets/cottageImagesBucket?preview=1793423330630-kpyhd1.jpg"
     
     },
     {
@@ -88,7 +89,8 @@ const [Cabaña_1, Cabaña_2] = await Cottage.create([
         capacity: 2,
         pricePerNightAndPerson: 20000,
         location: "tafi viejo, tucuman",
-        description: "Un lugar para descansar en contacto con la naturaleza"
+        description: "Un lugar para descansar en contacto con la naturaleza",
+        image: "https://supabase.com/dashboard/project/wbiruthlzrzibmgrzboh/storage/files/buckets/cottageImagesBucket?preview=1793657608192-m9gn4h.jpg"
     
     },
     

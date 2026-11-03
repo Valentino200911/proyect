@@ -493,3 +493,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 ### 3 de noviembre de 2026
 
 **Septuagésimo sexto commit del proyecto en Github:**
+
+- Cambios en seed.js, reservationService.js y generalConstants.js
+
+**Septuagésimo séptimo commit del proyecto en Github:**
