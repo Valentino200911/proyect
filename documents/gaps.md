@@ -10,6 +10,9 @@
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
 - Anotar en el README como inicializar el proyecto y cambiar la estructura de carpetas
 - Manejo del error 429 - Rate limit
+- Commitear los stash
+- Verificar los cambios stasheados en reservationService
+- Continuar con swagger.js
 
 // Dudas
 

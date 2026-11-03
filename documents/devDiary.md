@@ -488,3 +488,8 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Se eliminó myDocuments/
 - Conexión inicial exitosa
 **Septuagésimo quinto commit del proyecto en Github:**
+- Cambios en swagger.js, anotación de gaps
+
+### 3 de noviembre de 2026
+
+**Septuagésimo sexto commit del proyecto en Github:**
