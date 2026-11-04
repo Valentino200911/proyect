@@ -2,19 +2,17 @@
 
 - Mediante alguna librería de JS, permitir que pasado cierto tiempo, si una reservación no es pagada, se vuelva automáticamente como "fallen"
 - Mejorar los filtros en reservation, en vez de index: true
-- Ver // TODO
-- Documentar con Swagger
+- Ver `// TODO`
+- Continuar con swagger.js
 - Agregar testeos (lo ideal sería testear el 70% del código)
 - Revisar el local update de naturalElementService
 - Documentar el proceso de modificación de reservation
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
 - Anotar en el README como inicializar el proyecto y cambiar la estructura de carpetas
 - Manejo del error 429 - Rate limit
-- Commitear los stash
-- Verificar los cambios stasheados en reservationService
-- Continuar con swagger.js
+- Analizar la descentralización de generalConstants.js
 
-// Dudas
+## Dudas
 
 - ¿Está bien armado el storage local?
 

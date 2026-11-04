@@ -10,8 +10,7 @@
 import fs from "fs/promises"
 import path from "path"
 import { API_URL, STORAGE_LOCAL } from "../../utils/config.js"
-import { uniqueName } from "../../utils/constants/uniqueName.js"
-
+import { uniqueName } from "../../utils/uniqueName.js"
 
 export const uploadLocal = async (file, FOLDER) => {
 

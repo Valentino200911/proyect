@@ -1,7 +1,7 @@
 
 import mongoose from "mongoose";
 import bcrypt from "bcrypt"
-import { emailRegex, phoneNumberRegex, ROLES } from "../utils/constants/generalConstants.js";
+import { emailRegex, passwordDigits, phoneNumberRegex, ROLES } from "../utils/constants/generalConstants.js";
 import { ITERATIONS } from "../utils/config.js";
 
 
@@ -49,7 +49,7 @@ email: {
 password: {
     type: String,
     required: [true, "The password is required"],
-    minLength: [8, "Your password needs at least 8 characters"],
+    minLength: [passwordDigits, `Your password needs at least ${passwordDigits} characters`],
     select: false,
 },
 role: {

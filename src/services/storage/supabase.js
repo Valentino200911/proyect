@@ -1,6 +1,6 @@
 
 import { supabase } from "../../config/supabase.js";
-import { uniqueName } from "../../utils/constants/uniqueName.js";
+import { uniqueName } from "../../utils/uniqueName.js"
 
 
 const bucket =  (FOLDER) => { // Debido a que hay múltiples carpetas en SUPABASE, se requiere un param con validación

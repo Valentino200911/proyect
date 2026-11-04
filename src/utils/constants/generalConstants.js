@@ -30,6 +30,7 @@ import { ErrorApp } from "../ErrorApp.js";
 
         export const phoneNumberRegex = /^\+\d{1,15}$/;
 
+        export const passwordDigits = 8 // Dígitos mínimos de las contraseñas
 
     // cottage
 
@@ -42,11 +43,12 @@ import { ErrorApp } from "../ErrorApp.js";
     // contact
 
         export const REASON_OF_CONTACT = Object.freeze({
-            ADMIN: "business",
-            USER: "prom",
+
+            BUSINESS: "business",
             PROM: "prom",
             PROBLEM: "problem",
             SUGGESTION: "suggestion"
+
         });
 
     // reservation
@@ -69,6 +71,10 @@ import { ErrorApp } from "../ErrorApp.js";
 //services
 
     //reservationService
+
+        export const reservationMaxDays = 7 // Validar que las reservacuiones no superen los 7 días
+
+        export const personWhoReserves = 1 // Siempre va a ser así, la PERSONA que hace la reservación NO tiene que incluirse a sí misma, el propio sistema la incluye desde aquí
 
         export const POPULATE_RESERVATION = [
 
@@ -100,20 +106,54 @@ import { ErrorApp } from "../ErrorApp.js";
             // Reemplazar '-' por '/' fuerza a JS a interpretar la fecha en horario local, no en UTC puro
 
             const parsedDate = date.replace(/-/g, '/')
-    
+            
             const returnedDate = new Date(parsedDate)
-    
+            
             return returnedDate
             
         }
         
+        export const parseToNumber = function (params) {
+            
+            if (typeof params === "number" && !Number.isNaN(params)) { // Si es un número, retorno directo
+                
+                return params
+
+            }
+
+            let value
+
+            if (typeof params === "string" && params.trim() === "") { // Valida los strings vacíos
+
+                throw new ErrorApp(`The provided param is invalid (${params})`, 400);
+
+            }
+
+            value = Number(params)
+
+            if (Number.isNaN(value)) { // Valida que el resultado sea un número
+                
+                throw new ErrorApp(`The returned value is invalid (${value})`, 400);
+
+            }
+        
+            return value
+
+        }
+
         export const addDays = function (date, addedDays) { // addedDays son Días que se suman
         
+                let daysToAdd
+                
                 if (typeof addedDays !== "number") {
                     
-                    throw new Error(`${addedDays} is not valid as days to add`);
+                    daysToAdd = parseToNumber(addedDays)
     
-                } 
+                } else {
+
+                    daysToAdd = addedDays
+
+                }
                 
                 let sentDate
     
@@ -135,7 +175,7 @@ import { ErrorApp } from "../ErrorApp.js";
     
                 const definedDate = new Date(sentDate.getTime());
     
-                definedDate.setDate(definedDate.getDate() + addedDays);
+                definedDate.setDate(definedDate.getDate() + daysToAdd);
     
                 return definedDate
         
@@ -161,33 +201,6 @@ import { ErrorApp } from "../ErrorApp.js";
 
         }
 
-        export const parseToNumber = function (params) {
-            
-            if (typeof params === "number" && !Number.isNaN(params)) { // Si es un número, retorno directo
-                
-                return params
-
-            }
-
-            let value
-
-            if (typeof params === "string" && params.trim() === "") { // Valida los strings vacíos
-
-            throw new ErrorApp(`The provided param is invalid`, 400);
-
-            }
-
-            value = Number(params)
-
-            if ((Number.isNaN(value))) { // Valida que el resultado sea un número
-                
-                throw new ErrorApp(`The returned value is invalid`, 400);
-
-            }
-        
-            return value
-
-        }
         
     // contactService
 

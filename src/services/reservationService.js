@@ -2,7 +2,7 @@ import { ErrorApp } from "../utils/ErrorApp.js";
 import Cottage from "../models/cottageModel.js";
 import User from "../models/userModel.js";
 import Reservation from "../models/reservationModel.js";
-import { addDays, formatDate, parseToLocalDate, parseToNumber, POPULATE_RESERVATION } from "../utils/constants/generalConstants.js";
+import { addDays, formatDate, parseToLocalDate, parseToNumber, personWhoReserves, POPULATE_RESERVATION, reservationMaxDays } from "../utils/constants/generalConstants.js";
 
 // Validar la reservación y aplicar lógica de negocio
 
@@ -12,7 +12,7 @@ const validateCapacity = async (reservation) => {
 
     const capacity = parseToNumber(reservation.cottage.capacity)
 
-    const passangerNumber = parseToNumber(reservation.passangerNumber) + 1 //El +1 proviene de la propia persona que reserva
+    const passangerNumber = parseToNumber(reservation.passangerNumber) + personWhoReserves /// Se suma "personWhoReserves" debido a que se incluye a la propia persona que reserva
 
     if (passangerNumber > capacity) {
 
@@ -44,8 +44,6 @@ const validateDate =  (reservation) => {
         
     } 
 
-    const reservationMaxDays = 7 // Validar que las reservacuiones no superen los 7 días
-
     const restrictedExitDate =  addDays(entryDate, reservationMaxDays)
 
     if (exitDate > restrictedExitDate) {
@@ -61,7 +59,7 @@ const validateDateSuperposition = async (reservation) => {
     const cottageId = reservation.cottage._id || reservation.cottage
     
     const entryDate = parseToLocalDate(reservation.entryDate)
-
+    
     const exitDate = parseToLocalDate(reservation.exitDate)
 
     // Límites, para que siempre haya un día entre medio de múltples reservaciones
@@ -129,8 +127,8 @@ const reservationData = async (reservation) => {
         cottage: cottage,
         entryDate: reservation.entryDate,
         exitDate: reservation.exitDate,
-        passangerNumber: reservation.passangerNumber,
-        totalPrice: (cottage.pricePerNightAndPerson * (parseToNumber(reservation.passangerNumber + 1)) * Math.round((exitDate - entryDate) / 86400000)), // Se suma +1 debido a que se incluye a la propia persona que reserva
+        passangerNumber: parseToNumber(reservation.passangerNumber) + personWhoReserves, // Se suma "personWhoReserves" debido a que se incluye a la propia persona que reserva
+        totalPrice: (cottage.pricePerNightAndPerson * (parseToNumber(reservation.passangerNumber) + personWhoReserves) * Math.round((exitDate - entryDate) / 86400000)), // Se suma "personWhoReserves" debido a que se incluye a la propia persona que reserva
         reservationState: reservation.reservationState,
         methodOfPayment: reservation.methodOfPayment,
         isPaid: reservation.isPaid,

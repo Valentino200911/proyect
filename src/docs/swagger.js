@@ -1,5 +1,6 @@
 import swaggerJsdoc from "swagger-jsdoc"
 import { API_URL } from "../utils/config.js"
+import { passwordDigits } from "../utils/constants/generalConstants.js"
 
 const definition = {
 
@@ -111,11 +112,11 @@ const definition = {
 
                     birthDate: {type:"string", format: "date-time", example:"1999-12-31T00:00:00.000Z"},
 
-                    phoneNumber: {type:"string", example:"+5491333567896"},
+                    phoneNumber: {type:"string", unique: true, example:"+5491333567896"},
 
-                    email: {type:"string", format: "email", example:"luis.perez@gmail.com"},
+                    email: {type:"string", format: "email", unique: true, example:"luis.perez@gmail.com"},
 
-                    password: {type:"string", example:"LuisPerez123"},
+                    password: {type:"string", minLength:`${passwordDigits}`, example:"LuisPerez123"},
 
                     role: {type:"string", enum: ["admin", "user"], example:"user"},
 
@@ -173,9 +174,9 @@ const definition = {
 
                     exitDate: {type:"string", format: "date-time", example: "2026-10-15T00:00:00.000Z"},
 
-                    passangerNumber: {type:"integer", comment:"El que hace la reservación está incluido al ser almacenado en la base de datos, pero no al enviar la solicitud.", example: 3},
+                    passangerNumber: {type:"integer", description:"El que hace la reservación está incluido al ser almacenado en la base de datos, pero no al enviar la solicitud.", example: 3},
 
-                    totalPrice: {type: "integer", min: "20000", comment:"Este campo es calculado", example:"360000"},
+                    totalPrice: {type: "integer", min: "20000", description:"Este campo es calculado", example:"360000"},
 
                     reservationState: {type: "string", enum: ["in progress", "done", "fallen"], example: "done"},
 
@@ -246,9 +247,31 @@ const definition = {
 
             },
 
-            NewUser: {},
-
             NewReservation:{},
+
+            NewContact:{},
+            
+            NewNaturalElement:{},
+
+            NewReservation:{
+
+                type: "object",
+            
+                properties: {
+
+                    cottage: { $ref: "#/components/schemas/Cottage" },
+
+                    entryDate: {type:"string", format: "date", example: "2026-11-12"},
+
+                    exitDate: {type:"string", format: "date", example: "2026-11-15"},
+
+                    passangerNumber: {type:"integer", description:"El que hace la reservación está incluido al ser almacenado en la base de datos, pero no al enviar la solicitud.", example: 3},
+
+                    methodOfPayment: {type: "string", enum: ["bankTransfer", "cash"], example: "bankTransfer"},
+
+                }
+                }
+        },     
 
             Register:{
 
@@ -261,16 +284,26 @@ const definition = {
                 }
             },
 
-            Login:{},
+            Login:{
+
+                type: "object",
+
+                properties: {
+
+                    email: {type:"string", format: "email", example:"luis.perez@gmail.com"},
+
+                    password: {type:"string", example:"LuisPerez123"},
+
+                }
+
+            },
 
             Profile:{},
 
 
         },
 
-    },
-
-}
+    }
 
 export const specifications = swaggerJsdoc({
 

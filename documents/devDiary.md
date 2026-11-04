@@ -470,30 +470,38 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Regreso a la registración normal de la bitácora
 - Cambios en userService: Adición de filtro en todos los usuarios por email
 - Cambios en los controllers: en getAll--, se añadió un req.query en caso de necesitarse un filtro en el service
-**Septuagésimo commit del proyecto en Github:**
+**Septuagésimo commit del proyecto en Github**
 - Adición de gaps generales
-**Septuagésimo primer commit del proyecto en Github:**
+**Septuagésimo primer commit del proyecto en Github**
 - Eliminación de gaps que realmente corresponden al front
-**Septuagésimo segundo commit del proyecto en Github:**
+**Septuagésimo segundo commit del proyecto en Github**
 - Inicio del proceso de documentación con Swagger
 - Instalación de swagger-jsdoc y swagger-ui-express
-**Septuagésimo tercer commit del proyecto en Github:**
+**Septuagésimo tercer commit del proyecto en Github**
 - Se creó la carpeta myDocuments/ para alojar devDiary.md, gaps.md y roleTable.png
 - Se creó la carpeta documents/docs para alojar las configuraciones de Swagger
-**Septuagésimo cuarto commit del proyecto en Github:**
+**Septuagésimo cuarto commit del proyecto en Github**
 - Creación de `docs/swagger.js` para configurar Swagger
 - Desarrollo de las configuraciones de Swagger
 - Modificaciones en app.js para permitir la conexión
 - Se movió `docs/swagger.js` a `src/docs/swagger.js`
 - Se eliminó myDocuments/
 - Conexión inicial exitosa
-**Septuagésimo quinto commit del proyecto en Github:**
+**Septuagésimo quinto commit del proyecto en Github**
 - Cambios en swagger.js, anotación de gaps
 
 ### 3 de noviembre de 2026
 
-**Septuagésimo sexto commit del proyecto en Github:**
-
+**Septuagésimo sexto commit del proyecto en Github**
 - Cambios en seed.js, reservationService.js y generalConstants.js
+**Septuagésimo séptimo commit del proyecto en Github**
+- Continuación con el desarrollo de Swagger
+- Cambio mínimo en userModel y generalConstants.js
+- Corrección de la ubicación de uniqueName.js
 
-**Septuagésimo séptimo commit del proyecto en Github:**
+### 4 de noviembre de 2026
+
+- Cambios en reservationService.js y generalConstants.js
+- Cambios en las importaciones de local.js y supabase.js
+- Eliminación de gaps
+**Septuagésimo octavo commit del proyecto en Github**
