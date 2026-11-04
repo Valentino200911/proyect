@@ -104,7 +104,7 @@ const definition = {
 
                 properties: {
 
-                    _id: {type:"ObjectId || string", example:"6ae9560a22a36af0e70d1a69"},
+                    _id: {type:"string", format:"ObjectId", example:"6ae9560a22a36af0e70d1a69"},
 
                     name: {type:"string", example:"Luis"},
 
@@ -164,7 +164,7 @@ const definition = {
 
                 properties: {
 
-                    _id: {type:"ObjectId || string", example:"6ae9560a22a36af0e70d1a69"},
+                    _id: {type:"string", format:"ObjectId", example:"6ae9560a22a36af0e70d1a69"},
 
                     user: { $ref: "#/components/schemas/User" },
 
@@ -202,7 +202,7 @@ const definition = {
 
                 properties: {
 
-                    _id: {type:"ObjectId || string", example:"6ae9560a22a36af0e70d1a69"},
+                    _id: {type:"string", format:"ObjectId", example:"6ae9560a22a36af0e70d1a69"},
 
                     user: { $ref: "#/components/schemas/User" },
 
@@ -225,7 +225,7 @@ const definition = {
 
                 properties: {
 
-                    _id: {type:"ObjectId || string", example:"6ae9560a22a36af0e70d1a69"},
+                    _id: {type:"string", format:"ObjectId", example:"6ae9560a22a36af0e70d1a69"},
 
                     name: {type:"string", description: "Esto es para la flora y fauna local", example:"Tusca"},
 
@@ -247,11 +247,61 @@ const definition = {
 
             },
 
-            NewReservation:{},
+            NewCottage:{
 
-            NewContact:{},
+                type: "object",
             
-            NewNaturalElement:{},
+                properties: {
+
+                    name: {type:"string", example:"cabaña 1"},
+
+                    capacity: {type:"integer", example: 7},
+
+                    pricePerNightAndPerson: {type:"integer", example: 40000},
+
+                    location: {type:"string", example: "tafi viejo, tucuman"},
+
+                    description: {type:"string", example: "un lugar para descansar en contacto con la naturaleza"},
+
+                    image: {type:"string", format: "link", example: "https://wbiruthlzrzibmgrzboh.supabase.co/storage/v1/object/public/cottageImagesBucket/1793423330630-kpyhd1.jpg"},
+                    
+                }
+
+            },
+
+            NewContact:{
+
+                type: "object",
+            
+                properties: {
+
+                    reasonOfContact: {type: "string", example: "problem"},
+
+                    contactComment: {type: "string", example: "Hi 123C"},
+
+                }
+
+            },
+            
+            NewNaturalElement:{
+
+                type: "object",
+            
+                properties: {
+
+                    name: {type:"string", description: "Esto es para la flora y fauna local", example:"Tusca"},
+
+                    binomialName: {type:"string", description: "Esto es para la flora y fauna local", example:"Vachellia aroma"},
+
+                    description: {type:"string", example: "arbol perteneciente a la familia de las acacias que se ubica en el territorio argentino."},
+
+                    image: {type:"string", format: "link", example: "https://wbiruthlzrzibmgrzboh.supabase.co/storage/v1/object/public/naturalElementsImagesBucket/1793165770889-vqf2g6.jpg"},
+
+                    info: {type:"string", format: "link", example: "https://es.wikipedia.org/wiki/Vachellia_aroma"},
+
+                }
+
+            },
 
             NewReservation:{
 
@@ -259,7 +309,7 @@ const definition = {
             
                 properties: {
 
-                    cottage: { $ref: "#/components/schemas/Cottage" },
+                    cottage: { $ref: "#/components/schemas/Cottage", description: "El usuario tiene que escribir la cabaña. En el front, habría que seleccionarla a través de un select" },
 
                     entryDate: {type:"string", format: "date", example: "2026-11-12"},
 
@@ -267,38 +317,77 @@ const definition = {
 
                     passangerNumber: {type:"integer", description:"El que hace la reservación está incluido al ser almacenado en la base de datos, pero no al enviar la solicitud.", example: 3},
 
-                    methodOfPayment: {type: "string", enum: ["bankTransfer", "cash"], example: "bankTransfer"},
+                    methodOfPayment: {type: "string", example: "bankTransfer"},
 
                 }
-                }
+                },
+
+                Register:{
+        
+                    type: "object",
+        
+                    properties: {
+        
+                        name: {type:"string", example:"Luis"},
+        
+                        surname: {type:"string", example:"Pérez"},
+        
+                        birthDate: {type:"string", format: "date-time", example:"1999-12-31T00:00:00.000Z"},
+        
+                        phoneNumber: {type:"string",  example:"+5491333567896"},
+        
+                        email: {type:"string", format: "email",  example:"luis.perez@gmail.com"},
+        
+                        password: {type:"string", example:"LuisPerez123"},
+        
+                    }
+                },
+        
+                Login:{
+        
+                    type: "object",
+        
+                    properties: {
+        
+                        email: {type:"string", format: "email", unique: true, example:"luis.perez@gmail.com"},
+        
+                        password: {type:"string", example:"LuisPerez123"}
+                    }
+        
+                },
+        
+                Profile:{
+        
+                    type: "object",
+        
+                    properties: {
+        
+                        _id: {type:"string", format:"ObjectId", example:"6ae9560a22a36af0e70d1a69"},
+        
+                        name: {type:"string", example:"Luis"},
+        
+                        surname: {type:"string", example:"Pérez"},
+        
+                        birthDate: {type:"string", format: "date-time", example:"1999-12-31T00:00:00.000Z"},
+        
+                        phoneNumber: {type:"string", example:"+5491333567896"},
+        
+                        email: {type:"string", format: "email", example:"luis.perez@gmail.com"},
+                        
+                        role: {type:"string", example:"user"},
+        
+                        createdAt: {type:"string", format: "date-time", example:"2026-11-03T03:33:30.103Z"},
+        
+                        updatedAt: {type:"string", format: "date-time", example:"2026-11-03T03:33:30.103Z"},
+                    }
+        
+                },
+
+
+
+
         },     
 
-            Register:{
-
-                type: "object",
-
-                properties: {
-
-                    user: { $ref: "#/components/schemas/User" },
-
-                }
-            },
-
-            Login:{
-
-                type: "object",
-
-                properties: {
-
-                    email: {type:"string", format: "email", example:"luis.perez@gmail.com"},
-
-                    password: {type:"string", example:"LuisPerez123"},
-
-                }
-
-            },
-
-            Profile:{},
 
 
         },

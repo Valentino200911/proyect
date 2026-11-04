@@ -10,6 +10,7 @@
 - Práctica usual: Lo comun es recibir un email para confirmar tu cuenta en authService.js (usar NODEMAILER?)
 - Anotar en el README como inicializar el proyecto y cambiar la estructura de carpetas
 - Manejo del error 429 - Rate limit
+- Validar mayoría de edad para registro (Para algo tiene que servir birthDate)
 - Analizar la descentralización de generalConstants.js
 
 ## Dudas

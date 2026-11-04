@@ -505,3 +505,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambios en las importaciones de local.js y supabase.js
 - Eliminación de gaps
 **Septuagésimo octavo commit del proyecto en Github**
+- Cambios en index.js para un acceso más rápido a la documentación en swagger a través del console.log
+- Se finalizó la documentación de entidades del back en swagger.js
+**Septuagésimo noveno commit del proyecto en Github**
+- Se iniciará con el proceso de documentación de las rutas a través de API DOCS

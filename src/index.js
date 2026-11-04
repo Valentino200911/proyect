@@ -11,11 +11,21 @@ import { PORT } from "./utils/config.js";
     app.listen(PORT, () => {
 
         console.log(`Server working on http://localhost:${PORT}`);
+
+        console.log(`Route of Api-Docs on http://localhost:${PORT}/api-docs`)
+
+        console.log(`Route of Api-Docs JSON on http://localhost:${PORT}/api-docs.json`)
+
         console.log(`Route of Natural Elements on http://localhost:${PORT}/api/naturalelement`)
+
         console.log(`Route of Reservations on http://localhost:${PORT}/api/reservation`)
+
         console.log(`Route of Users on http://localhost:${PORT}/api/user`)
+
         console.log(`Route of Cottages on http://localhost:${PORT}/api/cottage`)
+
         console.log(`Route of Contacts on http://localhost:${PORT}/api/contact`)
+
         console.log(`Route of Auth on http://localhost:${PORT}/api/auth`)
 
     })
