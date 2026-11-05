@@ -6,6 +6,7 @@ const reservationSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        required: [true, "The user is required for the register"],
     },
     cottage: {
 
@@ -23,12 +24,14 @@ const reservationSchema = new mongoose.Schema({
         required: [true, "The leaving date is required for the register"],
         trim: true,
     },
-    passangerNumber: {
+    passengerNumber: {
+
+        // En el front el select p. el N° de acompañantes debe ir del 0 al 6 y aclarar que el que reserva ya está incluido según el sistema
 
         type: Number,
         required: [true, "The number of companions (excluding you) is required for the register"],
         min: [0, "You cannot have negative companions"],
-        max: [6, "You cannot have more than 6 companions"],
+        max: [7, "7 is the maximum level of people (including you) accepted"],
         validate: {
             validator: Number.isInteger,
             message: "The number of companions has to be an integer number"

@@ -1,8 +1,10 @@
 import { ErrorApp } from "../utils/ErrorApp.js";
 import Cottage from "../models/cottageModel.js";
 import User from "../models/userModel.js";
+import * as userService from "../services/userService.js"
+import * as cottageService from "../services/cottageService.js"
 import Reservation from "../models/reservationModel.js";
-import { addDays, formatDate, parseToLocalDate, parseToNumber, personWhoReserves, POPULATE_RESERVATION, reservationMaxDays } from "../utils/constants/generalConstants.js";
+import { addDays, formatDate, parseToLocalDate, parseToNumber, personWhoReserves, POPULATE_RESERVATION, RESERVATION_STATE, reservationMaxDays, ROLES } from "../utils/constants/generalConstants.js";
 
 // Validar la reservación y aplicar lógica de negocio
 
@@ -12,11 +14,11 @@ const validateCapacity = async (reservation) => {
 
     const capacity = parseToNumber(reservation.cottage.capacity)
 
-    const passangerNumber = parseToNumber(reservation.passangerNumber) + personWhoReserves /// Se suma "personWhoReserves" debido a que se incluye a la propia persona que reserva
+    const passengerNumber = parseToNumber(reservation.passengerNumber) // Se parsea el número, después se hace la suma
 
-    if (passangerNumber > capacity) {
+    if (passengerNumber > capacity) {
 
-        throw new ErrorApp(`The number of people (${passangerNumber}, you are included) cannot be over the cottage's capacity (${capacity})`, 409);
+        throw new ErrorApp(`The number of people (${passengerNumber}, you are included) cannot be over the cottage's capacity (${capacity})`, 409);
 
     }
 }
@@ -34,7 +36,6 @@ const validateDate =  (reservation) => {
     if (entryDate < today || exitDate < today) {
         
         throw new ErrorApp("The reservation cannot be made in the past. Check your dates again", 400);
-        
         
     }
 
@@ -64,9 +65,9 @@ const validateDateSuperposition = async (reservation) => {
 
     // Límites, para que siempre haya un día entre medio de múltples reservaciones
 
-    const entryLimit = addDays(entryDate, -2) // Para que, por ej. Si hay una reservación iniciada el 13, exitDate no pueda ser el 12
+    const entryLimit = addDays(entryDate, -2) // Para que, por ej. Si hay una reservación iniciada el 13, El exitDate de otra reservación no pueda ser el 12
     
-    const exitLimit = addDays(exitDate, 2) // Para que, por ej. Si hay una reservación finalizada el 13, entryDate no pueda ser el 14
+    const exitLimit = addDays(exitDate, 2) // Para que, por ej. Si hay una reservación finalizada el 13, El entryDate de otra reservación no pueda ser el 14
 
     const existentReservations = await Reservation.findOne(
 
@@ -75,7 +76,10 @@ const validateDateSuperposition = async (reservation) => {
             $and: [
 
                 { entryDate: { $lt: exitLimit } }, 
-                { exitDate: { $gt: entryLimit } }
+                
+                { exitDate: { $gt: entryLimit } },
+
+                { reservationState: {$ne: RESERVATION_STATE.FALLEN} }
 
             ] 
 
@@ -84,7 +88,7 @@ const validateDateSuperposition = async (reservation) => {
 
     if (existentReservations) {
 
-        throw new ErrorApp(`There is a reservation near those dates or, there is a day reserved for mantaining the cottages`, 409);
+        throw new ErrorApp(`There is a reservation during those dates or, there is a day reserved for mantaining the cottages`, 409);
 
     }
     
@@ -94,7 +98,7 @@ const validateDateSuperposition = async (reservation) => {
 
 const verifyIfReservationExistsService = async (reservationId) => {
 
-    const reservation = await Reservation.findById({ _id: reservationId })
+    const reservation = await Reservation.findById({ _id: reservationId }).populate(POPULATE_RESERVATION)
 
     if (!reservation) {
 
@@ -116,22 +120,38 @@ const reservationData = async (reservation) => {
 
     const exitDate = new Date(reservation.exitDate)
 
-    if (!cottage || !user) {
+    if (!user) {
 
-        throw new ErrorApp("There is a cottage or an user that does not exist", 404);
+        throw new ErrorApp("The user sending this request does not exist", 404);
+
+    }
+
+    if (!cottage) {
+
+        throw new ErrorApp("The cottage selected for this request does not exist", 404);
 
     }
 
     return {
+
         user: user,
+
         cottage: cottage,
+
         entryDate: reservation.entryDate,
+
         exitDate: reservation.exitDate,
-        passangerNumber: parseToNumber(reservation.passangerNumber) + personWhoReserves, // Se suma "personWhoReserves" debido a que se incluye a la propia persona que reserva
-        totalPrice: (cottage.pricePerNightAndPerson * (parseToNumber(reservation.passangerNumber) + personWhoReserves) * Math.round((exitDate - entryDate) / 86400000)), // Se suma "personWhoReserves" debido a que se incluye a la propia persona que reserva
+
+        passengerNumber: parseToNumber(reservation.passengerNumber) + personWhoReserves , // Se suma "personWhoReserves" debido a que se incluye a la propia persona que reserva
+        
+        totalPrice: (cottage.pricePerNightAndPerson * (parseToNumber(reservation.passengerNumber) + personWhoReserves) * Math.round((exitDate - entryDate) / 86400000)), // Se suma "personWhoReserves" debido a que se incluye a la propia persona que reserva
+
         reservationState: reservation.reservationState,
+
         methodOfPayment: reservation.methodOfPayment,
+
         isPaid: reservation.isPaid,
+
         reservationComment: reservation.reservationComment
 
     }
@@ -139,8 +159,6 @@ const reservationData = async (reservation) => {
 }
 
 // getAllReservationsService (Todos)
-
-export const getAllReservationsService = async (userId = null) => {
 
 /*
 
@@ -150,7 +168,7 @@ En getAllReservationsService y getReservationByIdService (lo mismo aplica para l
 
 Dado a que existen tokens de user y admin, técnicamente siempre están siendo recibidos
 
-Ahora, para que eso aplique, se crea una const filter = {}, y se definbe que si hay userId (o es userId !== null), entonces que al objeto filter se le agregue la propiedad user: userId
+Ahora, para que eso aplique, se crea una const filter = {}, y se define que si hay userId (o es userId !== null), entonces que al objeto filter se le agregue la propiedad user: userId
 
 Este filter se usa luego en las consultas de find y findOne (la razón por la cual se usa findOne en getReservationByIdService en vez de findById es porque esta sólo admite un _id y ningún otro campo. En cambio findOne admite múltiples condiciones, lo cual es el caso si userId !== null)
 
@@ -169,42 +187,65 @@ Si role !== "admin", solo se devolverán los registros del usuario a quien le pe
     }
 
     Por convención se empleó al 400 - bad request como salida, pero la validación también puede admitir un 404, es decir, que  no haya reservation en específico o, en todo caso, un 403, forbidden
-*/
+
+    */
+
+export const getAllReservationsService = async (userId) => {
+
+    const user = await userService.getUserByIdService(userId)
 
     const filter = {}
 
-    if (userId !== null) {
+    filter.user = userId
+    
+    if (user.role === ROLES.ADMIN) {
         
-        filter.user = userId
+        const reservation = await Reservation.find({}, { __v: 0 }).populate(POPULATE_RESERVATION).sort({ createdAt: -1 })
+
+        return reservation
+
+    } else {
+
+        const reservation = await Reservation.find(filter, { __v: 0 }).populate(POPULATE_RESERVATION).sort({ createdAt: -1 })
+
+        return reservation
+
     }
 
-    const reservation = await Reservation.find(filter, { __v: 0 }).populate(POPULATE_RESERVATION).sort({ createdAt: -1 })
-
-    return reservation
 }
 
 // getReservationByIdService - Uno en específico que bien puede ser mío (userOnly) o no (adminOnly)
 
-export const getReservationByIdService = async (reservationId, userId = null) => { // El null viene por default en caso de que no se lo envíe
+export const getReservationByIdService = async (reservationId, userId) => {
+    
+    const user = await userService.getUserByIdService(userId)
 
-    const filter = {_id: reservationId }
+    const filter = {_id: reservationId}
 
-    if (userId !== null) {
+    filter.user = userId
+
+    if (user.role === ROLES.ADMIN) {
         
-      filter.user = userId
+        const reservation = await verifyIfReservationExistsService(reservationId)
+        
+        return reservation
+
+
+    } else {
+
+        const reservation = await Reservation.findOne(filter, {__v: 0}).populate(POPULATE_RESERVATION)
+
+        if (!reservation) {
+            
+            throw new ErrorApp("The reservation that you are looking for could not exist", 404);
+
+        }
+
+        return reservation
 
     }
 
-    const reservation = await Reservation.findOne(filter, { __v: 0 }).populate(POPULATE_RESERVATION)
-
-    if (!reservation) {
-        
-        throw new ErrorApp("The reservation does not exist or you do not have access to it", 400);
-
     }
-
-    return reservation
-}
 
 // createReservationService
 
@@ -214,13 +255,13 @@ export const createReservationService = async (userId, cottageId, data) => {
 
     data.cottage = cottageId
 
+    await validateDate(data)
+
     const reservation = await reservationData(data)
 
-    const dateValidation = await validateDate(reservation)
+    await validateCapacity(reservation)
 
-    const dateSuperpostionValidation = await validateDateSuperposition(reservation)
-
-    const capacityValidation = await validateCapacity(reservation)
+    await validateDateSuperposition(reservation)
 
     const newReservation = await Reservation.create(reservation)
 
@@ -232,48 +273,121 @@ export const createReservationService = async (userId, cottageId, data) => {
 
 // updateReservationService
 
-export const updateReservationService = async (reservationId, { reservationState, isPaid, reservationComment } = {}) => {
+// Tanto el admin como el user pueden cancelar la reservación
 
-    const updatedReservation = await Reservation.findByIdAndUpdate({ _id: reservationId }, { reservationState, isPaid, reservationComment }, {
+export const updateReservationService = async (reservationId, userId, { reservationState, isPaid, reservationComment } = {}) => {
 
-        returnDocument: "after",
+    const user = await userService.getUserByIdService(userId) // Trae al usuario (verifica de paso si existe)
 
-        runValidators: true,
+    const filter = {_id: reservationId} // Filtra inicialmente los documentos por su _id
 
-    }
-    ).populate(POPULATE_RESERVATION)
+    filter.user = userId    // Se le suma el filtro del _id del usuario (para que el usuario no modifique un documento que no es suyo)
 
-/*
-
-- Si isPaid pasa de false a true, y reservationState es "in progress", entonces reservationState se vuelve "done"
-
-- Si isPaid es true y se vuelve false, y además reservationState  es "done", se vuelve "fallen"
-
-- TODO: Encontrar una manera de que si una reservación es "in progress" por mucho tiempo se vuelva fallen
-
-- Una reservación cuyo reservationState: "in progress" puede modificarse manualmente p/ que sea  "fallen" (pero no al revés), mas no "done"
-
-*/
-
-    if (!updatedReservation) { // No la encuentra, early return
+    if (user.role === ROLES.ADMIN) {
         
-        throw new ErrorApp(`The reservation with the id ${reservationId} does not exist`, 404);        
+        const reservation = await Reservation.findById({_id: reservationId}, {}).populate(POPULATE_RESERVATION) //El admin encuentra el documento por su id, por eso es findById, al admin no necesariamente le importa de quién es el documento
+
+        // El admin no debe modificar lo que el cliente escribió
+
+        if (!reservation) {
+            
+            throw new ErrorApp(`The reservation with the _id: ${reservationId} does not exist`, 404);
+            
+        }
+
+        /*
+
+            COMPARACIÓN ENTRE VALOR DE reservationState E isPaid
+
+            reservationState    |    isPaid
+
+            in progress         |    false
+            fallen              |    false
+            done                |    true
+
+            Además, si una reservación tiene reservationState "in progress"
+            solo hay dos caminos: o se vuelve "fallen", o se vuelve "done".
+            Una vez cambiado el estado no hay vuelta atrás
+            
+            Entonces el flujo de isPaid es:
+            
+            false --> false || false --> true
+            
+            */
+        
+        if (reservation.reservationState === RESERVATION_STATE.FALLEN || reservation.reservationState === RESERVATION_STATE.DONE) { // Si ya está caída o pagada ya no puede modificarse
+            
+            throw new ErrorApp("You cannot modify the reservation anymore", 400);
+        }
+
+        if (reservationState === RESERVATION_STATE.FALLEN && reservation.reservationState !== RESERVATION_STATE.DONE) {
+
+            // Lo que pregunta la condición es si el cambio es para convertir en "fallen" es justamente "fallen" (cancelar la reservación), buscando además que no sea "done"
+
+            reservation.reservationState = RESERVATION_STATE.FALLEN  // Setea el cambio
+
+            reservation.isPaid = false  // Esta línea está como mecanismo para que isPaid se actualice de todas formas, aunque no es necesario, debido al propio flujo existente
+
+        } 
+
+        if (isPaid === true || reservationState === RESERVATION_STATE.DONE) { // Esto es para confirmar el pago de la reservación desde el admin, Se puede cambiar, o modificando reservationState, o modificando isPaid.
+            
+            reservation.isPaid = true // Setea el cambio
+
+            reservation.reservationState = RESERVATION_STATE.DONE // Setea el cambio
+
+        }
+
+        await reservation.save()
+
+        return reservation
+
+    }  
     
+    if (user.role === ROLES.USER) {
+
+        // El rol user puede cambiar su comentario y su estado (cancelación)
+
+        const reservation = await Reservation.findOne(filter, {}).populate(POPULATE_RESERVATION)
+
+        if (!reservation) {
+            
+            throw new ErrorApp(`The reservation you are looking for could not exist`, 404);
+            
+        }
+
+        if (reservation.reservationState === RESERVATION_STATE.FALLEN || reservation.reservationState === RESERVATION_STATE.DONE) {
+
+            throw new ErrorApp("You cannot modify the reservation anymore", 400);
+
+        }
+
+        if (reservationState !== undefined && reservationState !== RESERVATION_STATE.FALLEN) {
+            
+            throw new ErrorApp("You can only cancel your reservation", 400);
+
+        }
+        // Cancelar la reservación
+
+        if (reservationState === RESERVATION_STATE.FALLEN && reservation.reservationState !== RESERVATION_STATE.DONE) {
+            
+            reservation.reservationState = RESERVATION_STATE.FALLEN 
+
+            reservation.isPaid = false
+
+        }  
+
+        if (reservationComment !== undefined) {
+            
+            reservation.reservationComment = reservationComment
+
+        }
+
+        await reservation.save()
+
+        return reservation
+
     }
-
-    if (updatedReservation.isPaid === true) { // Tiene false como default, pasa a true, entonces la reservación está pagada
-        
-        updatedReservation.reservationState = "done"
-
-    } 
-
-    if (updatedReservation.isPaid === false) { // Si por x motivo el pago no era cierto, pasa a ser fallen
-        
-        updatedReservation.reservationState = "fallen" 
-
-    } 
-
-    return updatedReservation
 
 }
 
@@ -287,7 +401,7 @@ export const updateReservationService = async (reservationId, { reservationState
 
 export const deleteReservationService = async (reservationId) => {
     
-    const reservation = await Reservation.findByIdAndDelete({_id: reservationId})
+    const reservation = await Reservation.findByIdAndDelete({_id: reservationId}).populate(POPULATE_RESERVATION)
 
     if (!reservation) {
         
@@ -295,5 +409,9 @@ export const deleteReservationService = async (reservationId) => {
 
     }
 
-    return reservation.populate(POPULATE_RESERVATION)
+    return reservation
 }
+
+/**
+ * GAP DE CÓDIGO, SI SE REALIZAN DOS RESERVACIONES AL MISMO TIEMPO, AMBAS SE CREAN SIMULTÁNEAMENTE
+ */

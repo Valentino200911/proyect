@@ -136,7 +136,7 @@ const createdReservation = await Reservation.create([
         cottage: Cabaña_1._id,
         entryDate: "2026-10-12",
         exitDate: "2026-10-14",
-        passangerNumber: 3,
+        passengerNumber: 3,
         methodOfPayment: "bankTransfer",
         isPaid: false
     },
@@ -145,7 +145,7 @@ const createdReservation = await Reservation.create([
         cottage: Cabaña_2._id,
         entryDate: "2027-10-12",
         exitDate: "2027-10-14",
-        passangerNumber: 1,
+        passengerNumber: 1,
         methodOfPayment: "bankTransfer",
         isPaid: false,
 
@@ -155,7 +155,7 @@ const createdReservation = await Reservation.create([
         cottage: Cabaña_2._id,
         entryDate: "2026-10-12",
         exitDate: "2026-10-14",
-        passangerNumber: 1,
+        passengerNumber: 1,
         methodOfPayment: "bankTransfer",
         isPaid: false,
         totalPrice: 40000

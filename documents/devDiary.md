@@ -492,7 +492,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 
 ### 3 de noviembre de 2026
 
-**Septuagésimo sexto commit del proyecto en Github**
+- **Septuagésimo sexto commit del proyecto en Github**
 - Cambios en seed.js, reservationService.js y generalConstants.js
 **Septuagésimo séptimo commit del proyecto en Github**
 - Continuación con el desarrollo de Swagger
@@ -509,3 +509,30 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Se finalizó la documentación de entidades del back en swagger.js
 **Septuagésimo noveno commit del proyecto en Github**
 - Se iniciará con el proceso de documentación de las rutas a través de API DOCS
+- Cambio en el flujo de trabajo, se pasará con un proceso de Depuración de Errores y Gaps, según el archivo **externo** ["Dudas respecto al Proyecto"](https://docs.google.com/document/d/1pXEmKVsiP_HBCeM6x3PeOcvFaY8GSGumOXU-9wTintE/edit?usp=sharing)
+- El nuevo flujo de trabajo es el siguiente:
+  - Correcciones de Seguridad
+  - Correcciones de comandos de package.json
+  - Completado del README
+    - Actualizar las tecnologías existentes
+    - Datos Mock
+    - Detalle de Reservation
+  - Pulido del trabajo
+    - Descentralización de generalConstants.js
+    - Eliminación de funciones y de código innecesario
+    - Depuración de funcionalidades específicas
+    - Permitir array en SUPABASE
+    - Parches de Funcionalidades
+  - Completar Swagger
+  - Añadir tests, o bien anotarlo como gap de código
+
+### 5 de noviembre de 2026
+
+- Correcciones de Seguridad
+  - Corrección ortográfica al actual `passengerNumber` en múltiples archivos
+  - Reestructuración del esquema de validación por rol en reservation
+  - Cambios en el orden del create en reservation
+  - Cambios en el esquema de UPDATE de reservation
+**Octogésimo commit del proyecto en Github**
+  -
+  

@@ -174,7 +174,7 @@ const definition = {
 
                     exitDate: {type:"string", format: "date-time", example: "2026-10-15T00:00:00.000Z"},
 
-                    passangerNumber: {type:"integer", description:"El que hace la reservación está incluido al ser almacenado en la base de datos, pero no al enviar la solicitud.", example: 3},
+                    passengerNumber: {type:"integer", description:"El que hace la reservación está incluido al ser almacenado en la base de datos, pero no al enviar la solicitud.", example: 3},
 
                     totalPrice: {type: "integer", min: "20000", description:"Este campo es calculado", example:"360000"},
 
@@ -315,7 +315,7 @@ const definition = {
 
                     exitDate: {type:"string", format: "date", example: "2026-11-15"},
 
-                    passangerNumber: {type:"integer", description:"El que hace la reservación está incluido al ser almacenado en la base de datos, pero no al enviar la solicitud.", example: 3},
+                    passengerNumber: {type:"integer", description:"El que hace la reservación está incluido al ser almacenado en la base de datos, pero no al enviar la solicitud.", example: 3},
 
                     methodOfPayment: {type: "string", example: "bankTransfer"},
 
