@@ -17,15 +17,7 @@ export const getUserByIdController = async (req, res) => {
     
     const user = await userService.getUserByIdService(req.params.id)
 
-    if (!user) {
-        
-        return res.status(404).json({error: "The user required by the controller with GET does not exist"})
-        
-    } else {
-
-        res.status(200).json(user)
-
-    }
+    res.status(200).json(user)
 
 }
 
@@ -43,17 +35,9 @@ export const createUserController =  async (req, res) => {
 
 export const updateUserController = async (req, res) => {
     
-    const user = await userService.updateUserService(req.params.id, req.body)
+    const user = await userService.updateUserService(req.params.id, req.user.id, req.body)
 
-    if (!user) {
-        
-        return res.status(404).json({error: "The user required by the controller with UPDATE does not exist"})
-        
-    } else {
-
-        res.status(200).json(user)
-
-    }
+    res.status(200).json(user)
 
 }
 
@@ -63,14 +47,6 @@ export const deleteUserController = async (req, res) => {
     
     const user = await userService.deleteUserService(req.params.id)
 
-    if (!user) {
-        
-        return res.status(404).json({error: "The user required by the controller with DELETE does not exist"})
-        
-    } else {
-
-        res.status(200).json(user)
-
-    }
+    res.status(200).json(user)
 
 }

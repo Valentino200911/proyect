@@ -12,7 +12,7 @@ router.get("/:id", userController.getUserByIdController)
 
 // No es necesaria una ruta aparte de creación de usuario
 
-router.patch("/:id", userController.updateUserController)
+router.patch("/:id", userController.updateUserController) // Ruta de modificación de uso exclusivo para el admin
 
 router.delete("/:id", userController.deleteUserController)
 

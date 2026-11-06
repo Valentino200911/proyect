@@ -531,8 +531,12 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Correcciones de Seguridad
   - Corrección ortográfica al actual `passengerNumber` en múltiples archivos
   - Reestructuración del esquema de validación por rol en reservation
-  - Cambios en el orden del create en reservation
+  - Cambios en el orden del CREATE en reservation
   - Cambios en el esquema de UPDATE de reservation
 **Octogésimo commit del proyecto en Github**
-  -
-  
+  - Cambios en el orden del CREATE en userService y authController
+  - Cambios en generalConstants.js
+  - Cambios en el esquema de UPDATE en userService y authController
+  - Cambios en el ruteo de authRoutes y userRoutes
+  - GAP: Modificación del perfil
+**Octogésimo primer commit del proyecto en Github**

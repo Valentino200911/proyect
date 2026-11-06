@@ -211,3 +211,7 @@ import { ErrorApp } from "../ErrorApp.js";
                 select: "name surname phoneNumber email"
             },
         ]
+
+    // userService
+
+    export const daysInEighteenYears = 18 * 365

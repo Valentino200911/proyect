@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
 import { JWT_EXPIRES_IN, JWT_SECRET } from "../utils/config.js"
-import { createUserService, publicDataOfUser, searchUserByEmailService } from "./userService.js"
+import { createUserService, searchUserByEmailService } from "./userService.js"
 import { ErrorApp } from "../utils/ErrorApp.js";
 
 // Responsabilidad del componente
