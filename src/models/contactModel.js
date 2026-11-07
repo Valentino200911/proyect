@@ -4,7 +4,7 @@ import { REASON_OF_CONTACT } from "../utils/constants/generalConstants.js";
 export const contactSchema = new mongoose.Schema({
 
 user: {
-    
+    required: [true, "The user is required"],
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
 },

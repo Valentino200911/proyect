@@ -200,13 +200,13 @@ export const getAllReservationsService = async (userId) => {
     
     if (user.role === ROLES.ADMIN) {
         
-        const reservation = await Reservation.find({}, { __v: 0 }).populate(POPULATE_RESERVATION).sort({ createdAt: -1 })
+        const reservation = await Reservation.find({}, { __v: 0 }).populate(POPULATE_RESERVATION).sort({ entryDate: -1 })
 
         return reservation
 
     } else {
 
-        const reservation = await Reservation.find(filter, { __v: 0 }).populate(POPULATE_RESERVATION).sort({ createdAt: -1 })
+        const reservation = await Reservation.find(filter, { __v: 0 }).populate(POPULATE_RESERVATION).sort({ entryDate: -1 })
 
         return reservation
 

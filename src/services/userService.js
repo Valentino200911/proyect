@@ -24,7 +24,7 @@ import { addDays, daysInEighteenYears, parseToLocalDate, parseToNumber, ROLES } 
 
     // getAllUsersService
 
-    export const getAllUsersService = async ({email} = {}) => {
+    export const getAllUsersService = async ({email, role, phoneNumber} = {}) => {
 
         const filter = {}
 
@@ -34,7 +34,19 @@ import { addDays, daysInEighteenYears, parseToLocalDate, parseToNumber, ROLES } 
 
         }
 
-        const users = User.find(filter, {__v: 0}).sort({name: 1}) // El segundo {} es un project, el primero es un filter
+        if (phoneNumber) {
+
+            filter.phoneNumber = phoneNumber
+
+        }
+
+        if (role) {
+
+            filter.role = role
+
+        }
+
+        const users = await User.find(filter, {__v: 0}).sort({name: 1}) // El segundo {} es un project, el primero es un filter
         // No se escribe createdAt: 0 ni upadatedAt: 0 debido a que uno al  hacer la consulta debería poder ver cuando fue creado un usuario
 
         return users
@@ -60,7 +72,7 @@ import { addDays, daysInEighteenYears, parseToLocalDate, parseToNumber, ROLES } 
 
     export const createUserService = async (data) => {
         
-        if (data.birthDate ) {
+        if (data.birthDate) {
             
             const today = new Date()
 

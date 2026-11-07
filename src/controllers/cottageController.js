@@ -13,14 +13,10 @@ export const getAllCottagesController = async (req, res) => {
 
 export const getCottageByIdController = async (req, res) => {
     
-    const cottage = await cottageService.getCottageByIdService(req.params.id)
-
-    if (!cottage) {
-        
-        res.status(404).json({error: "The Cottage required by the controller with GET does not exist"})
-    }
+    const cottage = await cottageService.getCottageByNameService(req.query)
 
     res.status(200).json(cottage)
+
 }
 
 // createCottageController
@@ -38,11 +34,6 @@ export const updateCottageController = async (req, res) => {
 
     const cottage = await cottageService.updateCottageService(req.params.id, req.body, req.file)
 
-    if (!cottage) {
-        
-        res.status(404).json({error: "The Cottage required by the controller with UPDATE does not exist"})
-    }
-
     res.status(200).json(cottage)
     
 }
@@ -52,11 +43,6 @@ export const updateCottageController = async (req, res) => {
 export const deleteCottageController = async (req, res) => {
 
     const cottage = await cottageService.deleteCottageService(req.params.id) 
-
-    if (!cottage) {
-        
-        res.status(404).json({error: "The Cottage required by the controller with DELETE does not exist"})
-    }
 
     res.status(200).json(cottage)
     

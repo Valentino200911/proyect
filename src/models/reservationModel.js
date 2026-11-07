@@ -62,7 +62,6 @@ const reservationSchema = new mongoose.Schema({
         type: String,
         enum: { values: Object.values(METHOD_OF_PAYMENT), message: "The methods of payment are: 'bankTransfer' or 'cash'" },
         required: [true, "You have to indicate the method of payment"],
-        index: true // Acelera la búsqueda si se busca específicamente por método de pago específico
         // No tiene default porque es a elección
     },
 
@@ -77,7 +76,6 @@ const reservationSchema = new mongoose.Schema({
     isPaid: {
 
         type: Boolean,
-        index: true, // Acelera la búsqueda si se busca específicamente las reservaciones pagadas
         default: false
     }
 

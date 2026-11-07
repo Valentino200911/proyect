@@ -1,7 +1,7 @@
-import { POPULATE_CONTACT } from "../utils/constants/generalConstants.js";
+import { POPULATE_CONTACT, ROLES } from "../utils/constants/generalConstants.js";
 import { ErrorApp } from "../utils/ErrorApp.js";
 import Contact from "../models/contactModel.js";
-import { verifyUserService } from "./userService.js";
+import User from "../models/userModel.js";
 
 // CRUD general
 
@@ -21,43 +21,100 @@ import { verifyUserService } from "./userService.js";
 
 // getAllContactsService 
 
-    export const getAllContactsService = async (userId = null) => {
+    export const getAllContactsService = async (requesterUserId, {userId, reasonOfContact} = {}) => {
         
-        const filter = {}
+        const requesterUser = await User.findById({_id: requesterUserId})
 
-        if (userId !== null) {
+        if (!requesterUser) {
             
-            filter.user = userId
-
+            throw new ErrorApp("The user making this request does not exist", 404);
+            
         }
- 
-        const contacts = await Contact.find(filter, {createdAt: 0, updatedAt: 0, __v: 0}).populate(POPULATE_CONTACT).sort( {name: 1} ) // {} es un project a voluntad
 
-        return contacts
+        if (requesterUser.role === ROLES.ADMIN) {
+
+            const filter = {}
+
+            if (userId) {
+                
+                const user = await User.findById({_id: userId})
+
+                if (!user) {
+                    
+                    throw new ErrorApp(`The user with the id ${userId} does not exist`, 404);
+                    
+                }
+
+                filter.user = userId
+
+            } 
+
+            if (reasonOfContact) {
+                
+                filter.reasonOfContact = reasonOfContact
+
+            }
+            
+            const contacts = await Contact.find(filter, { updatedAt: 0, __v: 0}).populate(POPULATE_CONTACT).sort( {createdAt: -1} ) // {} es un project a voluntad
+
+            return contacts
+        }
+        
+        if (requesterUser.role === ROLES.USER) {
+
+            const filter = {user: requesterUserId}
+            
+            if (userId) {
+                
+                throw new ErrorApp("You can only see your own contacts", 403);
+                
+            }
+            
+            if (reasonOfContact) {
+                
+                filter.reasonOfContact = reasonOfContact
+
+            }
+        
+            const contacts = await Contact.find(filter, { updatedAt: 0, __v: 0}).populate(POPULATE_CONTACT).sort( {createdAt: -1} ) // {} es un project a voluntad
+            
+            return contacts
+            
+        }
+
     }
 
 
 // getContactByIdService
 
-    export const getContactByIdService = async (contactId, userId = null) => {
+    export const getContactByIdService = async (contactId, userId) => {
         
-        const filter = {_id: contactId }
+        const user = await User.findById({_id: userId})
 
-        if (userId !== null) {
+        if (!user) {
             
-            filter.user = userId
-
+            throw new ErrorApp("The user does not exist", 404);
+            
         }
 
-        const contact = await Contact.findOne(filter, { __v: 0}).populate(POPULATE_CONTACT) // {} es un project a voluntad
+        const filter = {_id: contactId}
+        
+        filter.user = userId
 
-        if (!contact) {
+        if (user.role === ROLES.ADMIN) {
             
-            throw new ErrorApp("The contact does not exist or you do not have access to it", 403);
+            const contact = await Contact.findById({_id: contactId}, { updatedAt: 0, __v: 0}).populate(POPULATE_CONTACT) // {} es un project a voluntad
 
+            return contact
         }
+        
+        if (user.role === ROLES.USER) {
+            
+            const contact = await Contact.findOne(filter, { updatedAt: 0, __v: 0}).populate(POPULATE_CONTACT) // {} es un project a voluntad
 
-        return contact
+            return contact
+            
+        }
     }
 
 // createContactService
@@ -66,7 +123,7 @@ import { verifyUserService } from "./userService.js";
 
         data.user = userId
 
-        const user = await verifyUserService
+        const user = await User.findById({_id: userId})
 
         if (!user) {
             
@@ -91,17 +148,30 @@ import { verifyUserService } from "./userService.js";
         runValidators: true,
 
         }
-    ).populate(POPULATE_CONTACT)
+        ).populate(POPULATE_CONTACT)
 
-    return contact
+        if (!contact) {
+            
+            throw new ErrorApp("The contact does not exist", 404);
+        
+        }
+
+
+        return contact
 
     }
 
 // deleteContactService
 
-        export const deleteContactService = async (contactId) => {
+    export const deleteContactService = async (contactId) => {
         
-        const contact = await Contact.findByIdAndDelete({_id: contactId}).populate(POPULATE_CONTACT)
+        const contact = await Contact.findByIdAndDelete({_id: contactId})
 
-        return contact
+        if (!contact) {
+            
+            throw new ErrorApp("The contact does not exist", 404);
+        
+        }
+
+        return contact.populate(POPULATE_CONTACT)
     }

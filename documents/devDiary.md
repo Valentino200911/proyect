@@ -512,12 +512,18 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambio en el flujo de trabajo, se pasará con un proceso de Depuración de Errores y Gaps, según el archivo **externo** ["Dudas respecto al Proyecto"](https://docs.google.com/document/d/1pXEmKVsiP_HBCeM6x3PeOcvFaY8GSGumOXU-9wTintE/edit?usp=sharing)
 - El nuevo flujo de trabajo es el siguiente:
   - Correcciones de Seguridad
+    - Reservation (100%)
+    - User (90%)
+    - Filtros
+    - Cottage
+    - Contact  
   - Correcciones de comandos de package.json
   - Completado del README
     - Actualizar las tecnologías existentes
     - Datos Mock
     - Detalle de Reservation
   - Pulido del trabajo
+    - .sort()
     - Descentralización de generalConstants.js
     - Eliminación de funciones y de código innecesario
     - Depuración de funcionalidades específicas
@@ -536,7 +542,28 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 **Octogésimo commit del proyecto en Github**
   - Cambios en el orden del CREATE en userService y authController
   - Cambios en generalConstants.js
-  - Cambios en el esquema de UPDATE en userService y authController
-  - Cambios en el ruteo de authRoutes y userRoutes
-  - GAP: Modificación del perfil
+
+## 6 de noviembre de 2026
+
+- Cambios en el esquema de UPDATE en userService y authController
+- Cambios en el ruteo de authRoutes y userRoutes
+- GAP: Modificación del perfil
 **Octogésimo primer commit del proyecto en Github**
+
+### 7 de noviembre de 2026
+
+- Aplicación de filtros recomendados para el trabajo en:
+  - User
+  - Cottage
+  - Contact
+- Correcciones en el flujo de Cottage
+  - Adición de filtros al getAll
+  - Eliminación de validaciones en el controller
+  - Corrección de errores
+- Correcciones en el flujo de Contact
+  - Correcciones en contactModel
+  - Adición de filtros y modificación de las restricciones por rol en los get del service
+  - Eliminación de validaciones en el controller
+- Corrección en el flujo de Reservation
+  - Agregado de un .sort()
+**Octogésimo segundo commit del proyecto en Github**
