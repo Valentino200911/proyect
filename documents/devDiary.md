@@ -514,16 +514,16 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - Correcciones de Seguridad
     - Reservation (100%)
     - User (90%)
-    - Filtros
-    - Cottage
-    - Contact  
-  - Correcciones de comandos de package.json
+    - Filtros (100%)
+    - Cottage (100%)
+    - Contact  (100%)
+  - Correcciones de comandos de package.json (100%)
   - Completado del README
     - Actualizar las tecnologías existentes
     - Datos Mock
     - Detalle de Reservation
   - Pulido del trabajo
-    - .sort()
+    - .sort() (100%)
     - Descentralización de generalConstants.js
     - Eliminación de funciones y de código innecesario
     - Depuración de funcionalidades específicas
@@ -531,6 +531,8 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
     - Parches de Funcionalidades
   - Completar Swagger
   - Añadir tests, o bien anotarlo como gap de código
+    - Adición de comandos de testeo
+    - Instalación de Jest y Supertest
 
 ### 5 de noviembre de 2026
 
@@ -567,3 +569,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Corrección en el flujo de Reservation
   - Agregado de un .sort()
 **Octogésimo segundo commit del proyecto en Github**
+- Correcciones en los comandos del package.json
+  - npm start
+**Octogésimo tercer commit del proyecto en Github**
