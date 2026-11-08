@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "f18e86ad-83b6-4480-9585-20afed532dec",
+    "_postman_id": "ca31e9e8-4397-4f4a-bbdc-ef27f78a82b6",
     "name": "Cabañas Aguaribay",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "57954099",
-    "_collection_link": "https://go.postman.co/collection/57954099-f18e86ad-83b6-4480-9585-20afed532dec?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/57954099-ca31e9e8-4397-4f4a-bbdc-ef27f78a82b6?source=collection_link"
   },
   "item": [
     {
@@ -18,6 +18,33 @@
             "body": {
               "mode": "raw",
               "raw": "{\r\n    \"email\": \"juan.perez@gmail.com\",\r\n    \"password\": \"Password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - User (Jose)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"jose.juarez@gmail.com\",\r\n    \"password\": \"Jose1234\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -79,6 +106,15 @@
             },
             "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"juan\",\r\n  \"surname\": \"gomez\",\r\n  \"birthDate\": \"2008-11-09\",\r\n  \"phoneNumber\": \"+5491534575336\",\r\n  \"email\": \"juan.gomezw@gmail.com\",\r\n  \"password\": \"ABCDEFGHI\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/auth/register",
               "host": [
@@ -93,7 +129,10 @@
           "response": []
         },
         {
-          "name": "Profile",
+          "name": "Profile - Get",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "bearer",
@@ -107,6 +146,52 @@
             },
             "method": "GET",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/profile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Profile - Patch",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/auth/profile",
               "host": [
@@ -127,21 +212,33 @@
       "item": [
         {
           "name": "Get (Requiere Token)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "bearer",
               "bearer": [
                 {
                   "key": "token",
-                  "value": "{{anyToken}}",
+                  "value": "{{adminToken}}",
                   "type": "string"
                 }
               ]
             },
             "method": "GET",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": "{{baseUrl}}/user",
+              "raw": "{{baseUrl}}/user/",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -154,7 +251,10 @@
           "response": []
         },
         {
-          "name": "Create (Requiere token)",
+          "name": "Get by Id (Requiere Token)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "bearer",
@@ -166,44 +266,17 @@
                 }
               ]
             },
-            "method": "POST",
+            "method": "GET",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"name\": \"juan\",\r\n  \"surname\": \"gomez\",\r\n  \"birthDate\": \"1980-08-06\",\r\n  \"phoneNumber\": \"+5491234575336\",\r\n  \"email\": \"juan.gomez@gmail.com\",\r\n  \"password\": \"ABCDEFGHI\",\r\n  \"role\": \"user\"\r\n}",
+              "raw": "",
               "options": {
                 "raw": {
                   "language": "json"
                 }
               }
             },
-            "url": {
-              "raw": "{{baseUrl}}/user",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "user"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get by Id (Requiere Token)",
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{anyToken}}",
-                  "type": "string"
-                }
-              ]
-            },
-            "method": "GET",
-            "header": [],
             "url": {
               "raw": "{{baseUrl}}/user/_id",
               "host": [
@@ -232,6 +305,15 @@
             },
             "method": "DELETE",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/user/_id",
               "host": [
@@ -260,6 +342,15 @@
             },
             "method": "PATCH",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/user/_id",
               "host": [
@@ -279,7 +370,10 @@
       "name": "3 - Cottage",
       "item": [
         {
-          "name": "Get by Id (Requiere Token)",
+          "name": "Get by Name (Requiere Token)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "bearer",
@@ -293,6 +387,15 @@
             },
             "method": "GET",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/cottage/_id",
               "host": [
@@ -326,28 +429,30 @@
               "formdata": [
                 {
                   "key": "name",
-                  "value": "",
+                  "value": "cabaña 4",
                   "type": "text"
                 },
                 {
                   "key": "capacity",
-                  "value": "",
+                  "value": "4",
                   "type": "text"
                 },
                 {
                   "key": "pricePerNightAndPerson",
-                  "value": "",
+                  "value": "25000",
                   "type": "text"
                 },
                 {
                   "key": "description",
-                  "value": "",
+                  "value": "Un lugar para descansar en contacto con la naturaleza",
                   "type": "text"
                 },
                 {
                   "key": "image",
                   "type": "file",
-                  "value": ""
+                  "src": [
+                    "/C:/Users/valen/Downloads/Imagen de Prueba - COTTAGE.png"
+                  ]
                 }
               ]
             },
@@ -365,6 +470,9 @@
         },
         {
           "name": "Get (Requiere Token)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "bearer",
@@ -378,13 +486,22 @@
             },
             "method": "GET",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/cottage",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "get"
+                "cottage"
               ]
             }
           },
@@ -405,6 +522,15 @@
             },
             "method": "DELETE",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/cottage/_id",
               "host": [
@@ -483,6 +609,9 @@
       "item": [
         {
           "name": "Get by Id (Requiere Token)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "bearer",
@@ -496,6 +625,15 @@
             },
             "method": "GET",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/reservation/_id",
               "host": [
@@ -526,7 +664,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{}",
+              "raw": "{\r\n    \"cottage\": \"6a...\", \r\n    \"entryDate\": \"2026-11-25\",\r\n    \"exitDate\": \"2026-11-28\",\r\n    \"passengerNumber\": \"3\",\r\n    \"methodOfPayment\": \"cash\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -547,6 +685,9 @@
         },
         {
           "name": "Get (Requiere Token)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "bearer",
@@ -560,6 +701,15 @@
             },
             "method": "GET",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/reservation",
               "host": [
@@ -587,6 +737,15 @@
             },
             "method": "DELETE",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/reservation/_id",
               "host": [
@@ -615,6 +774,15 @@
             },
             "method": "PATCH",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/reservation/_id",
               "host": [
@@ -635,6 +803,9 @@
       "item": [
         {
           "name": "Get by Id (Requiere Token)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "bearer",
@@ -648,6 +819,15 @@
             },
             "method": "GET",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/contact/_id",
               "host": [
@@ -675,6 +855,45 @@
               ]
             },
             "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"reasonOfContact\": \"suggestion\",\r\n    \"contactComment\": \"Hi 1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contact",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contact"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get (Requiere Token)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{anyToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
             "header": [],
             "body": {
               "mode": "raw",
@@ -698,33 +917,6 @@
           "response": []
         },
         {
-          "name": "Get (Requiere Token)",
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{anyToken}}",
-                  "type": "string"
-                }
-              ]
-            },
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/contact",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "contact"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "Delete (Requiere Token)",
           "request": {
             "auth": {
@@ -739,6 +931,15 @@
             },
             "method": "DELETE",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/contact/_id",
               "host": [
@@ -767,6 +968,15 @@
             },
             "method": "PATCH",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/contact/_id",
               "host": [
@@ -805,39 +1015,41 @@
               "formdata": [
                 {
                   "key": "name",
-                  "value": "",
+                  "value": "Perro",
                   "type": "text"
                 },
                 {
-                  "key": "capacity",
-                  "value": "",
-                  "type": "text"
-                },
-                {
-                  "key": "pricePerNightAndPerson",
-                  "value": "",
+                  "key": "binomialName",
+                  "value": "Canis lupus familiaris",
                   "type": "text"
                 },
                 {
                   "key": "description",
-                  "value": "",
+                  "value": "Es un animal peludo que ladra",
+                  "type": "text"
+                },
+                {
+                  "key": "info",
+                  "value": "https://es.wikipedia.org/wiki/Canis_familiaris",
                   "type": "text"
                 },
                 {
                   "key": "image",
                   "type": "file",
-                  "value": ""
+                  "src": [
+                    "/C:/Users/valen/Downloads/Imagen de Prueba - NATURALELEMENT.png"
+                  ]
                 }
               ]
             },
             "url": {
-              "raw": "{{baseUrl}}/naturalelement/_id",
+              "raw": "{{baseUrl}}/naturalelement/",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "naturalelement",
-                "_id"
+                ""
               ]
             }
           },
@@ -845,6 +1057,9 @@
         },
         {
           "name": "Get by Id (Requiere Token)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "bearer",
@@ -858,6 +1073,15 @@
             },
             "method": "GET",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/naturalelement/_id",
               "host": [
@@ -873,6 +1097,9 @@
         },
         {
           "name": "Get (Requiere Token)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "bearer",
@@ -886,6 +1113,15 @@
             },
             "method": "GET",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/naturalelement",
               "host": [
@@ -913,6 +1149,15 @@
             },
             "method": "DELETE",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/naturalelement",
               "host": [
@@ -966,7 +1211,9 @@
                 {
                   "key": "image",
                   "type": "file",
-                  "value": ""
+                  "src": [
+                    ""
+                  ]
                 }
               ]
             },
@@ -992,16 +1239,16 @@
       "value": "http://localhost:3000/api"
     },
     {
-      "key": "userToken",
-      "value": ""
+      "key": "adminToken",
+      "secret": true
     },
     {
-      "key": "adminToken",
-      "value": ""
+      "key": "userToken",
+      "secret": true
     },
     {
       "key": "anyToken",
-      "value": ""
+      "secret": true
     }
   ]
 }

@@ -589,3 +589,5 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambios en el README.md
 - Cambios en gaps.md
 **Octogésimo quinto commit del proyecto en Github**
+- Cambios en la colección de POSTMAN
+**Octogésimo sexto commit del proyecto en Github**
