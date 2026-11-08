@@ -2,9 +2,8 @@ import { ErrorApp } from "../utils/ErrorApp.js";
 import Cottage from "../models/cottageModel.js";
 import User from "../models/userModel.js";
 import * as userService from "../services/userService.js"
-import * as cottageService from "../services/cottageService.js"
 import Reservation from "../models/reservationModel.js";
-import { addDays, formatDate, parseToLocalDate, parseToNumber, personWhoReserves, POPULATE_RESERVATION, RESERVATION_STATE, reservationMaxDays, ROLES } from "../utils/constants/generalConstants.js";
+import { addDays, formatDate, parseToLocalDate, parseToNumber, personWhoReserves, POPULATE_RESERVATION, RESERVATION_STATE, reservationMaxDays, ROLES } from "../utils/exporter.js";
 
 // Validar la reservación y aplicar lógica de negocio
 

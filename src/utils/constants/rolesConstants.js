@@ -1,8 +1,15 @@
 
-
 import { allowRoles } from "../../middlewares/allowRoles.js";
 import { verifyToken } from "../../middlewares/verifyToken.js";
-import { ROLES } from "./generalConstants.js";
+
+// Roles existentes
+
+    export const ROLES = Object.freeze(
+        {
+            ADMIN: "admin",
+            USER: "user",
+        }
+    );
 
 // Permisos existentes centralizados
 

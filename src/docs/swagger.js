@@ -1,6 +1,6 @@
 import swaggerJsdoc from "swagger-jsdoc"
 import { API_URL } from "../utils/config.js"
-import { passwordDigits } from "../utils/constants/generalConstants.js"
+import { passwordDigits } from "../utils/exporter.js"
 
 const definition = {
 

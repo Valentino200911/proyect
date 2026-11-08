@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-import { binomialNameRegex, validDomainRegex } from "../utils/constants/generalConstants.js";
-
+import { binomialNameRegex, validDomainRegex } from "../utils/exporter.js";
 
 const naturalElementSchema = new mongoose.Schema({
 
@@ -34,7 +33,8 @@ description:{
 },
 image:{
     type: String, 
-    required: [true, "The image of the natural element is required"]
+    required: [true, "The image of the natural element is required"],
+    match: validDomainRegex,
 },
 info:{
     type: String, // link

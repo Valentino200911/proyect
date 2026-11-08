@@ -1,6 +1,6 @@
 import { STORAGE_LOCAL } from "../utils/config.js"
-import { PROVIDERS } from "../utils/constants/supabaseConstants.js"
 import { ErrorApp } from "../utils/ErrorApp.js"
+import { PROVIDERS } from "../utils/exporter.js"
 
 if (!PROVIDERS.includes(STORAGE_LOCAL)) {
     

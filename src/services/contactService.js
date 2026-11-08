@@ -1,7 +1,7 @@
-import { POPULATE_CONTACT, ROLES } from "../utils/constants/generalConstants.js";
 import { ErrorApp } from "../utils/ErrorApp.js";
 import Contact from "../models/contactModel.js";
 import User from "../models/userModel.js";
+import { POPULATE_CONTACT } from "../utils/exporter.js";
 
 // CRUD general
 

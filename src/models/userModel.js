@@ -1,9 +1,8 @@
 
 import mongoose from "mongoose";
 import bcrypt from "bcrypt"
-import { emailRegex, passwordDigits, phoneNumberRegex, ROLES } from "../utils/constants/generalConstants.js";
 import { ITERATIONS } from "../utils/config.js";
-
+import { emailRegex, passwordDigits, phoneNumberRegex, ROLES } from "../utils/exporter.js";
 
 const userSchema = new mongoose.Schema({
 

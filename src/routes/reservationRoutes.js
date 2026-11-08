@@ -1,6 +1,6 @@
 import * as reservationController from "../controllers/reservationController.js"
 import { Router } from "express"
-import { allowed, userOnly, adminOnly } from "../utils/constants/rolesConstants.js"
+import { allowed, userOnly, adminOnly } from "../utils/exporter.js"
 
 const router = Router()
 

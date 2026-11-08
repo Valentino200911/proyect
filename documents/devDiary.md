@@ -599,7 +599,11 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - `utils/constants/contactConstants.js`
   - `utils/constants/reservationConstants.js`
   - `utils/constants/naturalElementConstants.js`
-  - `utils/parseUtils.js`
-  - `utils/dateUtils.js`
+  - `utils/parseUtils.js` - Formatos de parseo
+  - `utils/dateUtils.js`  - Formatos de fecha
   - `utils/exporter.js`
 **Octogésimo séptimo commit del proyecto en Github**
+- Eliminación de todas las importaciones a generalConstants.js
+- Recambio en las importaciones de 26 archivos
+- Eliminación del archivo `generalConstants.js`
+**Octogésimo octavo commit del proyecto en Github**

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { LOCATION } from "../utils/constants/generalConstants.js";
+import { LOCATION, validDomainRegex } from "../utils/exporter.js";
 
 const cottageSchema = new mongoose.Schema({
 
@@ -49,7 +49,8 @@ description:{
 },
 image:{
     type: String, 
-    required: [true, "The image of the cottage is required"]
+    required: [true, "The image of the cottage is required"],
+    match: validDomainRegex,
 },
 
 }, {timestamps: true} //Protocolo de seguridad

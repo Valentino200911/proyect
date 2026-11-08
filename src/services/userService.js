@@ -4,7 +4,7 @@ import User from "../models/userModel.js";
 import Contact from "../models/contactModel.js";
 import Reservation from "../models/reservationModel.js";
 import { ErrorApp } from "../utils/ErrorApp.js";
-import { addDays, daysInEighteenYears, parseToLocalDate, parseToNumber, ROLES } from "../utils/constants/generalConstants.js";
+import { addDays, daysInEighteenYears, parseToLocalDate, parseToNumber, ROLES } from "../utils/exporter.js";
 
 // Validación del Usuario
 
