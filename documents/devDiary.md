@@ -591,3 +591,15 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 **Octogésimo quinto commit del proyecto en Github**
 - Cambios en la colección de POSTMAN
 **Octogésimo sexto commit del proyecto en Github**
+- Inicio del proceso de descentralización del archivo constants/generalConstants.js
+- Anotación de los archivos que importan desde generalConstants.js
+- Creación de los archivos:
+  - `utils/constants/userConstants.js`
+  - `utils/constants/cottageConstants.js`
+  - `utils/constants/contactConstants.js`
+  - `utils/constants/reservationConstants.js`
+  - `utils/constants/naturalElementConstants.js`
+  - `utils/parseUtils.js`
+  - `utils/dateUtils.js`
+  - `utils/exporter.js`
+**Octogésimo séptimo commit del proyecto en Github**

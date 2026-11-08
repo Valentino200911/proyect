@@ -437,9 +437,12 @@ Y, en el apartado de form-data, coloque (transformando los datos e importando la
       * Validación de capacidad de cabañas
         * La reservación no puede incluir más personas que la capacidad de la cabaña
 
-### Funcionalidades a Futuro
+### Funcionalidades y Correcciones a Futuro
 
+* Tener una conexión con el front
 * Creación de un rol de SUPER ADMIN que pueda eliminar a otros admin (Actualmente un admin puede crear, pero no degradar a un admin)
 * Manejo del Error 429: Rate Limit
 * Validación de un registro de usuario a través de un email de NODEMAILER (authService.js )
 * Mediante alguna librería de JS, permitir que pasado cierto tiempo, si una reservación no es pagada (isPaid: false), se vuelva automáticamente como "fallen"
+* Implementación de FIREBASE en forma y orden
+* Corregir el hecho de que dos pedidos simultáneos pueden pasar el chequeo y crear la misma reserva.
