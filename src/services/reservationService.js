@@ -164,31 +164,22 @@ const reservationData = async (reservation) => {
 
 Esto funciona de la siguiente manera:
 
-En getAllReservationsService y getReservationByIdService (lo mismo aplica para las operaciones análogas en contact), el campo userId es opcional (por eso es = null), eso quiere decir que la función puede o no recibirlo.
+En getAllReservationsService y getReservationByIdService (lo mismo aplica para las operaciones análogas en contact), el campo userId es solicitado, ya que de ahí sale la validación por rol, dado a que existen tokens de user y admin
 
-Dado a que existen tokens de user y admin, técnicamente siempre están siendo recibidos
+Definido esto, Se busca al usuario por su _id, y de ahí se analiza su rol:
 
-Ahora, para que eso aplique, se crea una const filter = {}, y se define que si hay userId (o es userId !== null), entonces que al objeto filter se le agregue la propiedad user: userId
+    - Si es admin: NO SE APLICA EL FILTRO
 
-Este filter se usa luego en las consultas de find y findOne (la razón por la cual se usa findOne en getReservationByIdService en vez de findById es porque esta sólo admite un _id y ningún otro campo. En cambio findOne admite múltiples condiciones, lo cual es el caso si userId !== null)
+    - Si es user: SE APLICA EL FILTRO
 
-Definido esto, se pasa al controller donde, si hay userId, se determina su rol a través de const role = req.user.role
+        - Si el usuario de rol user no encuentra la reservación se usa un 404 en vez de un 403 para no exponer si existe o no la reservación
 
-Si role === "admin", entonces se devolverán todos los registros (o uno en específico) sin importar quién sea el usuario
+Ahora, para que eso aplique, se crea una const filter = {}, y se define al objeto filter se le agregue la propiedad user: userId
 
-Si role !== "admin", solo se devolverán los registros del usuario a quien le pertenezca el token, y si intenta obtener por id una reservación que no es suya, aplicará en el service:
+Este filter se usa luego en las consultas de find y findOne (la razón por la cual se usa findOne en getReservationByIdService para ROLES.USER en vez de findById es porque esta sólo admite un _id y ningún otro campo. En cambio findOne admite múltiples condiciones)
 
-    const reservation = await Reservation.findOne(filter, { __v: 0 }).populate(POPULATE_RESERVATION)
 
-    if (!reservation) {
-        
-        throw new ErrorApp("The reservation does not exist or you do not have access to it", 400);
-
-    }
-
-    Por convención se empleó al 400 - bad request como salida, pero la validación también puede admitir un 404, es decir, que  no haya reservation en específico o, en todo caso, un 403, forbidden
-
-    */
+*/
 
 export const getAllReservationsService = async (userId) => {
 
@@ -204,7 +195,9 @@ export const getAllReservationsService = async (userId) => {
 
         return reservation
 
-    } else {
+    } 
+    
+    if (user.role === ROLES.USER) {
 
         const reservation = await Reservation.find(filter, { __v: 0 }).populate(POPULATE_RESERVATION).sort({ entryDate: -1 })
 
@@ -218,7 +211,7 @@ export const getAllReservationsService = async (userId) => {
 
 export const getReservationByIdService = async (reservationId, userId) => {
     
-    const user = await userService.getUserByIdService(userId)
+    const user = await User.findById({_id: userId})
 
     const filter = {_id: reservationId}
 
@@ -230,8 +223,9 @@ export const getReservationByIdService = async (reservationId, userId) => {
         
         return reservation
 
-
-    } else {
+    } 
+    
+    if (user.role === ROLES.USER){
 
         const reservation = await Reservation.findOne(filter, {__v: 0}).populate(POPULATE_RESERVATION)
 

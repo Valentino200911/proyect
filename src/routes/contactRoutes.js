@@ -10,7 +10,7 @@ router.get("/:id", allowed, contactController.getContactByIdController)
 
 router.post("/", userOnly, contactController.createContactController)
 
-router.patch("/:id", adminOnly,  contactController.updateContactController)
+router.patch("/:id", allowed,  contactController.updateContactController) // El usuario puede modificar su contacto, pero no puede eliminarlo
 
 router.delete("/:id", adminOnly, contactController.deleteContactController)
 

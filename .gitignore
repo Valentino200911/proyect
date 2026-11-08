@@ -1,9 +1,5 @@
 node_modules/
-privateKeys/
 uploads
 *.log
 Thumbs.db
 .env
-local/
-naturalElementsImagesFolder/
-cottageImagesFolder/

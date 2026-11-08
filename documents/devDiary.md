@@ -572,3 +572,14 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Correcciones en los comandos del package.json
   - npm start
 **Octogésimo tercer commit del proyecto en Github**
+  - Cambios en el README.md
+  
+### 8 de noviembre de 2026
+
+- Continuación con los cambios en el README.md
+- Cambios en .gitignore
+- Cambios en seed.js
+- ***SALVEDAD DEL REGISTRO:** La carpeta `privateKeys/` fue eliminada, pero como nunca fue commiteada no se puede saber con exactitud cuándo fue
+- Modificaciones en reservationService.js y contactRoutes
+- Finalización del README del Proyecto
+**Octogésimo cuarto commit del proyecto en Github**

@@ -138,7 +138,8 @@ const createdReservation = await Reservation.create([
         exitDate: "2026-10-14",
         passengerNumber: 3,
         methodOfPayment: "bankTransfer",
-        isPaid: false
+        isPaid: false,
+        reservationComment: "Hi, 122R"
     },
     {
         user: Juan._id,
@@ -148,6 +149,7 @@ const createdReservation = await Reservation.create([
         passengerNumber: 1,
         methodOfPayment: "bankTransfer",
         isPaid: false,
+        reservationComment: "Hi, 123R"
 
     },
     {
@@ -158,7 +160,8 @@ const createdReservation = await Reservation.create([
         passengerNumber: 1,
         methodOfPayment: "bankTransfer",
         isPaid: false,
-        totalPrice: 40000
+        totalPrice: 40000,
+        reservationComment: "Hi, 124R"
 
     },
 
