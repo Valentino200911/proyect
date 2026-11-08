@@ -519,9 +519,9 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
     - Contact  (100%)
   - Correcciones de comandos de package.json (100%)
   - Completado del README
-    - Actualizar las tecnologías existentes
-    - Datos Mock
-    - Detalle de Reservation
+    - Actualizar las tecnologías existentes (100%)
+    - Datos Mock (100%)
+    - Detalle de Reservation (100%)
   - Pulido del trabajo
     - .sort() (100%)
     - Descentralización de generalConstants.js
@@ -583,3 +583,9 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Modificaciones en reservationService.js y contactRoutes
 - Finalización del README del Proyecto
 **Octogésimo cuarto commit del proyecto en Github**
+- Cambios en userService.js para PATCH
+- Cambios en authController.js
+- Resolución del problema de la modificación del perfil
+- Cambios en el README.md
+- Cambios en gaps.md
+**Octogésimo quinto commit del proyecto en Github**

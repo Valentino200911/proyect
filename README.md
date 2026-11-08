@@ -87,13 +87,13 @@ Las rutas que admite el presente proyecto son:
       http://localhost:3000/api/auth/login # CREATE (Inicio de sesión)
       http://localhost:3000/api/auth/register # CREATE
       http://localhost:3000/api/auth/profile # GET BY ID - allowed
-      http://localhost:3000/api/auth/profile # UPDATE (Someter a revisión) - allowed
+      http://localhost:3000/api/auth/profile # UPDATE - allowed (Ruta del perfil propio)
 
    User - http://localhost:3000/api/user
 
       http://localhost:3000/api/user/ # GET ALL - adminOnly
       http://localhost:3000/api/user/:id # GET BY ID - adminOnly
-      http://localhost:3000/api/user/:id # UPDATE - allowed
+      http://localhost:3000/api/user/:id # UPDATE - adminOnly (Ruta de modificación exclusiva del admin, requiere id de otro usuario)
       http://localhost:3000/api/user/:id # DELETE - adminOnly
 
    Cottage - http://localhost:3000/api/cottage
@@ -247,6 +247,7 @@ Para más información, revisar la carpeta routes/
 
 * Para mayor rapidez a la hora de hacer las comprobaciones, importe el archivo .json de arriba a POSTMAN
 * En la carpeta raíz de la colección (Cabañas Aguaribay), deberá definir las variables (en la pestaña "variables") de **adminToken**, **userToken** y **anyToken**, correspondientes a las restricciones de token que tienen las rutas. Para poder hacer eso, tendrá que hacer el inicio de sesión con las consultas 1.2 (Login Admin) y 1.3 (Login User). Deberá obtener su token e insertarlo en la variable correspondiente o, en el Local Vault de Postman
+* Aquí sólo están las colecciones que requieren un mock para funcionar
 
 ### 1. Auth
 

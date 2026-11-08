@@ -32,8 +32,8 @@ export const getProfileController = async (req, res) => {
 export const updateProfileController = async (req, res) => {
     
     const user = await userService.updateUserService(req.params.id, req.user.id, req.body)
-
+    
     res.status(200).json(user)
-
+    
 }
 
