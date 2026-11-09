@@ -16,18 +16,19 @@ export const JWT_SECRET = process.env.JWT_SECRET
 
 export const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN
 
+export const STORAGE_METHOD = process.env.STORAGE_METHOD
+
 export const STORAGE_SUPABASE = process.env.STORAGE_SUPABASE
 
 export const STORAGE_LOCAL = process.env.STORAGE_LOCAL
 
-export const IMAGES_SUPABASE_FOLDER_NATURAL_ELEMENT = process.env.IMAGES_SUPABASE_FOLDER_NATURAL_ELEMENT
+export const IMAGES_FOLDER_NATURAL_ELEMENT = process.env.IMAGES_FOLDER_NATURAL_ELEMENT
 
-export const IMAGES_SUPABASE_FOLDER_COTTAGE = process.env.IMAGES_SUPABASE_FOLDER_COTTAGE
-
-export const IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT = process.env.IMAGES_LOCAL_FOLDER_NATURAL_ELEMENT
-
-export const IMAGES_LOCAL_FOLDER_COTTAGE = process.env.IMAGES_LOCAL_FOLDER_COTTAGE
+export const IMAGES_FOLDER_COTTAGE = process.env.IMAGES_FOLDER_COTTAGE
 
 export const SUPABASE_URL = process.env.SUPABASE_URL
 
 export const SUPABASE_KEY = process.env.SUPABASE_KEY
+
+
+// Constante que habilita al adaptador, por defecto está dirigida a SUPABASE, cambie el valor a STORAGE_LOCAL para probar en LOCAL

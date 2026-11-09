@@ -3,3 +3,6 @@ uploads
 *.log
 Thumbs.db
 .env
+local/ 
+
+# local/ es para la carpeta del storage creado localmente

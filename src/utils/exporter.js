@@ -8,7 +8,7 @@ export * from "./constants/reservationConstants.js"
 
 export * from "./constants/rolesConstants.js"
 
-export * from "./constants/supabaseConstants.js"
+export * from "./constants/storageConstants.js"
 
 export * from "./constants/userConstants.js"
 

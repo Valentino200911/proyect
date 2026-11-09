@@ -1,17 +1,22 @@
 
-import { STORAGE_SUPABASE } from "../utils/config.js";
+import { STORAGE_METHOD } from "../utils/config.js";
 import { ErrorApp } from "../utils/ErrorApp.js";
 import { PROVIDERS } from "../utils/exporter.js";
 
-if (!PROVIDERS.includes(STORAGE_SUPABASE)) {
+// Para modfificar el destino de exportación, cambie el valor de STORAGE_METHOD enj
+
+if (!PROVIDERS.includes(STORAGE_METHOD)) {
     
-    throw new Error(`STORAGE = "${STORAGE_SUPABASE}" does not exists. It has to be: ${PROVIDERS.join(", ")}`)
+    throw new Error(`STORAGE = "${STORAGE_METHOD}" does not exists. It has to be: ${PROVIDERS.join(", ")}`)
 
 }
 
-const adapter = await import(`./storage/${STORAGE_SUPABASE}.js`)
+console.log(STORAGE_METHOD);
 
-export const uploadImageSupabaseService = async (file, FOLDER) => {
+
+const adapter = await import(`./storage/${STORAGE_METHOD}.js`)
+
+export const uploadImageService = async (file, FOLDER) => {
 
     if (!file || !FOLDER) {
         
@@ -21,7 +26,7 @@ export const uploadImageSupabaseService = async (file, FOLDER) => {
 
     try {
 
-        const uploading = await adapter.uploadSupabase(file, FOLDER)
+        const uploading = await adapter.uploadMethod(file, FOLDER)
 
         return uploading
 
@@ -39,21 +44,22 @@ export const uploadImageSupabaseService = async (file, FOLDER) => {
 
 }
 
-export const eraseImageSupabaseService = async (url, FOLDER) => {
+export const eraseImageService = async (url, FOLDER) => {
     
     if (!url || !FOLDER)  return  
     
     try {
         
-        const erasing = await adapter.eraseSupabase(url, FOLDER)
+        const erasing = await adapter.eraseMethod(url, FOLDER)
 
         return erasing
 
     } catch (error) {
         
-        // No se relanza el error, si la imagen no se borró, el libro queda bien, esto no le rompe la operación al usuario. Queda sólo un archivo huérfano registrado.
-
         console.error("Error while erasing the file:", url, error.message);
+
+        throw new ErrorApp("The image could not be erased. Please try again", 502); 
+        // En este caso sí se relanza el error, porque es una operación obligatoria para la existencia de los registros. Recordar que image !== null
         
     }
 

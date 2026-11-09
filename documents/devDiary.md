@@ -524,7 +524,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
     - Detalle de Reservation (100%)
   - Pulido del trabajo
     - .sort() (100%)
-    - Descentralización de generalConstants.js
+    - Descentralización de generalConstants.js (100%)
     - Eliminación de funciones y de código innecesario
     - Depuración de funcionalidades específicas
     - Permitir array en SUPABASE
@@ -607,3 +607,16 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Recambio en las importaciones de 26 archivos
 - Eliminación del archivo `generalConstants.js`
 **Octogésimo octavo commit del proyecto en Github**
+- Eliminación del flujo paralelo de Almacenamiento Local de Imágenes
+- Eliminación de `storageLocalService.js`
+- Creación del adaptador correspondiente
+- Cambios en local.js y supabase.js
+- Se renombró `storageSupabaseService.js` a `storageService.js`
+- Cambios en .gitignore
+- Cambios en .env y .env.example
+- Cambios en config.js
+- Se renombró `supabaseConstants.js` a `storageConstants.js`
+- Cambios en naturalElementService y cottageService
+- Cambios en el regex de validDomain en naturalElementConstants
+- Cambios en el README.md
+**Octogésimo noveno commit del proyecto en Github**

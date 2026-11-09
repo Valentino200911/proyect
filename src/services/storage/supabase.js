@@ -17,7 +17,7 @@ const bucket =  (FOLDER) => { // Debido a que hay múltiples carpetas en SUPABAS
 
 }
 
-export const uploadSupabase = async (file, FOLDER) => { // FOLDER = Selección de la carpeta a exportar
+export const uploadMethod = async (file, FOLDER) => { // FOLDER = Selección de la carpeta a exportar
 
     const name = uniqueName(file.originalname)
 
@@ -44,7 +44,7 @@ export const uploadSupabase = async (file, FOLDER) => { // FOLDER = Selección d
 
 }
 
-export const eraseSupabase = async (url, FOLDER) => {
+export const eraseMethod = async (url, FOLDER) => {
 
     // La URL pública termina en .../object/public/<bucket>/<archivo>
 

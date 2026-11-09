@@ -315,7 +315,7 @@ Para más información, revisar la carpeta routes/
 
 * Para el POST, descarge la imagen "Imagen de Prueba - COTTAGE" de:
 
-<https://drive.google.com/file/d/1hNYDar0mltB8xMZWt2MLsoFBOxgGy_2A/view?usp=drive_link>
+<https://drive.google.com/drive/folders/1IM4Iay1O0i0humfqZV0dML1_eG_MixBD?usp=drive_link>
 
 Y, en el apartado de form-data, coloque (transformando los datos e importando la img. descargada localmente):
 
@@ -369,7 +369,7 @@ Y, en el apartado de form-data, coloque (transformando los datos e importando la
 
 * Para el POST, descarge la imagen "Imagen de Prueba - NATURALELEMENT" de:
 
-<https://drive.google.com/file/d/1eFcS1j7IxKCODyv6xA-J0uvqoZ83DuIO/view?usp=drive_link>
+<https://drive.google.com/drive/folders/1IM4Iay1O0i0humfqZV0dML1_eG_MixBD?usp=drive_link>
 
 Y, en el apartado de form-data, coloque (transformando los datos e importando la img. descargada localmente):
 

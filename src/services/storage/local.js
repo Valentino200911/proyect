@@ -7,12 +7,13 @@
 //      peticiones no la encuentra.
 //   3. Tu servidor gasta tiempo y ancho de banda sirviendo archivos en vez
 //      de responder la API.
+
 import fs from "fs/promises"
 import path from "path"
 import { API_URL, STORAGE_LOCAL } from "../../utils/config.js"
 import { uniqueName } from "../../utils/uniqueName.js"
 
-export const uploadLocal = async (file, FOLDER) => {
+export const uploadMethod = async (file, FOLDER) => {
 
     const name = uniqueName(file.originalname)
 
@@ -31,7 +32,7 @@ export const uploadLocal = async (file, FOLDER) => {
     return archive
 }
 
-export const eraseLocal = async (url, FOLDER) => {
+export const eraseMethod = async (url, FOLDER) => {
 
     const name = path.basename(new URL(url).pathname)
 

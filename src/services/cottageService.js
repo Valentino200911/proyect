@@ -2,9 +2,8 @@
 import { ErrorApp } from "../utils/ErrorApp.js";
 import Cottage from "../models/cottageModel.js";
 import Reservation from "../models/reservationModel.js";
-import {IMAGES_SUPABASE_FOLDER_COTTAGE, IMAGES_LOCAL_FOLDER_COTTAGE } from "../utils/config.js";
-import { eraseImageSupabaseService, uploadImageSupabaseService } from "./storageSupabaseService.js";
-import { eraseImageLocalService, uploadImageLocalService } from "./storageLocalService.js";
+import {IMAGES_FOLDER_COTTAGE } from "../utils/config.js";
+import { eraseImageService, uploadImageService } from "./storageService.js";
 
 // CRUD General
 
@@ -78,13 +77,8 @@ import { eraseImageLocalService, uploadImageLocalService } from "./storageLocalS
 
 export const createCottageService = async (data, file) => {
     
-    const image = await uploadImageSupabaseService(file, IMAGES_SUPABASE_FOLDER_COTTAGE) // A SUPABASE
+    const image = await uploadImageService(file, IMAGES_FOLDER_COTTAGE) // A SUPABASE
     
-    // const localImage = await uploadImageLocalService(file, IMAGES_LOCAL_FOLDER_COTTAGE) 
-    // A local --> Es para tener una copia actualizada de lo que se sube a SUPABASE, esto no se retorna, la copia que se usa es la de SUPABASE.
-
-    // Se lo comenta porque no es necesario, existe y para que funcione sólo debe descomentarse
-
     try {
 
         const cottage = await Cottage.create({...data, image})
@@ -93,11 +87,7 @@ export const createCottageService = async (data, file) => {
 
     } catch (error) {
         
-        await eraseImageSupabaseService(image, IMAGES_SUPABASE_FOLDER_COTTAGE) // Supabase
-
-        // await eraseImageLocalService(localImage, IMAGES_LOCAL_FOLDER_COTTAGE ) // Local
-
-        // Se lo comenta porque no es necesario, existe y para que funcione sólo debe descomentarse
+        await eraseImageService(image, IMAGES_FOLDER_COTTAGE) // Supabase
 
         console.error(error);
         
@@ -119,11 +109,7 @@ export const createCottageService = async (data, file) => {
 
         if (file) {
             
-            changes.image = await uploadImageSupabaseService(file, IMAGES_SUPABASE_FOLDER_COTTAGE)
-
-            // const localImage = await uploadImageLocalService(file, IMAGES_LOCAL_FOLDER_COTTAGE)
-
-            // Se lo comenta porque no es necesario, existe y para que funcione sólo debe descomentarse
+            changes.image = await uploadImageService(file, IMAGES_FOLDER_COTTAGE)
 
         }
 
@@ -148,18 +134,15 @@ export const createCottageService = async (data, file) => {
 
             if (cottage && previousData) {
                 
-                await eraseImageSupabaseService(previousData.image, IMAGES_SUPABASE_FOLDER_COTTAGE)
+                await eraseImageService(previousData.image, IMAGES_FOLDER_COTTAGE)
 
-               // const localImage = await eraseImageLocalService(previousData.image, IMAGES_LOCAL_FOLDER_COTTAGE) // TODO: Revisión de la img. local para eliminarla
-
-               // Se lo comenta porque no es necesario, existe y para que funcione sólo debe descomentarse
             }
 
             return cottage
 
             } catch (error) {
 
-                await eraseImageSupabaseService(image, IMAGES_SUPABASE_FOLDER_COTTAGE)
+                await eraseImageService(image, IMAGES_FOLDER_COTTAGE)
                 
                 console.error("There has been an error", error);
                 
