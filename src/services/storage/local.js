@@ -11,7 +11,7 @@
 import fs from "fs/promises"
 import path from "path"
 import { API_URL, STORAGE_LOCAL } from "../../utils/config.js"
-import { uniqueName } from "../../utils/uniqueName.js"
+import { uniqueName } from "../../utils/exporter.js"
 
 export const uploadMethod = async (file, FOLDER) => {
 

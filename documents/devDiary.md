@@ -639,3 +639,16 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambios en la colección de POSTMAN
 - Cambios en el README
 **Nonagésimo segundo commit del proyecto en Github**
+- Depuraciones en gaps.md
+- Continuación del proceso de desarrollo con SWAGGER
+- Cambios en la estructura de swagger.js
+- Cambios en la .env y en .env.example para permitir una conexión a una DB de pruebas para Swagger, en caso de ser necesario
+- Creación del archivo `mongoDBConstants.js`
+- Cambios en db.js
+- Componetización a través de API_URL de index.js
+- Se movió uniqueName.js a functions/uniqueName.js
+- Cambios en supabase.js y local.js
+- Correcciones menores en storageService.js
+- Documentación con Swagger de authRoutes.js y de reservationRoutes.js
+- Cambios en el README.md
+**Nonagésimo tercer commit del proyecto en Github**

@@ -7,7 +7,7 @@ import { PROVIDERS } from "../utils/exporter.js";
 
 if (!PROVIDERS.includes(STORAGE_METHOD)) {
     
-    throw new Error(`STORAGE = "${STORAGE_METHOD}" does not exists. It has to be: ${PROVIDERS.join(", ")}`)
+    throw new Error(`STORAGE_METHOD = "${STORAGE_METHOD}" does not exists. It has to be: ${PROVIDERS.join(", ")}`)
 
 }
 

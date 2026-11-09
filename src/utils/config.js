@@ -6,7 +6,13 @@ const config = dotenv.config()
 
 export const PORT = process.env.PORT 
 
-export const MONGO_URI = process.env.MONGO_URI 
+export const MONGO_URI = process.env.MONGO_URI // Conexión Real
+
+export const MONGO_URI_DB = process.env.MONGO_URI_DB 
+
+export const MONGO_URI_SWAGGER = process.env.MONGO_URI_SWAGGER
+
+export const MONGO_URI_TEST = process.env.MONGO_URI_TEST
 
 export const API_URL = `${process.env.API_URL}:${PORT}`
 

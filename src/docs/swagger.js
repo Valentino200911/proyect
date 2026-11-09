@@ -23,11 +23,10 @@ const definition = {
 
         "**allowed**: Ambos pueden usar la ruta (con restricciones para el rol 'user' en los resultados).\n\n**"+
         
-        "Para probar las rutas protegidas, ingrese a `POST api/auth/login`**, copie el `token` de la respuesta, aprete el botón **Authorize** 🔓 de arriba a la derecha y péguelo. Quedará definido para todas las rutas. Cambielo si resulta necesario.",
+        "Para probar las rutas protegidas, ingrese a `POST api/auth/login`**, copie el `token` de la respuesta, aprete el botón **Authorize** 🔓 de arriba a la derecha y péguelo. Quedará definido para todas las rutas. Cambielo si resulta necesario.\n\n"+
 
-        contact: {
-            email: "valenvalvo@gmail.com"
-        }
+        "Para permitir la conexión a la DB específica de SWAGGER para evaluar, modifique la conexión de la MONGO_URI",
+
     },
 
 
@@ -98,7 +97,7 @@ const definition = {
 
             },
 
-            User:{
+            User: {
 
                 type: "object",
 
@@ -110,7 +109,7 @@ const definition = {
 
                     surname: {type:"string", example:"Pérez"},
 
-                    birthDate: {type:"string", format: "date-time", example:"1999-12-31T00:00:00.000Z"},
+                    birthDate: {type:"string", format: "date", example:"1999-12-31"},
 
                     phoneNumber: {type:"string", unique: true, example:"+5491333567896"},
 
@@ -247,6 +246,24 @@ const definition = {
 
             },
 
+            AutoModifiedUser: {
+
+                type: "object",
+
+                properties: {
+
+                    name: {type:"string", example:"Pedro"},
+
+                    surname: {type:"string", example:"Pérez"},
+
+                    birthDate: {type:"string", format: "date", example:"1982-07-28"},
+
+                    phoneNumber: {type:"string", unique: true, example:"+5496765553233"},
+
+                }
+
+            },
+
             NewCottage:{
 
                 type: "object",
@@ -322,7 +339,7 @@ const definition = {
                 }
                 },
 
-                Register:{
+            Register:{
         
                     type: "object",
         
@@ -341,22 +358,42 @@ const definition = {
                         password: {type:"string", example:"LuisPerez123"},
         
                     }
-                },
+            },
         
-                Login:{
+            Login: {
         
                     type: "object",
         
                     properties: {
         
-                        email: {type:"string", format: "email", unique: true, example:"luis.perez@gmail.com"},
+                        email: {type:"string", format: "email", unique: true, example:"pedro.gomez@gmail.com"},
         
-                        password: {type:"string", example:"LuisPerez123"}
+                        password: {type:"string", example:"Admin123"}
                     }
         
+            },
+
+            Session: {
+
+                    type: "object",
+
+                    properties: {
+
+                    user: { $ref: "#/components/schemas/User" },
+                    
+                    token: {
+
+                        type: "string",
+
+                        description: "El JWT. Va en el header Authorization: Bearer <token>",
+                        
+                        example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ii4uLiJ9.firma",
+                    },
                 },
+            },
+
         
-                Profile:{
+            Profile:{
         
                     type: "object",
         
@@ -383,16 +420,114 @@ const definition = {
         
                 },
 
-
-
-
         },     
 
+        parameters: {
 
+            IdInRoute: {
+
+                name: "id",
+
+                in: "path",
+
+                required: true,
+
+                description: " _id defined in MongoDB (24 hexadecimal caracthers )",
+
+                schema: { type: "string", example: "68f1a2b3c4d5e6f701234568" },
+
+            },
 
         },
 
+        responses: {
+
+            TokenError: {
+
+                description: "There has been an error with the token, it has an invalid format or has expired",
+
+                content: {
+
+                    "application/json": {
+
+                        schema: { $ref: "#/components/schemas/Error" },
+
+                        example: { error: "There has been an error with the token" },
+
+                    },
+                },
+            },
+
+            Forbidden: {
+
+                description: "You have been identified by your role, but you do not have permission to excute this ",
+
+                content: {
+
+                    "application/json": {
+
+                        schema: { $ref: "#/components/schemas/Error" },
+
+                        example: { error: "This action requires the role: 'admin'" },
+
+                    },
+
+                },
+
+            },
+
+            NotFound: {
+
+                description: "The requested element does not exist",
+
+                content: {
+
+                    "application/json": {
+
+                        schema: { $ref: "#/components/schemas/Error" },
+
+                        example: { error: "The user with the _id 68f1a2b3c4d5e6f701234568 does not exist " },
+
+                    },
+
+                },
+
+            },
+
+            InvalidData: {
+
+                description: "The _id or the body are not valid. CastError",
+
+                content: {
+
+                    "application/json": {
+
+                        schema: { $ref: "#/components/schemas/ValidationError" },
+
+                    },
+                },
+            },
+
+            Conflict: {
+
+                description: "The request is correct but it is not allowed by the system",
+
+                content: {
+
+                    "application/json": {
+
+                        schema: { $ref: "#/components/schemas/Error" },
+
+                        example: { error: 'The user cannot be deleted becuase it has registered 2 contacts and 3 reservations' },
+
+                    },
+
     }
+
+}
+}
+}
+} // video en 2:04:09
 
 export const specifications = swaggerJsdoc({
 

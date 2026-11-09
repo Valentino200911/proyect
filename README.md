@@ -66,13 +66,27 @@ npm install
 npm run seed
 ```
 
-##### Tras esto, correr el proyecto
+##### Cambie el valor de MONGO_URI para que corresponda con MONGO_URI_SWAGGER, desde las variables de entorno, y corra nuevamente la seed del proyecto
+
+```bash
+npm run seed
+```
+
+##### Cambie el valor de MONGO_URI para que corresponda con MONGO_URI_TEST, desde las variables de entorno, y corra nuevamente la seed del proyecto
+
+```bash
+npm run seed
+```
+
+##### Cambie el valor de MONGO_URI para que corresponda con MONGO_URI_DB, desde las variables de entorno, y corra  el proyecto
 
 ```bash
 npm run dev
 ```
 
 ##### Después, ingrese a este link del Storage del Proyecto en SUPABASE, servirá para las pruebas posteriormente
+
+* NOTA: Para probar SWAGGER y TEST, sólo modifique los valores de MONGO_URI, si hay error, el propio sistema se lo advertirá
 
 <https://supabase.com/dashboard/project/wbiruthlzrzibmgrzboh>
 
@@ -219,19 +233,23 @@ proyect/   # CARPETA RAÍZ
    ├   ├   ├         ├   
    ├   ├   ├         ├ contactConstants.js
    ├   ├   ├         ├ cottageConstants.js
+   ├   ├   ├         ├ mongoDBConstants.js
    ├   ├   ├         ├ multerConstants.js
    ├   ├   ├         ├ naturalElementConstants.js
    ├   ├   ├         ├ reservationConstants.js
    ├   ├   ├         ├ rolesConstants.js # Definición de roles
    ├   ├   ├         ├ storageConstants.js # Definición de tipos de almacenamiento
    ├   ├   ├         ├ userConstants.js
+   ├   ├   ├ 
+   ├   ├   ├ functions/
+   ├   ├   ├         ├   
+   ├   ├   ├         ├ dateUtils.js
+   ├   ├   ├         ├ parseUtils.js
+   ├   ├   ├         ├ uniqueName.js
    ├   ├   ├
-   ├   ├   ├ dateUtils.js
    ├   ├   ├ config.js
    ├   ├   ├ ErrorApp.js
    ├   ├   ├ exporter.js
-   ├   ├   ├ parseUtils.js
-   ├   ├   ├ uniqueName.js
    ├   ├ 
    ├   ├ app.js  
    ├   ├ db.js
