@@ -101,35 +101,21 @@ import { addDays, daysInEighteenYears, parseToLocalDate, parseToNumber, ROLES } 
     }
 
     /*
-    Este updateUserService tiene dos flujos diferenciados, porque cuando userId !== null, se está modificando a un tercero, por ende se inicia con el flujo de validación por rol, pero si userId === null el usuario puede modificarse sólo a sí mismo
     
+    Este updateUserService tiene una función helper
+
     */
 
-    export const updateUserService = async (userId, modifierId, {name, surname, birthDate, phoneNumber, email, password, role} = {}) => {
-    
-        // modifierId --> id del usuario que modifica. 
+    const applyUserModifications = async (user, {name, surname, birthDate, phoneNumber, email, password, role} = {}) => {
 
-        // userId --> id del usuario a modificar
-        
-        const modifierUser = await User.findById({_id: modifierId})
-
-        if (!modifierUser) {
+        if (email || password || role) {
             
-            throw new ErrorApp(`The modifier user "${modifierId}" does not exist`, 404);
+            throw new ErrorApp("You cannot modify your email, your password, nor your role", 403);
+            
 
         }
 
-
-        if (!userId || userId === null) {
-
-                const user = modifierUser
-
-                if (role || email || password) {
-                
-                throw new ErrorApp("You cannot modify your role, your email or your password", 403);
-
-            }
-            if (name) {
+        if (name) {
                 
                 user.name = name
 
@@ -175,17 +161,52 @@ import { addDays, daysInEighteenYears, parseToLocalDate, parseToNumber, ROLES } 
                 }
             
             }
-            await user.save()
 
-            return user
+    }
+
+    export const updateUserService = async (userId, modifierId, data = {}) => {
+
+        const {name, surname, birthDate, phoneNumber, email, password, role} = data
+    
+        // modifierId --> id del usuario que modifica. 
+
+        // userId --> id del usuario a modificar
+        
+        const modifierUser = await User.findById({_id: modifierId})
+
+        if (!modifierUser) {
+            
+            throw new ErrorApp(`The modifier user "${modifierId}" does not exist`, 404);
 
         }
 
-        const user = await User.findById({_id: userId})
+        let isAutoModification = false;
+
+        if (!userId || userId === null || modifierId === userId) {
+
+            isAutoModification = true;
+
+        }
+
+        //  Asignar el ID del usuario objetivo correctamente según el caso
+
+        let targetUserId;
+
+        if (isAutoModification) {
+
+            targetUserId = modifierId; // Si se modifica a sí mismo, el objetivo es el modificador
+
+        } else {
+
+            targetUserId = userId;     // Si no, el objetivo es el userId enviado
+
+        }
+
+        const user = await User.findById({_id: targetUserId})
 
         if (!user) {
             
-            throw new ErrorApp(`The user "${userId}" does not exist`, 404);
+            throw new ErrorApp(`The user with the "${targetUserId}" does not exist`, 404);
 
         }
 
@@ -201,95 +222,67 @@ import { addDays, daysInEighteenYears, parseToLocalDate, parseToNumber, ROLES } 
             - Puede modificar todo, salvo su rol
         */
 
-        if (modifierUser.role === ROLES.ADMIN) {
-            
-            if (!role || name || surname || birthDate || phoneNumber || email || password) {
+        // FLUJO 1 - MODIFICACIÓN DE PERFIL
+
+        if (isAutoModification) {
+
+                // Modifica datos personales usando la función helper
                 
-                throw new ErrorApp("You can only modify the user's role", 400);
+                await applyUserModifications(user, {name, surname, birthDate, phoneNumber, email, password, role});
 
+                await user.save();
+
+                return user;
+
+            }        
+
+        // FLUJO 2 - MODIFICACIÓN DE OTRO, POR PARTE DE ADMIN
+
+    if (modifierUser.role === ROLES.ADMIN) {
+
+            if (!isAutoModification) {
+
+                // El Admin sólo puede alterar el rol. Si envía otra propiedad, da error.
+
+                if (!role || name || surname || birthDate || phoneNumber) {
+
+                    throw new ErrorApp("You can only modify the user's role", 403);
+
+                }
+
+                // No se puede degradar a un admin
+
+                if (user.role === ROLES.ADMIN) {
+
+                    if (role !== ROLES.ADMIN) {
+
+                        throw new ErrorApp("You cannot modify an admin ", 409);
+
+                    }
+                }
+
+                user.role = role; // Seteo del cambio
+
+                await user.save();
+
+                return user;
             }
+        }        
 
-            if (user.role === ROLES.ADMIN && role) {
-                
-                throw new ErrorApp("The user is an admin, you cannot modify that role", 409);
+    // FLUJO 3 - MODIFICACIÓN DE OTRO, POR PARTE DE USER 
 
-            }
-
-            if (user.role !== ROLES.ADMIN && role === ROLES.ADMIN) {
-                
-                user.role = ROLES.ADMIN
-
-            }
-
-            await user.save()
-
-            return user
-        }
+    // La ruta está restringida por token, por ende no sería necesario validar aquí, pero es mejor tener una capa extra de protección
 
     if (modifierUser.role === ROLES.USER) {
-        
-        if (!(modifierUser._id.equals(user._id))) {
-                
-            throw new ErrorApp("You can only modify your own user", 403);
+
+        if (!isAutoModification) {
+
+            throw new ErrorApp("You can only modify your own user profile", 403);
 
         }
-        if (role || email || password) {
-            
-            throw new ErrorApp("You cannot modify your role, your email or your password", 403);
-
-        }
-        if (name) {
-            
-            user.name = name
-
-        }
-        if (surname) {
-            
-            user.surname = surname
-
-        }
-        if (birthDate) {
-
-            const today = new Date()
-
-            const eighteenYearsAgo = addDays(today, parseToNumber(daysInEighteenYears) * -1)
-            
-            const parsedBirthDate = parseToLocalDate(birthDate)
-
-            if ((today - parsedBirthDate) < (today - eighteenYearsAgo)) {
-                
-                throw new ErrorApp("You must be at least 18 years old", 400);
-                
-
-            } else {
-
-                user.birthDate = parsedBirthDate
-
-            }
-            
-        }
-        if (phoneNumber) {
-
-            const anotherUser = await User.findOne({phoneNumber: phoneNumber})
-
-            if (anotherUser && !(anotherUser._id.equals(user._id))) {
-                
-                throw new ErrorApp(`There is already an user with the phone number: ${phoneNumber}`, 400);
-                
-
-            } else {
-
-                user.phoneNumber = phoneNumber
-
-            }
-        
-        }
-        await user.save()
-
-        return user
     }
-
-    }
+}
+    
 
     // deleteUserService -- Uno no podría eliminar el usuario si ha hecho una registración o un contacto para mantener la integridad de la DB 
 

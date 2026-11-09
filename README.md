@@ -253,7 +253,7 @@ Para más información, revisar la carpeta routes/
 
 **Colección de POSTMAN:**  `postman/Cabañas Aguaribay.postman_collection.json`
 
-* Para mayor rapidez a la hora de hacer las comprobaciones, importe el archivo .json de arriba a POSTMAN
+* Para mayor rapidez a la hora de hacer las comprobaciones, importe el archivo .json de arriba a POSTMAN. Esto debido a que los datos mock están embebidos en los Métodos POST y PATCH de las Querys
 * En la carpeta raíz de la colección (Cabañas Aguaribay), deberá definir las variables (en la pestaña "variables") de **adminToken**, **userToken** y **anyToken**, correspondientes a las restricciones de token que tienen las rutas. Para poder hacer eso, tendrá que hacer el inicio de sesión con las consultas 1.2 (Login Admin) y 1.3 (Login User). Deberá obtener su token e insertarlo en la variable correspondiente o, en el Local Vault de Postman
 * Aquí sólo están las colecciones que requieren un mock para funcionar
 
@@ -384,7 +384,7 @@ Y, en el apartado de form-data, coloque (transformando los datos e importando la
 ```json
 
 {
-   "name": "Perro",
+    "name": "Perro",
     "binomialName": "Canis lupus familiaris",
     "description": "Es un animal peludo que ladra",
     "image": "Imagen de Prueba - NATURALELEMENT.png", // Importe el archivo
@@ -454,3 +454,5 @@ Y, en el apartado de form-data, coloque (transformando los datos e importando la
 * Mediante alguna librería de JS, permitir que pasado cierto tiempo, si una reservación no es pagada (isPaid: false), se vuelva automáticamente como "fallen"
 * Implementación de FIREBASE en forma y orden
 * Corregir el hecho de que dos pedidos simultáneos pueden pasar el chequeo y crear la misma reserva.
+* Permitir que se puedan subir múltiples imágenes, en array, para cottageModel.js
+* Añadir un filtro a getAllCottageService que le permita al usuario ver la disponibilidad de las cabañas, algo como: `/api/cottage/availability?entryDate=&exitDate=,`

@@ -525,10 +525,10 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - Pulido del trabajo
     - .sort() (100%)
     - Descentralización de generalConstants.js (100%)
-    - Eliminación de funciones y de código innecesario
-    - Depuración de funcionalidades específicas
-    - Permitir array en SUPABASE
-    - Parches de Funcionalidades
+    - Eliminación de funciones y de código innecesario (100%)
+    - Depuración de funcionalidades específicas (100%)
+    - Permitir array en SUPABASE -- ANULADO
+    - Parches de Funcionalidades (100%)
   - Completar Swagger
   - Añadir tests, o bien anotarlo como gap de código
     - Adición de comandos de testeo
@@ -633,4 +633,9 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
   - Creación de la carpeta `utils/functions` para dateUtils.js y parseUtils
   - Cambios en exporter.js
   - Eliminación de console.log innecesarios
+  - Por cuestiones de tiempo, se eligió dejar la funcionalidad de subir múltples imágenes (array) para el futuro
 **Nonagésimo primer commit del proyecto en Github**
+- Correcciones a updateUserService
+- Cambios en la colección de POSTMAN
+- Cambios en el README
+**Nonagésimo segundo commit del proyecto en Github**

@@ -185,7 +185,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "",
+              "raw": "{\r\n   \"name\": \"\",\r\n   \"surname\": \"\",\r\n   \"birthDate\": \"\",\r\n   \"phoneNumber\": \"\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -560,43 +560,22 @@
             "method": "PATCH",
             "header": [],
             "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "name",
-                  "value": "",
-                  "type": "text"
-                },
-                {
-                  "key": "capacity",
-                  "value": "",
-                  "type": "text"
-                },
-                {
-                  "key": "pricePerNightAndPerson",
-                  "value": "",
-                  "type": "text"
-                },
-                {
-                  "key": "description",
-                  "value": "",
-                  "type": "text"
-                },
-                {
-                  "key": "image",
-                  "type": "file",
-                  "value": ""
+              "mode": "raw",
+              "raw": "{\r\n   \"name\": \"\",\r\n   \"capacity\": ,\r\n   \"pricePerNightAndPerson\": ,\r\n   \"description\": \"\"\r\n   \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
                 }
-              ]
+              }
             },
             "url": {
-              "raw": "{{baseUrl}}/cottage/_id",
+              "raw": "{{baseUrl}}/cottage/6af013ef88e1059b303bd54e",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "cottage",
-                "_id"
+                "6af013ef88e1059b303bd54e"
               ]
             }
           },
@@ -1186,36 +1165,13 @@
             "method": "PATCH",
             "header": [],
             "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "name",
-                  "value": "",
-                  "type": "text"
-                },
-                {
-                  "key": "capacity",
-                  "value": "",
-                  "type": "text"
-                },
-                {
-                  "key": "pricePerNightAndPerson",
-                  "value": "",
-                  "type": "text"
-                },
-                {
-                  "key": "description",
-                  "value": "",
-                  "type": "text"
-                },
-                {
-                  "key": "image",
-                  "type": "file",
-                  "src": [
-                    ""
-                  ]
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"\",\r\n    \"binomialName\": \"\",\r\n    \"description\": \"\",\r\n    \"info\": \"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
                 }
-              ]
+              }
             },
             "url": {
               "raw": "{{baseUrl}}/naturalelement/_id",
