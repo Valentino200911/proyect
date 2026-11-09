@@ -82,8 +82,6 @@ import { addDays, daysInEighteenYears, parseToLocalDate, parseToNumber, ROLES } 
             
             const parsedBirthDate = parseToLocalDate(data.birthDate )
 
-            console.log(eighteenYearsAgo);
-
             if ((today - parsedBirthDate) < (today - eighteenYearsAgo)) {
                 
                 throw new ErrorApp("You must be at least 18 years old", 400);

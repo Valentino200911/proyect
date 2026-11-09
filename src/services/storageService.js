@@ -11,9 +11,6 @@ if (!PROVIDERS.includes(STORAGE_METHOD)) {
 
 }
 
-console.log(STORAGE_METHOD);
-
-
 const adapter = await import(`./storage/${STORAGE_METHOD}.js`)
 
 export const uploadImageService = async (file, FOLDER) => {

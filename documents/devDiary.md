@@ -624,3 +624,13 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Correcciones en el README.md
 - Correcciones en la colección de POSTMAN
 **Nonagésimo commit del proyecto en Github**
+
+### 9 de noviembre de 2026
+
+- Modificaciones en Multer `middlewares/uploadImages.js`
+  - Creación del archivo `multerConstants.js`
+  - Cambios en README.md
+  - Creación de la carpeta `utils/functions` para dateUtils.js y parseUtils
+  - Cambios en exporter.js
+  - Eliminación de console.log innecesarios
+**Nonagésimo primer commit del proyecto en Github**

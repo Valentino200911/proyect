@@ -219,6 +219,7 @@ proyect/   # CARPETA RAÍZ
    ├   ├   ├         ├   
    ├   ├   ├         ├ contactConstants.js
    ├   ├   ├         ├ cottageConstants.js
+   ├   ├   ├         ├ multerConstants.js
    ├   ├   ├         ├ naturalElementConstants.js
    ├   ├   ├         ├ reservationConstants.js
    ├   ├   ├         ├ rolesConstants.js # Definición de roles

@@ -1,6 +1,5 @@
 import multer from "multer"
-
-const fileMaxSize = 4 //Megabytes
+import { fileMaxSize, fileSize } from "../utils/exporter.js"
 
 const storage = multer.memoryStorage()
 
@@ -28,8 +27,7 @@ const upload = multer({
 
     limits: {
 
-        fileSize: fileMaxSize * 1024 * 1024
-
+        fileSize: fileSize
     }
 
 })
@@ -47,11 +45,16 @@ export const uploadImages = upload.single("image")
 // que no se haya usado multipart
 
 export const handleMulterErrors = (error, req, res, next) => {
+
     if(error?.name === "MulterError") {
+
         if(error.code === "LIMIT_FILE_SIZE"){
-            return res.status(400).json({ error: "The size of the file cannot be over 4 MB" })
+
+            return res.status(400).json({ error: `The size of the file cannot be over ${fileMaxSize} MB`})
         }
+
         if(error.code === "LIMIT_UNEXPECTED_FILE"){
+
             return res.status(400).json({ error: `The uploading of an image was not expected in "${error.field}". The value has to be "image"`})
         }
         return res.status(400).json({error: "The archive could not be processed"})
@@ -59,12 +62,15 @@ export const handleMulterErrors = (error, req, res, next) => {
 
     // error de nuestro filtro de archivos
     if(error?.message === "Only Images are allowed"){
+
         return res.status(400).json({ error: error.message })
     }
 
     // no escribimos el content-type a mano en postman
     if(error?.message?.includes("Boundary not found")){
+
         return res.status(400).json({
+
             error: "Error with header Content-Type written manually"
         })
     }

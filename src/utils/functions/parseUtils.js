@@ -1,4 +1,4 @@
-import { ErrorApp } from "./ErrorApp.js";
+import { ErrorApp } from "../ErrorApp.js";
 
 // Parseo a Number
 
