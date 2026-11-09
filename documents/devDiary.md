@@ -620,3 +620,7 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambios en el regex de validDomain en naturalElementConstants
 - Cambios en el README.md
 **Octogésimo noveno commit del proyecto en Github**
+- Depuración de gaps
+- Correcciones en el README.md
+- Correcciones en la colección de POSTMAN
+**Nonagésimo commit del proyecto en Github**

@@ -217,12 +217,19 @@ proyect/   # CARPETA RAÍZ
    ├   ├   ├
    ├   ├   ├ constants/
    ├   ├   ├         ├   
-   ├   ├   ├         ├ generalConstants.js
+   ├   ├   ├         ├ contactConstants.js
+   ├   ├   ├         ├ cottageConstants.js
+   ├   ├   ├         ├ naturalElementConstants.js
+   ├   ├   ├         ├ reservationConstants.js
    ├   ├   ├         ├ rolesConstants.js # Definición de roles
-   ├   ├   ├         ├ supabaseConstants.js # Definición de roles
+   ├   ├   ├         ├ storageConstants.js # Definición de tipos de almacenamiento
+   ├   ├   ├         ├ userConstants.js
    ├   ├   ├
+   ├   ├   ├ dateUtils.js
    ├   ├   ├ config.js
    ├   ├   ├ ErrorApp.js
+   ├   ├   ├ exporter.js
+   ├   ├   ├ parseUtils.js
    ├   ├   ├ uniqueName.js
    ├   ├ 
    ├   ├ app.js  

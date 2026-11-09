@@ -451,7 +451,7 @@
                   "key": "image",
                   "type": "file",
                   "src": [
-                    "/C:/Users/valen/Downloads/Imagen de Prueba - COTTAGE.png"
+                    "postman-cloud:///1f1dbe5d-653b-45c0-a7b7-5df48aa13603"
                   ]
                 }
               ]
@@ -1037,7 +1037,7 @@
                   "key": "image",
                   "type": "file",
                   "src": [
-                    "/C:/Users/valen/Downloads/Imagen de Prueba - NATURALELEMENT.png"
+                    "postman-cloud:///1f1dbe5c-0152-4140-8a11-a006daa757c2"
                   ]
                 }
               ]
