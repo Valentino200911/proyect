@@ -370,7 +370,7 @@
       "name": "3 - Cottage",
       "item": [
         {
-          "name": "Get by Name (Requiere Token)",
+          "name": "Get by  Id (Requiere Token)",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },

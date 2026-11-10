@@ -16,15 +16,8 @@ import * as naturalElementService from "../services/naturalElementService.js"
         
         const naturalElement = await naturalElementService.getNaturalElementsByIdService(req.params.id)
 
-        if (!naturalElement) {
-        
-            return res.status(404).json({error: "The natural element required by the controller with GET does not exist"})
-            
-        } else {
-
-            res.status(200).json(naturalElement)
-
-    }
+        res.status(200).json(naturalElement)
+    
     }
 
 // createNaturalElementController
@@ -42,15 +35,7 @@ import * as naturalElementService from "../services/naturalElementService.js"
         
         const naturalElement = await naturalElementService.updateNaturalElementService(req.params.id, req.body, req.file)
 
-        if (!naturalElement) {
-            
-            return res.status(404).json({error: "The natural element required by the controller with UPDATE does not exist"})
-
-        } else {
-            
-            res.status(200).json(naturalElement)
-
-        }
+        res.status(200).json(naturalElement)
     }
 
 // deleteNaturalElementController
@@ -59,14 +44,6 @@ import * as naturalElementService from "../services/naturalElementService.js"
         
         const naturalElement = await naturalElementService.deleteNaturalElementService(req.params.id)
 
-        if (!naturalElement) {
-            
-            return res.status(404).json({error: "The natural element required by the controller with DELETE does not exist"})
-
-        } else {
-            
-            res.status(200).json(naturalElement)
-
-        }
+        res.status(200).json(naturalElement)
 
     }

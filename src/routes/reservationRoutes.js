@@ -123,7 +123,7 @@ router.get("/:id", allowed, reservationController.getReservationByIdController)
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Forbidden'
+ *               $ref: '#/components/responses/Forbidden'
  *             example:
  *               error: "This action requires the role es 'user'"
  *       409:

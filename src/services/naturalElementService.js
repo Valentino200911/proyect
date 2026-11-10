@@ -1,6 +1,7 @@
 
 import NaturalElement from "../models/naturalElementModel.js";
 import { IMAGES_FOLDER_NATURAL_ELEMENT } from "../utils/config.js";
+import { ErrorApp } from "../utils/ErrorApp.js";
 import { eraseImageService, uploadImageService } from "./storageService.js";
 
 // CRUD general
@@ -13,7 +14,7 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
 
         if (!exist) {
             
-            throw new ErrorApp(`The NaturalElement "${naturalElementId}" does not exist`, 404);
+            throw new ErrorApp(`The natural element with the _id "${naturalElementId}" does not exist`, 404);
             
         }
 
@@ -42,6 +43,13 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
     export const getNaturalElementsByIdService = async (naturalElementId) => {
         
         const naturalElement = await NaturalElement.findById({_id: naturalElementId}, {createdAt: 0, updatedAt: 0, __v: 0}) // {} es un project a voluntad
+
+        if (!naturalElement) {
+            
+            throw new ErrorApp(`The natural element with the _id ${naturalElementId} does not exist`);
+            
+
+        }
 
         return naturalElement
     }
@@ -76,14 +84,22 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
         
         const previousNaturalElement = await NaturalElement.findById({ _id: naturalElementId })
 
-        const previousData = file ? previousNaturalElement : null
+        if (!previousNaturalElement) {
+            
+            throw new ErrorApp(`The natural element with the _id ${naturalElementId} does not exist`);
+            
+
+        }
 
         const changes = {...data}
 
+        let newImageUrl = null
+
         if (file) {
             
-            changes.image = await uploadImageService(file, IMAGES_FOLDER_NATURAL_ELEMENT)
+            newImageUrl = await uploadImageService(file, IMAGES_FOLDER_NATURAL_ELEMENT)
 
+            changes.image = newImageUrl
         }
 
         try {
@@ -98,18 +114,25 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
 
         )
 
-            if (naturalElement && previousData) {
+            if (naturalElement && previousNaturalElement.image && newImageUrl) {
                 
-                await eraseImageService(previousData.image, IMAGES_FOLDER_NATURAL_ELEMENT)
+                await eraseImageService(previousNaturalElement.image, IMAGES_FOLDER_NATURAL_ELEMENT)
 
             }
 
             return naturalElement
 
         } catch (error) {
+
+            if (newImageUrl) {
+
+                await eraseImageService(newImageUrl, IMAGES_FOLDER_NATURAL_ELEMENT)
+                    
+            }
             
             console.error("There has been an error", error);
             
+            throw error
         }
 
     }
@@ -119,6 +142,19 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
         export const deleteNaturalElementService = async (naturalElementId) => {
         
         const naturalElement = await NaturalElement.findByIdAndDelete({_id: naturalElementId})
+
+        if (!naturalElement) {
+            
+            throw new ErrorApp(`The natural element with the _id ${naturalElementId} does not exist`);
+            
+
+        }        
+
+        if (naturalElement) {
+            
+            await eraseImageService(naturalElement.image, IMAGES_FOLDER_NATURAL_ELEMENT)
+
+        }
 
         return naturalElement
     }

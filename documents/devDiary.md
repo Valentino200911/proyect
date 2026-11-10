@@ -676,3 +676,11 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Correcciones en reservationRoutes.js
 **Nonagésimo séptimo commit del proyecto en Github**
 - Documentación con Swagger de naturalElementRoutes.js
+- Finalización general del proceso de documentación con Swagger
+- Cambios en la colección de POSTMAN
+- Cambios en seed.js
+- Actualización de roleTable.png
+- Correcciones en naturalElementService.js y naturalElementController.js
+- Correcciones en cottageRoutes.js, naturalElementRoutes.js y reservationRoutes.js
+- Cambios en README.md
+**Nonagésimo octavo commit del proyecto en Github**

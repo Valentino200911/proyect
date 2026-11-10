@@ -36,8 +36,22 @@ const createdNaturalElements = await NaturalElement.create([
         name: "Tusca", 
         binomialName: "Vachellia aroma", 
         description: "arbol perteneciente a la familia de las acacias que se ubica en el territorio argentino.", 
-        image: "https://supabase.com/dashboard/project/wbiruthlzrzibmgrzboh/storage/files/buckets/naturalElementsImagesBucket?preview=1793165770889-vqf2g6.jpg", 
+        image: "https://wbiruthlzrzibmgrzboh.supabase.co/storage/v1/object/public/naturalElementsImagesBucket/179553342145-qsf0s44.jpg", 
         info: "https://es.wikipedia.org/wiki/Vachellia_aroma"
+    },
+    {
+        name: "Aramides", 
+        binomialName: "Aramides cajaneus", 
+        description: "ave que habita los territorios de Brasil, Argentina y Uruguay.", 
+        image: "https://wbiruthlzrzibmgrzboh.supabase.co/storage/v1/object/public/naturalElementsImagesBucket/181532664214-aqg44y6.jpg", 
+        info: "https://es.wikipedia.org/wiki/Aramides_cajaneus"
+    },
+    {
+        name: "Churqui", 
+        binomialName: "Vachellia caven", 
+        description: "ave que habita los territorios de Brasil, Argentina y Uruguay.", 
+        image: "https://wbiruthlzrzibmgrzboh.supabase.co/storage/v1/object/public/naturalElementsImagesBucket/18197554544-fdt54s6.jpg", 
+        info: "https://es.wikipedia.org/wiki/Vachellia_caven"
     },
 ])
 

@@ -32,6 +32,12 @@ const router = Router()
  *         description: Filtra por la capacidad de la cabaña
  *         schema:
  *           type: number
+ *       - name: location
+ *         in: query
+ *         description: Filtra por la ubicación de la cabaña (agregado por la escalabilidad del proyecto)
+ *         schema:
+ *           type: string
+ *           enum: ['tafi viejo, tucuman',]
  *     responses:
  *       200:
  *         description: Las cabañas
@@ -86,7 +92,7 @@ router.get("/:id", allowed, cottageController.getCottageByIdController)
  *     tags: [Cottage]
  *     summary: Crear una cabaña (adminOnly)
  *     description: >
- *      Requiere obligatoriamente una imágen, sea en localhost o supabase
+ *      Requiere obligatoriamente una imagen, sea en localhost o supabase
  *
  *       - `multipart/form-data` → con la image. En Swagger UI aparece un botón
  *         para elegir el archivo.

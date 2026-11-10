@@ -418,12 +418,13 @@ Y, en el apartado de form-data, coloque (transformando los datos e importando la
 ### Funcionalidades Implementadas
 
 * Manejo de Registro, Login y Perfil
-* Implementación de Roles de Usuario y restricciones a las acciones de los mismos
+* Implementación de Roles de Usuario y restricciones a las acciones de los mismos (ver `documents/roleTable.png`)
 * Manejo de operaciones completas de CRUD para Cottage (Cabañas), User (Usuarios), Contact (Contactos), NaturalElement (Elementos de Naturaleza)
 * Manejo de Validaciones en los modelos y servicios
 * Manejo Centralizado del Error
 * Almacenamiento en SUPABASE para NaturalElement y Cottage
 * Rutas Restringidas
+* Documentación completa de la API con Swagger
 
 * #### Manejo de la Reservación
 
