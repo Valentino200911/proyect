@@ -12,8 +12,6 @@ export const MONGO_URI_DB = process.env.MONGO_URI_DB
 
 export const MONGO_URI_SWAGGER = process.env.MONGO_URI_SWAGGER
 
-export const MONGO_URI_TEST = process.env.MONGO_URI_TEST
-
 export const API_URL = `${process.env.API_URL}:${PORT}`
 
 export const ITERATIONS = Number(process.env.ITERATIONS) // ITERATIONS en BCRYPT debe ser un número, no un texto plano

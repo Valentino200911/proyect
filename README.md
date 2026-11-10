@@ -29,6 +29,7 @@ Este proyecto utiliza las siguientes tecnologías en su interior:
 * JSON Web Token.
 * OPEN API - Swagger (swagger-jsdoc && swagger-ui-express)
 * Multer y SUPABASE
+* JEST y SUPERTEST para testeos básicos
 
 ## 3. ▶️ Inicialización del Proyecto
 

@@ -684,3 +684,8 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Correcciones en cottageRoutes.js, naturalElementRoutes.js y reservationRoutes.js
 - Cambios en README.md
 **Nonagésimo octavo commit del proyecto en Github**
+- Desarrollo de tests básicos
+- Instalación de JEST y SUPERTEST
+- Cambios en package.json (comandos)
+- Cambios en mongoDBConstants.js y config.js
+**Nonagésimo noveno commit del proyecto en Github**
