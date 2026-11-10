@@ -432,7 +432,7 @@ const definition = {
 
                 required: true,
 
-                description: " _id defined in MongoDB (24 hexadecimal caracthers )",
+                description: " _id definido en MongoDB (24 caracteres hexadecimales)",
 
                 schema: { type: "string", example: "68f1a2b3c4d5e6f701234568" },
 
@@ -444,7 +444,7 @@ const definition = {
 
             TokenError: {
 
-                description: "There has been an error with the token, it has an invalid format or has expired",
+                description: "Ha habido un error con el token: Es inválido, ha vencido o no fue escrito",
 
                 content: {
 
@@ -460,7 +460,7 @@ const definition = {
 
             Forbidden: {
 
-                description: "You have been identified by your role, but you do not have permission to excute this ",
+                description: "Has sido identificado por tu rol, pero no tienes los permisos suficientes pasra realizar esta acción",
 
                 content: {
 
@@ -478,7 +478,7 @@ const definition = {
 
             NotFound: {
 
-                description: "The requested element does not exist",
+                description: "El elemento requerido no fue encontrado o podría no existir",
 
                 content: {
 
@@ -486,7 +486,7 @@ const definition = {
 
                         schema: { $ref: "#/components/schemas/Error" },
 
-                        example: { error: "The user with the _id 68f1a2b3c4d5e6f701234568 does not exist " },
+                        example: { error: "The user with the _id 68f1a2b3c4d5e6f701234568 does not exist" },
 
                     },
 
@@ -496,7 +496,7 @@ const definition = {
 
             InvalidData: {
 
-                description: "The _id or the body are not valid. CastError",
+                description: "El _id o el body no son válidos. CastError",
 
                 content: {
 
@@ -510,7 +510,7 @@ const definition = {
 
             Conflict: {
 
-                description: "The request is correct but it is not allowed by the system",
+                description: "La acción es correcta pero no está permitida por reglas del sistema",
 
                 content: {
 

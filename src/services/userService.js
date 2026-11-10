@@ -256,7 +256,7 @@ import { addDays, daysInEighteenYears, parseToLocalDate, parseToNumber, ROLES } 
 
                     if (role !== ROLES.ADMIN) {
 
-                        throw new ErrorApp("You cannot modify an admin ", 409);
+                        throw new ErrorApp("You cannot modify an admin", 409);
 
                     }
                 }

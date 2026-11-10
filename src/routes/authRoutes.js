@@ -72,7 +72,7 @@ router.post("/login", authController.loginController)
  * /api/auth/profile:
  *   get:
  *     tags: [Auth]
- *     summary: Ver mis datos
+ *     summary: Ver mis datos (allowed)
  *     description: Devuelve el usuario del token. Sirve para saber si el token sigue vivo.
  *     security: [{ bearerAuth: [] }]
  *     responses:
@@ -89,15 +89,13 @@ router.get("/profile", allowed, authController.getProfileController)
  * @openapi
  * /api/auth/profile:
  *   patch:
- *     tags:
- *       - Auth
- *     summary: Modificar mis datos
+ *     tags: [Auth]
+ *     summary: Modificar mis datos (allowed)
  *     description: >
  *       Devuelve el usuario modificado del token. Se mandan **solo** los campos que cambian.
  *       Permite modificar SÓLO el propio perfil.
  *       Para modificar otros usuarios, PATCH api/user/:id
- *     security:
- *       - bearerAuth: []
+ *     security: [{ bearerAuth: [] }]
  *     requestBody:
  *       required: true
  *       content:

@@ -652,3 +652,6 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Documentación con Swagger de authRoutes.js y de reservationRoutes.js
 - Cambios en el README.md
 **Nonagésimo tercer commit del proyecto en Github**
+- Documentación con Swagger de userRoutes.js
+- Correcciones en swagger.js y en authRoutes.js
+**Nonagésimo cuarto commit del proyecto en Github**
