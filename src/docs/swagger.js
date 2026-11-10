@@ -91,7 +91,7 @@ const definition = {
 
                         items: { type: "string" },
 
-                        example: ["Your name is required for your account", "The number of companions (excluding you) is required for the register"],
+                        example: ["Your name is required for your account"],
 
                     },
 
@@ -429,11 +429,11 @@ const definition = {
             
                 properties: {
 
-                    reservationState: {type: "string", enum: ["in progress", "done", "fallen"], description: "Para user 'fallen', para admin 'fallen' o 'done'", example: "done"},
+                    reservationState: {type: "string", enum: ["in progress", "done", "fallen"], example: "done (Para user, 'fallen'; para admin 'fallen' o 'done')"},
 
-                    isPaid: {type: "boolean", description: "Si el rol es 'user', eliminar este campo", example: true, enum: [true, false]},
+                    isPaid: {type: "boolean (Si el rol es 'user', eliminar este campo)", example: true, enum: [true, false]},
 
-                    reservationComment: {type: "string", nullable: true, description: "Si el rol es 'admin', eliminar este campo", example: "Hi 123R"},
+                    reservationComment: {type: "string", nullable: true, example: "Hi 123R (Si el rol es 'admin', eliminar este campo)"},
 
                 }
 

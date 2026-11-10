@@ -10,17 +10,19 @@ const router = Router()
  * @openapi
  * /api/reservation:
  *   get:
- *     tags: [Reservation]
- *     summary: Listar el catálogo
- *     security: [{ bearerAuth: [] }]
+ *     tags:
+ *       - Reservation
+ *     summary: Listar las reservaciones
  *     description: >
- *       Es **público**, tanto user como admin lo pueden emplear, pero para el rol user lo filtra automáticamente por su _id
- *       combinan. El autor viene *populado*: llega el objeto, no el id.
+ *       Es **público**, tanto user como admin lo pueden emplear, pero para el rol user lo filtra automáticamente por su _id.
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - name: userId
  *         in: query
  *         description: Filtra por userId (_id del usuario)
- *         schema: { type: mongoose.Schema.Types.ObjectId }
+ *         schema:
+ *           type: mongoose.Schema.Type.ObjectId
  *     responses:
  *       200:
  *         description: Las reservaciones que coinciden. Si no hay ninguna, un array vacío (no un 404)
@@ -28,7 +30,8 @@ const router = Router()
  *           application/json:
  *             schema:
  *               type: array
- *               items: { $ref: '#/components/schemas/Reservation' }
+ *               items:
+ *                 $ref: '#/components/schemas/Reservation'
  */
 
 router.get("/", allowed, reservationController.getAllReservationsController)
@@ -37,22 +40,26 @@ router.get("/", allowed, reservationController.getAllReservationsController)
  * @openapi
  * /api/reservation/{id}:
  *   get:
- *     tags: [Reservation]
+ *     tags:
+ *       - Reservation
  *     summary: Ver una reservación (allowed) - Depede de si es o no del usuario (de rol 'user')
- *     security: [{ bearerAuth: [] }]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - $ref: '#/components/parameters/IdInRoute'
  *       - name: userId
  *         in: query
- *         description: Filtra por userId (_id del usuario)
- *         schema: { type: mongoose.Schema.Types.ObjectId } 
+ *         description: Filtra por userId (_id del usuario) Si role es "user", el filtrado es automático
+ *         schema:
+ *           type: mongoose.Schema.Type.ObjectId
  *     responses:
  *       200:
  *         description: La reservación
  *         content:
  *           application/json:
- *             schema: { $ref: '#/components/schemas/Reservation' }
- *       400: 
+ *             schema:
+ *               $ref: '#/components/schemas/Reservation'
+ *       400:
  *         description: Error en el _id enviado
  *         content:
  *           application/json:
@@ -60,13 +67,16 @@ router.get("/", allowed, reservationController.getAllReservationsController)
  *               $ref: '#/components/responses/InvalidData'
  *             example:
  *               error: 'Id is not valid to MongoDB'
- *       401: { $ref: '#/components/responses/TokenError' }
- *       404: 
+ *       401:
+ *         $ref: '#/components/responses/TokenError'
+ *       404:
+ *         description: La reservación no fue encontrada
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/responses/NotFound'
- *             example: { error: 'The reservation that you are looking for could not exist' } 
+ *             example:
+ *               error: 'The reservation that you are looking for could not exist'
  */
 router.get("/:id", allowed, reservationController.getReservationByIdController)
 
@@ -74,9 +84,11 @@ router.get("/:id", allowed, reservationController.getReservationByIdController)
  * @openapi
  * /api/reservation:
  *   post:
- *     tags: [Reservation]
+ *     tags:
+ *       - Reservation
  *     summary: Crear una reservación (userOnly) - solo un usuario de rol 'user' puede crear una reservación
- *     security: [{ bearerAuth: [] }] 
+ *     security:
+ *       - bearerAuth: []
  *     description: >
  *       Crea una reservación con los datos que se le proporcionen, calcula los campos calculados y crea la reservación, bloqueando la 
  *       capacidad de la cabaña de ser reservada en dicha fecha.
@@ -87,14 +99,16 @@ router.get("/:id", allowed, reservationController.getReservationByIdController)
  *       required: true
  *       content:
  *         application/json:
- *           schema: { $ref: '#/components/schemas/NewReservation' }
+ *           schema:
+ *             $ref: '#/components/schemas/NewReservation'
  *     responses:
  *       201:
  *         description: Reservación creada
  *         content:
  *           application/json:
- *             schema: { $ref: '#/components/schemas/Reservation' }
-  *       400: 
+ *             schema:
+ *               $ref: '#/components/schemas/Reservation'
+ *       400:
  *         description: Error en el _id enviado
  *         content:
  *           application/json:
@@ -102,19 +116,24 @@ router.get("/:id", allowed, reservationController.getReservationByIdController)
  *               $ref: '#/components/responses/InvalidData'
  *             example:
  *               error: 'Id is not valid to MongoDB'
- *       401: { $ref: '#/components/responses/TokenError' }
+ *       401:
+ *         $ref: '#/components/responses/TokenError'
  *       403:
- *         description: Ya existe una cabaña con ese nombre
+ *         description: Requiere otro rol
  *         content:
  *           application/json:
- *             schema: { $ref: '#/components/schemas/Forbidden' }
- *             example: {error: "This action requires the role: 'user'"}  
+ *             schema:
+ *               $ref: '#/components/schemas/Forbidden'
+ *             example:
+ *               error: "This action requires the role es 'user'"
  *       409:
  *         description: Ya hay una reservación para esas fechas, o coincide con un día colchón
  *         content:
  *           application/json:
- *             schema: { $ref: '#/components/schemas/Error' }
- *             example: { error: 'The user with this email already exists' }
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: 'The user with this email already exists'
  */
 router.post("/", userOnly, reservationController.createReservationController)
 
@@ -122,26 +141,31 @@ router.post("/", userOnly, reservationController.createReservationController)
  * @openapi
  * /api/reservation/{id}:
  *   patch:
- *     tags: [Reservation]
+ *     tags:
+ *       - Reservation
  *     summary: Modificar una reservación (allowed)
  *     description: >
  *       Se mandan **solo** los campos que cambian. El admin sólo puede cambiar el estado de la reservación (in progress a fallen) ||
  *       (in progress a done), así como isPaid: (true o false). El user puede cancelar su reservación (in progress a fallen) o su 
  *       comentario (reservationComment)
- *     security: [{ bearerAuth: [] }]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - $ref: '#/components/parameters/IdInRoute'
  *     requestBody:
+ *       required: true
  *       content:
  *         application/json:
- *           schema: { $ref: '#/components/schemas/ModifiedReservation' }
+ *           schema:
+ *             $ref: '#/components/schemas/ModifiedReservation'
  *     responses:
  *       200:
  *         description: La reservación con los cambios aplicados
  *         content:
  *           application/json:
- *             schema: { $ref: '#/components/schemas/Reservation' }
-  *       400: 
+ *             schema:
+ *               $ref: '#/components/schemas/Reservation'
+ *       400:
  *         description: Error en el _id enviado
  *         content:
  *           application/json:
@@ -149,20 +173,26 @@ router.post("/", userOnly, reservationController.createReservationController)
  *               $ref: '#/components/responses/InvalidData'
  *             example:
  *               error: 'Id is not valid to MongoDB'
- *       401: { $ref: '#/components/responses/TokenError' }
- *       403: { $ref: '#/components/responses/Forbidden' }
- *       404: 
+ *       401:
+ *         $ref: '#/components/responses/TokenError'
+ *       403:
+ *         $ref: '#/components/responses/Forbidden'
+ *       404:
+ *         description: La reservación no fue encontrada
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/responses/NotFound'
- *             example: { error: 'The reservation that you are looking for could not exist' } 
+ *             example:
+ *               error: 'The reservation that you are looking for could not exist'
  *       409:
  *         description: La reservación ya ha sido completada, no hay necesidad de modificarla
  *         content:
  *           application/json:
- *             schema: { $ref: '#/components/schemas/Error' }
- *             example: { error: 'You cannot modify the reservation anymore' }
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: 'You cannot modify the reservation anymore'
  */
 router.patch("/:id", allowed, reservationController.updateReservationController)
 
@@ -170,9 +200,11 @@ router.patch("/:id", allowed, reservationController.updateReservationController)
  * @openapi
  * /api/reservation/{id}:
  *   delete:
- *     tags: [Reservation]
+ *     tags:
+ *       - Reservation
  *     summary: Modificar una reservación (adminOnly)
- *     security: [{ bearerAuth: [] }]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - $ref: '#/components/parameters/IdInRoute'
  *     responses:
@@ -180,8 +212,9 @@ router.patch("/:id", allowed, reservationController.updateReservationController)
  *         description: La reservación borrada
  *         content:
  *           application/json:
- *             schema: { $ref: '#/components/schemas/Reservation' }
-  *       400: 
+ *             schema:
+ *               $ref: '#/components/schemas/Reservation'
+ *       400:
  *         description: Error en el _id enviado
  *         content:
  *           application/json:
@@ -189,14 +222,18 @@ router.patch("/:id", allowed, reservationController.updateReservationController)
  *               $ref: '#/components/responses/InvalidData'
  *             example:
  *               error: 'Id is not valid to MongoDB'
- *       401: { $ref: '#/components/responses/TokenError' }
- *       403: { $ref: '#/components/responses/Forbidden' }
- *       404: 
+ *       401:
+ *         $ref: '#/components/responses/TokenError'
+ *       403:
+ *         $ref: '#/components/responses/Forbidden'
+ *       404:
+ *         description: La reservación no fue encontrada
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/responses/NotFound'
- *             example: { error: 'The reservation that you are looking for could not exist' } 
+ *             example:
+ *               error: 'The reservation that you are looking for could not exist'
  */
 router.delete("/:id", adminOnly, reservationController.deleteReservationController)
 

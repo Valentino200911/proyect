@@ -1,7 +1,7 @@
 import { ErrorApp } from "../utils/ErrorApp.js";
 import Contact from "../models/contactModel.js";
 import User from "../models/userModel.js";
-import { POPULATE_CONTACT } from "../utils/exporter.js";
+import { POPULATE_CONTACT, ROLES } from "../utils/exporter.js";
 
 // CRUD general
 
@@ -76,7 +76,7 @@ import { POPULATE_CONTACT } from "../utils/exporter.js";
 
             }
         
-            const contacts = await Contact.find(filter, { updatedAt: 0, __v: 0}).populate(POPULATE_CONTACT).sort( {createdAt: -1} ) // {} es un project a voluntad
+            const contacts = await Contact.find(filter, { __v: 0}).populate(POPULATE_CONTACT).sort( {createdAt: -1} ) // {} es un project a voluntad
             
             return contacts
             
@@ -152,7 +152,7 @@ import { POPULATE_CONTACT } from "../utils/exporter.js";
 
         if (!contact) {
             
-            throw new ErrorApp("The contact does not exist", 404);
+            throw new ErrorApp(`The contact with the _id ${contactId} does not exist`, 404);
         
         }
 
@@ -169,7 +169,7 @@ import { POPULATE_CONTACT } from "../utils/exporter.js";
 
         if (!contact) {
             
-            throw new ErrorApp("The contact does not exist", 404);
+            throw new ErrorApp(`The contact with the _id ${contactId} does not exist`, 404);
         
         }
 

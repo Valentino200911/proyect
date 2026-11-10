@@ -671,3 +671,8 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Correcciones en seed.js
 **Nonagésimo sexto commit del proyecto en Github**
 - Documentación con Swagger de contactRoutes.js
+- Modificaciones en swagger.js
+- Correcciones en contactService.js y contactController.js
+- Correcciones en reservationRoutes.js
+**Nonagésimo séptimo commit del proyecto en Github**
+- Documentación con Swagger de naturalElementRoutes.js
