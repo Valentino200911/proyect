@@ -4,5 +4,6 @@ uploads
 Thumbs.db
 .env
 local/ 
-
 # local/ es para la carpeta del storage creado localmente
+coverage/
+# coverage/ es para la carpeta de coverage creada por los tests

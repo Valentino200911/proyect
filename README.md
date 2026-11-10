@@ -29,7 +29,7 @@ Este proyecto utiliza las siguientes tecnologías en su interior:
 * JSON Web Token.
 * OPEN API - Swagger (swagger-jsdoc && swagger-ui-express)
 * Multer y SUPABASE
-* JEST y SUPERTEST para testeos básicos
+* JEST y SUPERTEST para tests unitarios básicos
 
 ## 3. ▶️ Inicialización del Proyecto
 
@@ -73,11 +73,7 @@ npm run seed
 npm run seed
 ```
 
-##### Cambie el valor de MONGO_URI para que corresponda con MONGO_URI_TEST, desde las variables de entorno, y corra nuevamente la seed del proyecto
-
-```bash
-npm run seed
-```
+* Aquí debe anotarse el poblar la base de datos de TEST (MONGO_URI_TEST)
 
 ##### Cambie el valor de MONGO_URI para que corresponda con MONGO_URI_DB, desde las variables de entorno, y corra  el proyecto
 
@@ -87,9 +83,15 @@ npm run dev
 
 ##### Después, ingrese a este link del Storage del Proyecto en SUPABASE, servirá para las pruebas posteriormente
 
-* NOTA: Para probar SWAGGER y TEST, sólo modifique los valores de MONGO_URI, si hay error, el propio sistema se lo advertirá
-
 <https://supabase.com/dashboard/project/wbiruthlzrzibmgrzboh>
+
+* NOTA: Para probar SWAGGER, sólo modifique los valores de MONGO_URI, si hay error, el propio sistema se lo advertirá
+
+##### EXTRA: Para correr los tests, emplee
+
+```bash
+npm run test
+```
 
 ## Endpoints
 
@@ -159,6 +161,8 @@ Las rutas que admite el presente proyecto son:
 
 proyect/   # CARPETA RAÍZ
    ├
+   ├ coverage/ # Resultados de los tests, excluida según .gitignore
+   ├  
    ├ documents/ # Documentación del proyecto           
    ├   ├ 
    ├   ├ devDiary.md     
@@ -255,7 +259,13 @@ proyect/   # CARPETA RAÍZ
    ├   ├ app.js  
    ├   ├ db.js
    ├   ├ index.js
-   ├   ├ seed.js 
+   ├   ├ jest.config.js # Configuración de JEST
+   ├   ├ seed.js
+   ├
+   ├ test/ 
+   ├   ├   
+   ├   ├ 1-unitaryTest.test.js # Tests unitarios básicos
+   ├   ├ setup.js  # Configuración de variables de entorno para testing
    ├  
    ├ .env             # .env privada, excluida según el .gitignore   
    ├ .env.example     # Ejemplo de la .env   
@@ -272,7 +282,7 @@ Para más información, revisar la carpeta routes/
 
 **Colección de POSTMAN:**  `postman/Cabañas Aguaribay.postman_collection.json`
 
-* Para mayor rapidez a la hora de hacer las comprobaciones, importe el archivo .json de arriba a POSTMAN. Esto debido a que los datos mock están embebidos en los Métodos POST y PATCH de las Querys
+* Para mayor rapidez a la hora de hacer las comprobaciones, importe el archivo .json de arriba a POSTMAN. Esto debido a que varios de los datos mock están embebidos en los Métodos POST y PATCH de las Querys
 * En la carpeta raíz de la colección (Cabañas Aguaribay), deberá definir las variables (en la pestaña "variables") de **adminToken**, **userToken** y **anyToken**, correspondientes a las restricciones de token que tienen las rutas. Para poder hacer eso, tendrá que hacer el inicio de sesión con las consultas 1.2 (Login Admin) y 1.3 (Login User). Deberá obtener su token e insertarlo en la variable correspondiente o, en el Local Vault de Postman
 * Aquí sólo están las colecciones que requieren un mock para funcionar
 
@@ -426,6 +436,7 @@ Y, en el apartado de form-data, coloque (transformando los datos e importando la
 * Almacenamiento en SUPABASE para NaturalElement y Cottage
 * Rutas Restringidas
 * Documentación completa de la API con Swagger
+* Manejo de 4 tests unitarios básicos (no son empleadas las configuraciones en setup.js y las variables de entorno reservadas a test)
 
 * #### Manejo de la Reservación
 
@@ -476,3 +487,4 @@ Y, en el apartado de form-data, coloque (transformando los datos e importando la
 * Corregir el hecho de que dos pedidos simultáneos pueden pasar el chequeo y crear la misma reserva.
 * Permitir que se puedan subir múltiples imágenes, en array, para cottageModel.js
 * Añadir un filtro a getAllCottageService que le permita al usuario ver la disponibilidad de las cabañas, algo como: `/api/cottage/availability?entryDate=&exitDate=,`
+* Continuar con el desarrollo de los tests del proyecto, buscando llegar hasta un mínimo del 70% del código

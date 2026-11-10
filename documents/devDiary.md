@@ -689,3 +689,11 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Cambios en package.json (comandos)
 - Cambios en mongoDBConstants.js y config.js
 **Nonagésimo noveno commit del proyecto en Github**
+- Creación de `proyect/test/` para los testeos
+- Creación de `src/jest.config.js`
+- Creación de `proyect/test/setup.js`  (Seteo de constantes empleadas durante tests más complejos)
+- Creación de `proyect/test/1-unitaryTest.js` (Tests unitarios)
+- Cambios en README.md
+- Cambios en .gitignore
+- Revisión general del código
+**Centésimo commit del proyecto en Github**
