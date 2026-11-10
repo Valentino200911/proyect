@@ -25,6 +25,8 @@ const definition = {
         
         "Para probar las rutas protegidas, ingrese a `POST api/auth/login`**, copie el `token` de la respuesta, aprete el botón **Authorize** 🔓 de arriba a la derecha y péguelo. Quedará definido para todas las rutas. Cambielo si resulta necesario.\n\n"+
 
+         "Si aparece algún error en el login, vuelva a intentar la consulta o revise la consola de Visual Studio Code.\n\n"+
+
         "Para permitir la conexión a la DB específica de SWAGGER para evaluar, modifique la conexión de la MONGO_URI",
 
     },
@@ -270,11 +272,11 @@ const definition = {
             
                 properties: {
 
-                    name: {type:"string", example:"cabaña 1"},
+                    name: {type:"string", example:"cabaña 4"},
 
-                    capacity: {type:"integer", example: 7},
+                    capacity: {type:"integer", example: 4},
 
-                    pricePerNightAndPerson: {type:"integer", example: 40000},
+                    pricePerNightAndPerson: {type:"integer", example: 30000},
 
                     location: {type:"string", example: "tafi viejo, tucuman"},
 

@@ -15,7 +15,7 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
 
         if (!exist) {
             
-            throw new ErrorApp(`The Cottage "${cottageId}" does not exist`, 404);
+            throw new ErrorApp(`The cottage with the id ${cottageId} does not exist`, 404);
             
         }
 
@@ -59,7 +59,7 @@ import { eraseImageService, uploadImageService } from "./storageService.js";
 
 // getCottageByIdService
 
-    export const getCottageByIdService = async (cottageId) => { // El name es unique, así que vale como
+    export const getCottageByIdService = async (cottageId) => {
         
         const cottage = await Cottage.findById({_id: cottageId}, {createdAt: 0, updatedAt: 0, __v: 0}) // El segundo {} es un project
 
@@ -103,13 +103,22 @@ export const createCottageService = async (data, file) => {
     
         const previousCottage = await Cottage.findById({ _id: cottageId })
 
-        const previousData = file ? previousCottage : null
+        if (!previousCottage) {
+            
+            throw new ErrorApp(`The cottage with the id ${cottageId} does not exist`, 404);
+            
+
+        }
 
         const changes = {...data}
 
+        let newImageUrl = null
+
         if (file) {
+
+            newImageUrl = await uploadImageService(file, IMAGES_FOLDER_COTTAGE)
             
-            changes.image = await uploadImageService(file, IMAGES_FOLDER_COTTAGE)
+            changes.image = newImageUrl
 
         }
 
@@ -121,20 +130,11 @@ export const createCottageService = async (data, file) => {
     
             runValidators: true,
     
-            }
+            })
 
-        )
-
-            if (!cottage) {
+            if (cottage && previousCottage.image && newImageUrl) {
                 
-                throw new ErrorApp("The updated cottage does not exist", 404);
-                
-
-            }
-
-            if (cottage && previousData) {
-                
-                await eraseImageService(previousData.image, IMAGES_FOLDER_COTTAGE)
+                await eraseImageService(previousCottage.image, IMAGES_FOLDER_COTTAGE)
 
             }
 
@@ -142,7 +142,11 @@ export const createCottageService = async (data, file) => {
 
             } catch (error) {
 
-                await eraseImageService(image, IMAGES_FOLDER_COTTAGE)
+                if (newImageUrl) {
+
+                    await eraseImageService(newImageUrl, IMAGES_FOLDER_COTTAGE)
+                    
+                }
                 
                 console.error("There has been an error", error);
                 
@@ -150,11 +154,11 @@ export const createCottageService = async (data, file) => {
             }
     }
 
-// deleteCottageService -- No es ideal tener un delete para este caso, pero por cuestiones de coherencia de CRUD, se lo deja || En todo caso, validar la eliminación
+// deleteCottageService
 
     export const deleteCottageService = async (cottageId) => {
         
-        const validationCottage = await verifyCottageService()
+        const validationCottage = await Cottage.findById({_id: cottageId })
 
         if (!validationCottage) {
         
@@ -171,6 +175,12 @@ export const createCottageService = async (data, file) => {
         }
 
         const cottage = await Cottage.findByIdAndDelete({_id: cottageId})
+
+        if (cottage) {
+            
+            await eraseImageService(validationCottage.image, IMAGES_FOLDER_COTTAGE)
+
+        }
         
         return cottage
         

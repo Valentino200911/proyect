@@ -43,7 +43,11 @@ export const uploadImageService = async (file, FOLDER) => {
 
 export const eraseImageService = async (url, FOLDER) => {
     
-    if (!url || !FOLDER)  return  
+    if (!url || typeof url !== 'string' || !FOLDER) {
+
+        throw new Error(`The url: ${url} or the FOLDER: ${FOLDER} are not valid`);
+
+    }
     
     try {
         

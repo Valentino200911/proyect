@@ -6,14 +6,13 @@ const router = Router()
 
 router.use(adminOnly)
 
-
 /**
  * @openapi
  * /api/user:
  *   get:
  *     tags:
  *       - User
- *     summary: Obtener todos usuarios (adminOnly)
+ *     summary: Obtener todos los usuarios (adminOnly)
  *     description: >
  *       Todo este grupo de rutas es **solo para admin**. La password nunca viaja.
  *     security:
@@ -67,7 +66,7 @@ router.get("/", userController.getAllUsersController)
  *           application/json:
  *             schema: { $ref: '#/components/schemas/User' }
  *       400: 
- *         description: Error en los _id enviado
+ *         description: Error en el _id enviado
  *         content:
  *           application/json:
  *             schema:
@@ -111,6 +110,14 @@ router.get("/:id", userController.getUserByIdController)
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/User'
+ *       400: 
+ *         description: Error en el _id enviado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/responses/InvalidData'
+ *             example:
+ *               error: 'Id is not valid to MongoDB'
  *       401:
  *         $ref: '#/components/responses/TokenError'
  *       403:

@@ -81,7 +81,7 @@ const [Cabaña_1, Cabaña_2] = await Cottage.create([
         pricePerNightAndPerson: 40000,
         location: "tafi viejo, tucuman",
         description: "Un lugar para descansar en contacto con la naturaleza",
-        image: "https://supabase.com/dashboard/project/wbiruthlzrzibmgrzboh/storage/files/buckets/cottageImagesBucket?preview=1793423330630-kpyhd1.jpg"
+        image: "https://wbiruthlzrzibmgrzboh.supabase.co/storage/v1/object/public/cottageImagesBucket/1793423330630-kpyhd1.jpg"
     
     },
     {
@@ -90,7 +90,7 @@ const [Cabaña_1, Cabaña_2] = await Cottage.create([
         pricePerNightAndPerson: 20000,
         location: "tafi viejo, tucuman",
         description: "Un lugar para descansar en contacto con la naturaleza",
-        image: "https://supabase.com/dashboard/project/wbiruthlzrzibmgrzboh/storage/files/buckets/cottageImagesBucket?preview=1793657608192-m9gn4h.jpg"
+        image: "https://wbiruthlzrzibmgrzboh.supabase.co/storage/v1/object/public/cottageImagesBucket/1794283381215-pwdnvh.jpg"
     
     },
     

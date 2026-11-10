@@ -655,3 +655,14 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Documentación con Swagger de userRoutes.js
 - Correcciones en swagger.js y en authRoutes.js
 **Nonagésimo cuarto commit del proyecto en Github**
+
+## 10 de noviembre de 2026
+
+- Documentación con Swagger de cottageRoutes.js
+- Correcciones en swagger.js y en userRoutes.js
+- Cambios en seed.js
+- Correcciones en handleError.js
+- Correcciones en supabase.js
+- Correcciones en cottageService.js y cottageController.js
+- Correcciones en storageService.js
+**Nonagésimo quinto commit del proyecto en Github**

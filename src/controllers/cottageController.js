@@ -13,7 +13,7 @@ export const getAllCottagesController = async (req, res) => {
 
 export const getCottageByIdController = async (req, res) => {
     
-    const cottage = await cottageService.getCottageByNameService(req.query)
+    const cottage = await cottageService.getCottageByIdService(req.params.id)
 
     res.status(200).json(cottage)
 

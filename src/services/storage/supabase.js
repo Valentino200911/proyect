@@ -6,13 +6,13 @@ import { uniqueName } from "../../utils/exporter.js";
 
 const bucket =  (FOLDER) => { // Debido a que hay múltiples carpetas en SUPABASE, se requiere un param con validación
     
-    const supabaseFolder = supabase.storage.from(FOLDER)
-
     if (!FOLDER) {
         
         throw new Error("There has been an error with the SUPABASE folder");
         
     }
+
+    const supabaseFolder = supabase.storage.from(FOLDER)
 
     return supabaseFolder
 
