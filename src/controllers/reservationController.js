@@ -6,10 +6,12 @@ import * as reservationService from "../services/reservationService.js"
 export const getAllReservationsController = async (req, res) => {
 
     // Nota, lo que sigue después del req NO ES UN NOMBRE, es la propiedad propiamente dicha con los elementos internos a los que se puede acceder mediante dot notation
+    
     // Ej. req.user.id
+
         const reservations = await reservationService.getAllReservationsService(req.user.id, req.query)
 
-        res.status(200).json(allUserReservations)
+        res.status(200).json(reservations)
 
     }
 
@@ -26,7 +28,7 @@ export const getReservationByIdController = async (req, res) => {
 
 // createReservationController
 
-export const createReservationController = async (req, res, next) => {
+export const createReservationController = async (req, res) => {
     
         const reservation = await reservationService.createReservationService(req.user.id, req.body.cottage, req.body)
         

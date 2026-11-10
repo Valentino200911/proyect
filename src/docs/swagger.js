@@ -136,7 +136,7 @@ const definition = {
 
                 properties: {
 
-                    _id: {type:"ObjectId || string", example:"6ae9560a22a36af0e70d1a69"},
+                    _id: {type:"string", format:"ObjectId", example:"6ae9560a22a36af0e70d1a69"},
 
                     name: {type:"string", example:"cabaña 1"},
 
@@ -328,17 +328,18 @@ const definition = {
             
                 properties: {
 
-                    cottage: { $ref: "#/components/schemas/Cottage", description: "El usuario tiene que escribir la cabaña. En el front, habría que seleccionarla a través de un select" },
+                    cottage: { type:"string", format:"ObjectId", description: "El usuario tiene que escribir la cabaña. En el front, habría que seleccionarla a través de un select", example:"6a... (Cambie este valor con las rutas documentadas, al de una cabaña existente)" },
 
-                    entryDate: {type:"string", format: "date", example: "2026-11-12"},
+                    entryDate: {type:"string", format: "date", example: "2026-11-15"},
 
-                    exitDate: {type:"string", format: "date", example: "2026-11-15"},
+                    exitDate: {type:"string", format: "date", example: "2026-11-18"},
 
                     passengerNumber: {type:"integer", description:"El que hace la reservación está incluido al ser almacenado en la base de datos, pero no al enviar la solicitud.", example: 3},
 
                     methodOfPayment: {type: "string", example: "bankTransfer"},
 
                 }
+
                 },
 
             Register:{
@@ -420,6 +421,22 @@ const definition = {
                         updatedAt: {type:"string", format: "date-time", example:"2026-11-03T03:33:30.103Z"},
                     }
         
+                },
+
+            ModifiedReservation:{
+
+                type: "object",
+            
+                properties: {
+
+                    reservationState: {type: "string", enum: ["in progress", "done", "fallen"], description: "Para user 'fallen', para admin 'fallen' o 'done'", example: "done"},
+
+                    isPaid: {type: "boolean", description: "Si el rol es 'user', eliminar este campo", example: true, enum: [true, false]},
+
+                    reservationComment: {type: "string", nullable: true, description: "Si el rol es 'admin', eliminar este campo", example: "Hi 123R"},
+
+                }
+
                 },
 
         },     

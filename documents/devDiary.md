@@ -666,3 +666,8 @@ Este documento es el detalle de la evolución de la API, del proyecto, y de las 
 - Correcciones en cottageService.js y cottageController.js
 - Correcciones en storageService.js
 **Nonagésimo quinto commit del proyecto en Github**
+- Documentación con Swagger de reservationRoutes.js
+- Correcciones en reservationService.js y reservationController.js
+- Correcciones en seed.js
+**Nonagésimo sexto commit del proyecto en Github**
+- Documentación con Swagger de contactRoutes.js

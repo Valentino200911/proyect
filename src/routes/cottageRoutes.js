@@ -206,7 +206,7 @@ router.patch("/:id", adminOnly, uploadImages, cottageController.updateCottageCon
  *     summary: Borrar una cabaña (adminOnly)
  *     description: >
  *       ⚠️ **No se puede borrar una cabaña que fue reservada o que tiene reservaciones referenciadas**: da 409 y
- *       dice cuántas. Primero hay que reasignar o borrar dichos registros.
+ *       dice cuántas. Primero hay que reasignar o borrar dichos registros. Si se elimina, se elimina además su image
  *     security: [{ bearerAuth: [] }]
  *     parameters:
  *       - $ref: '#/components/parameters/IdInRoute'

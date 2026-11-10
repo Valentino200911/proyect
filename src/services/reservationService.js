@@ -210,7 +210,7 @@ export const getAllReservationsService = async (userId) => {
 
 export const getReservationByIdService = async (reservationId, userId) => {
     
-    const user = await User.findById({_id: userId})
+    const user = await User.findById({_id: userId}) // Filtra por el propio usuario y su token (si es de rol user)
 
     const filter = {_id: reservationId}
 
@@ -218,7 +218,7 @@ export const getReservationByIdService = async (reservationId, userId) => {
 
     if (user.role === ROLES.ADMIN) {
         
-        const reservation = await verifyIfReservationExistsService(reservationId)
+        const reservation = await verifyIfReservationExistsService(reservationId) // No se aplica filtro porque al admin no le interesa de quién es la reservación si ya conoce el _id
         
         return reservation
 
@@ -351,7 +351,7 @@ export const updateReservationService = async (reservationId, userId, { reservat
 
         if (reservation.reservationState === RESERVATION_STATE.FALLEN || reservation.reservationState === RESERVATION_STATE.DONE) {
 
-            throw new ErrorApp("You cannot modify the reservation anymore", 400);
+            throw new ErrorApp("You cannot modify the reservation anymore", 409);
 
         }
 
